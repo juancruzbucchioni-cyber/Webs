@@ -86,7 +86,7 @@ export default function Home() {
               <div className="price"><small>DESDE</small><strong>${plan.price}</strong><span>USD</span></div>
               <ul>{plan.features.map((feature) => <li key={feature}><span>✓</span>{feature}</li>)}</ul>
               <div className="plan-actions">
-                <button onClick={() => setSelectedPlan(index)}>Ver demo <span>↗</span></button>
+                <button onClick={() => setSelectedPlan(index)}>Ver página <span>↗</span></button>
                 <a href="#contacto">Presupuesto <span>→</span></a>
               </div>
             </article>
@@ -139,7 +139,7 @@ export default function Home() {
           <div className="demo-modal">
             <div className="demo-toolbar">
               <div className="demo-dots"><i /><i /><i /></div>
-              <span>Vista previa · {plans[selectedPlan].type}</span>
+              <span>Página seleccionada · {plans[selectedPlan].type}</span>
               <button onClick={() => setSelectedPlan(null)} aria-label="Cerrar demo">×</button>
             </div>
             <div className={`demo-site demo-${selectedPlan}`}>
