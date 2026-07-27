@@ -121,7 +121,16 @@ export default function Home() {
               <h3>{plan.type}</h3>
               <p>{plan.copy}</p>
               <div className="price"><small>DESDE</small><strong>${plan.price}</strong><span>ARS</span></div>
-              <ul>{plan.features.map((feature) => <li key={feature}><span>✓</span>{feature}</li>)}</ul>
+              <ul>
+                {plan.features.map((feature) => {
+                  const isRepeated = feature.startsWith("Incluye todas");
+                  return (
+                    <li className={isRepeated ? "repeated-feature" : ""} key={feature}>
+                      <span>✓</span>{feature}
+                    </li>
+                  );
+                })}
+              </ul>
               <div className="plan-actions">
                 <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(plan.message)}`} target="_blank" rel="noreferrer">
                   Presupuesto <span>→</span>

@@ -71,6 +71,8 @@ button { color:inherit; font:inherit; }
 .plan-card h3 { text-align:center; font-size:24px; margin:0 0 13px; }.plan-card>p { text-align:center; color:#8c8892; font-size:12px; line-height:1.65; min-height:60px; }
 .price { display:flex; justify-content:center; align-items:end; margin:26px 0; gap:7px; }.price small,.price span { color:#77727e; font-size:8px; letter-spacing:.15em; padding-bottom:7px; }.price strong { font-size:42px; line-height:1; }
 .plan-card ul { list-style:none; padding:20px 0; margin:0; border-top:1px solid var(--line); }.plan-card li { color:#a9a5ae; font-size:11px; padding:7px 0; }.plan-card li span { color:#a75dff; margin-right:10px; }
+.plan-card li.repeated-feature { color:#d6b4ff; font-weight:700; background:rgba(155,72,255,.11); border:1px solid rgba(180,112,255,.2); border-radius:8px; margin:0 0 7px; padding:10px; }
+.plan-card li.repeated-feature span { color:#c477ff; }
 .plan-actions { display:block; border-top:1px solid var(--line); margin:8px -26px -26px; }
 .plan-actions a { display:flex; justify-content:space-between; align-items:center; padding:22px 20px; font-size:10px; font-weight:700; color:white; cursor:pointer; }
 .plan-actions a:hover { background:rgba(132,55,255,.11); }
