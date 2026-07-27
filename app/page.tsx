@@ -21,8 +21,8 @@ export default function Home() {
   return (
     <main>
       <nav className="nav">
-        <a className="brand" href="#inicio" aria-label="Norte Web, inicio">
-          <span className="mini-logo">N</span><b>NORTE</b>
+        <a className="brand brand-logo" href="#inicio" aria-label="JCB Development, inicio">
+          <img src="/jcb-development.png" alt="JCB Development" />
         </a>
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>
           <a href="#modelos" onClick={() => setMenuOpen(false)}>Modelos</a>
@@ -41,7 +41,7 @@ export default function Home() {
         <div className="stars" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
         <div className="hero-content">
           <div className="hero-primary">
-            <div className="hero-logo" aria-label="Norte"><span className="logo-top" /><span className="logo-left" /><span className="logo-right" /></div>
+            <div className="hero-logo brand-logo"><img src="/jcb-development.png" alt="JCB Development" /></div>
             <p className="eyebrow">DISEÑO · DESARROLLO · RESULTADOS</p>
             <h1>Potenciá tu <span>presencia online</span></h1>
             <p className="hero-copy">Creamos páginas web modernas, rápidas y pensadas para convertir visitantes en clientes.</p>
@@ -49,7 +49,7 @@ export default function Home() {
             <a className="scroll-cue" href="#modelos"><span>Explorar</span><b>↓</b></a>
           </div>
           <aside className="hero-contact" id="contacto">
-            <div className="contact-logo">N</div>
+            <div className="contact-logo brand-logo"><img src="/jcb-development.png" alt="JCB Development" /></div>
             <p className="section-label">EMPECEMOS</p>
             <h2>¿Tenés una idea?<br /><span>Hagámosla despegar.</span></h2>
             <p>Contanos qué necesitás y recibí un presupuesto personalizado sin compromiso.</p>
@@ -111,7 +111,7 @@ export default function Home() {
       </section>
 
       <footer>
-        <a className="brand" href="#inicio"><span className="mini-logo">N</span><b>NORTE</b></a>
+        <a className="brand brand-logo footer-logo" href="#inicio" aria-label="JCB Development, inicio"><img src="/jcb-development.png" alt="JCB Development" /></a>
         <span>DISEÑO Y DESARROLLO WEB · 2026</span>
         <a href="#inicio">Volver arriba ↑</a>
       </footer>

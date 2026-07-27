@@ -12,13 +12,13 @@ export async function generateMetadata(): Promise<Metadata> {
   const ogImage = `${protocol}://${host}/og.png`;
 
   return {
-    title: "Norte Studio — Diseño y desarrollo web",
+    title: "JCB Development — Diseño y desarrollo web",
     description: "Webs a medida para marcas que quieren destacarse, vender más y crecer.",
     icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
     openGraph: {
-      title: "Norte Studio — Diseño y desarrollo web",
+      title: "JCB Development — Diseño y desarrollo web",
       description: "Webs a medida para marcas que quieren destacarse, vender más y crecer.",
-      images: [{ url: ogImage, width: 1732, height: 908, alt: "Norte Studio" }],
+      images: [{ url: ogImage, width: 1732, height: 908, alt: "JCB Development" }],
       locale: "es_AR",
       type: "website",
     },
