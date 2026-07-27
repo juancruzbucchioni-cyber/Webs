@@ -2,137 +2,119 @@
 
 import { useState } from "react";
 
-const projects = [
-  { category: "E-commerce", title: "NÓMADE", eyebrow: "INDUMENTARIA", accent: "coral", price: "desde $480 USD", description: "Tienda online editorial, catálogo completo y checkout listo para vender.", mock: "01" },
-  { category: "Landing", title: "VERDE", eyebrow: "CAFÉ DE ESPECIALIDAD", accent: "lime", price: "desde $180 USD", description: "Una landing de alto impacto para campañas, lanzamientos y reservas.", mock: "02" },
-  { category: "Servicios", title: "NEXO", eyebrow: "ESTUDIO CREATIVO", accent: "blue", price: "desde $320 USD", description: "Sitio profesional para presentar servicios, casos y captar consultas.", mock: "03" },
-  { category: "Catálogo", title: "FORMA", eyebrow: "MUEBLES & OBJETOS", accent: "sand", price: "desde $390 USD", description: "Catálogo visual administrable con fichas de producto y WhatsApp.", mock: "04" },
-  { category: "Landing", title: "PULSO", eyebrow: "ENTRENAMIENTO", accent: "pink", price: "desde $210 USD", description: "Página veloz para convertir visitas en pruebas y membresías.", mock: "05" },
-  { category: "Servicios", title: "CLARO", eyebrow: "ARQUITECTURA", accent: "violet", price: "desde $350 USD", description: "Portfolio sobrio con proyectos, estudio y formulario de contacto.", mock: "06" },
+const plans = [
+  { type: "Landing page", tag: "LANZAMIENTOS", price: "180", color: "purple", copy: "Una página rápida y directa para presentar tu propuesta y convertir visitas en consultas.", features: ["Diseño personalizado", "Adaptada a celulares", "Formulario o WhatsApp"] },
+  { type: "Web profesional", tag: "MÁS ELEGIDA", price: "320", color: "blue", copy: "Un sitio completo para mostrar tu empresa, servicios, trabajos y generar nuevos clientes.", features: ["Hasta 5 secciones", "Galería de proyectos", "Optimización básica SEO"] },
+  { type: "Tienda online", tag: "E-COMMERCE", price: "480", color: "pink", copy: "Tu catálogo online con una experiencia de compra clara, profesional y preparada para vender.", features: ["Catálogo de productos", "Pagos y envíos", "Panel autoadministrable"] },
 ];
 
-const filters = ["Todos", "Landing", "E-commerce", "Servicios", "Catálogo"];
+const showcase = [
+  { name: "Nómade", type: "Tienda de indumentaria", className: "nomade" },
+  { name: "Nexo", type: "Estudio creativo", className: "nexo" },
+  { name: "Forma", type: "Catálogo de muebles", className: "forma" },
+  { name: "Pulso", type: "Landing de fitness", className: "pulso" },
+];
 
 export default function Home() {
-  const [active, setActive] = useState("Todos");
-  const visible = active === "Todos" ? projects : projects.filter((item) => item.category === active);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <main>
       <nav className="nav">
-        <a className="brand" href="#inicio" aria-label="Norte Studio, inicio">
-          <span className="brand-mark">N</span>NORTE<span className="brand-dot">.</span>
+        <a className="brand" href="#inicio" aria-label="Norte Web, inicio">
+          <span className="mini-logo">N</span><b>NORTE</b>
         </a>
-        <div className="nav-links">
-          <a href="#trabajos">Trabajos</a>
-          <a href="#servicios">Servicios</a>
-          <a href="#proceso">Proceso</a>
+        <div className={`nav-links ${menuOpen ? "open" : ""}`}>
+          <a href="#modelos" onClick={() => setMenuOpen(false)}>Modelos</a>
+          <a href="#proyectos" onClick={() => setMenuOpen(false)}>Proyectos</a>
+          <a href="#proceso" onClick={() => setMenuOpen(false)}>Proceso</a>
         </div>
-        <a className="nav-cta" href="#contacto">Hablemos <span>↗</span></a>
+        <a className="nav-contact" href="#contacto">Contacto</a>
+        <button className="menu-button" aria-label="Abrir menú" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
+          <span /><span />
+        </button>
       </nav>
 
       <section className="hero" id="inicio">
-        <div className="hero-orbit" aria-hidden="true">
-          <span className="orbit orbit-one" />
-          <span className="orbit orbit-two" />
-          <span className="spark spark-one">✦</span>
-          <span className="spark spark-two">✦</span>
-        </div>
-        <p className="kicker"><span /> DISEÑO WEB · DESARROLLO · ESTRATEGIA</p>
-        <h1>Webs que hacen<br />crecer tu <em>negocio.</em></h1>
-        <p className="hero-copy">Diseño experiencias digitales únicas para marcas que quieren destacarse, vender más y dejar una impresión que dure.</p>
-        <div className="hero-actions">
-          <a className="button primary" href="#trabajos">Ver proyectos <span>↓</span></a>
-          <a className="text-link" href="#contacto">Pedir presupuesto <span>↗</span></a>
-        </div>
-        <div className="hero-meta">
-          <span>Disponible para nuevos proyectos</span>
-          <span>Buenos Aires · Trabajamos online</span>
+        <div className="aurora aurora-left" />
+        <div className="aurora aurora-right" />
+        <div className="stars" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
+        <div className="hero-content">
+          <div className="hero-logo" aria-label="Norte"><span className="logo-top" /><span className="logo-left" /><span className="logo-right" /></div>
+          <p className="eyebrow">DISEÑO · DESARROLLO · RESULTADOS</p>
+          <h1>Potenciá tu <span>presencia online</span></h1>
+          <p className="hero-copy">Creamos páginas web modernas, rápidas y pensadas para convertir visitantes en clientes.</p>
+          <a className="glow-button" href="#modelos">Ver modelos <b>→</b></a>
+          <a className="scroll-cue" href="#modelos"><span>Explorar</span><b>↓</b></a>
         </div>
       </section>
 
-      <section className="marquee" aria-label="Servicios destacados">
-        <div>LANDINGS <span>✦</span> TIENDAS ONLINE <span>✦</span> SITIOS CORPORATIVOS <span>✦</span> CATÁLOGOS <span>✦</span> DISEÑO A MEDIDA <span>✦</span></div>
-      </section>
-
-      <section className="work section" id="trabajos">
-        <div className="section-head">
-          <div>
-            <p className="kicker"><span /> TRABAJOS SELECCIONADOS</p>
-            <h2>Una web para cada<br /><em>tipo de negocio.</em></h2>
-          </div>
-          <p>Explorá modelos, funcionalidades y valores estimados. Cada proyecto se adapta a tu marca y objetivos.</p>
-        </div>
-        <div className="filters" role="group" aria-label="Filtrar proyectos">
-          {filters.map((filter) => (
-            <button className={active === filter ? "active" : ""} onClick={() => setActive(filter)} key={filter}>{filter}</button>
-          ))}
-        </div>
-        <div className="project-grid">
-          {visible.map((project) => (
-            <article className="project" key={project.title}>
-              <div className={`project-visual ${project.accent}`}>
-                <span className="project-index">/{project.mock}</span>
-                <div className="browser">
-                  <div className="browser-bar"><i /><i /><i /><b>{project.title.toLowerCase()}.com</b></div>
-                  <div className="browser-content">
-                    <small>{project.eyebrow}</small>
-                    <strong>{project.title}</strong>
-                    <span>VER COLECCIÓN ↗</span>
-                  </div>
-                </div>
-              </div>
-              <div className="project-info">
-                <div><span>{project.category}</span><h3>{project.title}</h3></div>
-                <p>{project.description}</p>
-                <strong>{project.price}</strong>
-              </div>
+      <section className="intro section" id="modelos">
+        <p className="section-label">SOLUCIONES PARA CADA NEGOCIO</p>
+        <h2>Elegí la web que necesitás.<br /><span>Nosotros la hacemos realidad.</span></h2>
+        <p className="section-copy">Valores claros para comenzar. Cada proyecto se personaliza con tu identidad, contenido y objetivos.</p>
+        <div className="plans">
+          {plans.map((plan, index) => (
+            <article className={`plan-card ${plan.color}`} key={plan.type}>
+              <div className="plan-glow" />
+              <div className="plan-head"><span>0{index + 1}</span><small>{plan.tag}</small></div>
+              <div className="plan-icon"><i /><i /></div>
+              <h3>{plan.type}</h3>
+              <p>{plan.copy}</p>
+              <div className="price"><small>DESDE</small><strong>${plan.price}</strong><span>USD</span></div>
+              <ul>{plan.features.map((feature) => <li key={feature}><span>✓</span>{feature}</li>)}</ul>
+              <a href="#contacto">Pedir presupuesto <span>→</span></a>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="services section" id="servicios">
-        <p className="kicker"><span /> QUÉ PODEMOS CREAR</p>
-        <div className="services-layout">
-          <h2>Todo lo que tu marca<br />necesita para <em>crecer.</em></h2>
-          <div className="service-list">
-            {[
-              ["01", "Landing page", "Una página enfocada en presentar y convertir."],
-              ["02", "Sitio institucional", "Tu empresa, servicios y diferencial en una experiencia completa."],
-              ["03", "Tienda online", "Catálogo, pagos, envíos y una compra simple desde cualquier dispositivo."],
-              ["04", "Diseño a medida", "Una solución única para una idea que no entra en ninguna plantilla."],
-            ].map(([n, title, copy]) => (
-              <div className="service-row" key={n}>
-                <span>{n}</span><h3>{title}</h3><p>{copy}</p><b>↗</b>
+      <section className="showcase section" id="proyectos">
+        <p className="section-label">TRABAJOS SELECCIONADOS</p>
+        <h2>Diseños que no pasan<br /><span>desapercibidos.</span></h2>
+        <div className="showcase-grid">
+          {showcase.map((item, index) => (
+            <article className={`work-card ${item.className}`} key={item.name}>
+              <div className="mock-window">
+                <div className="mock-bar"><i /><i /><i /><span>{item.name.toLowerCase()}.com</span></div>
+                <div className="mock-content"><small>{item.type}</small><strong>{item.name}</strong><em>DESCUBRIR ↗</em></div>
               </div>
-            ))}
-          </div>
+              <div className="work-meta"><span>0{index + 1}</span><div><h3>{item.name}</h3><p>{item.type}</p></div><b>↗</b></div>
+            </article>
+          ))}
         </div>
       </section>
 
       <section className="process section" id="proceso">
-        <div className="section-head">
-          <div><p className="kicker"><span /> CÓMO TRABAJAMOS</p><h2>Simple, claro<br />y <em>sin vueltas.</em></h2></div>
-          <p>Te acompaño desde la primera idea hasta la publicación, con comunicación directa en cada etapa.</p>
-        </div>
+        <div className="process-glow" />
+        <p className="section-label">UN PROCESO SIMPLE</p>
+        <h2>De tu idea a internet<br /><span>sin complicaciones.</span></h2>
         <div className="steps">
           {[
-            ["01", "Nos conocemos", "Me contás sobre tu negocio, tus objetivos y lo que necesitás."],
-            ["02", "Definimos", "Armamos alcance, propuesta visual, tiempos y presupuesto cerrado."],
-            ["03", "Creamos", "Diseño y desarrollo tu web. Vas viendo los avances y dando feedback."],
-            ["04", "Publicamos", "La dejamos online, optimizada y lista para recibir clientes."],
-          ].map(([n, title, copy]) => <div className="step" key={n}><span>{n}</span><h3>{title}</h3><p>{copy}</p></div>)}
+            ["01", "Nos contás", "Charlamos sobre tu negocio, tus objetivos y la web que imaginás."],
+            ["02", "Diseñamos", "Creamos una propuesta visual alineada con tu marca y tus clientes."],
+            ["03", "Desarrollamos", "Construimos una experiencia rápida, adaptable y fácil de usar."],
+            ["04", "Publicamos", "La dejamos online, configurada y lista para empezar a trabajar."],
+          ].map(([number, title, copy]) => (
+            <article className="step" key={number}><span>{number}</span><div className="step-dot" /><h3>{title}</h3><p>{copy}</p></article>
+          ))}
         </div>
       </section>
 
-      <section className="contact" id="contacto">
-        <p className="kicker light"><span /> ¿TENÉS UNA IDEA?</p>
-        <h2>Hagámosla<br /><em>realidad.</em></h2>
-        <p>Contame qué necesitás y recibí una propuesta clara, sin compromiso.</p>
-        <a className="button light-button" href="https://wa.me/5491100000000" target="_blank" rel="noreferrer">Pedir presupuesto por WhatsApp <span>↗</span></a>
-        <div className="contact-foot"><span>NORTE STUDIO © 2026</span><span>Instagram · Behance · WhatsApp</span></div>
+      <section className="contact section" id="contacto">
+        <div className="contact-glow" />
+        <div className="contact-logo">N</div>
+        <p className="section-label">EMPECEMOS</p>
+        <h2>¿Tenés una idea?<br /><span>Hagámosla despegar.</span></h2>
+        <p>Contanos qué necesitás y recibí un presupuesto personalizado sin compromiso.</p>
+        <a className="glow-button large" href="https://wa.me/5491100000000" target="_blank" rel="noreferrer">Hablar por WhatsApp <b>→</b></a>
       </section>
+
+      <footer>
+        <a className="brand" href="#inicio"><span className="mini-logo">N</span><b>NORTE</b></a>
+        <span>DISEÑO Y DESARROLLO WEB · 2026</span>
+        <a href="#inicio">Volver arriba ↑</a>
+      </footer>
     </main>
   );
 }
