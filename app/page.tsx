@@ -40,12 +40,21 @@ export default function Home() {
         <div className="aurora aurora-right" />
         <div className="stars" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
         <div className="hero-content">
-          <div className="hero-logo" aria-label="Norte"><span className="logo-top" /><span className="logo-left" /><span className="logo-right" /></div>
-          <p className="eyebrow">DISEÑO · DESARROLLO · RESULTADOS</p>
-          <h1>Potenciá tu <span>presencia online</span></h1>
-          <p className="hero-copy">Creamos páginas web modernas, rápidas y pensadas para convertir visitantes en clientes.</p>
-          <a className="glow-button" href="#modelos">Ver modelos <b>→</b></a>
-          <a className="scroll-cue" href="#modelos"><span>Explorar</span><b>↓</b></a>
+          <div className="hero-primary">
+            <div className="hero-logo" aria-label="Norte"><span className="logo-top" /><span className="logo-left" /><span className="logo-right" /></div>
+            <p className="eyebrow">DISEÑO · DESARROLLO · RESULTADOS</p>
+            <h1>Potenciá tu <span>presencia online</span></h1>
+            <p className="hero-copy">Creamos páginas web modernas, rápidas y pensadas para convertir visitantes en clientes.</p>
+            <a className="glow-button" href="#modelos">Ver modelos <b>→</b></a>
+            <a className="scroll-cue" href="#modelos"><span>Explorar</span><b>↓</b></a>
+          </div>
+          <aside className="hero-contact" id="contacto">
+            <div className="contact-logo">N</div>
+            <p className="section-label">EMPECEMOS</p>
+            <h2>¿Tenés una idea?<br /><span>Hagámosla despegar.</span></h2>
+            <p>Contanos qué necesitás y recibí un presupuesto personalizado sin compromiso.</p>
+            <a className="glow-button large" href="https://wa.me/5491100000000" target="_blank" rel="noreferrer">Hablar por WhatsApp <b>→</b></a>
+          </aside>
         </div>
       </section>
 
@@ -99,15 +108,6 @@ export default function Home() {
             <article className="step" key={number}><span>{number}</span><div className="step-dot" /><h3>{title}</h3><p>{copy}</p></article>
           ))}
         </div>
-      </section>
-
-      <section className="contact section" id="contacto">
-        <div className="contact-glow" />
-        <div className="contact-logo">N</div>
-        <p className="section-label">EMPECEMOS</p>
-        <h2>¿Tenés una idea?<br /><span>Hagámosla despegar.</span></h2>
-        <p>Contanos qué necesitás y recibí un presupuesto personalizado sin compromiso.</p>
-        <a className="glow-button large" href="https://wa.me/5491100000000" target="_blank" rel="noreferrer">Hablar por WhatsApp <b>→</b></a>
       </section>
 
       <footer>
