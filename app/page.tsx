@@ -8,13 +8,6 @@ const plans = [
   { type: "Tienda online", tag: "E-COMMERCE", price: "480", color: "pink", copy: "Tu catálogo online con una experiencia de compra clara, profesional y preparada para vender.", features: ["Catálogo de productos", "Pagos y envíos", "Panel autoadministrable"] },
 ];
 
-const showcase = [
-  { name: "Nómade", type: "Tienda de indumentaria", className: "nomade" },
-  { name: "Nexo", type: "Estudio creativo", className: "nexo" },
-  { name: "Forma", type: "Catálogo de muebles", className: "forma" },
-  { name: "Pulso", type: "Landing de fitness", className: "pulso" },
-];
-
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<number | null>(null);
@@ -39,7 +32,6 @@ export default function Home() {
         </a>
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>
           <a href="#modelos" onClick={() => setMenuOpen(false)}>Modelos</a>
-          <a href="#proyectos" onClick={() => setMenuOpen(false)}>Proyectos</a>
           <a href="#proceso" onClick={() => setMenuOpen(false)}>Proceso</a>
         </div>
         <a className="nav-contact" href="#contacto">Contacto</a>
@@ -89,22 +81,6 @@ export default function Home() {
                 <button onClick={() => setSelectedPlan(index)}>Ver página <span>↗</span></button>
                 <a href="#contacto">Presupuesto <span>→</span></a>
               </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="showcase section" id="proyectos">
-        <p className="section-label">TRABAJOS SELECCIONADOS</p>
-        <h2>Diseños que no pasan<br /><span>desapercibidos.</span></h2>
-        <div className="showcase-grid">
-          {showcase.map((item, index) => (
-            <article className={`work-card ${item.className}`} key={item.name}>
-              <div className="mock-window">
-                <div className="mock-bar"><i /><i /><i /><span>{item.name.toLowerCase()}.com</span></div>
-                <div className="mock-content"><small>{item.type}</small><strong>{item.name}</strong><em>DESCUBRIR ↗</em></div>
-              </div>
-              <div className="work-meta"><span>0{index + 1}</span><div><h3>{item.name}</h3><p>{item.type}</p></div><b>↗</b></div>
             </article>
           ))}
         </div>
