@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const plans = [
   { type: "Landing page", tag: "LANZAMIENTOS", price: "180", color: "purple", copy: "Una página rápida y directa para presentar tu propuesta y convertir visitas en consultas.", features: ["Diseño personalizado", "Adaptada a celulares", "Formulario o WhatsApp"] },
@@ -17,6 +17,19 @@ const showcase = [
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<number | null>(null);
+
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setSelectedPlan(null);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    document.body.style.overflow = selectedPlan === null ? "" : "hidden";
+    return () => {
+      window.removeEventListener("keydown", closeOnEscape);
+      document.body.style.overflow = "";
+    };
+  }, [selectedPlan]);
 
   return (
     <main>
@@ -72,7 +85,10 @@ export default function Home() {
               <p>{plan.copy}</p>
               <div className="price"><small>DESDE</small><strong>${plan.price}</strong><span>USD</span></div>
               <ul>{plan.features.map((feature) => <li key={feature}><span>✓</span>{feature}</li>)}</ul>
-              <a href="#contacto">Pedir presupuesto <span>→</span></a>
+              <div className="plan-actions">
+                <button onClick={() => setSelectedPlan(index)}>Ver demo <span>↗</span></button>
+                <a href="#contacto">Presupuesto <span>→</span></a>
+              </div>
             </article>
           ))}
         </div>
@@ -115,6 +131,59 @@ export default function Home() {
         <span>DISEÑO Y DESARROLLO WEB · 2026</span>
         <a href="#inicio">Volver arriba ↑</a>
       </footer>
+
+      {selectedPlan !== null && (
+        <div className="demo-overlay" role="dialog" aria-modal="true" aria-label={`Demo de ${plans[selectedPlan].type}`} onMouseDown={(event) => {
+          if (event.target === event.currentTarget) setSelectedPlan(null);
+        }}>
+          <div className="demo-modal">
+            <div className="demo-toolbar">
+              <div className="demo-dots"><i /><i /><i /></div>
+              <span>Vista previa · {plans[selectedPlan].type}</span>
+              <button onClick={() => setSelectedPlan(null)} aria-label="Cerrar demo">×</button>
+            </div>
+            <div className={`demo-site demo-${selectedPlan}`}>
+              {selectedPlan === 0 && (
+                <>
+                  <div className="demo-nav"><b>AURA</b><span>Experiencia · Servicios · Contacto</span><button>Reservar</button></div>
+                  <div className="demo-landing-hero">
+                    <small>BIENESTAR · MOVIMIENTO · EQUILIBRIO</small>
+                    <h3>Tu mejor versión<br /><em>empieza hoy.</em></h3>
+                    <p>Una experiencia diseñada para transformar tu energía y convertir cada visita en una nueva oportunidad.</p>
+                    <button>Empezar ahora →</button>
+                  </div>
+                  <div className="demo-stat-row"><span><b>+500</b> clientes</span><span><b>4.9</b> valoración</span><span><b>7 días</b> disponible</span></div>
+                </>
+              )}
+              {selectedPlan === 1 && (
+                <>
+                  <div className="demo-nav pro"><b>NEXO<span>.</span></b><span>Estudio · Servicios · Proyectos</span><button>Hablemos</button></div>
+                  <div className="demo-pro-hero">
+                    <div><small>ESTRATEGIA & DISEÑO</small><h3>Construimos marcas<br />que dejan <em>huella.</em></h3><p>Ideas claras, diseño inteligente y experiencias digitales que hacen crecer negocios.</p><button>Ver proyectos ↗</button></div>
+                    <div className="demo-pro-art"><i /><i /><strong>N</strong></div>
+                  </div>
+                  <div className="demo-services"><span>01 Branding</span><span>02 Diseño web</span><span>03 Estrategia</span></div>
+                </>
+              )}
+              {selectedPlan === 2 && (
+                <>
+                  <div className="demo-nav shop"><b>MONO</b><span>Nuevo · Tienda · Colecciones</span><button>Carrito (0)</button></div>
+                  <div className="demo-shop-head"><small>NUEVA COLECCIÓN</small><h3>Objetos para<br />vivir mejor.</h3><button>Comprar ahora →</button></div>
+                  <div className="demo-products">
+                    <div><i /><span>Lámpara Nube</span><b>$89</b></div>
+                    <div><i /><span>Sillón Uno</span><b>$320</b></div>
+                    <div><i /><span>Mesa Lateral</span><b>$145</b></div>
+                  </div>
+                </>
+              )}
+            </div>
+            <div className="demo-footer">
+              <div><strong>{plans[selectedPlan].type}</strong><span>Diseño demostrativo · Se personaliza para tu marca</span></div>
+              <a href="#contacto" onClick={() => setSelectedPlan(null)}>Quiero una web así <span>→</span></a>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
