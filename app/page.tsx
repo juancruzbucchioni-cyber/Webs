@@ -32,9 +32,9 @@ export default function Home() {
         </a>
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>
           <a href="#modelos" onClick={() => setMenuOpen(false)}>Modelos</a>
-          <a href="#inicio" onClick={() => setMenuOpen(false)}>Proceso</a>
+          <a href="#proceso" onClick={() => setMenuOpen(false)}>Proceso</a>
         </div>
-        <a className="nav-contact" href="https://wa.me/5491100000000" target="_blank" rel="noreferrer">Contacto</a>
+        <a className="nav-contact" href="#contacto">Contacto</a>
         <button className="menu-button" aria-label="Abrir menú" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
           <span /><span />
         </button>
@@ -44,7 +44,7 @@ export default function Home() {
         <div className="aurora aurora-left" />
         <div className="aurora aurora-right" />
         <div className="stars" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
-        <div className="hero-process">
+        <div className="hero-process" id="proceso">
           <p className="section-label">UN PROCESO SIMPLE</p>
           <h1>De tu idea a internet<br /><span>sin complicaciones.</span></h1>
           <div className="hero-steps">
@@ -84,7 +84,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer>
+      <footer id="contacto">
         <a className="brand brand-logo footer-logo" href="#inicio" aria-label="JCB Development, inicio"><img src="/jcb-development.png" alt="JCB Development" /></a>
         <span>DISEÑO Y DESARROLLO WEB · 2026</span>
         <a href="#inicio">Volver arriba ↑</a>
