@@ -1,0 +1,32 @@
+import type { Metadata } from "next";
+import { Manrope, DM_Serif_Display } from "next/font/google";
+import { headers } from "next/headers";
+import "./globals.css";
+
+const sans = Manrope({ variable: "--font-sans", subsets: ["latin"] });
+const serif = DM_Serif_Display({ variable: "--font-serif", subsets: ["latin"], weight: "400" });
+
+export async function generateMetadata(): Promise<Metadata> {
+  const requestHeaders = await headers();
+  const host = requestHeaders.get("host") ?? "localhost:3000";
+  const protocol = host.includes("localhost") ? "http" : "https";
+  const ogImage = `${protocol}://${host}/og.png`;
+
+  return {
+    title: "Norte Studio — Diseño y desarrollo web",
+    description: "Webs a medida para marcas que quieren destacarse, vender más y crecer.",
+    icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
+    openGraph: {
+      title: "Norte Studio — Diseño y desarrollo web",
+      description: "Webs a medida para marcas que quieren destacarse, vender más y crecer.",
+      images: [{ url: ogImage, width: 1732, height: 908, alt: "Norte Studio" }],
+      locale: "es_AR",
+      type: "website",
+    },
+    twitter: { card: "summary_large_image", images: [ogImage] },
+  };
+}
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return <html lang="es"><body className={`${sans.variable} ${serif.variable}`}>{children}</body></html>;
+}
