@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@font-face { font-family:"Berlin Sans FB Demi"; src:url("/berlin-sans-fb-demi.ttf") format("truetype"); font-display:swap; font-weight:600 900; }
+
 :root { --bg:#030305; --panel:#0b0a10; --text:#f6f5fa; --muted:#96929f; --purple:#8e3cff; --pink:#d52cff; --line:rgba(255,255,255,.1); }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; }
@@ -27,20 +29,20 @@ button { color:inherit; font:inherit; }
 .hero-content { position:relative; z-index:2; width:min(1160px,88vw); padding:100px 0 30px; display:grid; grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr); align-items:center; gap:7vw; }
 .hero-primary { text-align:center; display:flex; flex-direction:column; align-items:center; }
 .hero-process { position:relative; z-index:2; width:min(1120px,88vw); padding:125px 0 40px; text-align:center; }
-.hero-process h1 { font-size:clamp(44px,6vw,78px); line-height:.95; letter-spacing:-.055em; margin:0; }
+.hero-process h1 { font-family:"Berlin Sans FB Demi","Trebuchet MS",sans-serif; font-size:clamp(44px,6vw,78px); line-height:.95; letter-spacing:-.025em; margin:0; }
 .hero-process h1 span { color:transparent; background:linear-gradient(90deg,#9a54ff,#d642ef); background-clip:text; -webkit-background-clip:text; }
 .hero-steps { display:grid; grid-template-columns:repeat(4,1fr); margin:70px 0 35px; position:relative; }
 .hero-steps:before { content:""; position:absolute; top:43px; left:12%; right:12%; height:1px; background:linear-gradient(90deg,transparent,#7134be,#7134be,transparent); }
 .hero-steps article { position:relative; padding:0 25px; }
 .hero-steps article>span { color:#77717d; font-size:9px; letter-spacing:.18em; }
 .hero-steps article>i { display:block; width:12px; height:12px; margin:30px auto; border:3px solid #050407; border-radius:50%; background:#a24cff; box-shadow:0 0 14px #8139e8; position:relative; z-index:1; }
-.hero-steps h2 { font-size:18px; margin:0 0 13px; }
+.hero-steps h2 { font-family:"Berlin Sans FB Demi","Trebuchet MS",sans-serif; font-size:20px; margin:0 0 13px; }
 .hero-steps p { color:#8b8690; font-size:10px; line-height:1.7; margin:0; }
 .hero-process .scroll-cue { width:max-content; margin:0 auto; }
 .hero-logo { width:min(500px,100%); height:150px; position:relative; margin-bottom:16px; filter:drop-shadow(0 22px 28px rgba(75,21,150,.34)); animation:float 5s ease-in-out infinite; }
 @keyframes float { 50%{transform:translateY(-10px)} }
 .eyebrow,.section-label { font-size:9px; letter-spacing:.3em; font-weight:800; color:#a878ff; margin:0 0 16px; }
-.hero h1 { font-size:clamp(43px,5.3vw,72px); line-height:1; letter-spacing:-.055em; margin:0; }
+.hero h1 { font-family:"Berlin Sans FB Demi","Trebuchet MS",sans-serif; font-size:clamp(43px,5.3vw,72px); line-height:1; letter-spacing:-.025em; margin:0; }
 .hero h1 span,.section h2 span { color:transparent; background:linear-gradient(90deg,#9a54ff,#d642ef); background-clip:text; -webkit-background-clip:text; }
 .hero-copy { max-width:520px; color:#aaa6b0; font-size:15px; line-height:1.6; margin:27px 0; }
 .glow-button { display:inline-flex; align-items:center; gap:28px; padding:15px 20px; }
@@ -56,10 +58,10 @@ button { color:inherit; font:inherit; }
 .hero-contact .large { width:100%; justify-content:space-between; }
 .section { padding:125px 7vw; position:relative; }
 .intro,.showcase,.process { text-align:center; }
-.section h2 { font-size:clamp(38px,5vw,64px); line-height:1.08; letter-spacing:-.045em; margin:0; }
+.section h2 { font-family:"Berlin Sans FB Demi","Trebuchet MS",sans-serif; font-size:clamp(38px,5vw,64px); line-height:1.08; letter-spacing:-.025em; margin:0; }
 .section-copy { color:var(--muted); font-size:14px; max-width:560px; line-height:1.75; margin:24px auto 60px; }
 .plans { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; max-width:1120px; margin:65px auto 0; text-align:left; }
-.plan-card { min-height:540px; padding:26px; border:1px solid var(--line); border-radius:15px; background:linear-gradient(150deg,rgba(255,255,255,.045),rgba(255,255,255,.012)); position:relative; overflow:hidden; transition:.3s ease; }
+.plan-card { min-height:540px; padding:26px; border:1px solid var(--line); border-radius:15px; background:linear-gradient(150deg,rgba(255,255,255,.045),rgba(255,255,255,.012)); position:relative; overflow:hidden; transition:.3s ease; display:flex; flex-direction:column; }
 .plan-card:hover { transform:translateY(-8px); border-color:rgba(164,82,255,.48); box-shadow:0 24px 80px rgba(0,0,0,.35); }
 .plan-glow { position:absolute; width:190px; height:150px; left:50%; top:70px; transform:translateX(-50%); filter:blur(55px); opacity:.18; background:#9742ff; }
 .plan-card.blue .plan-glow { background:#4169ff; }.plan-card.pink .plan-glow { background:#e23dcd; }
@@ -68,9 +70,9 @@ button { color:inherit; font:inherit; }
 .plan-icon { width:86px; height:86px; margin:35px auto 25px; position:relative; transform:rotate(45deg); }
 .plan-icon i { position:absolute; inset:15px; border:2px solid #a155ff; border-radius:12px; box-shadow:0 0 20px rgba(152,64,255,.55); }
 .plan-icon i:last-child { inset:28px; background:linear-gradient(135deg,#b969ff,#5f18e4); }
-.plan-card h3 { text-align:center; font-size:24px; margin:0 0 13px; }.plan-card>p { text-align:center; color:#8c8892; font-size:12px; line-height:1.65; min-height:60px; }
+.plan-card h3 { font-family:"Berlin Sans FB Demi","Trebuchet MS",sans-serif; text-align:center; font-size:clamp(22px,1.8vw,28px); line-height:1.12; letter-spacing:.005em; margin:0 0 13px; min-height:63px; display:flex; align-items:center; justify-content:center; text-wrap:balance; }.plan-card>p { text-align:center; color:#8c8892; font-size:12px; line-height:1.65; min-height:120px; display:flex; align-items:center; justify-content:center; margin:0; }
 .price { display:flex; justify-content:center; align-items:end; margin:26px 0; gap:7px; }.price small,.price span { color:#77727e; font-size:8px; letter-spacing:.15em; padding-bottom:7px; }.price strong { font-size:42px; line-height:1; }
-.plan-card ul { list-style:none; padding:20px 0; margin:0; border-top:1px solid var(--line); }.plan-card li { color:#a9a5ae; font-size:11px; padding:7px 0; }.plan-card li span { color:#a75dff; margin-right:10px; }
+.plan-card ul { list-style:none; padding:20px 0; margin:0; border-top:1px solid var(--line); flex:1; }.plan-card li { color:#a9a5ae; font-size:11px; padding:7px 0; }.plan-card li span { color:#a75dff; margin-right:10px; }
 .plan-card li.repeated-feature { color:#d6b4ff; font-weight:700; background:rgba(155,72,255,.11); border:1px solid rgba(180,112,255,.2); border-radius:8px; margin:0 0 7px; padding:10px; }
 .plan-card li.repeated-feature span { color:#c477ff; }
 .plan-actions { display:block; border-top:1px solid var(--line); margin:8px -26px -26px; }

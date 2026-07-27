@@ -24,7 +24,7 @@ const plans = [
     message: "Hola, buenas. Quería consultar por el plan Web básica (catálogo).",
   },
   {
-    type: "Web profesional (e-commerce)",
+    type: "Web profesional (e‑commerce)",
     tag: "PROFESIONAL",
     price: "180.000",
     color: "blue",
@@ -46,7 +46,7 @@ const plans = [
     message: "Hola, buenas. Quería consultar por el plan Web profesional (e-commerce).",
   },
   {
-    type: "Web Premium (e-commerce avanzado)",
+    type: "Web Premium (e‑commerce avanzado)",
     tag: "PREMIUM",
     price: "250.000",
     color: "pink",
