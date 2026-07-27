@@ -1,28 +1,75 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
+const WHATSAPP_NUMBER = "5493534128474";
 
 const plans = [
-  { type: "Landing page", tag: "LANZAMIENTOS", price: "180", color: "purple", copy: "Una página rápida y directa para presentar tu propuesta y convertir visitas en consultas.", features: ["Diseño personalizado", "Adaptada a celulares", "Formulario o WhatsApp"] },
-  { type: "Web profesional", tag: "MÁS ELEGIDA", price: "320", color: "blue", copy: "Un sitio completo para mostrar tu empresa, servicios, trabajos y generar nuevos clientes.", features: ["Hasta 5 secciones", "Galería de proyectos", "Optimización básica SEO"] },
-  { type: "Tienda online", tag: "E-COMMERCE", price: "480", color: "pink", copy: "Tu catálogo online con una experiencia de compra clara, profesional y preparada para vender.", features: ["Catálogo de productos", "Pagos y envíos", "Panel autoadministrable"] },
+  {
+    type: "Web básica (catálogo)",
+    tag: "BÁSICO",
+    price: "110.000",
+    color: "purple",
+    copy: "Web destinada a mostrar y administrar productos, sin un sistema de venta directa integrado.",
+    features: [
+      "Diseño personalizado",
+      "Adaptada a celulares",
+      "Integración con WhatsApp, Instagram y otras redes",
+      "Hasta 100 productos",
+      "Página básica de administración",
+      "Categorías personalizadas",
+      "Registro de costos y ganancias",
+      "Hosting privado incluido durante 8 meses",
+    ],
+    message: "Hola, buenas. Quería consultar por el plan Web básica (catálogo).",
+  },
+  {
+    type: "Web profesional (e-commerce)",
+    tag: "PROFESIONAL",
+    price: "180.000",
+    color: "blue",
+    copy: "Tienda online completa para negocios que buscan vender sus productos de forma profesional, administrar pedidos y llevar un mejor control de sus costos y ganancias.",
+    features: [
+      "Incluye todas las características del Plan Básico",
+      "Carrito de compras y gestión de pedidos",
+      "Conexión directa con Mercado Pago",
+      "Registro de costos, ventas y ganancias",
+      "Control de stock automático",
+      "Panel de anotaciones internas para el local",
+      "Registro y administración de clientes",
+      "Creación de descuentos y cupones",
+      "Estadísticas de ventas y productos más vendidos",
+      "Estados de pedidos: pendiente, pagado, enviado y entregado",
+      "Panel de administración profesional",
+      "Hosting privado incluido durante 2 años",
+    ],
+    message: "Hola, buenas. Quería consultar por el plan Web profesional (e-commerce).",
+  },
+  {
+    type: "Web Premium (e-commerce avanzado)",
+    tag: "PREMIUM",
+    price: "250.000",
+    color: "pink",
+    copy: "Solución completa para negocios que necesitan una tienda online avanzada, con mayor capacidad, funciones personalizadas y herramientas profesionales para administrar ventas, clientes y productos.",
+    features: [
+      "Incluye todas las características del Plan Profesional",
+      "Hasta 350 productos",
+      "Hasta 3 funciones adicionales personalizadas",
+      "Panel de administración avanzado",
+      "Sistema de usuarios y cuentas de clientes",
+      "Notificaciones automáticas de compras y pedidos",
+      "Recuperación de carritos abandonados",
+      "Reportes avanzados de ventas, costos y ganancias",
+      "Diseño de banners y secciones promocionales",
+      "Optimización SEO para buscadores",
+      "Hosting privado incluido durante 3 años",
+    ],
+    message: "Hola, buenas. Quería consultar por el plan Web Premium (e-commerce avanzado).",
+  },
 ];
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState<number | null>(null);
-
-  useEffect(() => {
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSelectedPlan(null);
-    };
-    window.addEventListener("keydown", closeOnEscape);
-    document.body.style.overflow = selectedPlan === null ? "" : "hidden";
-    return () => {
-      window.removeEventListener("keydown", closeOnEscape);
-      document.body.style.overflow = "";
-    };
-  }, [selectedPlan]);
 
   return (
     <main>
@@ -73,11 +120,12 @@ export default function Home() {
               <div className="plan-icon"><i /><i /></div>
               <h3>{plan.type}</h3>
               <p>{plan.copy}</p>
-              <div className="price"><small>DESDE</small><strong>${plan.price}</strong><span>USD</span></div>
+              <div className="price"><small>DESDE</small><strong>${plan.price}</strong><span>ARS</span></div>
               <ul>{plan.features.map((feature) => <li key={feature}><span>✓</span>{feature}</li>)}</ul>
               <div className="plan-actions">
-                <button onClick={() => setSelectedPlan(index)}>Ver página <span>↗</span></button>
-                <a href="https://wa.me/5491100000000" target="_blank" rel="noreferrer">Presupuesto <span>→</span></a>
+                <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(plan.message)}`} target="_blank" rel="noreferrer">
+                  Presupuesto <span>→</span>
+                </a>
               </div>
             </article>
           ))}
@@ -89,59 +137,6 @@ export default function Home() {
         <span>DISEÑO Y DESARROLLO WEB · 2026</span>
         <a href="#inicio">Volver arriba ↑</a>
       </footer>
-
-      {selectedPlan !== null && (
-        <div className="demo-overlay" role="dialog" aria-modal="true" aria-label={`Demo de ${plans[selectedPlan].type}`} onMouseDown={(event) => {
-          if (event.target === event.currentTarget) setSelectedPlan(null);
-        }}>
-          <div className="demo-modal">
-            <div className="demo-toolbar">
-              <div className="demo-dots"><i /><i /><i /></div>
-              <span>Página seleccionada · {plans[selectedPlan].type}</span>
-              <button onClick={() => setSelectedPlan(null)} aria-label="Cerrar demo">×</button>
-            </div>
-            <div className={`demo-site demo-${selectedPlan}`}>
-              {selectedPlan === 0 && (
-                <>
-                  <div className="demo-nav"><b>AURA</b><span>Experiencia · Servicios · Contacto</span><button>Reservar</button></div>
-                  <div className="demo-landing-hero">
-                    <small>BIENESTAR · MOVIMIENTO · EQUILIBRIO</small>
-                    <h3>Tu mejor versión<br /><em>empieza hoy.</em></h3>
-                    <p>Una experiencia diseñada para transformar tu energía y convertir cada visita en una nueva oportunidad.</p>
-                    <button>Empezar ahora →</button>
-                  </div>
-                  <div className="demo-stat-row"><span><b>+500</b> clientes</span><span><b>4.9</b> valoración</span><span><b>7 días</b> disponible</span></div>
-                </>
-              )}
-              {selectedPlan === 1 && (
-                <>
-                  <div className="demo-nav pro"><b>NEXO<span>.</span></b><span>Estudio · Servicios · Proyectos</span><button>Hablemos</button></div>
-                  <div className="demo-pro-hero">
-                    <div><small>ESTRATEGIA & DISEÑO</small><h3>Construimos marcas<br />que dejan <em>huella.</em></h3><p>Ideas claras, diseño inteligente y experiencias digitales que hacen crecer negocios.</p><button>Ver proyectos ↗</button></div>
-                    <div className="demo-pro-art"><i /><i /><strong>N</strong></div>
-                  </div>
-                  <div className="demo-services"><span>01 Branding</span><span>02 Diseño web</span><span>03 Estrategia</span></div>
-                </>
-              )}
-              {selectedPlan === 2 && (
-                <>
-                  <div className="demo-nav shop"><b>MONO</b><span>Nuevo · Tienda · Colecciones</span><button>Carrito (0)</button></div>
-                  <div className="demo-shop-head"><small>NUEVA COLECCIÓN</small><h3>Objetos para<br />vivir mejor.</h3><button>Comprar ahora →</button></div>
-                  <div className="demo-products">
-                    <div><i /><span>Lámpara Nube</span><b>$89</b></div>
-                    <div><i /><span>Sillón Uno</span><b>$320</b></div>
-                    <div><i /><span>Mesa Lateral</span><b>$145</b></div>
-                  </div>
-                </>
-              )}
-            </div>
-            <div className="demo-footer">
-              <div><strong>{plans[selectedPlan].type}</strong><span>Diseño demostrativo · Se personaliza para tu marca</span></div>
-              <a href="https://wa.me/5491100000000" target="_blank" rel="noreferrer">Quiero una web así <span>→</span></a>
-            </div>
-          </div>
-        </div>
-      )}
     </main>
   );
 }
