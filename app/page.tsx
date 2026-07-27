@@ -32,9 +32,9 @@ export default function Home() {
         </a>
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>
           <a href="#modelos" onClick={() => setMenuOpen(false)}>Modelos</a>
-          <a href="#proceso" onClick={() => setMenuOpen(false)}>Proceso</a>
+          <a href="#inicio" onClick={() => setMenuOpen(false)}>Proceso</a>
         </div>
-        <a className="nav-contact" href="#contacto">Contacto</a>
+        <a className="nav-contact" href="https://wa.me/5491100000000" target="_blank" rel="noreferrer">Contacto</a>
         <button className="menu-button" aria-label="Abrir menú" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
           <span /><span />
         </button>
@@ -44,22 +44,20 @@ export default function Home() {
         <div className="aurora aurora-left" />
         <div className="aurora aurora-right" />
         <div className="stars" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
-        <div className="hero-content">
-          <div className="hero-primary">
-            <div className="hero-logo brand-logo"><img src="/jcb-development.png" alt="JCB Development" /></div>
-            <p className="eyebrow">DISEÑO · DESARROLLO · RESULTADOS</p>
-            <h1>Potenciá tu <span>presencia online</span></h1>
-            <p className="hero-copy">Creamos páginas web modernas, rápidas y pensadas para convertir visitantes en clientes.</p>
-            <a className="glow-button" href="#modelos">Ver modelos <b>→</b></a>
-            <a className="scroll-cue" href="#modelos"><span>Explorar</span><b>↓</b></a>
+        <div className="hero-process">
+          <p className="section-label">UN PROCESO SIMPLE</p>
+          <h1>De tu idea a internet<br /><span>sin complicaciones.</span></h1>
+          <div className="hero-steps">
+            {[
+              ["01", "Nos contás", "Charlamos sobre tu negocio, tus objetivos y la web que imaginás."],
+              ["02", "Diseñamos", "Creamos una propuesta visual alineada con tu marca y tus clientes."],
+              ["03", "Desarrollamos", "Construimos una experiencia rápida, adaptable y fácil de usar."],
+              ["04", "Publicamos", "La dejamos online, configurada y lista para empezar a trabajar."],
+            ].map(([number, title, copy]) => (
+              <article key={number}><span>{number}</span><i /><h2>{title}</h2><p>{copy}</p></article>
+            ))}
           </div>
-          <aside className="hero-contact" id="contacto">
-            <div className="contact-logo brand-logo"><img src="/jcb-development.png" alt="JCB Development" /></div>
-            <p className="section-label">EMPECEMOS</p>
-            <h2>¿Tenés una idea?<br /><span>Hagámosla despegar.</span></h2>
-            <p>Contanos qué necesitás y recibí un presupuesto personalizado sin compromiso.</p>
-            <a className="glow-button large" href="https://wa.me/5491100000000" target="_blank" rel="noreferrer">Hablar por WhatsApp <b>→</b></a>
-          </aside>
+          <a className="scroll-cue" href="#modelos"><span>Ver modelos</span><b>↓</b></a>
         </div>
       </section>
 
@@ -79,25 +77,9 @@ export default function Home() {
               <ul>{plan.features.map((feature) => <li key={feature}><span>✓</span>{feature}</li>)}</ul>
               <div className="plan-actions">
                 <button onClick={() => setSelectedPlan(index)}>Ver página <span>↗</span></button>
-                <a href="#contacto">Presupuesto <span>→</span></a>
+                <a href="https://wa.me/5491100000000" target="_blank" rel="noreferrer">Presupuesto <span>→</span></a>
               </div>
             </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="process section" id="proceso">
-        <div className="process-glow" />
-        <p className="section-label">UN PROCESO SIMPLE</p>
-        <h2>De tu idea a internet<br /><span>sin complicaciones.</span></h2>
-        <div className="steps">
-          {[
-            ["01", "Nos contás", "Charlamos sobre tu negocio, tus objetivos y la web que imaginás."],
-            ["02", "Diseñamos", "Creamos una propuesta visual alineada con tu marca y tus clientes."],
-            ["03", "Desarrollamos", "Construimos una experiencia rápida, adaptable y fácil de usar."],
-            ["04", "Publicamos", "La dejamos online, configurada y lista para empezar a trabajar."],
-          ].map(([number, title, copy]) => (
-            <article className="step" key={number}><span>{number}</span><div className="step-dot" /><h3>{title}</h3><p>{copy}</p></article>
           ))}
         </div>
       </section>
@@ -155,7 +137,7 @@ export default function Home() {
             </div>
             <div className="demo-footer">
               <div><strong>{plans[selectedPlan].type}</strong><span>Diseño demostrativo · Se personaliza para tu marca</span></div>
-              <a href="#contacto" onClick={() => setSelectedPlan(null)}>Quiero una web así <span>→</span></a>
+              <a href="https://wa.me/5491100000000" target="_blank" rel="noreferrer">Quiero una web así <span>→</span></a>
             </div>
           </div>
         </div>
