@@ -78,8 +78,8 @@ export default function Home() {
           <img src="/jcb-development.png" alt="JCB Development" />
         </a>
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>
-          <a href="#modelos" onClick={() => setMenuOpen(false)}>Modelos</a>
           <a href="#proceso" onClick={() => setMenuOpen(false)}>Proceso</a>
+          <a href="#modelos" onClick={() => setMenuOpen(false)}>Modelos</a>
         </div>
         <a
           className="nav-contact"
