@@ -100,7 +100,6 @@ export default function Home() {
       `Actividad del negocio: ${data.get("activity")}`,
       `Instagram: ${data.get("instagram") || "No informado"}`,
       `Colores: ${data.get("colors")}`,
-      `Cantidad aproximada de productos: ${data.get("products")}`,
       `Página de referencia: ${data.get("reference") || "No informada"}`,
       `Aclaraciones: ${data.get("notes") || "Sin aclaraciones"}`,
       "",
@@ -242,7 +241,6 @@ export default function Home() {
                   <label><span>¿A qué se dedica tu negocio?</span><input name="activity" required /></label>
                   <label><span>Instagram del negocio</span><input name="instagram" placeholder="@usuario" /></label>
                   <label><span>Colores que querés para la página</span><input name="colors" required /></label>
-                  <label><span>Cantidad aproximada de productos</span><input name="products" type="number" min="0" required /></label>
                   <label><span>Página de referencia que te guste</span><input name="reference" type="url" placeholder="https://..." /></label>
                   <label className="form-wide"><span>Logo del negocio</span><input name="logo" type="file" accept="image/*,.pdf" /><small>El archivo se adjunta manualmente cuando se abra WhatsApp.</small></label>
                   <label className="form-wide"><span>Información o aclaraciones adicionales</span><textarea name="notes" rows={4} /></label>
