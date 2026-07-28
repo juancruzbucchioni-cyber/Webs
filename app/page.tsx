@@ -248,7 +248,6 @@ export default function Home() {
                   <label className="form-wide"><span>Información o aclaraciones adicionales</span><textarea name="notes" rows={4} /></label>
                 </div>
                 <label className="form-check"><input type="checkbox" required /> <span>Confirmo que los datos ingresados son correctos.</span></label>
-                <label className="form-check"><input type="checkbox" required /> <span>Acepto los términos y condiciones.</span></label>
                 <div className="form-actions">
                   <button type="button" onClick={() => { setShowClientForm(false); setClientFormValid(false); }}>← Volver</button>
                   {clientFormValid && <button type="submit">Enviar comprobante →</button>}
