@@ -16,7 +16,7 @@ const plans = [
       "Diseño 100 % personalizado",
       "Adaptada a celulares, tablets y computadoras",
       "Integración con WhatsApp, Instagram y otras redes sociales",
-      "Hasta 200 productos",
+      "Hasta 300 productos",
       "Categorías personalizadas",
       "Carrito de compras y gestión de pedidos",
       "Medios de pago: efectivo, transferencia y Mercado Pago",
