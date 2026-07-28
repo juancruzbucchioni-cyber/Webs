@@ -197,7 +197,11 @@ export default function Home() {
                   <span>{paymentMode === "deposit" ? "SEÑA DEL 35 %" : "PAGO COMPLETO"}</span>
                   <strong>${(paymentMode === "deposit" ? Math.round(plans[paymentPlan].amount * 0.35) : plans[paymentPlan].amount).toLocaleString("es-AR")} ARS</strong>
                 </div>
-                <p className="payment-owner">Titular: <strong>Juan Cruz Bucchioni Moya</strong></p>
+                <div className="payment-owner">
+                  <span>TITULAR DE LA CUENTA</span>
+                  <strong>Juan Cruz Bucchioni Moya</strong>
+                  <small>Verificá este nombre antes de realizar la transferencia.</small>
+                </div>
                 <div className="bank-accounts">
                   {[
                     { alias: "bucchio.", cvu: "0000003100070730219551" },
@@ -205,6 +209,7 @@ export default function Home() {
                   ].map((account, index) => (
                     <article key={account.cvu}>
                       <small>OPCIÓN DE TRANSFERENCIA {index + 1}</small>
+                      <p>A nombre de <strong>Juan Cruz Bucchioni Moya</strong></p>
                       <div><span>Alias</span><strong>{account.alias}</strong><button onClick={() => copyValue(`alias-${index}`, account.alias)}>{copied === `alias-${index}` ? "Copiado" : "Copiar"}</button></div>
                       <div><span>CVU</span><strong>{account.cvu}</strong><button onClick={() => copyValue(`cvu-${index}`, account.cvu)}>{copied === `cvu-${index}` ? "Copiado" : "Copiar"}</button></div>
                     </article>
