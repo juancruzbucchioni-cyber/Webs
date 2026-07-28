@@ -41,8 +41,8 @@ const plans = [
   {
     type: "Web Premium (e‑commerce avanzado)",
     tag: "PREMIUM",
-    price: "280.000",
-    amount: 280000,
+    price: "300.000",
+    amount: 300000,
     color: "pink",
     copy: "Solución completa para negocios que necesitan una tienda online avanzada, con mayor capacidad, funciones personalizadas y herramientas profesionales para administrar ventas, clientes y productos.",
     features: [
