@@ -68,15 +68,22 @@ export default function Home() {
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>
           <a href="#proceso" onClick={() => setMenuOpen(false)}>Proceso</a>
           <a href="#modelos" onClick={() => setMenuOpen(false)}>Modelos</a>
+          <a className="mobile-social-link" href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noreferrer">Contacto</a>
+          <a className="mobile-social-link" href="https://www.instagram.com/juan.bucchioni/" target="_blank" rel="noreferrer">Instagram · @juan.bucchioni</a>
         </div>
-        <a
-          className="nav-contact"
-          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, buenas. Quería consultar por una página web.")}`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Contacto
-        </a>
+        <div className="nav-actions">
+          <a
+            className="nav-contact"
+            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, buenas. Quería consultar por una página web.")}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Contacto
+          </a>
+          <a className="nav-instagram" href="https://www.instagram.com/juan.bucchioni/" target="_blank" rel="noreferrer">
+            Instagram
+          </a>
+        </div>
         <button className="menu-button" aria-label="Abrir menú" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
           <span /><span />
         </button>
