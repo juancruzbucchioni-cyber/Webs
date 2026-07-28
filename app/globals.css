@@ -79,10 +79,9 @@ button { color:inherit; font:inherit; }
 .plan-card ul { list-style:none; padding:20px 0; margin:0; border-top:1px solid var(--line); flex:1; }.plan-card li { color:#a9a5ae; font-size:11px; padding:7px 0; }.plan-card li span { color:#a75dff; margin-right:10px; }
 .plan-card li.repeated-feature { color:#d6b4ff; font-weight:700; background:rgba(155,72,255,.11); border:1px solid rgba(180,112,255,.2); border-radius:8px; margin:0 0 7px; padding:10px; }
 .plan-card li.repeated-feature span { color:#c477ff; }
-.plan-actions { display:grid; grid-template-columns:.72fr 1.28fr; border-top:1px solid var(--line); margin:8px -23px -23px; }
-.plan-actions a,.plan-actions button { display:flex; justify-content:space-between; align-items:center; padding:22px 18px; font-size:10px; font-weight:700; color:white; cursor:pointer; background:transparent; border:0; }
-.plan-actions button { color:#c68cff; border-right:1px solid var(--line); }
-.plan-actions a:hover,.plan-actions button:hover { background:rgba(132,55,255,.11); }
+.plan-actions { display:block; border-top:1px solid var(--line); margin:8px -23px -23px; }
+.plan-actions button { width:100%; display:flex; justify-content:space-between; align-items:center; padding:22px 20px; font-size:10px; font-weight:700; color:#d5acff; cursor:pointer; background:transparent; border:0; }
+.plan-actions button:hover { background:rgba(132,55,255,.11); }
 .payment-overlay { position:fixed; inset:0; z-index:100; display:grid; place-items:center; padding:20px; background:rgba(0,0,0,.84); backdrop-filter:blur(12px); }
 .payment-modal { width:min(660px,100%); max-height:calc(100vh - 40px); overflow:auto; position:relative; padding:34px; border:1px solid rgba(170,93,255,.3); border-radius:16px; background:linear-gradient(145deg,#100d16,#08070b); box-shadow:0 30px 100px rgba(0,0,0,.6); }
 .payment-close { position:absolute; top:14px; right:16px; width:34px; height:34px; border:1px solid var(--line); border-radius:50%; background:#15111c; color:white; font-size:22px; cursor:pointer; }

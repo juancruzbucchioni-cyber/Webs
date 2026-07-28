@@ -151,9 +151,6 @@ export default function Home() {
               </ul>
               <div className="plan-actions">
                 <button onClick={() => { setPaymentPlan(index); setPaymentMode(null); }}>Pagar <span>→</span></button>
-                <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(plan.message)}`} target="_blank" rel="noreferrer">
-                  Solicitar presupuesto <span>→</span>
-                </a>
               </div>
             </article>
           ))}
