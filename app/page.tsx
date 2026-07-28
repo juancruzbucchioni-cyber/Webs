@@ -64,12 +64,14 @@ export default function Home() {
   const [paymentMode, setPaymentMode] = useState<"deposit" | "full" | null>(null);
   const [copied, setCopied] = useState("");
   const [showClientForm, setShowClientForm] = useState(false);
+  const [clientFormValid, setClientFormValid] = useState(false);
 
   const closePayment = () => {
     setPaymentPlan(null);
     setPaymentMode(null);
     setCopied("");
     setShowClientForm(false);
+    setClientFormValid(false);
   };
 
   const copyValue = async (label: string, value: string) => {
@@ -221,7 +223,7 @@ export default function Home() {
                 </div>
               </>
             ) : showClientForm ? (
-              <form className="client-form" onSubmit={submitClientForm}>
+              <form className="client-form" onSubmit={submitClientForm} onInput={(event) => setClientFormValid(event.currentTarget.checkValidity())}>
                 <div className="payment-total">
                   <span>{paymentMode === "deposit" ? "SEÑA DEL 35 %" : "PAGO COMPLETO"}</span>
                   <strong>${(paymentMode === "deposit" ? Math.round(plans[paymentPlan].amount * 0.35) : plans[paymentPlan].amount).toLocaleString("es-AR")} ARS</strong>
@@ -248,8 +250,8 @@ export default function Home() {
                 <label className="form-check"><input type="checkbox" required /> <span>Confirmo que los datos ingresados son correctos.</span></label>
                 <label className="form-check"><input type="checkbox" required /> <span>Acepto los términos y condiciones.</span></label>
                 <div className="form-actions">
-                  <button type="button" onClick={() => setShowClientForm(false)}>← Volver</button>
-                  <button type="submit">Pagar y comenzar mi página →</button>
+                  <button type="button" onClick={() => { setShowClientForm(false); setClientFormValid(false); }}>← Volver</button>
+                  {clientFormValid && <button type="submit">Enviar comprobante →</button>}
                 </div>
               </form>
             ) : (
@@ -278,8 +280,7 @@ export default function Home() {
                 </div>
                 <div className="payment-footer-actions">
                   <button onClick={() => setPaymentMode(null)}>← Cambiar importe</button>
-                  <button className="paid-button" onClick={() => setShowClientForm(true)}>Ya pagué →</button>
-                  <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola, buenas. Envío el comprobante de ${paymentMode === "deposit" ? "la seña del 35 %" : "pago completo"} correspondiente a ${plans[paymentPlan].type}, por un importe de $${(paymentMode === "deposit" ? Math.round(plans[paymentPlan].amount * 0.35) : plans[paymentPlan].amount).toLocaleString("es-AR")} ARS.`)}`} target="_blank" rel="noreferrer">Enviar comprobante →</a>
+                  <button className="paid-button" onClick={() => { setShowClientForm(true); setClientFormValid(false); }}>Ya pagué →</button>
                 </div>
               </>
             )}
