@@ -103,7 +103,7 @@ export default function Home() {
       `Página de referencia: ${data.get("reference") || "No informada"}`,
       `Aclaraciones: ${data.get("notes") || "Sin aclaraciones"}`,
       "",
-      "Adjunto por WhatsApp el comprobante y el logo del negocio.",
+      "IMPORTANTE: A continuación adjunto manualmente por WhatsApp el comprobante de pago y el logo del negocio.",
     ].join("\n");
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
   };
@@ -242,8 +242,11 @@ export default function Home() {
                   <label><span>Instagram del negocio</span><input name="instagram" placeholder="@usuario" /></label>
                   <label><span>Colores que querés para la página</span><input name="colors" required /></label>
                   <label><span>Página de referencia que te guste</span><input name="reference" type="url" placeholder="https://..." /></label>
-                  <label className="form-wide"><span>Logo del negocio</span><input name="logo" type="file" accept="image/*,.pdf" /><small>El archivo se adjunta manualmente cuando se abra WhatsApp.</small></label>
                   <label className="form-wide"><span>Información o aclaraciones adicionales</span><textarea name="notes" rows={4} /></label>
+                </div>
+                <div className="whatsapp-attachment-notice">
+                  <strong>Logo y comprobante</strong>
+                  <span>Cuando se abra WhatsApp, adjuntá manualmente el logo del negocio y el comprobante de pago usando el ícono del clip 📎.</span>
                 </div>
                 <label className="form-check"><input type="checkbox" required /> <span>Confirmo que los datos ingresados son correctos.</span></label>
                 <div className="form-actions">
