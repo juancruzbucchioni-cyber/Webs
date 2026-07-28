@@ -9,6 +9,7 @@ const plans = [
     type: "Web Avanzada (E‑commerce)",
     tag: "MÁS ELEGIDA",
     price: "180.000",
+    amount: 180000,
     color: "blue",
     copy: "Tienda online completa para negocios que buscan vender sus productos, administrar pedidos y controlar sus costos, ventas y ganancias desde un solo lugar.",
     features: [
@@ -35,6 +36,7 @@ const plans = [
     type: "Web Premium (e‑commerce avanzado)",
     tag: "PREMIUM",
     price: "280.000",
+    amount: 280000,
     color: "pink",
     copy: "Solución completa para negocios que necesitan una tienda online avanzada, con mayor capacidad, funciones personalizadas y herramientas profesionales para administrar ventas, clientes y productos.",
     features: [
@@ -58,6 +60,20 @@ const plans = [
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [paymentPlan, setPaymentPlan] = useState<number | null>(null);
+  const [paymentMode, setPaymentMode] = useState<"deposit" | "full" | null>(null);
+  const [copied, setCopied] = useState("");
+
+  const closePayment = () => {
+    setPaymentPlan(null);
+    setPaymentMode(null);
+    setCopied("");
+  };
+
+  const copyValue = async (label: string, value: string) => {
+    await navigator.clipboard.writeText(value);
+    setCopied(label);
+  };
 
   return (
     <main>
@@ -134,6 +150,7 @@ export default function Home() {
                 })}
               </ul>
               <div className="plan-actions">
+                <button onClick={() => { setPaymentPlan(index); setPaymentMode(null); }}>Pagar <span>→</span></button>
                 <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(plan.message)}`} target="_blank" rel="noreferrer">
                   Solicitar presupuesto <span>→</span>
                 </a>
@@ -148,6 +165,60 @@ export default function Home() {
         <span>DISEÑO Y DESARROLLO WEB · 2026</span>
         <a href="#inicio">Volver arriba ↑</a>
       </footer>
+
+      {paymentPlan !== null && (
+        <div className="payment-overlay" role="dialog" aria-modal="true" aria-label="Datos para realizar el pago" onMouseDown={(event) => {
+          if (event.target === event.currentTarget) closePayment();
+        }}>
+          <div className="payment-modal">
+            <button className="payment-close" onClick={closePayment} aria-label="Cerrar">×</button>
+            <p className="section-label">PAGO POR TRANSFERENCIA</p>
+            <h2>{plans[paymentPlan].type}</h2>
+
+            {!paymentMode ? (
+              <>
+                <p className="payment-intro">Elegí cuánto querés abonar para ver los datos de transferencia.</p>
+                <div className="payment-options">
+                  <button onClick={() => setPaymentMode("deposit")}>
+                    <span>SEÑA DEL 35 %</span>
+                    <strong>${Math.round(plans[paymentPlan].amount * 0.35).toLocaleString("es-AR")}</strong>
+                    <small>ARS</small>
+                  </button>
+                  <button onClick={() => setPaymentMode("full")}>
+                    <span>PAGO COMPLETO</span>
+                    <strong>${plans[paymentPlan].amount.toLocaleString("es-AR")}</strong>
+                    <small>ARS</small>
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="payment-total">
+                  <span>{paymentMode === "deposit" ? "SEÑA DEL 35 %" : "PAGO COMPLETO"}</span>
+                  <strong>${(paymentMode === "deposit" ? Math.round(plans[paymentPlan].amount * 0.35) : plans[paymentPlan].amount).toLocaleString("es-AR")} ARS</strong>
+                </div>
+                <p className="payment-owner">Titular: <strong>Juan Cruz Bucchioni Moya</strong></p>
+                <div className="bank-accounts">
+                  {[
+                    { alias: "bucchio.", cvu: "0000003100070730219551" },
+                    { alias: "bucchio", cvu: "0000168300000027027897" },
+                  ].map((account, index) => (
+                    <article key={account.cvu}>
+                      <small>OPCIÓN DE TRANSFERENCIA {index + 1}</small>
+                      <div><span>Alias</span><strong>{account.alias}</strong><button onClick={() => copyValue(`alias-${index}`, account.alias)}>{copied === `alias-${index}` ? "Copiado" : "Copiar"}</button></div>
+                      <div><span>CVU</span><strong>{account.cvu}</strong><button onClick={() => copyValue(`cvu-${index}`, account.cvu)}>{copied === `cvu-${index}` ? "Copiado" : "Copiar"}</button></div>
+                    </article>
+                  ))}
+                </div>
+                <div className="payment-footer-actions">
+                  <button onClick={() => setPaymentMode(null)}>← Cambiar importe</button>
+                  <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola, buenas. Ya realicé la transferencia de ${paymentMode === "deposit" ? "la seña" : "el pago completo"} correspondiente a ${plans[paymentPlan].type}. Adjunto el comprobante.`)}`} target="_blank" rel="noreferrer">Enviar comprobante →</a>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </main>
   );
 }
