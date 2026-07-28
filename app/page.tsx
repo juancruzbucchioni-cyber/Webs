@@ -195,12 +195,12 @@ export default function Home() {
           <div className="domain-content">
             <small>ADICIONAL</small>
             <h3>Dominio privado</h3>
-            <p>Usá una dirección profesional y exclusiva para tu negocio, como <strong>tunegocio.com.ar</strong>. El valor depende de la extensión elegida y su disponibilidad.</p>
+            <p>Usá una dirección profesional y exclusiva para tu negocio, como <strong>tunegocio.com.ar</strong>. El dominio se abona y renueva una vez por año. El valor depende de la extensión elegida y su disponibilidad.</p>
           </div>
           <div className="domain-price">
             <span>PRECIO</span>
             <strong>AL COSTO</strong>
-            <small>Sin recargos</small>
+            <small>Pago anual · Sin recargos</small>
           </div>
           <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, buenas. Quería consultar el precio de un dominio privado para mi página web.")}`} target="_blank" rel="noreferrer">
             Consultar precio <span>→</span>
