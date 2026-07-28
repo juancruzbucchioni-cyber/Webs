@@ -6,31 +6,17 @@ const WHATSAPP_NUMBER = "5493534128474";
 
 const plans = [
   {
-    type: "Web básica (catálogo)",
-    tag: "BÁSICO",
-    price: "110.000",
-    color: "purple",
-    copy: "Web destinada a mostrar y administrar productos, sin un sistema de venta directa integrado.",
-    features: [
-      "Diseño personalizado",
-      "Adaptada a celulares",
-      "Integración con WhatsApp, Instagram y otras redes",
-      "Hasta 100 productos",
-      "Página básica de administración",
-      "Categorías personalizadas",
-      "Registro de costos y ganancias",
-      "Hosting privado incluido durante 8 meses",
-    ],
-    message: "Hola, buenas. Quería consultar por el plan Web básica (catálogo).",
-  },
-  {
-    type: "Web profesional (e‑commerce)",
-    tag: "PROFESIONAL",
+    type: "Web Avanzada (E‑commerce)",
+    tag: "MÁS ELEGIDA",
     price: "180.000",
     color: "blue",
-    copy: "Tienda online completa para negocios que buscan vender sus productos de forma profesional, administrar pedidos y llevar un mejor control de sus costos y ganancias.",
+    copy: "Tienda online completa para negocios que buscan vender sus productos, administrar pedidos y controlar sus costos, ventas y ganancias desde un solo lugar.",
     features: [
-      "Incluye todas las características del Plan Básico",
+      "Diseño 100 % personalizado",
+      "Adaptada a celulares, tablets y computadoras",
+      "Integración con WhatsApp, Instagram y otras redes sociales",
+      "Hasta 200 productos",
+      "Categorías personalizadas",
       "Carrito de compras y gestión de pedidos",
       "Conexión directa con Mercado Pago",
       "Registro de costos, ventas y ganancias",
@@ -43,16 +29,16 @@ const plans = [
       "Panel de administración profesional",
       "Hosting privado incluido durante 2 años",
     ],
-    message: "Hola, buenas. Quería consultar por el plan Web profesional (e-commerce).",
+    message: "Hola, buenas. Quería solicitar un presupuesto por la Web Avanzada (E-commerce).",
   },
   {
     type: "Web Premium (e‑commerce avanzado)",
     tag: "PREMIUM",
-    price: "250.000",
+    price: "280.000",
     color: "pink",
     copy: "Solución completa para negocios que necesitan una tienda online avanzada, con mayor capacidad, funciones personalizadas y herramientas profesionales para administrar ventas, clientes y productos.",
     features: [
-      "Incluye todas las características del Plan Profesional",
+      "Incluye todas las características de la Web Avanzada",
       "Hasta 350 productos",
       "Hasta 3 funciones adicionales personalizadas",
       "Panel de administración avanzado",
@@ -61,10 +47,12 @@ const plans = [
       "Recuperación de carritos abandonados",
       "Reportes avanzados de ventas, costos y ganancias",
       "Diseño de banners y secciones promocionales",
-      "Optimización SEO para buscadores",
+      "Optimización SEO básica para buscadores",
+      "Mayor personalización del diseño y las funciones",
+      "Soporte prioritario",
       "Hosting privado incluido durante 3 años",
     ],
-    message: "Hola, buenas. Quería consultar por el plan Web Premium (e-commerce avanzado).",
+    message: "Hola, buenas. Quería solicitar un presupuesto por la Web Premium (E-commerce avanzado).",
   },
 ];
 
@@ -140,7 +128,7 @@ export default function Home() {
               </ul>
               <div className="plan-actions">
                 <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(plan.message)}`} target="_blank" rel="noreferrer">
-                  Presupuesto <span>→</span>
+                  Solicitar presupuesto <span>→</span>
                 </a>
               </div>
             </article>

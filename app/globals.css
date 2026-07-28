@@ -60,7 +60,7 @@ button { color:inherit; font:inherit; }
 .intro,.showcase,.process { text-align:center; }
 .section h2 { font-family:"Berlin Sans FB Demi","Trebuchet MS",sans-serif; font-size:clamp(38px,5vw,64px); line-height:1.08; letter-spacing:-.025em; margin:0; }
 .section-copy { color:var(--muted); font-size:14px; max-width:560px; line-height:1.75; margin:24px auto 60px; }
-.plans { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; max-width:1120px; margin:65px auto 0; text-align:left; }
+.plans { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; max-width:900px; margin:65px auto 0; text-align:left; }
 .plan-card { min-height:540px; padding:26px; border:1px solid var(--line); border-radius:15px; background:linear-gradient(150deg,rgba(255,255,255,.045),rgba(255,255,255,.012)); position:relative; overflow:hidden; transition:.3s ease; display:flex; flex-direction:column; }
 .plan-card:hover { transform:translateY(-8px); border-color:rgba(164,82,255,.48); box-shadow:0 24px 80px rgba(0,0,0,.35); }
 .plan-glow { position:absolute; width:190px; height:150px; left:50%; top:70px; transform:translateX(-50%); filter:blur(55px); opacity:.18; background:#9742ff; }
