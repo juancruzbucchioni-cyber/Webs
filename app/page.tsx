@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 
 const WHATSAPP_NUMBER = "5493534128474";
 
@@ -63,16 +63,48 @@ export default function Home() {
   const [paymentPlan, setPaymentPlan] = useState<number | null>(null);
   const [paymentMode, setPaymentMode] = useState<"deposit" | "full" | null>(null);
   const [copied, setCopied] = useState("");
+  const [showClientForm, setShowClientForm] = useState(false);
 
   const closePayment = () => {
     setPaymentPlan(null);
     setPaymentMode(null);
     setCopied("");
+    setShowClientForm(false);
   };
 
   const copyValue = async (label: string, value: string) => {
     await navigator.clipboard.writeText(value);
     setCopied(label);
+  };
+
+  const submitClientForm = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (paymentPlan === null || paymentMode === null) return;
+    const data = new FormData(event.currentTarget);
+    const amount = paymentMode === "deposit" ? Math.round(plans[paymentPlan].amount * 0.35) : plans[paymentPlan].amount;
+    const message = [
+      "Hola, buenas. Ya realicé el pago y quiero comenzar mi página.",
+      "",
+      `Plan: ${plans[paymentPlan].type}`,
+      `Pago: ${paymentMode === "deposit" ? "Seña del 35 %" : "Pago completo"}`,
+      `Importe: $${amount.toLocaleString("es-AR")} ARS`,
+      "",
+      "DATOS PARA CREAR LA PÁGINA",
+      `Nombre y apellido: ${data.get("name")}`,
+      `Ciudad y provincia: ${data.get("location")}`,
+      `WhatsApp del negocio: ${data.get("phone")}`,
+      `Correo electrónico: ${data.get("email")}`,
+      `Nombre de la página o negocio: ${data.get("business")}`,
+      `Actividad del negocio: ${data.get("activity")}`,
+      `Instagram: ${data.get("instagram") || "No informado"}`,
+      `Colores: ${data.get("colors")}`,
+      `Cantidad aproximada de productos: ${data.get("products")}`,
+      `Página de referencia: ${data.get("reference") || "No informada"}`,
+      `Aclaraciones: ${data.get("notes") || "Sin aclaraciones"}`,
+      "",
+      "Adjunto por WhatsApp el comprobante y el logo del negocio.",
+    ].join("\n");
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -188,6 +220,38 @@ export default function Home() {
                   </button>
                 </div>
               </>
+            ) : showClientForm ? (
+              <form className="client-form" onSubmit={submitClientForm}>
+                <div className="payment-total">
+                  <span>{paymentMode === "deposit" ? "SEÑA DEL 35 %" : "PAGO COMPLETO"}</span>
+                  <strong>${(paymentMode === "deposit" ? Math.round(plans[paymentPlan].amount * 0.35) : plans[paymentPlan].amount).toLocaleString("es-AR")} ARS</strong>
+                </div>
+                <div className="form-heading">
+                  <small>INFORMACIÓN DE LA PÁGINA</small>
+                  <h3>Datos para crear tu página</h3>
+                  <p>Completá esta información y luego adjuntá el comprobante y el logo en WhatsApp.</p>
+                </div>
+                <div className="form-grid">
+                  <label><span>Nombre y apellido</span><input name="name" required /></label>
+                  <label><span>Ciudad y provincia</span><input name="location" required /></label>
+                  <label><span>Número de WhatsApp del negocio</span><input name="phone" type="tel" required /></label>
+                  <label><span>Correo electrónico</span><input name="email" type="email" required /></label>
+                  <label><span>Nombre de la página o negocio</span><input name="business" required /></label>
+                  <label><span>¿A qué se dedica tu negocio?</span><input name="activity" required /></label>
+                  <label><span>Instagram del negocio</span><input name="instagram" placeholder="@usuario" /></label>
+                  <label><span>Colores que querés para la página</span><input name="colors" required /></label>
+                  <label><span>Cantidad aproximada de productos</span><input name="products" type="number" min="0" required /></label>
+                  <label><span>Página de referencia que te guste</span><input name="reference" type="url" placeholder="https://..." /></label>
+                  <label className="form-wide"><span>Logo del negocio</span><input name="logo" type="file" accept="image/*,.pdf" /><small>El archivo se adjunta manualmente cuando se abra WhatsApp.</small></label>
+                  <label className="form-wide"><span>Información o aclaraciones adicionales</span><textarea name="notes" rows={4} /></label>
+                </div>
+                <label className="form-check"><input type="checkbox" required /> <span>Confirmo que los datos ingresados son correctos.</span></label>
+                <label className="form-check"><input type="checkbox" required /> <span>Acepto los términos y condiciones.</span></label>
+                <div className="form-actions">
+                  <button type="button" onClick={() => setShowClientForm(false)}>← Volver</button>
+                  <button type="submit">Pagar y comenzar mi página →</button>
+                </div>
+              </form>
             ) : (
               <>
                 <div className="payment-total">
@@ -214,7 +278,8 @@ export default function Home() {
                 </div>
                 <div className="payment-footer-actions">
                   <button onClick={() => setPaymentMode(null)}>← Cambiar importe</button>
-                  <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola, buenas. Ya realicé la transferencia de ${paymentMode === "deposit" ? "la seña" : "el pago completo"} correspondiente a ${plans[paymentPlan].type}. Adjunto el comprobante.`)}`} target="_blank" rel="noreferrer">Enviar comprobante →</a>
+                  <button className="paid-button" onClick={() => setShowClientForm(true)}>Ya pagué →</button>
+                  <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola, buenas. Envío el comprobante de ${paymentMode === "deposit" ? "la seña del 35 %" : "pago completo"} correspondiente a ${plans[paymentPlan].type}, por un importe de $${(paymentMode === "deposit" ? Math.round(plans[paymentPlan].amount * 0.35) : plans[paymentPlan].amount).toLocaleString("es-AR")} ARS.`)}`} target="_blank" rel="noreferrer">Enviar comprobante →</a>
                 </div>
               </>
             )}
