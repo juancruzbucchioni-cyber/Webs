@@ -188,11 +188,28 @@ export default function Home() {
             </article>
           ))}
         </div>
+        <article className="domain-addon">
+          <div className="domain-glow" />
+          <div className="domain-icon"><i /><i /><i /></div>
+          <div className="domain-content">
+            <small>ADICIONAL</small>
+            <h3>Dominio privado</h3>
+            <p>Usá una dirección profesional y exclusiva para tu negocio, como <strong>tunegocio.com.ar</strong>. El valor depende de la extensión elegida y su disponibilidad.</p>
+          </div>
+          <div className="domain-price">
+            <span>PRECIO</span>
+            <strong>AL COSTO</strong>
+            <small>Sin recargos</small>
+          </div>
+          <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, buenas. Quería consultar el precio de un dominio privado para mi página web.")}`} target="_blank" rel="noreferrer">
+            Consultar precio <span>→</span>
+          </a>
+        </article>
       </section>
 
       <footer id="contacto">
         <a className="brand brand-logo footer-logo" href="#inicio" aria-label="JCB Development, inicio"><img src="/jcb-development.png" alt="JCB Development" /></a>
-        <span>DISEÑO Y DESARROLLO WEB · 2026</span>
+        <span>DISEÑO Y DESARROLLO WEB · 2025</span>
         <a href="#inicio">Volver arriba ↑</a>
       </footer>
 
