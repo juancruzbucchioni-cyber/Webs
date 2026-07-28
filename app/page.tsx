@@ -19,7 +19,7 @@ const plans = [
       "Hasta 200 productos",
       "Categorías personalizadas",
       "Carrito de compras y gestión de pedidos",
-      "Conexión directa con Mercado Pago",
+      "Medios de pago: efectivo, transferencia y Mercado Pago",
       "Registro de costos, ventas y ganancias",
       "Control de stock automático",
       "Panel de anotaciones internas para el local",
@@ -41,6 +41,7 @@ const plans = [
     copy: "Solución completa para negocios que necesitan una tienda online avanzada, con mayor capacidad, funciones personalizadas y herramientas profesionales para administrar ventas, clientes y productos.",
     features: [
       "Incluye todas las características de la Web Avanzada",
+      "Pagos con tarjetas de crédito y débito",
       "Hasta 300 productos",
       "Hasta 3 funciones adicionales personalizadas",
       "Panel de administración avanzado",
