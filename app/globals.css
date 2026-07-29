@@ -74,8 +74,8 @@ button { color:inherit; font:inherit; }
 .category-card:hover:before,.category-card.active:before { opacity:.24; }
 .category-card.active { border-color:#9346dc; background:radial-gradient(circle at 50% 35%,rgba(137,55,220,.24),transparent 43%),linear-gradient(145deg,#171020,#09080d); box-shadow:0 0 0 1px rgba(155,76,230,.12),0 18px 55px rgba(91,28,150,.2); }
 .category-number { position:absolute; top:17px; left:18px; color:#716a78; font-size:8px; letter-spacing:.17em; }
-.category-image { width:130px; height:112px; position:relative; display:grid; place-items:center; margin:0 0 10px; filter:drop-shadow(0 10px 18px rgba(0,0,0,.34)); }
-.category-image img { width:205px; max-width:none; height:205px; object-fit:contain; }
+.category-image { width:150px; height:115px; position:relative; display:grid; place-items:center; margin:-8px 0 13px; filter:drop-shadow(0 10px 18px rgba(0,0,0,.34)); }
+.category-image img { width:230px; max-width:none; height:230px; object-fit:contain; transform:translate(-5%,-7%); }
 .category-card strong { position:relative; font:600 20px/1.08 "Berlin Sans FB Demi","Trebuchet MS",sans-serif; }
 .category-card small { position:relative; max-width:250px; min-height:42px; margin:10px auto 14px; color:#8f8996; font-size:9px; line-height:1.55; }
 .category-card b { position:relative; margin-top:auto; color:#bd83ef; font-size:8px; letter-spacing:.08em; }
