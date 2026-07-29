@@ -10,18 +10,21 @@ const storeCategories = [
     number: "01",
     title: "Tiendas para Negocios",
     copy: "Catálogos y tiendas online para vender y administrar tu negocio.",
+    image: "/categoria-negocios.png",
   },
   {
     id: "importaciones",
     number: "02",
     title: "Tiendas para Importaciones",
     copy: "Soluciones pensadas para productos importados, pedidos y reservas.",
+    image: "/categoria-importaciones.png",
   },
   {
     id: "cursos",
     number: "03",
     title: "Tiendas para Cursos",
     copy: "Plataformas para presentar, vender y organizar tus cursos online.",
+    image: "/categoria-cursos.png",
   },
 ] as const;
 
@@ -241,7 +244,9 @@ export default function Home() {
                 aria-pressed={activeCategory === category.id}
               >
                 <span className="category-number">{category.number}</span>
-                <span className="category-icon" aria-hidden="true"><i /><i /></span>
+                <span className="category-image" aria-hidden="true">
+                  <img src={category.image} alt="" />
+                </span>
                 <strong>{category.title}</strong>
                 <small>{category.copy}</small>
                 <b>{activeCategory === category.id ? "Categoría seleccionada" : "Ver categoría"} <span>→</span></b>
@@ -324,7 +329,11 @@ export default function Home() {
             <article className="category-coming-soon">
               <div className="coming-soon-glow" />
               <p className="section-label">NUEVA CATEGORÍA</p>
-              <span className="coming-soon-icon" aria-hidden="true"><i /><i /></span>
+              <img
+                className="coming-soon-image"
+                src={storeCategories.find((category) => category.id === activeCategory)?.image}
+                alt=""
+              />
               <h2>{storeCategories.find((category) => category.id === activeCategory)?.title}</h2>
               <p>Estamos preparando los modelos y planes de esta categoría. Podés consultarnos ahora y diseñamos una propuesta personalizada para tu proyecto.</p>
               <a
