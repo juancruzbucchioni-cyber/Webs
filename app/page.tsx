@@ -37,6 +37,7 @@ const storeCategories = [
 
 const plans = [
   {
+    category: "negocios",
     type: "Web Avanzada / Catálogo Online",
     tag: "MÁS ELEGIDA",
     price: "180.000",
@@ -76,6 +77,7 @@ const plans = [
     message: "Hola, buenas. Quería consultar por la Web Avanzada / Catálogo Online.",
   },
   {
+    category: "negocios",
     type: "Web de Negocio Premium",
     tag: "PREMIUM",
     price: "300.000",
@@ -109,6 +111,38 @@ const plans = [
     ],
     message: "Hola, buenas. Quería consultar por la Web de Negocio Premium.",
   },
+  {
+    category: "ventas-digitales",
+    type: "Web E-commerce Digital",
+    tag: "VENTAS DIGITALES",
+    price: "350.000",
+    amount: 350000,
+    color: "blue",
+    previews: ["/categoria-ventas-digitales.png"],
+    copy: "Una tienda profesional para vender cuentas, productos digitales, membresías, servicios y contenido online desde un catálogo claro y fácil de administrar.",
+    features: [
+      "Diseño 100 % personalizado para tu marca",
+      "Adaptada a celulares, tablets y computadoras",
+      "Catálogo organizado por categorías",
+      "Buscador y filtros de productos",
+      "Sección de productos destacados y más vendidos",
+      "Carrito de compras",
+      "Productos con imagen, descripción, precio y disponibilidad",
+      "Precios normales, promocionales y por cantidad",
+      "Control y actualización de stock",
+      "Integración con WhatsApp e Instagram",
+      "Botón para comunidad o grupo privado",
+      "Formulario de contacto personalizado",
+      "Panel para administrar productos y categorías",
+      "Hasta 300 productos digitales",
+      "Configuración básica para buscadores",
+      "Hasta dos rondas de cambios antes de la entrega",
+      "Mantenimiento, ayuda y soporte durante 2 meses",
+      "Hosting privado incluido durante 2 años",
+      "Entrega estimada: 1 semana y media",
+    ],
+    message: "Hola, buenas. Quería consultar por la Web E-commerce Digital.",
+  },
 ];
 
 export default function Home() {
@@ -119,7 +153,7 @@ export default function Home() {
   const [showClientForm, setShowClientForm] = useState(false);
   const [clientFormValid, setClientFormValid] = useState(false);
   const [expandedPlans, setExpandedPlans] = useState<number[]>([]);
-  const [activeSlides, setActiveSlides] = useState([0, 0]);
+  const [activeSlides, setActiveSlides] = useState([0, 0, 0]);
   const [lightbox, setLightbox] = useState<{ planIndex: number; imageIndex: number } | null>(null);
   const [activeCategory, setActiveCategory] = useState<(typeof storeCategories)[number]["id"]>("negocios");
 
@@ -269,13 +303,13 @@ export default function Home() {
         </div>
 
         <div className="category-content" id="category-content">
-          {activeCategory === "negocios" ? (
+          {activeCategory === "negocios" || activeCategory === "ventas-digitales" ? (
             <>
-              <p className="section-label">SOLUCIONES PARA CADA NEGOCIO</p>
-              <h2>Elegí la web que necesitás.<br /><span>Nosotros la hacemos realidad.</span></h2>
-              <p className="section-copy">Valores claros para comenzar. Cada proyecto se personaliza con tu identidad, contenido y objetivos.</p>
+              <p className="section-label">{activeCategory === "negocios" ? "SOLUCIONES PARA CADA NEGOCIO" : "SOLUCIONES PARA VENTAS DIGITALES"}</p>
+              <h2>{activeCategory === "negocios" ? "Elegí la web que necesitás." : "Vendé productos digitales."}<br /><span>Nosotros la hacemos realidad.</span></h2>
+              <p className="section-copy">{activeCategory === "negocios" ? "Valores claros para comenzar. Cada proyecto se personaliza con tu identidad, contenido y objetivos." : "Una solución completa para organizar tu catálogo, recibir pedidos y hacer crecer tu negocio digital."}</p>
               <div className="plans">
-          {plans.map((plan, index) => (
+          {plans.map((plan, index) => plan.category === activeCategory && (
             <article className={`plan-card ${plan.color}`} key={plan.type}>
               <div className="plan-glow" />
               <div className="plan-head"><span>0{index + 1}</span><small>{plan.tag}</small></div>
@@ -320,7 +354,7 @@ export default function Home() {
             </article>
           ))}
               </div>
-              <article className="domain-addon">
+              {activeCategory === "negocios" && <article className="domain-addon">
           <div className="domain-glow" />
           <div className="domain-icon"><i /><i /><i /></div>
           <div className="domain-content">
@@ -336,7 +370,7 @@ export default function Home() {
           <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, buenas. Quería consultar el precio de un dominio privado para mi página web.")}`} target="_blank" rel="noreferrer">
             Consultar precio <span>→</span>
           </a>
-              </article>
+              </article>}
             </>
           ) : (
             <article className="category-coming-soon">
