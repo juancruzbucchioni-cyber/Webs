@@ -40,7 +40,7 @@ const plans = [
     message: "Hola, buenas. Quería solicitar un presupuesto por la Web Avanzada (E-commerce).",
   },
   {
-    type: "Web Premium — E‑commerce avanzado",
+    type: "Web de Negocio",
     tag: "PREMIUM",
     price: "300.000",
     amount: 300000,
@@ -71,7 +71,7 @@ const plans = [
       "Mantenimiento, ayuda y soporte durante 2 meses",
       "Entrega estimada: 1 semana y media",
     ],
-    message: "Hola, buenas. Quería solicitar un presupuesto por la Web Premium (E-commerce avanzado).",
+    message: "Hola, buenas. Quería consultar por la Web de Negocio.",
   },
 ];
 
