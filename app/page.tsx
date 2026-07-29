@@ -240,7 +240,7 @@ export default function Home() {
   return (
     <main>
       <nav className="nav">
-        <a className="brand brand-logo" href="#inicio" aria-label="JCB Development, inicio">
+        <a className="brand brand-logo" href="/" aria-label="JCB Development, inicio">
           <img src="/jcb-development.png" alt="JCB Development" />
         </a>
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>
@@ -393,7 +393,7 @@ export default function Home() {
       </section>
 
       <footer id="contacto">
-        <a className="brand brand-logo footer-logo" href="#inicio" aria-label="JCB Development, inicio"><img src="/jcb-development.png" alt="JCB Development" /></a>
+        <a className="brand brand-logo footer-logo" href="/" aria-label="JCB Development, inicio"><img src="/jcb-development.png" alt="JCB Development" /></a>
         <span>DISEÑO Y DESARROLLO WEB · 2025</span>
         <a href="#inicio">Volver arriba ↑</a>
       </footer>
