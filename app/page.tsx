@@ -35,7 +35,12 @@ const plans = [
     price: "180.000",
     amount: 180000,
     color: "blue",
-    previews: ["/preview-web-avanzada.png"],
+    previews: [
+      "/avanzada-gallery-01.png",
+      "/avanzada-gallery-02.png",
+      "/avanzada-gallery-03.png",
+      "/avanzada-gallery-04.png",
+    ],
     copy: "Ideal para negocios que quieren comenzar a vender por internet y administrar sus productos, pedidos y clientes fácilmente.",
     features: [
       "Diseño personalizado con los colores e identidad del negocio",
