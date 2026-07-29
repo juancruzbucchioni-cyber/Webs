@@ -17,7 +17,7 @@ const plans = [
       "Diseño personalizado con los colores e identidad del negocio",
       "Adaptada a celulares, tablets y computadoras",
       "Integración con WhatsApp, Instagram y redes sociales",
-      "Catálogo con capacidad para hasta 300 productos",
+      "Capacidad para 300 productos",
       "Carga inicial de hasta 30 productos",
       "Categorías, buscador y filtros personalizados",
       "Carrito o bolsa de compras",
