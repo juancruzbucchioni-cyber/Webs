@@ -165,13 +165,12 @@ export default function Home() {
   const selectCategory = (category: (typeof storeCategories)[number]["id"]) => {
     setActiveCategory(category);
     window.setTimeout(() => {
-      document.getElementById("category-content")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      document.getElementById("modelos")?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 50);
   };
 
   const goToModels = () => {
     setMenuOpen(false);
-    setActiveCategory("negocios");
     window.setTimeout(() => {
       document.getElementById("modelos")?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 50);
@@ -315,13 +314,13 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="category-content" id="category-content">
+        <div className="category-content" id="modelos">
           {activeCategory === "negocios" || activeCategory === "ventas-digitales" ? (
             <>
               <p className="section-label">{activeCategory === "negocios" ? "SOLUCIONES PARA CADA NEGOCIO" : "SOLUCIONES PARA VENTAS DIGITALES"}</p>
               <h2>{activeCategory === "negocios" ? "Elegí la web que necesitás." : "Vendé productos digitales."}<br /><span>Nosotros la hacemos realidad.</span></h2>
               <p className="section-copy">{activeCategory === "negocios" ? "Valores claros para comenzar. Cada proyecto se personaliza con tu identidad, contenido y objetivos." : "Una solución completa para organizar tu catálogo, recibir pedidos y hacer crecer tu negocio digital."}</p>
-              <div className="plans" id="modelos">
+              <div className="plans">
           {plans.map((plan, index) => plan.category === activeCategory && (
             <article className={`plan-card ${plan.color}`} key={plan.type}>
               <div className="plan-glow" />
@@ -368,26 +367,7 @@ export default function Home() {
           ))}
               </div>
             </>
-          ) : (
-            <article className="category-coming-soon">
-              <div className="coming-soon-glow" />
-              <p className="section-label">NUEVA CATEGORÍA</p>
-              <img
-                className="coming-soon-image"
-                src={storeCategories.find((category) => category.id === activeCategory)?.image}
-                alt=""
-              />
-              <h2>{storeCategories.find((category) => category.id === activeCategory)?.title}</h2>
-              <p>Estamos preparando los modelos y planes de esta categoría. Podés consultarnos ahora y diseñamos una propuesta personalizada para tu proyecto.</p>
-              <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola, buenas. Quería consultar por la categoría ${storeCategories.find((category) => category.id === activeCategory)?.title}.`)}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Consultar esta categoría <span>→</span>
-              </a>
-            </article>
-          )}
+          ) : null}
           <article className="domain-addon">
             <div className="domain-glow" />
             <div className="domain-icon"><i /><i /><i /></div>
