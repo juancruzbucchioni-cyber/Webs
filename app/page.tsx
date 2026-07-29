@@ -20,15 +20,8 @@ const storeCategories = [
     image: "/categoria-importaciones.png",
   },
   {
-    id: "cursos",
-    number: "03",
-    title: "Tiendas para Cursos",
-    copy: "Plataformas para presentar, vender y organizar tus cursos online.",
-    image: "/categoria-cursos.png",
-  },
-  {
     id: "ventas-digitales",
-    number: "04",
+    number: "03",
     title: "Tiendas para Ventas Digitales",
     copy: "Plataformas para vender cuentas, productos digitales, membresías, servicios y contenido online.",
     image: "/categoria-ventas-digitales.png",
