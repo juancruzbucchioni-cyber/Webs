@@ -6,7 +6,7 @@ const WHATSAPP_NUMBER = "5493534128474";
 
 const plans = [
   {
-    type: "Web Avanzada — Tienda online",
+    type: "Web Avanzada / Catálogo Online",
     tag: "MÁS ELEGIDA",
     price: "180.000",
     amount: 180000,
@@ -37,10 +37,10 @@ const plans = [
       "Hosting privado incluido durante 2 años",
       "Entrega estimada: 1 semana y media",
     ],
-    message: "Hola, buenas. Quería solicitar un presupuesto por la Web Avanzada (E-commerce).",
+    message: "Hola, buenas. Quería consultar por la Web Avanzada / Catálogo Online.",
   },
   {
-    type: "Web de Negocio",
+    type: "Web de Negocio Premium",
     tag: "PREMIUM",
     price: "300.000",
     amount: 300000,
@@ -71,7 +71,7 @@ const plans = [
       "Mantenimiento, ayuda y soporte durante 2 meses",
       "Entrega estimada: 1 semana y media",
     ],
-    message: "Hola, buenas. Quería consultar por la Web de Negocio.",
+    message: "Hola, buenas. Quería consultar por la Web de Negocio Premium.",
   },
 ];
 
