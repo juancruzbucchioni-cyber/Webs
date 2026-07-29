@@ -11,6 +11,7 @@ const plans = [
     price: "180.000",
     amount: 180000,
     color: "blue",
+    preview: "/preview-web-avanzada.png",
     copy: "Tienda online completa para negocios que buscan vender sus productos, administrar pedidos y controlar sus costos, ventas y ganancias desde un solo lugar.",
     features: [
       "Diseño 100 % personalizado",
@@ -44,6 +45,7 @@ const plans = [
     price: "300.000",
     amount: 300000,
     color: "pink",
+    preview: "/preview-web-premium.png",
     copy: "Solución completa para negocios que necesitan una tienda online avanzada, con mayor capacidad, funciones personalizadas y herramientas profesionales para administrar ventas, clientes y productos.",
     features: [
       "Incluye todas las características de la Web Avanzada",
@@ -180,8 +182,10 @@ export default function Home() {
             <article className={`plan-card ${plan.color}`} key={plan.type}>
               <div className="plan-glow" />
               <div className="plan-head"><span>0{index + 1}</span><small>{plan.tag}</small></div>
-              <div className="plan-icon"><i /><i /></div>
               <h3>{plan.type}</h3>
+              <figure className="plan-preview">
+                <img src={plan.preview} alt={`Ejemplo visual de ${plan.type}`} />
+              </figure>
               <p>{plan.copy}</p>
               <div className="price"><small>DESDE</small><strong>${plan.price}</strong><span>ARS</span></div>
               <ul>
