@@ -192,7 +192,7 @@ export default function Home() {
         </a>
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>
           <a href="#inicio" onClick={() => setMenuOpen(false)}>Inicio</a>
-          <a href="#proceso" onClick={() => setMenuOpen(false)}>Proceso</a>
+          <a href="#categorias" onClick={() => setMenuOpen(false)}>Categorías</a>
           <a href="#modelos" onClick={() => setMenuOpen(false)}>Modelos</a>
           <a className="mobile-social-link" href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noreferrer">Contacto</a>
           <a className="mobile-social-link" href="https://www.instagram.com/juan.bucchioni/" target="_blank" rel="noreferrer">Instagram · @juan.bucchioni</a>
@@ -237,7 +237,7 @@ export default function Home() {
       </section>
 
       <section className="intro section" id="modelos">
-        <div className="category-selector">
+        <div className="category-selector" id="categorias">
           <p className="section-label">TIPOS DE TIENDAS ONLINE</p>
           <h2>Elegí una categoría.</h2>
           <p className="category-intro">Seleccioná el tipo de proyecto que más se adapta a tu negocio.</p>
