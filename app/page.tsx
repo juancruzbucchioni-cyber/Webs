@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 
 const WHATSAPP_NUMBER = "5493534128474";
 
@@ -11,7 +11,7 @@ const plans = [
     price: "180.000",
     amount: 180000,
     color: "blue",
-    preview: "/preview-web-avanzada.png",
+    previews: ["/preview-web-avanzada.png"],
     copy: "Ideal para negocios que quieren comenzar a vender por internet y administrar sus productos, pedidos y clientes fácilmente.",
     features: [
       "Diseño personalizado con los colores e identidad del negocio",
@@ -45,7 +45,15 @@ const plans = [
     price: "300.000",
     amount: 300000,
     color: "pink",
-    preview: "/preview-web-premium.png",
+    previews: [
+      "/premium-gallery-01.png",
+      "/premium-gallery-02.png",
+      "/premium-gallery-03.png",
+      "/premium-gallery-04.png",
+      "/premium-gallery-05.png",
+      "/premium-gallery-06.png",
+      "/premium-gallery-07.png",
+    ],
     copy: "Una solución completa para negocios que necesitan automatizar sus ventas, ofrecer una mejor experiencia de compra y administrar toda la operación desde un panel profesional.",
     features: [
       "Incluye todas las características de la Web Avanzada",
@@ -76,6 +84,27 @@ export default function Home() {
   const [showClientForm, setShowClientForm] = useState(false);
   const [clientFormValid, setClientFormValid] = useState(false);
   const [expandedPlans, setExpandedPlans] = useState<number[]>([]);
+  const [activeSlides, setActiveSlides] = useState([0, 0]);
+  const [lightbox, setLightbox] = useState<{ planIndex: number; imageIndex: number } | null>(null);
+
+  const changeSlide = (planIndex: number, direction: number) => {
+    setActiveSlides((current) => {
+      const next = [...current];
+      next[planIndex] = (next[planIndex] + direction + plans[planIndex].previews.length) % plans[planIndex].previews.length;
+      return next;
+    });
+  };
+
+  useEffect(() => {
+    if (!lightbox) return;
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setLightbox(null);
+      if (event.key === "ArrowLeft") setLightbox((current) => current ? { ...current, imageIndex: (current.imageIndex - 1 + plans[current.planIndex].previews.length) % plans[current.planIndex].previews.length } : null);
+      if (event.key === "ArrowRight") setLightbox((current) => current ? { ...current, imageIndex: (current.imageIndex + 1) % plans[current.planIndex].previews.length } : null);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [lightbox]);
 
   const closePayment = () => {
     setPaymentPlan(null);
@@ -181,7 +210,18 @@ export default function Home() {
               <div className="plan-head"><span>0{index + 1}</span><small>{plan.tag}</small></div>
               <h3>{plan.type}</h3>
               <figure className="plan-preview">
-                <img src={plan.preview} alt={`Ejemplo visual de ${plan.type}`} />
+                <button className="preview-open" onClick={() => setLightbox({ planIndex: index, imageIndex: activeSlides[index] })} aria-label={`Ampliar ejemplo visual de ${plan.type}`}>
+                  <img src={plan.previews[activeSlides[index]]} alt={`Ejemplo visual ${activeSlides[index] + 1} de ${plan.type}`} />
+                </button>
+                {plan.previews.length > 1 && (
+                  <>
+                    <button className="preview-arrow prev" onClick={() => changeSlide(index, -1)} aria-label="Imagen anterior">‹</button>
+                    <button className="preview-arrow next" onClick={() => changeSlide(index, 1)} aria-label="Imagen siguiente">›</button>
+                    <div className="preview-dots">
+                      {plan.previews.map((_, dotIndex) => <button key={dotIndex} className={activeSlides[index] === dotIndex ? "active" : ""} onClick={() => setActiveSlides((current) => current.map((value, planNumber) => planNumber === index ? dotIndex : value))} aria-label={`Ver imagen ${dotIndex + 1}`} />)}
+                    </div>
+                  </>
+                )}
               </figure>
               <p>{plan.copy}</p>
               <div className="price"><small>DESDE</small><strong>${plan.price}</strong><span>ARS</span></div>
@@ -323,6 +363,18 @@ export default function Home() {
               </>
             )}
           </div>
+        </div>
+      )}
+
+      {lightbox && (
+        <div className="image-lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada de la página" onMouseDown={(event) => {
+          if (event.target === event.currentTarget) setLightbox(null);
+        }}>
+          <button className="lightbox-close" onClick={() => setLightbox(null)} aria-label="Cerrar imagen">×</button>
+          {plans[lightbox.planIndex].previews.length > 1 && <button className="lightbox-arrow prev" onClick={() => setLightbox((current) => current ? { ...current, imageIndex: (current.imageIndex - 1 + plans[current.planIndex].previews.length) % plans[current.planIndex].previews.length } : null)} aria-label="Imagen anterior">‹</button>}
+          <img src={plans[lightbox.planIndex].previews[lightbox.imageIndex]} alt={`Vista ampliada ${lightbox.imageIndex + 1} de ${plans[lightbox.planIndex].type}`} />
+          {plans[lightbox.planIndex].previews.length > 1 && <button className="lightbox-arrow next" onClick={() => setLightbox((current) => current ? { ...current, imageIndex: (current.imageIndex + 1) % plans[current.planIndex].previews.length } : null)} aria-label="Imagen siguiente">›</button>}
+          <span className="lightbox-counter">{lightbox.imageIndex + 1} / {plans[lightbox.planIndex].previews.length}</span>
         </div>
       )}
     </main>
