@@ -4,6 +4,27 @@ import { useEffect, useState, type FormEvent } from "react";
 
 const WHATSAPP_NUMBER = "5493534128474";
 
+const storeCategories = [
+  {
+    id: "negocios",
+    number: "01",
+    title: "Tiendas para Negocios",
+    copy: "Catálogos y tiendas online para vender y administrar tu negocio.",
+  },
+  {
+    id: "importaciones",
+    number: "02",
+    title: "Tiendas para Importaciones",
+    copy: "Soluciones pensadas para productos importados, pedidos y reservas.",
+  },
+  {
+    id: "cursos",
+    number: "03",
+    title: "Tiendas para Cursos",
+    copy: "Plataformas para presentar, vender y organizar tus cursos online.",
+  },
+] as const;
+
 const plans = [
   {
     type: "Web Avanzada / Catálogo Online",
@@ -85,6 +106,14 @@ export default function Home() {
   const [expandedPlans, setExpandedPlans] = useState<number[]>([]);
   const [activeSlides, setActiveSlides] = useState([0, 0]);
   const [lightbox, setLightbox] = useState<{ planIndex: number; imageIndex: number } | null>(null);
+  const [activeCategory, setActiveCategory] = useState<(typeof storeCategories)[number]["id"]>("negocios");
+
+  const selectCategory = (category: (typeof storeCategories)[number]["id"]) => {
+    setActiveCategory(category);
+    window.setTimeout(() => {
+      document.getElementById("category-content")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  };
 
   const changeSlide = (planIndex: number, direction: number) => {
     setActiveSlides((current) => {
@@ -199,10 +228,35 @@ export default function Home() {
       </section>
 
       <section className="intro section" id="modelos">
-        <p className="section-label">SOLUCIONES PARA CADA NEGOCIO</p>
-        <h2>Elegí la web que necesitás.<br /><span>Nosotros la hacemos realidad.</span></h2>
-        <p className="section-copy">Valores claros para comenzar. Cada proyecto se personaliza con tu identidad, contenido y objetivos.</p>
-        <div className="plans">
+        <div className="category-selector">
+          <p className="section-label">TIPOS DE TIENDAS ONLINE</p>
+          <h2>Elegí una categoría.</h2>
+          <p className="category-intro">Seleccioná el tipo de proyecto que más se adapta a tu negocio.</p>
+          <div className="category-grid">
+            {storeCategories.map((category) => (
+              <button
+                className={`category-card ${activeCategory === category.id ? "active" : ""}`}
+                key={category.id}
+                onClick={() => selectCategory(category.id)}
+                aria-pressed={activeCategory === category.id}
+              >
+                <span className="category-number">{category.number}</span>
+                <span className="category-icon" aria-hidden="true"><i /><i /></span>
+                <strong>{category.title}</strong>
+                <small>{category.copy}</small>
+                <b>{activeCategory === category.id ? "Categoría seleccionada" : "Ver categoría"} <span>→</span></b>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="category-content" id="category-content">
+          {activeCategory === "negocios" ? (
+            <>
+              <p className="section-label">SOLUCIONES PARA CADA NEGOCIO</p>
+              <h2>Elegí la web que necesitás.<br /><span>Nosotros la hacemos realidad.</span></h2>
+              <p className="section-copy">Valores claros para comenzar. Cada proyecto se personaliza con tu identidad, contenido y objetivos.</p>
+              <div className="plans">
           {plans.map((plan, index) => (
             <article className={`plan-card ${plan.color}`} key={plan.type}>
               <div className="plan-glow" />
@@ -247,8 +301,8 @@ export default function Home() {
               </div>
             </article>
           ))}
-        </div>
-        <article className="domain-addon">
+              </div>
+              <article className="domain-addon">
           <div className="domain-glow" />
           <div className="domain-icon"><i /><i /><i /></div>
           <div className="domain-content">
@@ -264,7 +318,25 @@ export default function Home() {
           <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, buenas. Quería consultar el precio de un dominio privado para mi página web.")}`} target="_blank" rel="noreferrer">
             Consultar precio <span>→</span>
           </a>
-        </article>
+              </article>
+            </>
+          ) : (
+            <article className="category-coming-soon">
+              <div className="coming-soon-glow" />
+              <p className="section-label">NUEVA CATEGORÍA</p>
+              <span className="coming-soon-icon" aria-hidden="true"><i /><i /></span>
+              <h2>{storeCategories.find((category) => category.id === activeCategory)?.title}</h2>
+              <p>Estamos preparando los modelos y planes de esta categoría. Podés consultarnos ahora y diseñamos una propuesta personalizada para tu proyecto.</p>
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola, buenas. Quería consultar por la categoría ${storeCategories.find((category) => category.id === activeCategory)?.title}.`)}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Consultar esta categoría <span>→</span>
+              </a>
+            </article>
+          )}
+        </div>
       </section>
 
       <footer id="contacto">
