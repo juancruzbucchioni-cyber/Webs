@@ -285,7 +285,7 @@ export default function Home() {
               <article key={number}><span>{number}</span><i /><h2>{title}</h2><p>{copy}</p></article>
             ))}
           </div>
-          <a className="scroll-cue" href="#modelos"><span>Ver modelos</span><b>↓</b></a>
+          <a className="scroll-cue" href="#categorias"><span>Ver categorías</span><b>↓</b></a>
         </div>
       </section>
 
@@ -312,6 +312,10 @@ export default function Home() {
               </button>
             ))}
           </div>
+          <a className="category-models-cue" href="#modelos" onClick={goToModels}>
+            <span>Ver modelos</span>
+            <b>↓</b>
+          </a>
         </div>
 
         <div className="category-content" id="modelos">
