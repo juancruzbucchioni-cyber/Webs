@@ -198,7 +198,7 @@ export default function Home() {
           <img src="/jcb-development.png" alt="JCB Development" />
         </a>
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>
-          <a href="#inicio" onClick={() => setMenuOpen(false)}>Inicio</a>
+          <a href="/" onClick={() => setMenuOpen(false)}>Inicio</a>
           <a href="#categorias" onClick={() => setMenuOpen(false)}>Categorías</a>
           <a href="#modelos" onClick={() => setMenuOpen(false)}>Modelos</a>
           <a className="mobile-social-link" href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noreferrer">Contacto</a>
