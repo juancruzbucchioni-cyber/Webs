@@ -367,23 +367,6 @@ export default function Home() {
             </article>
           ))}
               </div>
-              {activeCategory === "negocios" && <article className="domain-addon">
-          <div className="domain-glow" />
-          <div className="domain-icon"><i /><i /><i /></div>
-          <div className="domain-content">
-            <small>ADICIONAL</small>
-            <h3>Dominio privado</h3>
-            <p>Usá una dirección profesional y exclusiva para tu negocio, como <strong>tunegocio.com.ar</strong>. El dominio se abona y renueva una vez por año. El valor depende de la extensión elegida y su disponibilidad.</p>
-          </div>
-          <div className="domain-price">
-            <span>PRECIO</span>
-            <strong>AL COSTO</strong>
-            <small>Pago anual · Sin recargos</small>
-          </div>
-          <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, buenas. Quería consultar el precio de un dominio privado para mi página web.")}`} target="_blank" rel="noreferrer">
-            Consultar precio <span>→</span>
-          </a>
-              </article>}
             </>
           ) : (
             <article className="category-coming-soon">
@@ -405,6 +388,23 @@ export default function Home() {
               </a>
             </article>
           )}
+          <article className="domain-addon">
+            <div className="domain-glow" />
+            <div className="domain-icon"><i /><i /><i /></div>
+            <div className="domain-content">
+              <small>ADICIONAL PARA TODAS LAS CATEGORÍAS</small>
+              <h3>Dominio privado</h3>
+              <p>Usá una dirección profesional y exclusiva para tu negocio, como <strong>tunegocio.com.ar</strong>. El dominio se abona y renueva una vez por año. El valor depende de la extensión elegida y su disponibilidad.</p>
+            </div>
+            <div className="domain-price">
+              <span>PRECIO</span>
+              <strong>AL COSTO</strong>
+              <small>Pago anual · Sin recargos</small>
+            </div>
+            <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola, buenas. Quería consultar el precio de un dominio privado para ${storeCategories.find((category) => category.id === activeCategory)?.title}.`)}`} target="_blank" rel="noreferrer">
+              Consultar precio <span>→</span>
+            </a>
+          </article>
         </div>
       </section>
 
