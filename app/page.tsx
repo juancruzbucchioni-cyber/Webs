@@ -79,6 +79,7 @@ export default function Home() {
   const [copied, setCopied] = useState("");
   const [showClientForm, setShowClientForm] = useState(false);
   const [clientFormValid, setClientFormValid] = useState(false);
+  const [expandedPlans, setExpandedPlans] = useState<number[]>([]);
 
   const closePayment = () => {
     setPaymentPlan(null);
@@ -189,7 +190,7 @@ export default function Home() {
               <p>{plan.copy}</p>
               <div className="price"><small>DESDE</small><strong>${plan.price}</strong><span>ARS</span></div>
               <ul>
-                {plan.features.map((feature) => {
+                {(expandedPlans.includes(index) ? plan.features : plan.features.slice(0, 6)).map((feature) => {
                   const isRepeated = feature.startsWith("Incluye todas");
                   return (
                     <li className={isRepeated ? "repeated-feature" : ""} key={feature}>
@@ -198,8 +199,16 @@ export default function Home() {
                   );
                 })}
               </ul>
+              <button
+                className={`features-toggle ${expandedPlans.includes(index) ? "expanded" : ""}`}
+                onClick={() => setExpandedPlans((current) => current.includes(index) ? current.filter((item) => item !== index) : [...current, index])}
+                aria-expanded={expandedPlans.includes(index)}
+              >
+                {expandedPlans.includes(index) ? "Ver menos características" : "Ver todas las características"}
+                <span>↓</span>
+              </button>
               <div className="plan-actions">
-                <button onClick={() => { setPaymentPlan(index); setPaymentMode(null); }}>Pagar <span>→</span></button>
+                <button onClick={() => { setPaymentPlan(index); setPaymentMode(null); }}>Adquirir <span>→</span></button>
               </div>
             </article>
           ))}
