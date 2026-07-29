@@ -38,10 +38,10 @@ const storeCategories = [
 const plans = [
   {
     category: "negocios",
-    type: "Web Avanzada / Catálogo Online",
+    type: "Web Avanzada",
     tag: "MÁS ELEGIDA",
-    price: "180.000",
-    amount: 180000,
+    price: "220.000",
+    amount: 220000,
     color: "blue",
     previews: [
       "/avanzada-gallery-01.png",
@@ -74,7 +74,7 @@ const plans = [
       "Hosting privado incluido durante 2 años",
       "Entrega estimada: 1 semana y media",
     ],
-    message: "Hola, buenas. Quería consultar por la Web Avanzada / Catálogo Online.",
+    message: "Hola, buenas. Quería consultar por la Web Avanzada.",
   },
   {
     category: "negocios",
