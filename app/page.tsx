@@ -164,6 +164,14 @@ export default function Home() {
     }, 50);
   };
 
+  const goToModels = () => {
+    setMenuOpen(false);
+    setActiveCategory("negocios");
+    window.setTimeout(() => {
+      document.getElementById("modelos")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  };
+
   const changeSlide = (planIndex: number, direction: number) => {
     setActiveSlides((current) => {
       const next = [...current];
@@ -234,7 +242,7 @@ export default function Home() {
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>
           <a href="/" onClick={() => setMenuOpen(false)}>Inicio</a>
           <a href="#categorias" onClick={() => setMenuOpen(false)}>Categorías</a>
-          <a href="#modelos" onClick={() => setMenuOpen(false)}>Modelos</a>
+          <a href="#modelos" onClick={goToModels}>Modelos</a>
           <a className="mobile-social-link" href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noreferrer">Contacto</a>
           <a className="mobile-social-link" href="https://www.instagram.com/juan.bucchioni/" target="_blank" rel="noreferrer">Instagram · @juan.bucchioni</a>
         </div>
@@ -277,7 +285,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="intro section" id="modelos">
+      <section className="intro section">
         <div className="category-selector" id="categorias">
           <p className="section-label">TIPOS DE TIENDAS ONLINE</p>
           <h2>Elegí una categoría.</h2>
@@ -308,7 +316,7 @@ export default function Home() {
               <p className="section-label">{activeCategory === "negocios" ? "SOLUCIONES PARA CADA NEGOCIO" : "SOLUCIONES PARA VENTAS DIGITALES"}</p>
               <h2>{activeCategory === "negocios" ? "Elegí la web que necesitás." : "Vendé productos digitales."}<br /><span>Nosotros la hacemos realidad.</span></h2>
               <p className="section-copy">{activeCategory === "negocios" ? "Valores claros para comenzar. Cada proyecto se personaliza con tu identidad, contenido y objetivos." : "Una solución completa para organizar tu catálogo, recibir pedidos y hacer crecer tu negocio digital."}</p>
-              <div className="plans">
+              <div className="plans" id="modelos">
           {plans.map((plan, index) => plan.category === activeCategory && (
             <article className={`plan-card ${plan.color}`} key={plan.type}>
               <div className="plan-glow" />
