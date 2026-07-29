@@ -118,7 +118,12 @@ const plans = [
     price: "350.000",
     amount: 350000,
     color: "blue",
-    previews: ["/categoria-ventas-digitales.png"],
+    previews: [
+      "/digital-gallery-01.png",
+      "/digital-gallery-02.png",
+      "/digital-gallery-03.png",
+      "/digital-gallery-04.png",
+    ],
     copy: "Una tienda profesional para vender cuentas, productos digitales, membresías, servicios y contenido online desde un catálogo claro y fácil de administrar.",
     features: [
       "Diseño 100 % personalizado para tu marca",
