@@ -52,7 +52,6 @@ const plans = [
       "/premium-gallery-04.png",
       "/premium-gallery-05.png",
       "/premium-gallery-06.png",
-      "/premium-gallery-07.png",
     ],
     copy: "Una solución completa para negocios que necesitan automatizar sus ventas, ofrecer una mejor experiencia de compra y administrar toda la operación desde un panel profesional.",
     features: [
