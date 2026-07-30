@@ -335,6 +335,17 @@ export default function Home() {
               </button>
             ))}
           </div>
+          <div className="domain-category-row">
+            <a className="category-card domain-category-card" href="#dominio">
+              <span className="category-number">04</span>
+              <span className="category-image" aria-hidden="true">
+                <img src="/categoria-dominio.png" alt="" />
+              </span>
+              <strong>Dominio privado</strong>
+              <small>Una dirección exclusiva y profesional para identificar tu página en internet.</small>
+              <b>Ver dominio <span>→</span></b>
+            </a>
+          </div>
           <a className="category-models-cue" href="#modelos" onClick={goToModels}>
             <span>Ver modelos</span>
             <b>↓</b>
@@ -396,7 +407,7 @@ export default function Home() {
               </div>
             </>
           ) : null}
-          <article className="domain-addon">
+          <article className="domain-addon" id="dominio">
             <div className="domain-glow" />
             <div className="domain-icon"><i /><i /><i /></div>
             <div className="domain-content">
