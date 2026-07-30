@@ -15,9 +15,9 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "JCB Development — Diseño y desarrollo web",
     description: "Webs a medida para marcas que quieren destacarse, vender más y crecer.",
     icons: {
-      icon: [{ url: "/jcb-favicon.png", type: "image/png" }],
-      shortcut: "/jcb-favicon.png",
-      apple: "/jcb-favicon.png",
+      icon: [{ url: "/favicon.png?v=3", type: "image/png", sizes: "64x64" }],
+      shortcut: "/favicon.png?v=3",
+      apple: "/jcb-favicon.png?v=3",
     },
     openGraph: {
       title: "JCB Development — Diseño y desarrollo web",
