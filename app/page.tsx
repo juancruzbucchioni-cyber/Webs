@@ -112,8 +112,8 @@ const plans = [
     amount: 200000,
     color: "blue",
     previews: [
-      "/importaciones-gallery-01.png",
       "/importaciones-gallery-02.png",
+      "/importaciones-gallery-01.png",
     ],
     copy: "Una web profesional para empresas y emprendimientos de importación que necesitan presentar sus servicios, exhibir productos y administrar consultas, clientes y oportunidades comerciales desde un solo lugar.",
     features: [
