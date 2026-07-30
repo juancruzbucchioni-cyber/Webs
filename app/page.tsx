@@ -33,8 +33,8 @@ const plans = [
     category: "negocios",
     type: "Web Avanzada",
     tag: "MÁS ELEGIDA",
-    price: "220.000",
-    amount: 220000,
+    price: "250.000",
+    amount: 250000,
     color: "blue",
     previews: [
       "/avanzada-gallery-01.png",
@@ -138,8 +138,8 @@ const plans = [
     category: "ventas-digitales",
     type: "Web E-commerce Digital",
     tag: "VENTAS DIGITALES",
-    price: "280.000",
-    amount: 280000,
+    price: "220.000",
+    amount: 220000,
     color: "blue",
     previews: [
       "/digital-gallery-01.png",
