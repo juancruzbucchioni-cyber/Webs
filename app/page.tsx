@@ -105,6 +105,36 @@ const plans = [
     message: "Hola, buenas. Quería consultar por la Web de Negocio Premium.",
   },
   {
+    category: "importaciones",
+    type: "Web Importaciones Basic",
+    tag: "IMPORTACIONES",
+    price: "200.000",
+    amount: 200000,
+    color: "blue",
+    previews: [
+      "/importaciones-gallery-01.png",
+      "/importaciones-gallery-02.png",
+    ],
+    copy: "Una web profesional para empresas y emprendimientos de importación que necesitan presentar sus servicios, exhibir productos y administrar consultas, clientes y oportunidades comerciales desde un solo lugar.",
+    features: [
+      "Diseño personalizado con los colores e identidad del negocio",
+      "Adaptada a celulares, tablets y computadoras",
+      "Integración con WhatsApp, Instagram y redes sociales",
+      "Categorías y buscador",
+      "Medios de pago: efectivo, transferencia y enlace de Mercado Pago",
+      "Precios especiales por transferencia",
+      "Control y actualización de stock",
+      "Capacidad para 230 productos",
+      "Registro opcional de costos y ganancias",
+      "Administración de clientes y su historial de compras",
+      "Creación de ofertas, descuentos y cupones",
+      "Mantenimiento y soporte durante 2 meses",
+      "Hosting privado incluido durante 2 años",
+      "Entrega estimada: 1 semana y media",
+    ],
+    message: "Hola, buenas. Quería consultar por la Web Importaciones Basic.",
+  },
+  {
     category: "ventas-digitales",
     type: "Web E-commerce Digital",
     tag: "VENTAS DIGITALES",
@@ -151,7 +181,7 @@ export default function Home() {
   const [showClientForm, setShowClientForm] = useState(false);
   const [clientFormValid, setClientFormValid] = useState(false);
   const [expandedPlans, setExpandedPlans] = useState<number[]>([]);
-  const [activeSlides, setActiveSlides] = useState([0, 0, 0]);
+  const [activeSlides, setActiveSlides] = useState([0, 0, 0, 0]);
   const [lightbox, setLightbox] = useState<{ planIndex: number; imageIndex: number } | null>(null);
   const [activeCategory, setActiveCategory] = useState<(typeof storeCategories)[number]["id"]>("negocios");
 
@@ -312,11 +342,11 @@ export default function Home() {
         </div>
 
         <div className="category-content" id="modelos">
-          {activeCategory === "negocios" || activeCategory === "ventas-digitales" ? (
+          {activeCategory === "negocios" || activeCategory === "importaciones" || activeCategory === "ventas-digitales" ? (
             <>
-              <p className="section-label">{activeCategory === "negocios" ? "SOLUCIONES PARA CADA NEGOCIO" : "SOLUCIONES PARA VENTAS DIGITALES"}</p>
-              <h2>{activeCategory === "negocios" ? "Elegí la web que necesitás." : "Vendé productos digitales."}<br /><span>Nosotros la hacemos realidad.</span></h2>
-              <p className="section-copy">{activeCategory === "negocios" ? "Valores claros para comenzar. Cada proyecto se personaliza con tu identidad, contenido y objetivos." : "Una solución completa para organizar tu catálogo, recibir pedidos y hacer crecer tu negocio digital."}</p>
+              <p className="section-label">{activeCategory === "negocios" ? "SOLUCIONES PARA CADA NEGOCIO" : activeCategory === "importaciones" ? "SOLUCIONES PARA IMPORTACIONES" : "SOLUCIONES PARA VENTAS DIGITALES"}</p>
+              <h2>{activeCategory === "negocios" ? "Elegí la web que necesitás." : activeCategory === "importaciones" ? "Conectá mercados y clientes." : "Vendé productos digitales."}<br /><span>Nosotros la hacemos realidad.</span></h2>
+              <p className="section-copy">{activeCategory === "negocios" ? "Valores claros para comenzar. Cada proyecto se personaliza con tu identidad, contenido y objetivos." : activeCategory === "importaciones" ? "Una presencia profesional para presentar servicios, productos y oportunidades comerciales de importación." : "Una solución completa para organizar tu catálogo, recibir pedidos y hacer crecer tu negocio digital."}</p>
               <div className="plans">
           {plans.map((plan, index) => plan.category === activeCategory && (
             <article className={`plan-card ${plan.color}`} key={plan.type}>
@@ -342,8 +372,9 @@ export default function Home() {
               <ul>
                 {(expandedPlans.includes(index) ? plan.features : plan.features.slice(0, 6)).map((feature) => {
                   const isRepeated = feature.startsWith("Incluye todas");
+                  const isDelivery = feature.startsWith("Entrega estimada");
                   return (
-                    <li className={isRepeated ? "repeated-feature" : ""} key={feature}>
+                    <li className={isRepeated ? "repeated-feature" : isDelivery ? "delivery-feature" : ""} key={feature}>
                       <span>✓</span>{feature}
                     </li>
                   );

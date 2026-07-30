@@ -109,6 +109,8 @@ button { color:inherit; font:inherit; }
 .plan-card ul { list-style:none; padding:20px 0 10px; margin:0; border-top:1px solid var(--line); }.plan-card li { color:#a9a5ae; font-size:11px; padding:7px 0; }.plan-card li span { color:#a75dff; margin-right:10px; }
 .plan-card li.repeated-feature { color:#d6b4ff; font-weight:700; background:rgba(155,72,255,.11); border:1px solid rgba(180,112,255,.2); border-radius:8px; margin:0 0 7px; padding:10px; }
 .plan-card li.repeated-feature span { color:#c477ff; }
+.plan-card li.delivery-feature { color:#d9bdff; font-weight:800; background:linear-gradient(90deg,rgba(116,45,202,.2),rgba(181,59,230,.1)); border:1px solid rgba(185,105,255,.38); border-radius:8px; margin:7px 0 2px; padding:11px 10px; box-shadow:0 8px 24px rgba(103,38,172,.1); }
+.plan-card li.delivery-feature span { color:#cc78ff; }
 .features-toggle { width:100%; display:flex; align-items:center; justify-content:space-between; margin:4px 0 14px; padding:12px 13px; border:1px solid rgba(166,91,235,.24); border-radius:8px; background:rgba(122,48,190,.08); color:#c69be9; font-size:9px; font-weight:750; cursor:pointer; }.features-toggle span{font-size:15px;transition:transform .25s ease}.features-toggle.expanded span{transform:rotate(180deg)}.features-toggle:hover{background:rgba(122,48,190,.15);border-color:rgba(180,108,246,.4)}
 .plan-actions { display:block; margin:0 -23px -23px; }
 .plan-actions button { width:100%; display:flex; justify-content:space-between; align-items:center; padding:19px 22px; font-size:11px; font-weight:850; letter-spacing:.04em; color:white; cursor:pointer; background:linear-gradient(110deg,#6324bd,#8b35d4); border:0; box-shadow:0 -8px 30px rgba(106,38,183,.14); }
