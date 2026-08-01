@@ -138,8 +138,8 @@ const plans = [
     category: "ventas-digitales",
     type: "Web E-commerce Digital",
     tag: "VENTAS DIGITALES",
-    price: "220.000",
-    amount: 220000,
+    price: "230.000",
+    amount: 230000,
     color: "blue",
     previews: [
       "/digital-gallery-01.png",
