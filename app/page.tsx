@@ -188,6 +188,7 @@ const plans = [
     price: "50.000",
     amount: 50000,
     monthlyAmount: 12000,
+    subscriptionUrl: "https://mpago.la/1LV5gTH",
     color: "blue",
     previews: [
       "/dashboard-gallery-01.png",
@@ -595,10 +596,19 @@ export default function Home() {
                     <small>ARS</small>
                   </button>
                   {"monthlyAmount" in plans[paymentPlan] && (
-                    <button className="monthly-option" onClick={() => setPaymentMode("monthly")}>
+                    <button className="monthly-option" onClick={() => {
+                      const selectedPlan = plans[paymentPlan];
+                      if ("subscriptionUrl" in selectedPlan) {
+                        const subscriptionUrl = selectedPlan.subscriptionUrl;
+                        closePayment();
+                        window.open(subscriptionUrl, "_blank", "noopener,noreferrer");
+                        return;
+                      }
+                      setPaymentMode("monthly");
+                    }}>
                       <span>PLAN MENSUAL</span>
                       <strong>${plans[paymentPlan].monthlyAmount.toLocaleString("es-AR")}</strong>
-                      <small>ARS POR MES</small>
+                      <small>{"subscriptionUrl" in plans[paymentPlan] ? "ARS POR MES · COBRO AUTOMÁTICO CON MERCADO PAGO" : "ARS POR MES"}</small>
                     </button>
                   )}
                 </div>
