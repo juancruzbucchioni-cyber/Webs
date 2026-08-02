@@ -663,7 +663,7 @@ export default function Home() {
                     { alias: "bucchio", cvu: "0000168300000027027897" },
                   ].map((account, index) => (
                     <article key={account.cvu}>
-                      <small>CUENTA DE MERCADO PAGO</small>
+                      <small>TRANSFERENCIA A LEMON</small>
                       <p>A nombre de <strong>Juan Cruz Bucchioni Moya</strong></p>
                       <div><span>Alias</span><strong>{account.alias}</strong><button onClick={() => copyValue(`alias-${index}`, account.alias)}>{copied === `alias-${index}` ? "Copiado" : "Copiar"}</button></div>
                       <div><span>CVU</span><strong>{account.cvu}</strong><button onClick={() => copyValue(`cvu-${index}`, account.cvu)}>{copied === `cvu-${index}` ? "Copiado" : "Copiar"}</button></div>
