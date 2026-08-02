@@ -499,6 +499,7 @@ export default function Home() {
       <footer id="contacto">
         <a className="brand brand-logo footer-logo" href="/" aria-label="JCB Development, inicio"><img src="/jcb-development.png" alt="JCB Development" /></a>
         <span>DISEÑO Y DESARROLLO WEB · 2025</span>
+        <button className="footer-terms" onClick={() => setShowTermsModal(true)}>Términos y condiciones</button>
         <a href="#inicio">Volver arriba ↑</a>
       </footer>
 

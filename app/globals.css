@@ -170,6 +170,8 @@ button { color:inherit; font:inherit; }
 .contact-logo { filter:drop-shadow(0 10px 30px rgba(130,50,255,.5)) }
 .large{padding:17px 24px}
 footer { height:90px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 7vw;color:#65616b;font-size:9px;letter-spacing:.12em}.footer-logo{width:170px;height:48px}footer>a:last-child{font-size:10px}
+.footer-terms { padding:5px 0; border:0; border-bottom:1px solid rgba(164,105,215,.24); background:transparent; color:#756d7d; font-size:8px; letter-spacing:.06em; cursor:pointer; transition:color .2s ease,border-color .2s ease; }
+.footer-terms:hover { color:#b58bd6; border-color:rgba(183,120,238,.55); }
 .demo-overlay { position:fixed; inset:0; z-index:100; display:grid; place-items:center; padding:28px; background:rgba(0,0,0,.84); backdrop-filter:blur(12px); animation:fade-in .2s ease; }
 @keyframes fade-in { from{opacity:0} }
 .demo-modal { width:min(1120px,100%); max-height:calc(100vh - 56px); border:1px solid rgba(255,255,255,.16); border-radius:15px; background:#0b0910; overflow:hidden; box-shadow:0 40px 120px #000,0 0 80px rgba(119,39,220,.2); }
