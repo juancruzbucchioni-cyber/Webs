@@ -146,6 +146,8 @@ const plans = [
       "/digital-gallery-02.png",
       "/digital-gallery-03.png",
       "/digital-gallery-04.png",
+      "/digital-gallery-05.png",
+      "/digital-gallery-06.png",
     ],
     copy: "Una tienda profesional para vender cuentas, productos digitales, membresías, servicios y contenido online desde un catálogo claro y fácil de administrar.",
     features: [
