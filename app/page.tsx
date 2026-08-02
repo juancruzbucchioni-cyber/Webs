@@ -217,6 +217,48 @@ const plans = [
     ],
     message: "Hola, buenas. Quería consultar por el Dashboard General.",
   },
+  {
+    category: "administracion-gastos",
+    type: "Dashboard Personalizado",
+    tag: "PERSONALIZADO",
+    price: "62.000",
+    amount: 62000,
+    monthlyAmount: 16200,
+    color: "pink",
+    previews: [
+      "/dashboard-gallery-01.png",
+      "/dashboard-gallery-02.png",
+      "/dashboard-gallery-03.png",
+      "/dashboard-gallery-04.png",
+      "/dashboard-gallery-05.png",
+      "/dashboard-gallery-06.png",
+      "/dashboard-gallery-07.png",
+      "/dashboard-gallery-08.png",
+    ],
+    copy: "Una solución práctica para administrar y controlar tu negocio desde un solo lugar, ahorrar tiempo, mantener las cuentas ordenadas y tomar mejores decisiones.",
+    highlight: "Tomamos nuestro sistema y lo adaptamos a cómo funciona TU negocio.",
+    features: [
+      "Logo y nombre de la empresa",
+      "Colores y estética de marca personalizados",
+      "Dashboard adaptado a la identidad visual del negocio",
+      "Gestión de ventas, productos, gastos y pagos",
+      "Cálculo automático de ganancias, costos y márgenes",
+      "Estadísticas y gráficos personalizados",
+      "Reportes financieros descargables en PDF",
+      "Buscadores, filtros y categorías",
+      "Módulos personalizados según el tipo de negocio",
+      "Campos y funciones adicionales a elección",
+      "Acceso desde computadora y celular",
+      "Información protegida y respaldada en la nube",
+      "Dominio personalizado disponible como adicional",
+      "Configuración y puesta en marcha incluida",
+      "Soporte prioritario",
+      "Identidad visual del cliente integrada en todo el sistema",
+      "Hosting privado de regalo durante 1 año",
+      "Entrega estimada: 1 semana y media",
+    ],
+    message: "Hola, buenas. Quería consultar por el Dashboard Personalizado.",
+  },
 ];
 
 export default function Home() {
@@ -227,7 +269,7 @@ export default function Home() {
   const [showClientForm, setShowClientForm] = useState(false);
   const [clientFormValid, setClientFormValid] = useState(false);
   const [expandedPlans, setExpandedPlans] = useState<number[]>([]);
-  const [activeSlides, setActiveSlides] = useState([0, 0, 0, 0, 0]);
+  const [activeSlides, setActiveSlides] = useState([0, 0, 0, 0, 0, 0]);
   const [lightbox, setLightbox] = useState<{ planIndex: number; imageIndex: number } | null>(null);
   const [activeCategory, setActiveCategory] = useState<(typeof storeCategories)[number]["id"]>("negocios");
   const [showTermsNotice, setShowTermsNotice] = useState(false);
@@ -447,6 +489,7 @@ export default function Home() {
                 )}
               </figure>
               <p>{plan.copy}</p>
+              {"highlight" in plan && <div className="plan-highlight">{plan.highlight}</div>}
               <div className="price"><small>DESDE</small><strong>${plan.price}</strong><span>ARS</span></div>
               {"monthlyAmount" in plan && <div className="monthly-price"><small>O PLAN MENSUAL</small><strong>${plan.monthlyAmount.toLocaleString("es-AR")}</strong><span>ARS / MES</span></div>}
               <ul>

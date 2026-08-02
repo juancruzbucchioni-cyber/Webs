@@ -130,6 +130,7 @@ button { color:inherit; font:inherit; }
 .monthly-price { display:flex; align-items:baseline; justify-content:center; gap:9px; margin:-8px 0 17px; padding:11px 14px; border:1px solid rgba(181,104,245,.3); border-radius:9px; background:rgba(127,45,201,.1); color:#d8b7f5; }
 .monthly-price small,.monthly-price span { color:#a994b9; font-size:8px; letter-spacing:.1em; }
 .monthly-price strong { color:#d9a5ff; font-size:22px; }
+.plan-highlight { margin:18px 0 24px; padding:15px 16px; border:1px solid rgba(193,111,255,.5); border-radius:10px; background:linear-gradient(110deg,rgba(111,39,191,.24),rgba(177,49,211,.13)); color:#f0dcff; font:600 16px/1.35 "Berlin Sans FB Demi","Trebuchet MS",sans-serif; text-align:center; box-shadow:0 10px 30px rgba(111,39,191,.13); }
 .terms-notice { position:fixed; left:16px; bottom:16px; z-index:80; width:min(270px,calc(100vw - 32px)); padding:14px; border:1px solid rgba(180,103,244,.34); border-radius:11px; background:rgba(12,9,17,.94); box-shadow:0 14px 45px rgba(0,0,0,.42); backdrop-filter:blur(14px); }
 .terms-notice .terms-link { padding:0; border:0; background:transparent; color:#d6a7ff; font-size:10px; font-weight:800; cursor:pointer; text-decoration:underline; text-underline-offset:3px; }
 .terms-notice p { margin:7px 0 11px; color:#99929f; font-size:9px; line-height:1.5; }
