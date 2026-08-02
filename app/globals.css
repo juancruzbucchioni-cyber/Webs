@@ -130,6 +130,18 @@ button { color:inherit; font:inherit; }
 .monthly-price { display:flex; align-items:baseline; justify-content:center; gap:9px; margin:-8px 0 17px; padding:11px 14px; border:1px solid rgba(181,104,245,.3); border-radius:9px; background:rgba(127,45,201,.1); color:#d8b7f5; }
 .monthly-price small,.monthly-price span { color:#a994b9; font-size:8px; letter-spacing:.1em; }
 .monthly-price strong { color:#d9a5ff; font-size:22px; }
+.terms-notice { position:fixed; left:16px; bottom:16px; z-index:80; width:min(270px,calc(100vw - 32px)); padding:14px; border:1px solid rgba(180,103,244,.34); border-radius:11px; background:rgba(12,9,17,.94); box-shadow:0 14px 45px rgba(0,0,0,.42); backdrop-filter:blur(14px); }
+.terms-notice .terms-link { padding:0; border:0; background:transparent; color:#d6a7ff; font-size:10px; font-weight:800; cursor:pointer; text-decoration:underline; text-underline-offset:3px; }
+.terms-notice p { margin:7px 0 11px; color:#99929f; font-size:9px; line-height:1.5; }
+.terms-accept { width:100%; padding:10px 12px; border:1px solid rgba(188,112,255,.44); border-radius:7px; background:linear-gradient(110deg,#6324bd,#8b35d4); color:white; font-size:9px; font-weight:800; cursor:pointer; }
+.terms-overlay { position:fixed; inset:0; z-index:120; display:grid; place-items:center; padding:20px; background:rgba(0,0,0,.84); backdrop-filter:blur(12px); }
+.terms-modal { width:min(760px,100%); max-height:calc(100vh - 40px); position:relative; padding:28px; border:1px solid rgba(174,98,247,.34); border-radius:15px; background:#0d0a12; box-shadow:0 30px 100px rgba(0,0,0,.65); }
+.terms-modal h2 { margin:7px 0 18px; font:600 28px/1.1 "Berlin Sans FB Demi","Trebuchet MS",sans-serif; }
+.terms-modal iframe { width:100%; height:min(56vh,520px); border:1px solid rgba(255,255,255,.09); border-radius:9px; background:#f7f6f8; }
+.terms-close { position:absolute; top:14px; right:15px; width:32px; height:32px; border:1px solid rgba(255,255,255,.12); border-radius:50%; background:#18131f; color:white; font-size:20px; cursor:pointer; }
+.terms-modal-actions { display:flex; justify-content:flex-end; gap:10px; margin-top:15px; }
+.terms-modal-actions button { padding:11px 15px; border:1px solid rgba(177,101,247,.35); border-radius:7px; background:transparent; color:#bcb4c2; font-size:9px; font-weight:800; cursor:pointer; }
+.terms-modal-actions button:last-child { background:linear-gradient(110deg,#6324bd,#8b35d4); color:white; }
 .payment-options button { display:flex; flex-direction:column; align-items:flex-start; gap:7px; padding:22px; border:1px solid rgba(174,99,255,.28); border-radius:12px; background:rgba(133,57,218,.08); color:white; cursor:pointer; }
 .payment-options button:hover { border-color:#a85eff; background:rgba(133,57,218,.16); }
 .payment-options span,.payment-options small { color:#aa78dc; font-size:9px; letter-spacing:.12em; }.payment-options strong{font-size:27px}

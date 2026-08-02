@@ -230,6 +230,27 @@ export default function Home() {
   const [activeSlides, setActiveSlides] = useState([0, 0, 0, 0, 0]);
   const [lightbox, setLightbox] = useState<{ planIndex: number; imageIndex: number } | null>(null);
   const [activeCategory, setActiveCategory] = useState<(typeof storeCategories)[number]["id"]>("negocios");
+  const [showTermsNotice, setShowTermsNotice] = useState(false);
+  const [showTermsModal, setShowTermsModal] = useState(false);
+
+  useEffect(() => {
+    setShowTermsNotice(window.localStorage.getItem("jcb-terms-accepted") !== "true");
+  }, []);
+
+  const acceptTerms = () => {
+    window.localStorage.setItem("jcb-terms-accepted", "true");
+    setShowTermsNotice(false);
+    setShowTermsModal(false);
+  };
+
+  useEffect(() => {
+    if (!showTermsModal) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setShowTermsModal(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [showTermsModal]);
 
   const selectCategory = (category: (typeof storeCategories)[number]["id"]) => {
     setActiveCategory(category);
@@ -480,6 +501,31 @@ export default function Home() {
         <span>DISEÑO Y DESARROLLO WEB · 2025</span>
         <a href="#inicio">Volver arriba ↑</a>
       </footer>
+
+      {showTermsNotice && (
+        <aside className="terms-notice" aria-label="Aviso de términos y condiciones">
+          <button className="terms-link" onClick={() => setShowTermsModal(true)}>Términos y condiciones</button>
+          <p>Al continuar, confirmás que leíste y aceptás nuestras condiciones.</p>
+          <button className="terms-accept" onClick={acceptTerms}>Aceptar</button>
+        </aside>
+      )}
+
+      {showTermsModal && (
+        <div className="terms-overlay" role="dialog" aria-modal="true" aria-label="Términos y condiciones" onMouseDown={(event) => {
+          if (event.target === event.currentTarget) setShowTermsModal(false);
+        }}>
+          <section className="terms-modal">
+            <button className="terms-close" onClick={() => setShowTermsModal(false)} aria-label="Cerrar términos">×</button>
+            <p className="section-label">JCB DEVELOPMENT</p>
+            <h2>Términos y condiciones</h2>
+            <iframe src="/terminos-y-condiciones.txt" title="Términos y condiciones completos" />
+            <div className="terms-modal-actions">
+              <button onClick={() => setShowTermsModal(false)}>Cerrar</button>
+              <button onClick={acceptTerms}>Aceptar términos y condiciones</button>
+            </div>
+          </section>
+        </div>
+      )}
 
       {paymentPlan !== null && (
         <div className="payment-overlay" role="dialog" aria-modal="true" aria-label="Datos para realizar el pago" onMouseDown={(event) => {
