@@ -225,6 +225,7 @@ const plans = [
     price: "70.000",
     amount: 70000,
     monthlyAmount: 16200,
+    subscriptionUrl: "https://mpago.la/1cUK2X1",
     color: "pink",
     previews: [
       "/personalizado-gallery-01.png",
