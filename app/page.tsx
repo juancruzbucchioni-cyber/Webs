@@ -3,6 +3,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 
 const WHATSAPP_NUMBER = "5493534128474";
+const MERCADO_PAGO_LINK = "https://link.mercadopago.com.ar/jcbdevelopment";
 
 const storeCategories = [
   {
@@ -653,6 +654,15 @@ export default function Home() {
                   <span>{paymentMode === "deposit" ? "SEÑA DEL 35 %" : paymentMode === "monthly" ? "PRIMER MES" : "PAGO COMPLETO"}</span>
                   <strong>${(paymentMode === "deposit" ? Math.round(plans[paymentPlan].amount * 0.35) : paymentMode === "monthly" && "monthlyAmount" in plans[paymentPlan] ? plans[paymentPlan].monthlyAmount : plans[paymentPlan].amount).toLocaleString("es-AR")} ARS</strong>
                 </div>
+                <div className="mercado-pago-option">
+                  <div>
+                    <span>PAGO ONLINE</span>
+                    <strong>Mercado Pago</strong>
+                    <small>Al abrir el link, ingresá exactamente el importe indicado arriba.</small>
+                  </div>
+                  <a href={MERCADO_PAGO_LINK} target="_blank" rel="noreferrer">Pagar con Mercado Pago <span>→</span></a>
+                </div>
+                <div className="payment-divider"><span>O TRANSFERÍ A LEMON</span></div>
                 <div className="payment-owner">
                   <span>TITULAR DE LA CUENTA</span>
                   <strong>Juan Cruz Bucchioni Moya</strong>
