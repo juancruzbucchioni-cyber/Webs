@@ -654,31 +654,32 @@ export default function Home() {
                   <span>{paymentMode === "deposit" ? "SEÑA DEL 35 %" : paymentMode === "monthly" ? "PRIMER MES" : "PAGO COMPLETO"}</span>
                   <strong>${(paymentMode === "deposit" ? Math.round(plans[paymentPlan].amount * 0.35) : paymentMode === "monthly" && "monthlyAmount" in plans[paymentPlan] ? plans[paymentPlan].monthlyAmount : plans[paymentPlan].amount).toLocaleString("es-AR")} ARS</strong>
                 </div>
-                <div className="mercado-pago-option">
-                  <div>
-                    <span>PAGO ONLINE</span>
-                    <strong>Mercado Pago</strong>
-                    <small>Al abrir el link, ingresá exactamente el importe indicado arriba.</small>
-                  </div>
-                  <a href={MERCADO_PAGO_LINK} target="_blank" rel="noreferrer">Pagar con Mercado Pago <span>→</span></a>
-                </div>
-                <div className="payment-divider"><span>O TRANSFERÍ A LEMON</span></div>
                 <div className="payment-owner">
                   <span>TITULAR DE LA CUENTA</span>
                   <strong>Juan Cruz Bucchioni Moya</strong>
                   <small>Verificá este nombre antes de realizar la transferencia.</small>
                 </div>
-                <div className="bank-accounts">
-                  {[
-                    { alias: "bucchio", cvu: "0000168300000027027897" },
-                  ].map((account, index) => (
-                    <article key={account.cvu}>
-                      <small>TRANSFERENCIA A LEMON</small>
-                      <p>A nombre de <strong>Juan Cruz Bucchioni Moya</strong></p>
-                      <div><span>Alias</span><strong>{account.alias}</strong><button onClick={() => copyValue(`alias-${index}`, account.alias)}>{copied === `alias-${index}` ? "Copiado" : "Copiar"}</button></div>
-                      <div><span>CVU</span><strong>{account.cvu}</strong><button onClick={() => copyValue(`cvu-${index}`, account.cvu)}>{copied === `cvu-${index}` ? "Copiado" : "Copiar"}</button></div>
-                    </article>
-                  ))}
+                <div className="payment-methods-grid">
+                  <div className="mercado-pago-option">
+                    <div>
+                      <span>PAGO ONLINE</span>
+                      <strong>Mercado Pago</strong>
+                      <small>Al abrir el link, ingresá exactamente el importe indicado arriba.</small>
+                    </div>
+                    <a href={MERCADO_PAGO_LINK} target="_blank" rel="noreferrer">Pagar con Mercado Pago <span>→</span></a>
+                  </div>
+                  <div className="bank-accounts">
+                    {[
+                      { alias: "bucchio", cvu: "0000168300000027027897" },
+                    ].map((account, index) => (
+                      <article key={account.cvu}>
+                        <small>TRANSFERENCIA A LEMON</small>
+                        <p>A nombre de <strong>Juan Cruz Bucchioni Moya</strong></p>
+                        <div><span>Alias</span><strong>{account.alias}</strong><button onClick={() => copyValue(`alias-${index}`, account.alias)}>{copied === `alias-${index}` ? "Copiado" : "Copiar"}</button></div>
+                        <div><span>CVU</span><strong>{account.cvu}</strong><button onClick={() => copyValue(`cvu-${index}`, account.cvu)}>{copied === `cvu-${index}` ? "Copiado" : "Copiar"}</button></div>
+                      </article>
+                    ))}
+                  </div>
                 </div>
                 <div className="payment-footer-actions">
                   <button onClick={() => setPaymentMode(null)}>← Cambiar importe</button>
