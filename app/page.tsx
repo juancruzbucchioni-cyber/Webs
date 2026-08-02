@@ -26,6 +26,13 @@ const storeCategories = [
     copy: "Plataformas para vender cuentas, productos digitales, membresías, servicios y contenido online.",
     image: "/categoria-ventas-digitales.png",
   },
+  {
+    id: "administracion-gastos",
+    number: "04",
+    title: "Administración de gastos",
+    copy: "Sistemas para registrar ingresos, controlar gastos y conocer los resultados de tu negocio.",
+    image: "/categoria-gastos.png",
+  },
 ] as const;
 
 const plans = [
@@ -340,7 +347,7 @@ export default function Home() {
           </div>
           <div className="domain-category-row">
             <a className="category-card domain-category-card" href="#dominio">
-              <span className="category-number">04</span>
+              <span className="category-number">05</span>
               <span className="category-image" aria-hidden="true">
                 <img src="/categoria-dominio.png" alt="" />
               </span>
