@@ -221,8 +221,8 @@ const plans = [
     category: "administracion-gastos",
     type: "Dashboard Personalizado",
     tag: "PERSONALIZADO",
-    price: "62.000",
-    amount: 62000,
+    price: "70.000",
+    amount: 70000,
     monthlyAmount: 16200,
     color: "pink",
     previews: [
