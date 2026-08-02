@@ -317,7 +317,6 @@ export default function Home() {
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>
           <a href="/" onClick={() => setMenuOpen(false)}>Inicio</a>
           <a href="#categorias" onClick={() => setMenuOpen(false)}>Categorías</a>
-          <a href="#modelos" onClick={goToModels}>Modelos</a>
           <a className="mobile-social-link" href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noreferrer">Contacto</a>
           <a className="mobile-social-link" href="https://www.instagram.com/juan.bucchioni/" target="_blank" rel="noreferrer">Instagram · @juan.bucchioni</a>
         </div>
