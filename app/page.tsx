@@ -181,17 +181,44 @@ const plans = [
     ],
     message: "Hola, buenas. Quería consultar por la Web E-commerce Digital.",
   },
+  {
+    category: "administracion-gastos",
+    type: "Dashboard General",
+    tag: "ADMINISTRACIÓN",
+    price: "45.000",
+    amount: 45000,
+    monthlyAmount: 9000,
+    color: "blue",
+    previews: ["/categoria-gastos.png"],
+    copy: "Una solución práctica para administrar y controlar tu negocio desde un solo lugar, ahorrar tiempo, mantener las cuentas ordenadas y tomar mejores decisiones.",
+    features: [
+      "Gestión de ventas, productos, gastos y pagos",
+      "Cálculo automático de ganancias, costos y márgenes",
+      "Estadísticas claras sobre el rendimiento del negocio",
+      "Reportes financieros descargables en PDF",
+      "Precios especiales según la cantidad vendida",
+      "Buscadores, filtros y categorías organizadas",
+      "Color principal del sistema a elección",
+      "Acceso seguro desde computadora o celular",
+      "Información protegida y respaldada en la nube",
+      "Interfaz moderna, rápida y fácil de utilizar",
+      "Identidad visual de JB incluida",
+      "Hosting privado de regalo durante 1 año",
+      "Entrega estimada: 1 semana y media",
+    ],
+    message: "Hola, buenas. Quería consultar por el Dashboard General.",
+  },
 ];
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [paymentPlan, setPaymentPlan] = useState<number | null>(null);
-  const [paymentMode, setPaymentMode] = useState<"deposit" | "full" | null>(null);
+  const [paymentMode, setPaymentMode] = useState<"deposit" | "full" | "monthly" | null>(null);
   const [copied, setCopied] = useState("");
   const [showClientForm, setShowClientForm] = useState(false);
   const [clientFormValid, setClientFormValid] = useState(false);
   const [expandedPlans, setExpandedPlans] = useState<number[]>([]);
-  const [activeSlides, setActiveSlides] = useState([0, 0, 0, 0]);
+  const [activeSlides, setActiveSlides] = useState([0, 0, 0, 0, 0]);
   const [lightbox, setLightbox] = useState<{ planIndex: number; imageIndex: number } | null>(null);
   const [activeCategory, setActiveCategory] = useState<(typeof storeCategories)[number]["id"]>("negocios");
 
@@ -245,12 +272,14 @@ export default function Home() {
     event.preventDefault();
     if (paymentPlan === null || paymentMode === null) return;
     const data = new FormData(event.currentTarget);
-    const amount = paymentMode === "deposit" ? Math.round(plans[paymentPlan].amount * 0.35) : plans[paymentPlan].amount;
+    const selectedPlan = plans[paymentPlan];
+    const monthlyAmount = "monthlyAmount" in selectedPlan ? selectedPlan.monthlyAmount : null;
+    const amount = paymentMode === "deposit" ? Math.round(selectedPlan.amount * 0.35) : paymentMode === "monthly" && monthlyAmount ? monthlyAmount : selectedPlan.amount;
     const message = [
       "Hola, buenas. Ya realicé el pago y quiero comenzar mi página.",
       "",
       `Plan: ${plans[paymentPlan].type}`,
-      `Pago: ${paymentMode === "deposit" ? "Seña del 35 %" : "Pago completo"}`,
+      `Pago: ${paymentMode === "deposit" ? "Seña del 35 %" : paymentMode === "monthly" ? "Primer mes del plan mensual" : "Pago completo"}`,
       `Importe: $${amount.toLocaleString("es-AR")} ARS`,
       "",
       "DATOS PARA CREAR LA PÁGINA",
@@ -363,11 +392,11 @@ export default function Home() {
         </div>
 
         <div className="category-content" id="modelos">
-          {activeCategory === "negocios" || activeCategory === "importaciones" || activeCategory === "ventas-digitales" ? (
+          {activeCategory === "negocios" || activeCategory === "importaciones" || activeCategory === "ventas-digitales" || activeCategory === "administracion-gastos" ? (
             <>
-              <p className="section-label">{activeCategory === "negocios" ? "SOLUCIONES PARA CADA NEGOCIO" : activeCategory === "importaciones" ? "SOLUCIONES PARA IMPORTACIONES" : "SOLUCIONES PARA VENTAS DIGITALES"}</p>
-              <h2>{activeCategory === "negocios" ? "Elegí la web que necesitás." : activeCategory === "importaciones" ? "Conectá mercados y clientes." : "Vendé productos digitales."}<br /><span>Nosotros la hacemos realidad.</span></h2>
-              <p className="section-copy">{activeCategory === "negocios" ? "Valores claros para comenzar. Cada proyecto se personaliza con tu identidad, contenido y objetivos." : activeCategory === "importaciones" ? "Una presencia profesional para presentar servicios, productos y oportunidades comerciales de importación." : "Una solución completa para organizar tu catálogo, recibir pedidos y hacer crecer tu negocio digital."}</p>
+              <p className="section-label">{activeCategory === "negocios" ? "SOLUCIONES PARA CADA NEGOCIO" : activeCategory === "importaciones" ? "SOLUCIONES PARA IMPORTACIONES" : activeCategory === "ventas-digitales" ? "SOLUCIONES PARA VENTAS DIGITALES" : "SOLUCIONES PARA ADMINISTRAR TU NEGOCIO"}</p>
+              <h2>{activeCategory === "negocios" ? "Elegí la web que necesitás." : activeCategory === "importaciones" ? "Conectá mercados y clientes." : activeCategory === "ventas-digitales" ? "Vendé productos digitales." : "Controlá todos tus números."}<br /><span>Nosotros la hacemos realidad.</span></h2>
+              <p className="section-copy">{activeCategory === "negocios" ? "Valores claros para comenzar. Cada proyecto se personaliza con tu identidad, contenido y objetivos." : activeCategory === "importaciones" ? "Una presencia profesional para presentar servicios, productos y oportunidades comerciales de importación." : activeCategory === "ventas-digitales" ? "Una solución completa para organizar tu catálogo, recibir pedidos y hacer crecer tu negocio digital." : "Centralizá ventas, gastos, productos y resultados desde un panel moderno, claro y seguro."}</p>
               <div className="plans">
           {plans.map((plan, index) => plan.category === activeCategory && (
             <article className={`plan-card ${plan.color}`} key={plan.type}>
@@ -390,6 +419,7 @@ export default function Home() {
               </figure>
               <p>{plan.copy}</p>
               <div className="price"><small>DESDE</small><strong>${plan.price}</strong><span>ARS</span></div>
+              {"monthlyAmount" in plan && <div className="monthly-price"><small>O PLAN MENSUAL</small><strong>${plan.monthlyAmount.toLocaleString("es-AR")}</strong><span>ARS / MES</span></div>}
               <ul>
                 {(expandedPlans.includes(index) ? plan.features : plan.features.slice(0, 6)).map((feature) => {
                   const isRepeated = feature.startsWith("Incluye todas");
@@ -466,13 +496,20 @@ export default function Home() {
                     <strong>${plans[paymentPlan].amount.toLocaleString("es-AR")}</strong>
                     <small>ARS</small>
                   </button>
+                  {"monthlyAmount" in plans[paymentPlan] && (
+                    <button className="monthly-option" onClick={() => setPaymentMode("monthly")}>
+                      <span>PLAN MENSUAL</span>
+                      <strong>${plans[paymentPlan].monthlyAmount.toLocaleString("es-AR")}</strong>
+                      <small>ARS POR MES</small>
+                    </button>
+                  )}
                 </div>
               </>
             ) : showClientForm ? (
               <form className="client-form" onSubmit={submitClientForm} onInput={(event) => setClientFormValid(event.currentTarget.checkValidity())}>
                 <div className="payment-total">
-                  <span>{paymentMode === "deposit" ? "SEÑA DEL 35 %" : "PAGO COMPLETO"}</span>
-                  <strong>${(paymentMode === "deposit" ? Math.round(plans[paymentPlan].amount * 0.35) : plans[paymentPlan].amount).toLocaleString("es-AR")} ARS</strong>
+                  <span>{paymentMode === "deposit" ? "SEÑA DEL 35 %" : paymentMode === "monthly" ? "PRIMER MES" : "PAGO COMPLETO"}</span>
+                  <strong>${(paymentMode === "deposit" ? Math.round(plans[paymentPlan].amount * 0.35) : paymentMode === "monthly" && "monthlyAmount" in plans[paymentPlan] ? plans[paymentPlan].monthlyAmount : plans[paymentPlan].amount).toLocaleString("es-AR")} ARS</strong>
                 </div>
                 <div className="form-heading">
                   <small>INFORMACIÓN DE LA PÁGINA</small>
@@ -504,8 +541,8 @@ export default function Home() {
             ) : (
               <>
                 <div className="payment-total">
-                  <span>{paymentMode === "deposit" ? "SEÑA DEL 35 %" : "PAGO COMPLETO"}</span>
-                  <strong>${(paymentMode === "deposit" ? Math.round(plans[paymentPlan].amount * 0.35) : plans[paymentPlan].amount).toLocaleString("es-AR")} ARS</strong>
+                  <span>{paymentMode === "deposit" ? "SEÑA DEL 35 %" : paymentMode === "monthly" ? "PRIMER MES" : "PAGO COMPLETO"}</span>
+                  <strong>${(paymentMode === "deposit" ? Math.round(plans[paymentPlan].amount * 0.35) : paymentMode === "monthly" && "monthlyAmount" in plans[paymentPlan] ? plans[paymentPlan].monthlyAmount : plans[paymentPlan].amount).toLocaleString("es-AR")} ARS</strong>
                 </div>
                 <div className="payment-owner">
                   <span>TITULAR DE LA CUENTA</span>

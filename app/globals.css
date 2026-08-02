@@ -126,6 +126,10 @@ button { color:inherit; font:inherit; }
 .payment-modal h2 { font:600 30px/1.05 "Berlin Sans FB Demi","Trebuchet MS",sans-serif; margin:12px 0 0; }
 .payment-intro { color:#96909d; font-size:12px; margin:18px 0 24px; }
 .payment-options { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.payment-options .monthly-option { grid-column:1/-1; background:linear-gradient(110deg,rgba(98,36,189,.24),rgba(139,53,212,.2)); border-color:rgba(190,117,255,.55); }
+.monthly-price { display:flex; align-items:baseline; justify-content:center; gap:9px; margin:-8px 0 17px; padding:11px 14px; border:1px solid rgba(181,104,245,.3); border-radius:9px; background:rgba(127,45,201,.1); color:#d8b7f5; }
+.monthly-price small,.monthly-price span { color:#a994b9; font-size:8px; letter-spacing:.1em; }
+.monthly-price strong { color:#d9a5ff; font-size:22px; }
 .payment-options button { display:flex; flex-direction:column; align-items:flex-start; gap:7px; padding:22px; border:1px solid rgba(174,99,255,.28); border-radius:12px; background:rgba(133,57,218,.08); color:white; cursor:pointer; }
 .payment-options button:hover { border-color:#a85eff; background:rgba(133,57,218,.16); }
 .payment-options span,.payment-options small { color:#aa78dc; font-size:9px; letter-spacing:.12em; }.payment-options strong{font-size:27px}
