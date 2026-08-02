@@ -223,9 +223,9 @@ const plans = [
     category: "administracion-gastos",
     type: "Dashboard Personalizado",
     tag: "PERSONALIZADO",
-    price: "70.000",
-    amount: 70000,
-    monthlyAmount: 16200,
+    price: "90.000",
+    amount: 90000,
+    monthlyAmount: 22000,
     subscriptionUrl: "https://mpago.la/1cUK2X1",
     color: "pink",
     previews: [
