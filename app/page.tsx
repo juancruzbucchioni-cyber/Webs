@@ -203,6 +203,7 @@ const plans = [
     ],
     copy: "Una solución práctica para administrar y controlar tu negocio desde un solo lugar, ahorrar tiempo, mantener las cuentas ordenadas y tomar mejores decisiones.",
     features: [
+      "Acceso para 2 personas con cuentas separadas",
       "Gestión de ventas, productos, gastos y pagos",
       "Cálculo automático de ganancias, costos y márgenes",
       "Estadísticas claras sobre el rendimiento del negocio",
@@ -241,6 +242,7 @@ const plans = [
     copy: "Una solución práctica para administrar y controlar tu negocio desde un solo lugar, ahorrar tiempo, mantener las cuentas ordenadas y tomar mejores decisiones.",
     highlight: "Tomamos nuestro sistema y lo adaptamos a cómo funciona TU negocio.",
     features: [
+      "Acceso para 2 personas con cuentas separadas",
       "Logo y nombre de la empresa",
       "Colores y estética de marca personalizados",
       "Dashboard adaptado a la identidad visual del negocio",
