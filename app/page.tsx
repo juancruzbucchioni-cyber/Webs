@@ -186,9 +186,9 @@ const plans = [
     category: "administracion-gastos",
     type: "Dashboard General",
     tag: "ADMINISTRACIÓN",
-    price: "50.000",
-    amount: 50000,
-    monthlyAmount: 12000,
+    price: "60.000",
+    amount: 60000,
+    monthlyAmount: 15000,
     subscriptionUrl: "https://mpago.la/1LV5gTH",
     color: "blue",
     previews: [
