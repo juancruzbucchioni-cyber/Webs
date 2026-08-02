@@ -189,7 +189,16 @@ const plans = [
     amount: 50000,
     monthlyAmount: 12000,
     color: "blue",
-    previews: ["/categoria-gastos.png"],
+    previews: [
+      "/dashboard-gallery-01.png",
+      "/dashboard-gallery-02.png",
+      "/dashboard-gallery-03.png",
+      "/dashboard-gallery-04.png",
+      "/dashboard-gallery-05.png",
+      "/dashboard-gallery-06.png",
+      "/dashboard-gallery-07.png",
+      "/dashboard-gallery-08.png",
+    ],
     copy: "Una solución práctica para administrar y controlar tu negocio desde un solo lugar, ahorrar tiempo, mantener las cuentas ordenadas y tomar mejores decisiones.",
     features: [
       "Gestión de ventas, productos, gastos y pagos",
