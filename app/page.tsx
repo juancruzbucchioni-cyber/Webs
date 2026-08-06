@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, type FormEvent } from "react";
+import { motion, AnimatePresence } from "motion/react";
 
 const WHATSAPP_NUMBER = "5493534128474";
 const MERCADO_PAGO_LINK = "https://link.mercadopago.com.ar/jcbdevelopment";
@@ -421,8 +422,19 @@ export default function Home() {
               ["02", "Diseñamos", "Creamos una propuesta visual alineada con tu marca y tus clientes."],
               ["03", "Desarrollamos", "Construimos una experiencia rápida, adaptable y fácil de usar."],
               ["04", "Publicamos", "La dejamos online, configurada y lista para empezar a trabajar."],
-            ].map(([number, title, copy]) => (
-              <article key={number}><span>{number}</span><i /><h2>{title}</h2><p>{copy}</p></article>
+            ].map(([number, title, copy], idx) => (
+              <motion.article
+                key={number}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.12 }}
+              >
+                <span>{number}</span>
+                <i />
+                <h2>{title}</h2>
+                <p>{copy}</p>
+              </motion.article>
             ))}
           </div>
           <a className="scroll-cue" href="#categorias"><span>Ver categorías</span><b>↓</b></a>
@@ -436,11 +448,14 @@ export default function Home() {
           <p className="category-intro">Seleccioná el tipo de proyecto que más se adapta a tu negocio.</p>
           <div className="category-grid">
             {storeCategories.map((category) => (
-              <button
+              <motion.button
                 className={`category-card ${activeCategory === category.id ? "active" : ""}`}
                 key={category.id}
                 onClick={() => selectCategory(category.id)}
                 aria-pressed={activeCategory === category.id}
+                whileHover={{ y: -6, scale: 1.01 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
               >
                 <span className="category-number">{category.number}</span>
                 <span className="category-image" aria-hidden="true">
@@ -449,11 +464,17 @@ export default function Home() {
                 <strong>{category.title}</strong>
                 <small>{category.copy}</small>
                 <b>{activeCategory === category.id ? "Categoría seleccionada" : "Ver categoría"} <span>→</span></b>
-              </button>
+              </motion.button>
             ))}
           </div>
           <div className="domain-category-row">
-            <a className="category-card domain-category-card" href="#dominio">
+            <motion.a
+              className="category-card domain-category-card"
+              href="#dominio"
+              whileHover={{ y: -6, scale: 1.01 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            >
               <span className="category-number">05</span>
               <span className="category-image" aria-hidden="true">
                 <img src="/categoria-dominio.png" alt="" />
@@ -461,7 +482,7 @@ export default function Home() {
               <strong>Dominio privado</strong>
               <small>Una dirección exclusiva y profesional para identificar tu página en internet.</small>
               <b>Ver dominio <span>→</span></b>
-            </a>
+            </motion.a>
           </div>
           <a className="category-models-cue" href="#modelos" onClick={goToModels}>
             <span>Ver modelos</span>
@@ -469,81 +490,118 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="category-content category-content-animate" key={activeCategory} id="modelos">
-          {activeCategory === "negocios" || activeCategory === "importaciones" || activeCategory === "ventas-digitales" || activeCategory === "administracion-gastos" ? (
-            <>
-              <p className="section-label">{activeCategory === "negocios" ? "SOLUCIONES PARA CADA NEGOCIO" : activeCategory === "importaciones" ? "SOLUCIONES PARA IMPORTACIONES" : activeCategory === "ventas-digitales" ? "SOLUCIONES PARA VENTAS DIGITALES" : "SOLUCIONES PARA ADMINISTRAR TU NEGOCIO"}</p>
-              <h2>{activeCategory === "negocios" ? "Elegí la web que necesitás." : activeCategory === "importaciones" ? "Conectá mercados y clientes." : activeCategory === "ventas-digitales" ? "Vendé productos digitales." : "Controlá todos tus números."}<br /><span>Nosotros la hacemos realidad.</span></h2>
-              <p className="section-copy">{activeCategory === "negocios" ? "Valores claros para comenzar. Cada proyecto se personaliza con tu identidad, contenido y objetivos." : activeCategory === "importaciones" ? "Una presencia profesional para presentar servicios, productos y oportunidades comerciales de importación." : activeCategory === "ventas-digitales" ? "Una solución completa para organizar tu catálogo, recibir pedidos y hacer crecer tu negocio digital." : "Centralizá ventas, gastos, productos y resultados desde un panel moderno, claro y seguro."}</p>
-              <div className="plans">
-          {plans.map((plan, index) => plan.category === activeCategory && (
-            <article className={`plan-card ${plan.color}`} key={plan.type}>
-              <div className="plan-glow" />
-              <div className="plan-head"><span>0{index + 1}</span><small>{plan.tag}</small></div>
-              <h3>{plan.type}</h3>
-              <figure className="plan-preview">
-                <button className="preview-open" onClick={() => setLightbox({ planIndex: index, imageIndex: activeSlides[index] })} aria-label={`Ampliar ejemplo visual de ${plan.type}`}>
-                  <img src={plan.previews[activeSlides[index]]} alt={`Ejemplo visual ${activeSlides[index] + 1} de ${plan.type}`} />
-                </button>
-                {plan.previews.length > 1 && (
-                  <>
-                    <button className="preview-arrow prev" onClick={() => changeSlide(index, -1)} aria-label="Imagen anterior">‹</button>
-                    <button className="preview-arrow next" onClick={() => changeSlide(index, 1)} aria-label="Imagen siguiente">›</button>
-                    <div className="preview-dots">
-                      {plan.previews.map((_, dotIndex) => <button key={dotIndex} className={activeSlides[index] === dotIndex ? "active" : ""} onClick={() => setActiveSlides((current) => current.map((value, planNumber) => planNumber === index ? dotIndex : value))} aria-label={`Ver imagen ${dotIndex + 1}`} />)}
-                    </div>
-                  </>
-                )}
-              </figure>
-              <p>{plan.copy}</p>
-              {"highlight" in plan && <div className="plan-highlight">{plan.highlight}</div>}
-              <div className="price"><small>DESDE</small><strong>${plan.price}</strong><span>ARS</span></div>
-              {"monthlyAmount" in plan && <div className="monthly-price"><small>O PLAN MENSUAL</small><strong>${plan.monthlyAmount.toLocaleString("es-AR")}</strong><span>ARS / MES</span></div>}
-              <ul>
-                {(expandedPlans.includes(index) ? plan.features : plan.features.slice(0, 6)).map((feature) => {
-                  const isRepeated = feature.startsWith("Incluye todas");
-                  const isDelivery = feature.startsWith("Entrega estimada");
-                  return (
-                    <li className={isRepeated ? "repeated-feature" : isDelivery ? "delivery-feature" : ""} key={feature}>
-                      <span>✓</span>{feature}
-                    </li>
-                  );
-                })}
-              </ul>
-              <button
-                className={`features-toggle ${expandedPlans.includes(index) ? "expanded" : ""}`}
-                onClick={() => setExpandedPlans((current) => current.includes(index) ? current.filter((item) => item !== index) : [...current, index])}
-                aria-expanded={expandedPlans.includes(index)}
+        <AnimatePresence mode="wait">
+          <motion.div
+            className="category-content"
+            key={activeCategory}
+            id="modelos"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+          >
+            {activeCategory === "negocios" || activeCategory === "importaciones" || activeCategory === "ventas-digitales" || activeCategory === "administracion-gastos" ? (
+              <>
+                <p className="section-label">{activeCategory === "negocios" ? "SOLUCIONES PARA CADA NEGOCIO" : activeCategory === "importaciones" ? "SOLUCIONES PARA IMPORTACIONES" : activeCategory === "ventas-digitales" ? "SOLUCIONES PARA VENTAS DIGITALES" : "SOLUCIONES PARA ADMINISTRAR TU NEGOCIO"}</p>
+                <h2>{activeCategory === "negocios" ? "Elegí la web que necesitás." : activeCategory === "importaciones" ? "Conectá mercados y clientes." : activeCategory === "ventas-digitales" ? "Vendé productos digitales." : "Controlá todos tus números."}<br /><span>Nosotros la hacemos realidad.</span></h2>
+                <p className="section-copy">{activeCategory === "negocios" ? "Valores claros para comenzar. Cada proyecto se personaliza con tu identidad, contenido y objetivos." : activeCategory === "importaciones" ? "Una presencia profesional para presentar servicios, productos y oportunidades comerciales de importación." : activeCategory === "ventas-digitales" ? "Una solución completa para organizar tu catálogo, recibir pedidos y hacer crecer tu negocio digital." : "Centralizá ventas, gastos, productos y resultados desde un panel moderno, claro y seguro."}</p>
+                <div className="plans">
+            {plans.map((plan, index) => plan.category === activeCategory && (
+              <motion.article
+                className={`plan-card ${plan.color}`}
+                key={plan.type}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: index * 0.1 }}
+                whileHover={{ y: -8 }}
               >
-                {expandedPlans.includes(index) ? "Ver menos características" : "Ver todas las características"}
-                <span>↓</span>
-              </button>
-              <div className="plan-actions">
-                <button onClick={() => { setPaymentPlan(index); setPaymentMode(null); }}>Adquirir <span>→</span></button>
+                <div className="plan-glow" />
+                <div className="plan-head"><span>0{index + 1}</span><small>{plan.tag}</small></div>
+                <h3>{plan.type}</h3>
+                <figure className="plan-preview">
+                  <button className="preview-open" onClick={() => setLightbox({ planIndex: index, imageIndex: activeSlides[index] })} aria-label={`Ampliar ejemplo visual de ${plan.type}`}>
+                    <motion.img
+                      key={activeSlides[index]}
+                      src={plans[index].previews[activeSlides[index]]}
+                      alt={`Ejemplo visual ${activeSlides[index] + 1} de ${plan.type}`}
+                      initial={{ opacity: 0.6, scale: 0.98 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </button>
+                  {plan.previews.length > 1 && (
+                    <>
+                      <button className="preview-arrow prev" onClick={() => changeSlide(index, -1)} aria-label="Imagen anterior">‹</button>
+                      <button className="preview-arrow next" onClick={() => changeSlide(index, 1)} aria-label="Imagen siguiente">›</button>
+                      <div className="preview-dots">
+                        {plan.previews.map((_, dotIndex) => <button key={dotIndex} className={activeSlides[index] === dotIndex ? "active" : ""} onClick={() => setActiveSlides((current) => current.map((value, planNumber) => planNumber === index ? dotIndex : value))} aria-label={`Ver imagen ${dotIndex + 1}`} />)}
+                      </div>
+                    </>
+                  )}
+                </figure>
+                <p>{plan.copy}</p>
+                {"highlight" in plan && <div className="plan-highlight">{plan.highlight}</div>}
+                <div className="price"><small>DESDE</small><strong>${plan.price}</strong><span>ARS</span></div>
+                {"monthlyAmount" in plan && <div className="monthly-price"><small>O PLAN MENSUAL</small><strong>${plan.monthlyAmount.toLocaleString("es-AR")}</strong><span>ARS / MES</span></div>}
+                <ul>
+                  {(expandedPlans.includes(index) ? plan.features : plan.features.slice(0, 6)).map((feature) => {
+                    const isRepeated = feature.startsWith("Incluye todas");
+                    const isDelivery = feature.startsWith("Entrega estimada");
+                    return (
+                      <li className={isRepeated ? "repeated-feature" : isDelivery ? "delivery-feature" : ""} key={feature}>
+                        <span>✓</span>{feature}
+                      </li>
+                    );
+                  })}
+                </ul>
+                <button
+                  className={`features-toggle ${expandedPlans.includes(index) ? "expanded" : ""}`}
+                  onClick={() => setExpandedPlans((current) => current.includes(index) ? current.filter((item) => item !== index) : [...current, index])}
+                  aria-expanded={expandedPlans.includes(index)}
+                >
+                  {expandedPlans.includes(index) ? "Ver menos características" : "Ver todas las características"}
+                  <span>↓</span>
+                </button>
+                <div className="plan-actions">
+                  <motion.button
+                    onClick={() => { setPaymentPlan(index); setPaymentMode(null); }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    Adquirir <span>→</span>
+                  </motion.button>
+                </div>
+              </motion.article>
+            ))}
+                </div>
+              </>
+            ) : null}
+            <motion.article
+              className="domain-addon"
+              id="dominio"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+            >
+              <div className="domain-glow" />
+              <div className="domain-icon"><i /><i /><i /></div>
+              <div className="domain-content">
+                <small>ADICIONAL PARA TODAS LAS CATEGORÍAS</small>
+                <h3>Dominio privado</h3>
+                <p>Usá una dirección profesional y exclusiva para tu negocio, como <strong>tunegocio.com.ar</strong>. El dominio se abona y renueva una vez por año. El valor depende de la extensión elegida y su disponibilidad.</p>
               </div>
-            </article>
-          ))}
+              <div className="domain-price">
+                <span>PRECIO</span>
+                <strong>AL COSTO</strong>
+                <small>Pago anual · Sin recargos</small>
               </div>
-            </>
-          ) : null}
-          <article className="domain-addon" id="dominio">
-            <div className="domain-glow" />
-            <div className="domain-icon"><i /><i /><i /></div>
-            <div className="domain-content">
-              <small>ADICIONAL PARA TODAS LAS CATEGORÍAS</small>
-              <h3>Dominio privado</h3>
-              <p>Usá una dirección profesional y exclusiva para tu negocio, como <strong>tunegocio.com.ar</strong>. El dominio se abona y renueva una vez por año. El valor depende de la extensión elegida y su disponibilidad.</p>
-            </div>
-            <div className="domain-price">
-              <span>PRECIO</span>
-              <strong>AL COSTO</strong>
-              <small>Pago anual · Sin recargos</small>
-            </div>
-            <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola, buenas. Quería consultar el precio de un dominio privado para ${storeCategories.find((category) => category.id === activeCategory)?.title}.`)}`} target="_blank" rel="noreferrer">
-              Consultar precio <span>→</span>
-            </a>
-          </article>
-        </div>
+              <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola, buenas. Quería consultar el precio de un dominio privado para ${storeCategories.find((category) => category.id === activeCategory)?.title}.`)}`} target="_blank" rel="noreferrer">
+                Consultar precio <span>→</span>
+              </a>
+            </motion.article>
+          </motion.div>
+        </AnimatePresence>
       </section>
 
       <footer id="contacto">
@@ -553,159 +611,226 @@ export default function Home() {
         <a href="#inicio">Volver arriba ↑</a>
       </footer>
 
-      {showTermsNotice && (
-        <aside className="terms-notice" aria-label="Aviso de términos y condiciones">
-          <button className="terms-link" onClick={() => setShowTermsModal(true)}>Términos y condiciones</button>
-          <p>Al continuar, confirmás que leíste y aceptás nuestras condiciones.</p>
-          <button className="terms-accept" onClick={acceptTerms}>Aceptar</button>
-        </aside>
-      )}
+      <AnimatePresence>
+        {showTermsNotice && (
+          <motion.aside
+            className="terms-notice"
+            aria-label="Aviso de términos y condiciones"
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ duration: 0.3 }}
+          >
+            <button className="terms-link" onClick={() => setShowTermsModal(true)}>Términos y condiciones</button>
+            <p>Al continuar, confirmás que leíste y aceptás nuestras condiciones.</p>
+            <button className="terms-accept" onClick={acceptTerms}>Aceptar</button>
+          </motion.aside>
+        )}
+      </AnimatePresence>
 
-      {showTermsModal && (
-        <div className="terms-overlay" role="dialog" aria-modal="true" aria-label="Términos y condiciones" onMouseDown={(event) => {
-          if (event.target === event.currentTarget) setShowTermsModal(false);
-        }}>
-          <section className="terms-modal">
-            <button className="terms-close" onClick={() => setShowTermsModal(false)} aria-label="Cerrar términos">×</button>
-            <p className="section-label">JCB DEVELOPMENT</p>
-            <h2>Términos y condiciones</h2>
-            <iframe src="/terminos-y-condiciones.txt" title="Términos y condiciones completos" />
-            <div className="terms-modal-actions">
-              <button onClick={() => setShowTermsModal(false)}>Cerrar</button>
-              <button onClick={acceptTerms}>Aceptar términos y condiciones</button>
-            </div>
-          </section>
-        </div>
-      )}
+      <AnimatePresence>
+        {showTermsModal && (
+          <motion.div
+            className="terms-overlay"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Términos y condiciones"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget) setShowTermsModal(false);
+            }}
+          >
+            <motion.section
+              className="terms-modal"
+              initial={{ opacity: 0, scale: 0.93, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.93, y: 15 }}
+              transition={{ type: "spring", damping: 25, stiffness: 350 }}
+            >
+              <button className="terms-close" onClick={() => setShowTermsModal(false)} aria-label="Cerrar términos">×</button>
+              <p className="section-label">JCB DEVELOPMENT</p>
+              <h2>Términos y condiciones</h2>
+              <iframe src="/terminos-y-condiciones.txt" title="Términos y condiciones completos" />
+              <div className="terms-modal-actions">
+                <button onClick={() => setShowTermsModal(false)}>Cerrar</button>
+                <button onClick={acceptTerms}>Aceptar términos y condiciones</button>
+              </div>
+            </motion.section>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {paymentPlan !== null && (
-        <div className="payment-overlay" role="dialog" aria-modal="true" aria-label="Datos para realizar el pago" onMouseDown={(event) => {
-          if (event.target === event.currentTarget) closePayment();
-        }}>
-          <div className="payment-modal">
-            <button className="payment-close" onClick={closePayment} aria-label="Cerrar">×</button>
-            <p className="section-label">PAGO POR TRANSFERENCIA</p>
-            <h2>{plans[paymentPlan].type}</h2>
+      <AnimatePresence>
+        {paymentPlan !== null && (
+          <motion.div
+            className="payment-overlay"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Datos para realizar el pago"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget) closePayment();
+            }}
+          >
+            <motion.div
+              className="payment-modal"
+              initial={{ opacity: 0, scale: 0.93, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.93, y: 15 }}
+              transition={{ type: "spring", damping: 25, stiffness: 350 }}
+            >
+              <button className="payment-close" onClick={closePayment} aria-label="Cerrar">×</button>
+              <p className="section-label">PAGO POR TRANSFERENCIA</p>
+              <h2>{plans[paymentPlan].type}</h2>
 
-            {!paymentMode ? (
-              <>
-                <p className="payment-intro">Elegí cuánto querés abonar para ver los datos de transferencia.</p>
-                <div className="payment-options">
-                  <button onClick={() => setPaymentMode("deposit")}>
-                    <span>SEÑA DEL 35 %</span>
-                    <strong>${Math.round(plans[paymentPlan].amount * 0.35).toLocaleString("es-AR")}</strong>
-                    <small>ARS</small>
-                  </button>
-                  <button onClick={() => setPaymentMode("full")}>
-                    <span>PAGO COMPLETO</span>
-                    <strong>${plans[paymentPlan].amount.toLocaleString("es-AR")}</strong>
-                    <small>ARS</small>
-                  </button>
-                  {"monthlyAmount" in plans[paymentPlan] && (
-                    <button className="monthly-option" onClick={() => {
-                      const selectedPlan = plans[paymentPlan];
-                      if ("subscriptionUrl" in selectedPlan) {
-                        const subscriptionUrl = selectedPlan.subscriptionUrl;
-                        closePayment();
-                        window.open(subscriptionUrl, "_blank", "noopener,noreferrer");
-                        return;
-                      }
-                      setPaymentMode("monthly");
-                    }}>
-                      <span>PLAN MENSUAL</span>
-                      <strong>${plans[paymentPlan].monthlyAmount.toLocaleString("es-AR")}</strong>
-                      <small>{"subscriptionUrl" in plans[paymentPlan] ? "ARS POR MES · COBRO AUTOMÁTICO CON MERCADO PAGO" : "ARS POR MES"}</small>
-                    </button>
-                  )}
-                </div>
-              </>
-            ) : showClientForm ? (
-              <form className="client-form" onSubmit={submitClientForm} onInput={(event) => setClientFormValid(event.currentTarget.checkValidity())}>
-                <div className="payment-total">
-                  <span>{paymentMode === "deposit" ? "SEÑA DEL 35 %" : paymentMode === "monthly" ? "PRIMER MES" : "PAGO COMPLETO"}</span>
-                  <strong>${(paymentMode === "deposit" ? Math.round(plans[paymentPlan].amount * 0.35) : paymentMode === "monthly" && "monthlyAmount" in plans[paymentPlan] ? plans[paymentPlan].monthlyAmount : plans[paymentPlan].amount).toLocaleString("es-AR")} ARS</strong>
-                </div>
-                <div className="form-heading">
-                  <small>INFORMACIÓN DE LA PÁGINA</small>
-                  <h3>Datos para crear tu página</h3>
-                  <p>Completá esta información y luego adjuntá el comprobante y el logo en WhatsApp.</p>
-                </div>
-                <div className="form-grid">
-                  <label><span>Nombre y apellido</span><input name="name" required /></label>
-                  <label><span>Ciudad y provincia</span><input name="location" required /></label>
-                  <label><span>Número de WhatsApp del negocio</span><input name="phone" type="tel" required /></label>
-                  <label><span>Correo electrónico</span><input name="email" type="email" required /></label>
-                  <label><span>Nombre de la página o negocio</span><input name="business" required /></label>
-                  <label><span>¿A qué se dedica tu negocio?</span><input name="activity" required /></label>
-                  <label><span>Instagram del negocio</span><input name="instagram" placeholder="@usuario" /></label>
-                  <label><span>Colores que querés para la página</span><input name="colors" required /></label>
-                  <label><span>Página de referencia que te guste</span><input name="reference" type="url" placeholder="https://..." /></label>
-                  <label className="form-wide"><span>Información o aclaraciones adicionales</span><textarea name="notes" rows={4} /></label>
-                </div>
-                <div className="whatsapp-attachment-notice">
-                  <strong>Logo y comprobante</strong>
-                  <span>Cuando se abra WhatsApp, adjuntá manualmente el logo del negocio y el comprobante de pago usando el ícono del clip 📎.</span>
-                </div>
-                <label className="form-check"><input type="checkbox" required /> <span>Confirmo que los datos ingresados son correctos.</span></label>
-                <div className="form-actions">
-                  <button type="button" onClick={() => { setShowClientForm(false); setClientFormValid(false); }}>← Volver</button>
-                  {clientFormValid && <button type="submit">Enviar comprobante →</button>}
-                </div>
-              </form>
-            ) : (
-              <>
-                <div className="payment-total">
-                  <span>{paymentMode === "deposit" ? "SEÑA DEL 35 %" : paymentMode === "monthly" ? "PRIMER MES" : "PAGO COMPLETO"}</span>
-                  <strong>${(paymentMode === "deposit" ? Math.round(plans[paymentPlan].amount * 0.35) : paymentMode === "monthly" && "monthlyAmount" in plans[paymentPlan] ? plans[paymentPlan].monthlyAmount : plans[paymentPlan].amount).toLocaleString("es-AR")} ARS</strong>
-                </div>
-                <div className="payment-owner">
-                  <span>TITULAR DE LA CUENTA</span>
-                  <strong>Juan Cruz Bucchioni Moya</strong>
-                  <small>Verificá este nombre antes de realizar la transferencia.</small>
-                </div>
-                <div className="payment-methods-grid">
-                  <div className="mercado-pago-option">
-                    <div>
-                      <span>PAGO ONLINE</span>
-                      <strong>Mercado Pago</strong>
-                      <small>Al abrir el link, ingresá exactamente el importe indicado arriba.</small>
+              {!paymentMode ? (
+                <>
+                  <p className="payment-intro">Elegí cuánto querés abonar para ver los datos de transferencia.</p>
+                  <div className="payment-options">
+                    <motion.button onClick={() => setPaymentMode("deposit")} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
+                      <span>SEÑA DEL 35 %</span>
+                      <strong>${Math.round(plans[paymentPlan].amount * 0.35).toLocaleString("es-AR")}</strong>
+                      <small>ARS</small>
+                    </motion.button>
+                    <motion.button onClick={() => setPaymentMode("full")} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
+                      <span>PAGO COMPLETO</span>
+                      <strong>${plans[paymentPlan].amount.toLocaleString("es-AR")}</strong>
+                      <small>ARS</small>
+                    </motion.button>
+                    {"monthlyAmount" in plans[paymentPlan] && (
+                      <motion.button
+                        className="monthly-option"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.97 }}
+                        onClick={() => {
+                          const selectedPlan = plans[paymentPlan];
+                          if ("subscriptionUrl" in selectedPlan) {
+                            const subscriptionUrl = selectedPlan.subscriptionUrl;
+                            closePayment();
+                            window.open(subscriptionUrl, "_blank", "noopener,noreferrer");
+                            return;
+                          }
+                          setPaymentMode("monthly");
+                        }}
+                      >
+                        <span>PLAN MENSUAL</span>
+                        <strong>${plans[paymentPlan].monthlyAmount.toLocaleString("es-AR")}</strong>
+                        <small>{"subscriptionUrl" in plans[paymentPlan] ? "ARS POR MES · COBRO AUTOMÁTICO CON MERCADO PAGO" : "ARS POR MES"}</small>
+                      </motion.button>
+                    )}
+                  </div>
+                </>
+              ) : showClientForm ? (
+                <form className="client-form" onSubmit={submitClientForm} onInput={(event) => setClientFormValid(event.currentTarget.checkValidity())}>
+                  <div className="payment-total">
+                    <span>{paymentMode === "deposit" ? "SEÑA DEL 35 %" : paymentMode === "monthly" ? "PRIMER MES" : "PAGO COMPLETO"}</span>
+                    <strong>${(paymentMode === "deposit" ? Math.round(plans[paymentPlan].amount * 0.35) : paymentMode === "monthly" && "monthlyAmount" in plans[paymentPlan] ? plans[paymentPlan].monthlyAmount : plans[paymentPlan].amount).toLocaleString("es-AR")} ARS</strong>
+                  </div>
+                  <div className="form-heading">
+                    <small>INFORMACIÓN DE LA PÁGINA</small>
+                    <h3>Datos para crear tu página</h3>
+                    <p>Completá esta información y luego adjuntá el comprobante y el logo en WhatsApp.</p>
+                  </div>
+                  <div className="form-grid">
+                    <label><span>Nombre y apellido</span><input name="name" required /></label>
+                    <label><span>Ciudad y provincia</span><input name="location" required /></label>
+                    <label><span>Número de WhatsApp del negocio</span><input name="phone" type="tel" required /></label>
+                    <label><span>Correo electrónico</span><input name="email" type="email" required /></label>
+                    <label><span>Nombre de la página o negocio</span><input name="business" required /></label>
+                    <label><span>¿A qué se dedica tu negocio?</span><input name="activity" required /></label>
+                    <label><span>Instagram del negocio</span><input name="instagram" placeholder="@usuario" /></label>
+                    <label><span>Colores que querés para la página</span><input name="colors" required /></label>
+                    <label><span>Página de referencia que te guste</span><input name="reference" type="url" placeholder="https://..." /></label>
+                    <label className="form-wide"><span>Información o aclaraciones adicionales</span><textarea name="notes" rows={4} /></label>
+                  </div>
+                  <div className="whatsapp-attachment-notice">
+                    <strong>Logo y comprobante</strong>
+                    <span>Cuando se abra WhatsApp, adjuntá manualmente el logo del negocio y el comprobante de pago usando el ícono del clip 📎.</span>
+                  </div>
+                  <label className="form-check"><input type="checkbox" required /> <span>Confirmo que los datos ingresados son correctos.</span></label>
+                  <div className="form-actions">
+                    <button type="button" onClick={() => { setShowClientForm(false); setClientFormValid(false); }}>← Volver</button>
+                    {clientFormValid && <button type="submit">Enviar comprobante →</button>}
+                  </div>
+                </form>
+              ) : (
+                <>
+                  <div className="payment-total">
+                    <span>{paymentMode === "deposit" ? "SEÑA DEL 35 %" : paymentMode === "monthly" ? "PRIMER MES" : "PAGO COMPLETO"}</span>
+                    <strong>${(paymentMode === "deposit" ? Math.round(plans[paymentPlan].amount * 0.35) : paymentMode === "monthly" && "monthlyAmount" in plans[paymentPlan] ? plans[paymentPlan].monthlyAmount : plans[paymentPlan].amount).toLocaleString("es-AR")} ARS</strong>
+                  </div>
+                  <div className="payment-owner">
+                    <span>TITULAR DE LA CUENTA</span>
+                    <strong>Juan Cruz Bucchioni Moya</strong>
+                    <small>Verificá este nombre antes de realizar la transferencia.</small>
+                  </div>
+                  <div className="payment-methods-grid">
+                    <div className="mercado-pago-option">
+                      <div>
+                        <span>PAGO ONLINE</span>
+                        <strong>Mercado Pago</strong>
+                        <small>Al abrir el link, ingresá exactamente el importe indicado arriba.</small>
+                      </div>
+                      <a href={MERCADO_PAGO_LINK} target="_blank" rel="noreferrer">Pagar con Mercado Pago <span>→</span></a>
                     </div>
-                    <a href={MERCADO_PAGO_LINK} target="_blank" rel="noreferrer">Pagar con Mercado Pago <span>→</span></a>
+                    <div className="bank-accounts">
+                      {[
+                        { alias: "bucchio", cvu: "0000168300000027027897" },
+                      ].map((account, index) => (
+                        <article key={account.cvu}>
+                          <small>TRANSFERENCIA A LEMON</small>
+                          <p>A nombre de <strong>Juan Cruz Bucchioni Moya</strong></p>
+                          <div><span>Alias</span><strong>{account.alias}</strong><button onClick={() => copyValue(`alias-${index}`, account.alias)}>{copied === `alias-${index}` ? "Copiado" : "Copiar"}</button></div>
+                          <div><span>CVU</span><strong>{account.cvu}</strong><button onClick={() => copyValue(`cvu-${index}`, account.cvu)}>{copied === `cvu-${index}` ? "Copiado" : "Copiar"}</button></div>
+                        </article>
+                      ))}
+                    </div>
                   </div>
-                  <div className="bank-accounts">
-                    {[
-                      { alias: "bucchio", cvu: "0000168300000027027897" },
-                    ].map((account, index) => (
-                      <article key={account.cvu}>
-                        <small>TRANSFERENCIA A LEMON</small>
-                        <p>A nombre de <strong>Juan Cruz Bucchioni Moya</strong></p>
-                        <div><span>Alias</span><strong>{account.alias}</strong><button onClick={() => copyValue(`alias-${index}`, account.alias)}>{copied === `alias-${index}` ? "Copiado" : "Copiar"}</button></div>
-                        <div><span>CVU</span><strong>{account.cvu}</strong><button onClick={() => copyValue(`cvu-${index}`, account.cvu)}>{copied === `cvu-${index}` ? "Copiado" : "Copiar"}</button></div>
-                      </article>
-                    ))}
+                  <div className="payment-footer-actions">
+                    <button onClick={() => setPaymentMode(null)}>← Cambiar importe</button>
+                    <button className="paid-button" onClick={() => { setShowClientForm(true); setClientFormValid(false); }}>Ya pagué →</button>
                   </div>
-                </div>
-                <div className="payment-footer-actions">
-                  <button onClick={() => setPaymentMode(null)}>← Cambiar importe</button>
-                  <button className="paid-button" onClick={() => { setShowClientForm(true); setClientFormValid(false); }}>Ya pagué →</button>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      )}
+                </>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {lightbox && (
-        <div className="image-lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada de la página" onMouseDown={(event) => {
-          if (event.target === event.currentTarget) setLightbox(null);
-        }}>
-          <button className="lightbox-close" onClick={() => setLightbox(null)} aria-label="Cerrar imagen">×</button>
-          {plans[lightbox.planIndex].previews.length > 1 && <button className="lightbox-arrow prev" onClick={() => setLightbox((current) => current ? { ...current, imageIndex: (current.imageIndex - 1 + plans[current.planIndex].previews.length) % plans[current.planIndex].previews.length } : null)} aria-label="Imagen anterior">‹</button>}
-          <img src={plans[lightbox.planIndex].previews[lightbox.imageIndex]} alt={`Vista ampliada ${lightbox.imageIndex + 1} de ${plans[lightbox.planIndex].type}`} />
-          {plans[lightbox.planIndex].previews.length > 1 && <button className="lightbox-arrow next" onClick={() => setLightbox((current) => current ? { ...current, imageIndex: (current.imageIndex + 1) % plans[current.planIndex].previews.length } : null)} aria-label="Imagen siguiente">›</button>}
-          <span className="lightbox-counter">{lightbox.imageIndex + 1} / {plans[lightbox.planIndex].previews.length}</span>
-        </div>
-      )}
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            className="image-lightbox"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Vista ampliada de la página"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget) setLightbox(null);
+            }}
+          >
+            <button className="lightbox-close" onClick={() => setLightbox(null)} aria-label="Cerrar imagen">×</button>
+            {plans[lightbox.planIndex].previews.length > 1 && <button className="lightbox-arrow prev" onClick={() => setLightbox((current) => current ? { ...current, imageIndex: (current.imageIndex - 1 + plans[current.planIndex].previews.length) % plans[current.planIndex].previews.length } : null)} aria-label="Imagen anterior">‹</button>}
+            <motion.img
+              key={lightbox.imageIndex}
+              src={plans[lightbox.planIndex].previews[lightbox.imageIndex]}
+              alt={`Vista ampliada ${lightbox.imageIndex + 1} de ${plans[lightbox.planIndex].type}`}
+              initial={{ opacity: 0.7, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0.7, scale: 0.95 }}
+              transition={{ duration: 0.25 }}
+            />
+            {plans[lightbox.planIndex].previews.length > 1 && <button className="lightbox-arrow next" onClick={() => setLightbox((current) => current ? { ...current, imageIndex: (current.imageIndex + 1) % plans[current.planIndex].previews.length } : null)} aria-label="Imagen siguiente">›</button>}
+            <span className="lightbox-counter">{lightbox.imageIndex + 1} / {plans[lightbox.planIndex].previews.length}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }

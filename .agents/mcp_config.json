@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "magic": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@mseep/magic"
+      ],
+      "env": {
+        "API_KEY": "83b24660f4d8c87bd13053"
+      }
+    }
+  }
+}
