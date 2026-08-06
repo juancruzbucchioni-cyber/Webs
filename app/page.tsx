@@ -561,7 +561,13 @@ export default function Home() {
             whileHover={{ scale: 1.05, rotate: -2, zIndex: 10 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
-            <img src="/categoria-importaciones.png" alt="Vista Celular Importaciones" />
+            <div className="phone-top-bar">
+              <span className="notch" />
+              <span className="phone-url">importaciones.com.ar</span>
+            </div>
+            <div className="phone-screen-content">
+              <img src="/categoria-importaciones.png" alt="Vista Celular Importaciones" />
+            </div>
             <span className="showcase-tag">⚡ Comex & Importaciones</span>
           </motion.div>
 
@@ -573,8 +579,13 @@ export default function Home() {
             whileHover={{ scale: 1.04, y: -8 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
-            <div className="phone-screen-glare" />
-            <img src="/categoria-negocios.png" alt="Vista Celular Principal" />
+            <div className="phone-top-bar">
+              <span className="notch" />
+              <span className="phone-url">tunegocio.com.ar</span>
+            </div>
+            <div className="phone-screen-content">
+              <img src="/categoria-negocios.png" alt="Vista Celular Principal" />
+            </div>
             <div className="phone-badge live-pulse">
               <span className="live-dot" /> 100% Adaptada a celular
             </div>
@@ -588,7 +599,13 @@ export default function Home() {
             whileHover={{ scale: 1.05, rotate: 2, zIndex: 10 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
-            <img src="/categoria-gastos.png" alt="Vista Celular Gestión" />
+            <div className="phone-top-bar">
+              <span className="notch" />
+              <span className="phone-url">gestion.com.ar</span>
+            </div>
+            <div className="phone-screen-content">
+              <img src="/categoria-gastos.png" alt="Vista Celular Gestión" />
+            </div>
             <span className="showcase-tag">📊 Gestión & Gastos</span>
           </motion.div>
 
