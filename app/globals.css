@@ -24,8 +24,30 @@ button { color:inherit; font:inherit; }
 .menu-button { display:none; border:0; background:none; width:34px; }
 .hero { min-height:100vh; height:760px; display:grid; place-items:center; position:relative; overflow:hidden; background:radial-gradient(circle at 50% 38%,rgba(96,25,171,.12),transparent 28%),#030305; }
 .hero:after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 60%,#030305 100%); pointer-events:none; z-index:2; }
-.hero-bg-media { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:1; overflow:hidden; display:flex; align-items:center; justify-content:center; }
-.hero-bg-media img { width:100%; height:100%; max-width:1300px; max-height:760px; object-fit:contain; opacity:.55; filter:contrast(1.2) brightness(.9); mix-blend-mode:screen; }
+.hero-bg-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 25%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 25%, transparent 80%);
+}
+.hero-bg-media img {
+  width: 100%;
+  height: 100%;
+  max-width: 1300px;
+  max-height: 760px;
+  object-fit: contain;
+  opacity: .48;
+  filter: contrast(1.2) brightness(.88);
+  mix-blend-mode: screen;
+}
 .aurora { position:absolute; width:460px; height:690px; filter:blur(90px); opacity:.32; border-radius:50%; transform:rotate(-25deg); }
 /* ─── Keyframe Animations & Micro-interactions ─── */
 @keyframes auroraPulse {
@@ -263,7 +285,7 @@ footer { height:90px;border-top:1px solid var(--line);display:flex;align-items:c
 
   /* ─── Hero ─── */
   .hero{height:auto;min-height:100vh}
-  .hero-bg-media{opacity:.65;align-items:flex-start;padding-top:70px}
+  .hero-bg-media{opacity:.58;align-items:flex-start;padding-top:70px;mask-image:radial-gradient(ellipse 90% 75% at 50% 35%, #000 30%, transparent 85%);-webkit-mask-image:radial-gradient(ellipse 90% 75% at 50% 35%, #000 30%, transparent 85%)}
   .hero-bg-media img{width:100%;height:auto;max-height:460px;object-fit:contain}
   .hero-content{width:min(680px,calc(100% - 40px));grid-template-columns:1fr;padding:110px 0 60px;gap:45px}
   .hero-logo{width:min(400px,100%);height:120px;margin-bottom:0}
