@@ -469,7 +469,7 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="category-content" id="modelos">
+        <div className="category-content category-content-animate" key={activeCategory} id="modelos">
           {activeCategory === "negocios" || activeCategory === "importaciones" || activeCategory === "ventas-digitales" || activeCategory === "administracion-gastos" ? (
             <>
               <p className="section-label">{activeCategory === "negocios" ? "SOLUCIONES PARA CADA NEGOCIO" : activeCategory === "importaciones" ? "SOLUCIONES PARA IMPORTACIONES" : activeCategory === "ventas-digitales" ? "SOLUCIONES PARA VENTAS DIGITALES" : "SOLUCIONES PARA ADMINISTRAR TU NEGOCIO"}</p>
