@@ -285,8 +285,7 @@ footer { height:90px;border-top:1px solid var(--line);display:flex;align-items:c
 
   /* ─── Hero ─── */
   .hero{height:auto;min-height:100vh}
-  .hero-bg-media{opacity:.58;align-items:flex-start;padding-top:70px;mask-image:radial-gradient(ellipse 90% 75% at 50% 35%, #000 30%, transparent 85%);-webkit-mask-image:radial-gradient(ellipse 90% 75% at 50% 35%, #000 30%, transparent 85%)}
-  .hero-bg-media img{width:100%;height:auto;max-height:460px;object-fit:contain}
+  .hero-bg-media{display:none}
   .hero-content{width:min(680px,calc(100% - 40px));grid-template-columns:1fr;padding:110px 0 60px;gap:45px}
   .hero-logo{width:min(400px,100%);height:120px;margin-bottom:0}
   .hero h1{font-size:40px}
