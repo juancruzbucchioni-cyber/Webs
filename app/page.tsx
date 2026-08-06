@@ -292,6 +292,48 @@ const faqs = [
   }
 ];
 
+const typingPhrases = [
+  "Tiendas de Negocios",
+  "Webs de Importaciones",
+  "Sistemas de Gestión & Gastos",
+  "Plataformas E-Commerce",
+];
+
+function TypingEffect() {
+  const [phraseIdx, setPhraseIdx] = useState(0);
+  const [charIdx, setCharIdx] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentPhrase = typingPhrases[phraseIdx];
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        if (charIdx < currentPhrase.length) {
+          setCharIdx((prev) => prev + 1);
+        } else {
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        if (charIdx > 0) {
+          setCharIdx((prev) => prev - 1);
+        } else {
+          setIsDeleting(false);
+          setPhraseIdx((prev) => (prev + 1) % typingPhrases.length);
+        }
+      }
+    }, isDeleting ? 35 : 75);
+
+    return () => clearTimeout(timer);
+  }, [charIdx, isDeleting, phraseIdx]);
+
+  return (
+    <span className="typing-phrase">
+      {typingPhrases[phraseIdx].substring(0, charIdx)}
+      <span className="typing-cursor">|</span>
+    </span>
+  );
+}
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [paymentPlan, setPaymentPlan] = useState<number | null>(null);
@@ -453,6 +495,10 @@ export default function Home() {
           </motion.div>
           <p className="section-label">UN PROCESO SIMPLE</p>
           <h1>De tu idea a internet<br /><span>sin complicaciones.</span></h1>
+          <div className="hero-typing-wrapper">
+            <span>Desarrollamos </span>
+            <TypingEffect />
+          </div>
           <div className="hero-steps">
             {[
               ["01", "Nos contás", "Charlamos sobre tu negocio, tus objetivos y la web que imaginás."],
@@ -495,6 +541,65 @@ export default function Home() {
           <motion.div className="metric-item" initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>
             <strong>1 Año Gratis</strong>
             <span>Hosting privado de regalo</span>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="mobile-showcase-section section">
+        <div className="mobile-showcase-header">
+          <p className="section-label">DISEÑO RESPONSIVO PREMIUM</p>
+          <h2>Tu tienda se ve increíble en cualquier celular.</h2>
+          <p className="section-copy">Optimizamos cada botón, imagen y animación para que tus clientes naveguen a la máxima velocidad.</p>
+        </div>
+
+        <div className="mobile-showcase-wrapper">
+          <motion.div
+            className="mobile-card-side left"
+            initial={{ opacity: 0, x: -50, rotate: -8 }}
+            whileInView={{ opacity: 1, x: 0, rotate: -6 }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.05, rotate: -2, zIndex: 10 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          >
+            <img src="/categoria-importaciones.png" alt="Vista Celular Importaciones" />
+            <span className="showcase-tag">⚡ Comex & Importaciones</span>
+          </motion.div>
+
+          <motion.div
+            className="mobile-card-center"
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.04, y: -8 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          >
+            <div className="phone-screen-glare" />
+            <img src="/categoria-negocios.png" alt="Vista Celular Principal" />
+            <div className="phone-badge live-pulse">
+              <span className="live-dot" /> 100% Adaptada a celular
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="mobile-card-side right"
+            initial={{ opacity: 0, x: 50, rotate: 8 }}
+            whileInView={{ opacity: 1, x: 0, rotate: 6 }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.05, rotate: 2, zIndex: 10 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          >
+            <img src="/categoria-gastos.png" alt="Vista Celular Gestión" />
+            <span className="showcase-tag">📊 Gestión & Gastos</span>
+          </motion.div>
+
+          <motion.div className="floating-badge badge-1" animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
+            ⚡ Carga en 0.8s
+          </motion.div>
+          <motion.div className="floating-badge badge-2" animate={{ y: [0, 10, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}>
+            🛒 Carrito directo a WhatsApp
+          </motion.div>
+          <motion.div className="floating-badge badge-3" animate={{ y: [0, -8, 0] }} transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 1 }}>
+            💳 Cobros por Mercado Pago
           </motion.div>
         </div>
       </section>
@@ -660,6 +765,61 @@ export default function Home() {
             </motion.article>
           </motion.div>
         </AnimatePresence>
+      </section>
+
+      <section className="services-360-section section" id="servicios">
+        <p className="section-label">SOLUCIONES DIGITALES 360°</p>
+        <h2>Servicios integrales para potenciar tu marca</h2>
+        <p className="section-copy">Cubrimos todas las necesidades de tu negocio desde la idea inicial hasta las ventas.</p>
+
+        <div className="services-360-grid">
+          {[
+            {
+              icon: "🎨",
+              title: "Identidad & Branding",
+              desc: "Diseño de logotipo único, paleta de colores, tipografía y kit de marca para destacar frente a la competencia."
+            },
+            {
+              icon: "💻",
+              title: "Diseño Web A Medida",
+              desc: "Páginas institucionales y catálogos ultrarrápidos, optimizados 100% para celular con animaciones de alta gama."
+            },
+            {
+              icon: "🛒",
+              title: "Tiendas E-Commerce",
+              desc: "Plataformas con carrito de compras, catálogo interactivo, cálculo de envíos y cobros con Mercado Pago."
+            },
+            {
+              icon: "📊",
+              title: "Sistemas Autogestionables",
+              desc: "Paneles de control a medida para gestionar productos, stock, clientes, ventas y reportes financieros."
+            },
+            {
+              icon: "🚀",
+              title: "SEO & Posicionamiento Google",
+              desc: "Optimizamos tu sitio web para que aparezca en los primeros lugares cuando busquen tu producto o rubro."
+            },
+            {
+              icon: "🔒",
+              title: "Hosting Privado & Soporte 2 Meses",
+              desc: "Servidores seguros con certificado SSL de regalo durante 1 año y 2 meses de acompañamiento directo."
+            }
+          ].map((service, idx) => (
+            <motion.article
+              className="service-card-360"
+              key={service.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+            >
+              <div className="service-icon">{service.icon}</div>
+              <h3>{service.title}</h3>
+              <p>{service.desc}</p>
+            </motion.article>
+          ))}
+        </div>
       </section>
 
       <section className="why-us-section section">

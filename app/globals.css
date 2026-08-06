@@ -669,6 +669,171 @@ footer { height:90px;border-top:1px solid var(--line);display:flex;align-items:c
 }
 .faq-content p { margin: 0; }
 
+/* ─── Dynamic Typing Hero Badge ─── */
+.hero-typing-wrapper {
+  margin: 18px auto 35px;
+  padding: 10px 22px;
+  border-radius: 30px;
+  background: rgba(22, 14, 38, .75);
+  border: 1px solid rgba(175, 94, 255, .35);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #dfc8ff;
+  box-shadow: 0 8px 32px rgba(118, 36, 204, .25);
+}
+.typing-phrase {
+  color: #32dc74;
+  font-weight: 800;
+  text-shadow: 0 0 12px rgba(50, 220, 116, .4);
+}
+.typing-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: #e25fff;
+  animation: blinkCursor .8s infinite;
+}
+@keyframes blinkCursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ─── Mobile Showcase 3D (Efecto Celulares) ─── */
+.mobile-showcase-section { text-align: center; overflow: hidden; padding-bottom: 70px; }
+.mobile-showcase-wrapper {
+  position: relative;
+  max-width: 960px;
+  margin: 50px auto 0;
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+}
+.mobile-card-center {
+  width: 240px;
+  height: 440px;
+  border-radius: 28px;
+  border: 4px solid #2d233c;
+  background: #0d0b13;
+  overflow: hidden;
+  position: relative;
+  z-index: 5;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .8), 0 0 45px rgba(140, 50, 230, .3);
+  cursor: pointer;
+}
+.mobile-card-center img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.phone-screen-glare {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,.15) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 2;
+}
+.phone-badge {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(10, 8, 16, .9);
+  border: 1px solid rgba(86, 230, 137, .4);
+  color: #79f2a6;
+  font-size: 9px;
+  font-weight: 800;
+  white-space: nowrap;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mobile-card-side {
+  width: 200px;
+  height: 380px;
+  border-radius: 22px;
+  border: 2px solid rgba(255,255,255,.12);
+  background: #09070e;
+  overflow: hidden;
+  position: absolute;
+  top: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .6);
+  cursor: pointer;
+  filter: brightness(.85);
+  transition: filter .3s ease;
+}
+.mobile-card-side:hover { filter: brightness(1.05); }
+.mobile-card-side img { width: 100%; height: 100%; object-fit: cover; }
+.mobile-card-side.left { left: 12%; z-index: 3; }
+.mobile-card-side.right { right: 12%; z-index: 3; }
+.showcase-tag {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 10px;
+  border-radius: 14px;
+  background: rgba(14, 11, 22, .9);
+  color: #d6ccdf;
+  font-size: 8px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+/* Floating Badges */
+.floating-badge {
+  position: absolute;
+  padding: 8px 16px;
+  border-radius: 25px;
+  background: rgba(18, 13, 28, .88);
+  border: 1px solid rgba(175, 94, 255, .35);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+  backdrop-filter: blur(10px);
+  z-index: 6;
+}
+.badge-1 { top: 30px; left: 5%; border-color: rgba(50, 220, 116, .4); color: #79f2a6; }
+.badge-2 { top: 50px; right: 5%; border-color: rgba(225, 90, 255, .4); color: #f5b0ff; }
+.badge-3 { bottom: 20px; left: 18%; border-color: rgba(120, 150, 255, .4); color: #a4c2ff; }
+
+/* ─── Servicios Integrales 360° ─── */
+.services-360-section { text-align: center; }
+.services-360-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1080px;
+  margin: 45px auto 0;
+  text-align: left;
+}
+.service-card-360 {
+  padding: 32px 28px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, .1);
+  background: linear-gradient(145deg, rgba(17, 13, 26, .85), rgba(9, 7, 14, .95));
+  backdrop-filter: blur(12px);
+  transition: border-color .3s ease, box-shadow .3s ease;
+  cursor: pointer;
+}
+.service-card-360:hover {
+  border-color: rgba(175, 94, 255, .5);
+  box-shadow: 0 15px 45px rgba(115, 35, 195, .22);
+}
+.service-icon {
+  font-size: 36px;
+  margin-bottom: 18px;
+  display: inline-block;
+  filter: drop-shadow(0 0 10px rgba(160, 70, 255, .4));
+}
+.service-card-360 h3 { color: white; font-size: 19px; margin: 0 0 12px; }
+.service-card-360 p { color: #9c94a5; font-size: 13px; line-height: 1.65; margin: 0; }
+
 @media(max-width:800px){
   .metrics-bar-section { padding: 22px 18px; margin-bottom: 40px; }
   .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
@@ -676,6 +841,15 @@ footer { height:90px;border-top:1px solid var(--line);display:flex;align-items:c
   .comparison-grid { grid-template-columns: 1fr; }
   .comparison-card { padding: 22px; }
   .faq-trigger { font-size: 13px; padding: 16px 18px; }
+  .mobile-showcase-wrapper { height: 380px; }
+  .mobile-card-center { width: 180px; height: 330px; }
+  .mobile-card-side { display: none; }
+  .floating-badge { font-size: 9px; padding: 6px 12px; }
+  .badge-1 { top: 10px; left: 0; }
+  .badge-2 { top: 20px; right: 0; }
+  .badge-3 { bottom: 10px; left: 10px; }
+  .services-360-grid { grid-template-columns: 1fr; gap: 16px; }
+  .service-card-360 { padding: 24px; }
 }
 
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
