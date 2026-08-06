@@ -197,16 +197,242 @@ footer { height:90px;border-top:1px solid var(--line);display:flex;align-items:c
 .demo-2{background:#e9e3d9;color:#17130f}.demo-nav.shop{border-bottom:1px solid #cfc7bb}.demo-nav.shop button{background:transparent;color:#17130f;border:1px solid #9e9589}.demo-shop-head{min-height:300px;padding:50px 7%;background:linear-gradient(90deg,rgba(0,0,0,.05),transparent),radial-gradient(circle at 75% 35%,#e9a76b 0 12%,transparent 35%)}.demo-shop-head small{font-size:7px;letter-spacing:.2em}.demo-shop-head h3{font:500 clamp(42px,6vw,72px)/.9 serif;margin:15px 0}.demo-products{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:12px}.demo-products>div{display:grid;grid-template-columns:1fr auto;font-size:8px;gap:10px}.demo-products i{grid-column:1/3;height:145px;background:radial-gradient(circle,#d8b18a 0 30%,#cfc6b8 31% 45%,#ded7cd 46%);display:block}.demo-products>div:nth-child(2) i{background:radial-gradient(ellipse,#617769 0 36%,#d7d0c5 37%)}.demo-products>div:nth-child(3) i{background:radial-gradient(ellipse,#b87155 0 28%,#d5cdc1 29%)}
 .demo-footer { min-height:74px; display:flex;align-items:center;justify-content:space-between;padding:12px 22px;background:#111016}.demo-footer>div{display:flex;flex-direction:column;gap:5px}.demo-footer strong{font-size:12px}.demo-footer>div span{font-size:8px;color:#716b77}.demo-footer>a{padding:13px 18px;border-radius:7px;background:linear-gradient(110deg,#7132dc,#a126d5);font-size:9px;font-weight:700}.demo-footer>a span{margin-left:20px}
 @media(max-width:800px){
-  .nav{padding:0 22px}.nav-actions{display:none}.menu-button{display:block}.menu-button span{display:block;height:1px;background:white;margin:7px 0}
-  .nav-links{display:none;position:absolute;top:72px;left:20px;right:20px;transform:none;background:#0d0b12;border:1px solid var(--line);border-radius:10px;padding:22px;flex-direction:column}.nav-links.open{display:flex}
-  .nav-links .mobile-social-link{display:block;color:#d7b6ff}
-  .hero{height:auto;min-height:100vh}.hero-content{width:min(680px,calc(100% - 44px));grid-template-columns:1fr;padding:120px 0 70px;gap:55px}.hero-logo{width:min(450px,100%);height:130px;margin-bottom:0}.hero h1{font-size:45px}.hero-copy{font-size:13px}.hero-contact{width:100%;text-align:center}.hero-contact .contact-logo{margin:0 auto 28px}
-  .hero-process{width:min(680px,calc(100% - 44px));padding:125px 0 70px}.hero-process h1{font-size:48px}.hero-steps{grid-template-columns:1fr 1fr;gap:42px 0;margin:55px 0}.hero-steps:before{display:none}.hero-steps article>i{margin:16px auto}
-  .section{padding:90px 22px}.category-selector{margin-bottom:72px}.category-grid{grid-template-columns:1fr;max-width:430px;margin:32px auto 0}.category-card{min-height:260px}.category-coming-soon{min-height:360px;padding:50px 22px}.plans{grid-template-columns:1fr;max-width:430px}.plan-card{min-height:0}.domain-addon{grid-template-columns:auto 1fr;padding:24px 22px;gap:17px}.domain-price{grid-column:1/-1;padding:14px 0 0;border-left:0;border-top:1px solid var(--line)}.domain-addon>a{margin:0 -22px -24px}.showcase-grid{grid-template-columns:1fr}.mock-window{height:290px;padding:28px}
-  .steps{grid-template-columns:1fr 1fr;gap:60px 0}.steps:before{display:none}.step-dot{margin:20px auto}
-  footer{padding:0 22px}footer>span{display:none}
-  .payment-modal{padding:28px 20px}.payment-options,.bank-accounts,.form-grid,.payment-methods-grid{grid-template-columns:1fr}.mercado-pago-option{grid-template-columns:1fr}.mercado-pago-option>a{justify-content:space-between}.form-wide{grid-column:auto}.payment-footer-actions{align-items:stretch;flex-direction:column-reverse}.payment-footer-actions>button:first-child{margin-right:0}.payment-footer-actions .paid-button{text-align:center}.payment-total{align-items:flex-start;flex-direction:column}.form-actions{align-items:stretch;flex-direction:column-reverse}.form-actions button[type=submit]{width:100%}
-  .demo-overlay{padding:10px}.demo-modal{max-height:calc(100vh - 20px)}.demo-site{height:calc(100vh - 150px)}.demo-pro-hero{grid-template-columns:1fr}.demo-pro-art{display:none}.demo-nav>span{display:none}.demo-products i{height:110px}.demo-footer>div span{display:none}
+  /* ─── Nav ─── */
+  .nav{padding:0 20px;height:68px}
+  .nav-actions{display:none}
+  .menu-button{display:block;padding:8px}
+  .menu-button span{display:block;height:2px;background:white;margin:6px 0;border-radius:1px}
+  .nav-links{display:none;position:absolute;top:68px;left:16px;right:16px;transform:none;background:#0d0b12;border:1px solid var(--line);border-radius:12px;padding:20px 22px;flex-direction:column;gap:6px}
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:14px;padding:12px 4px}
+  .nav-links .mobile-social-link{display:block;color:#d7b6ff;font-size:14px}
+
+  /* ─── Hero ─── */
+  .hero{height:auto;min-height:100vh}
+  .hero-content{width:min(680px,calc(100% - 40px));grid-template-columns:1fr;padding:110px 0 60px;gap:45px}
+  .hero-logo{width:min(400px,100%);height:120px;margin-bottom:0}
+  .hero h1{font-size:40px}
+  .hero-copy{font-size:14px;line-height:1.65}
+  .hero-contact{width:100%;text-align:center;padding:32px 26px}
+  .hero-contact .contact-logo{margin:0 auto 24px}
+  .hero-contact h2{font-size:28px}
+  .hero-contact>p:not(.section-label){font-size:13px;line-height:1.7}
+
+  /* ─── Hero Process ─── */
+  .hero-process{width:min(680px,calc(100% - 40px));padding:115px 0 60px}
+  .hero-process h1{font-size:42px}
+  .hero-steps{grid-template-columns:1fr 1fr;gap:38px 14px;margin:45px 0}
+  .hero-steps:before{display:none}
+  .hero-steps article>i{margin:14px auto}
+  .hero-steps article{padding:0 14px}
+  .hero-steps h2{font-size:17px}
+  .hero-steps p{font-size:12px;line-height:1.6}
+  .hero-steps article>span{font-size:10px}
+
+  /* ─── Section Label & Copy ─── */
+  .section-label,.eyebrow{font-size:10px;letter-spacing:.22em}
+  .section{padding:80px 20px}
+  .section h2{font-size:clamp(28px,7vw,42px)}
+  .section-copy{font-size:14px;margin:20px auto 45px}
+
+  /* ─── Categories ─── */
+  .category-selector{margin-bottom:60px}
+  .category-intro{font-size:13px;line-height:1.65}
+  .category-grid{grid-template-columns:1fr;max-width:100%;margin:28px auto 0;gap:14px}
+  .category-card{min-height:auto;padding:22px 22px 18px;flex-direction:column;align-items:center}
+  .category-card strong{font-size:20px}
+  .category-card small{font-size:12px;line-height:1.55;min-height:auto;margin:8px auto 12px}
+  .category-card b{font-size:11px}
+  .category-card b span{font-size:14px}
+  .category-number{font-size:10px}
+  .category-image{width:130px;height:100px;margin:-6px 0 10px}
+  .category-image img{max-width:115px;max-height:92px}
+  .domain-category-card{width:100%}
+  .category-models-cue{font-size:12px;margin-top:24px}
+  .category-models-cue b{font-size:22px}
+
+  /* ─── Plans ─── */
+  .plans{grid-template-columns:1fr;max-width:100%}
+  .plan-card{min-height:0;padding:22px 20px}
+  .plan-head{font-size:10px}
+  .plan-head small{font-size:10px;padding:6px 11px}
+  .plan-card h3{font-size:22px;min-height:auto;margin:20px 0 12px}
+  .plan-card>p{font-size:13px;line-height:1.6;min-height:auto;margin:0 0 8px}
+  .price{margin:18px 0}
+  .price strong{font-size:34px}
+  .price small,.price span{font-size:10px;padding-bottom:4px}
+  .monthly-price{margin:-4px 0 14px;padding:12px 16px}
+  .monthly-price small,.monthly-price span{font-size:10px}
+  .monthly-price strong{font-size:24px}
+  .plan-highlight{font-size:15px;padding:14px 16px;margin:14px 0 20px}
+  .plan-card ul{padding:18px 0 8px}
+  .plan-card li{font-size:13px;padding:8px 0;line-height:1.5}
+  .plan-card li span{margin-right:8px}
+  .plan-card li.repeated-feature{font-size:13px;padding:12px}
+  .plan-card li.delivery-feature{font-size:13px;padding:12px}
+  .features-toggle{font-size:11px;padding:14px 15px;margin:6px 0 16px}
+  .features-toggle span{font-size:17px}
+  .plan-actions{margin:0 -20px -22px}
+  .plan-actions button{padding:20px 22px;font-size:13px}
+
+  /* ─── Domain Addon ─── */
+  .domain-addon{grid-template-columns:1fr;padding:24px 22px;gap:16px;text-align:center}
+  .domain-icon{margin:0 auto}
+  .domain-content{text-align:center}
+  .domain-content>small{font-size:9px}
+  .domain-content h3{font-size:24px}
+  .domain-content p{font-size:12px;line-height:1.65;max-width:100%}
+  .domain-price{grid-column:1/-1;padding:16px 0 0;border-left:0;border-top:1px solid var(--line);text-align:center;align-items:center}
+  .domain-price span,.domain-price small{font-size:9px}
+  .domain-price strong{font-size:19px}
+  .domain-addon>a{margin:0 -22px -24px;font-size:13px;padding:18px 22px}
+
+  /* ─── Showcase ─── */
+  .showcase-grid{grid-template-columns:1fr}
+  .mock-window{height:280px;padding:24px}
+
+  /* ─── Steps ─── */
+  .steps{grid-template-columns:1fr 1fr;gap:50px 0}
+  .steps:before{display:none}
+  .step-dot{margin:18px auto}
+  .step h3{font-size:16px}
+  .step p{font-size:12px}
+
+  /* ─── Footer ─── */
+  footer{padding:0 20px;height:auto;min-height:80px;flex-wrap:wrap;gap:8px;justify-content:center;text-align:center;padding-top:16px;padding-bottom:16px}
+  footer>span{display:none}
+  .footer-logo{width:150px;height:44px}
+  .footer-terms{font-size:10px}
+  footer>a:last-child{font-size:12px}
+
+  /* ─── Scroll Cue ─── */
+  .scroll-cue{font-size:12px}
+  .scroll-cue b{font-size:22px}
+
+  /* ─── Payment Modal ─── */
+  .payment-modal{padding:26px 18px}
+  .payment-modal h2{font-size:24px}
+  .payment-intro{font-size:14px;margin:16px 0 22px}
+  .payment-options{grid-template-columns:1fr;gap:10px}
+  .payment-options button{padding:20px;gap:8px}
+  .payment-options span,.payment-options small{font-size:10px}
+  .payment-options strong{font-size:28px}
+  .payment-total{align-items:flex-start;flex-direction:column;padding:16px;margin:20px 0 16px}
+  .payment-total span{font-size:10px}
+  .payment-total strong{font-size:24px}
+  .payment-owner{padding:16px}
+  .payment-owner span{font-size:9px}
+  .payment-owner strong{font-size:18px}
+  .payment-owner small{font-size:11px}
+  .payment-methods-grid{grid-template-columns:1fr;gap:14px}
+  .mercado-pago-option{grid-template-columns:1fr;gap:14px;padding:18px}
+  .mercado-pago-option>div span{font-size:10px}
+  .mercado-pago-option>div strong{font-size:18px}
+  .mercado-pago-option>div small{font-size:10px;line-height:1.5}
+  .mercado-pago-option>a{justify-content:space-between;padding:14px 16px;font-size:11px}
+  .bank-accounts{grid-template-columns:1fr;gap:12px;margin-top:0}
+  .bank-accounts article{padding:18px}
+  .bank-accounts article>small{font-size:10px;margin-bottom:10px}
+  .bank-accounts article>p{font-size:11px;margin:0 0 14px}
+  .bank-accounts article>p strong{font-size:12px}
+  .bank-accounts article>div{padding:10px 0;gap:4px 10px}
+  .bank-accounts article span{font-size:10px}
+  .bank-accounts article strong{font-size:13px}
+  .bank-accounts article button{font-size:11px;padding:6px 10px}
+  .payment-footer-actions{align-items:stretch;flex-direction:column-reverse;gap:10px;margin-top:20px}
+  .payment-footer-actions>button:first-child{margin-right:0;font-size:13px;padding:12px}
+  .payment-footer-actions .paid-button{text-align:center;padding:16px 18px;font-size:13px}
+
+  /* ─── Client Form ─── */
+  .form-heading h3{font-size:22px}
+  .form-heading p{font-size:12px}
+  .form-heading>small{font-size:9px}
+  .form-grid{grid-template-columns:1fr;gap:14px}
+  .form-grid label>span{font-size:12px}
+  .form-grid input,.form-grid textarea{padding:14px;font-size:14px;border-radius:9px}
+  .form-wide{grid-column:auto}
+  .form-check{font-size:12px;gap:10px;margin-top:16px}
+  .form-check input{width:20px;height:20px}
+  .form-actions{align-items:stretch;flex-direction:column-reverse;gap:12px}
+  .form-actions button{font-size:13px;padding:10px}
+  .form-actions button[type=submit]{width:100%;padding:16px;font-size:14px}
+  .whatsapp-attachment-notice{padding:14px 16px;margin-top:16px}
+  .whatsapp-attachment-notice strong{font-size:12px}
+  .whatsapp-attachment-notice span{font-size:12px;line-height:1.55}
+
+  /* ─── Terms ─── */
+  .terms-notice{width:min(310px,calc(100vw - 32px));padding:16px}
+  .terms-notice .terms-link{font-size:12px}
+  .terms-notice p{font-size:11px;margin:8px 0 13px}
+  .terms-accept{padding:13px 14px;font-size:12px}
+  .terms-modal{padding:24px 20px}
+  .terms-modal h2{font-size:24px}
+  .terms-modal iframe{height:min(50vh,440px)}
+  .terms-close{width:36px;height:36px;font-size:22px}
+  .terms-modal-actions{flex-direction:column;gap:8px}
+  .terms-modal-actions button{padding:14px 16px;font-size:12px;text-align:center}
+
+  /* ─── Lightbox ─── */
+  .image-lightbox{padding:50px 16px}
+  .image-lightbox>img{max-width:calc(100vw - 32px);border-radius:10px}
+  .lightbox-close{width:38px;height:38px;font-size:22px}
+  .lightbox-arrow{width:38px;height:54px;font-size:28px;background:rgba(15,12,19,.82)}
+  .lightbox-arrow.prev{left:8px}
+  .lightbox-arrow.next{right:8px}
+  .lightbox-counter{font-size:11px;padding:8px 14px}
+
+  /* ─── Demo ─── */
+  .demo-overlay{padding:10px}
+  .demo-modal{max-height:calc(100vh - 20px)}
+  .demo-site{height:calc(100vh - 150px)}
+  .demo-pro-hero{grid-template-columns:1fr}
+  .demo-pro-art{display:none}
+  .demo-nav>span{display:none}
+  .demo-products i{height:110px}
+  .demo-footer>div span{display:none}
 }
-@media(max-width:480px){.brand-logo{width:150px;height:44px}.hero h1{font-size:39px}.hero-process h1{font-size:39px}.hero-steps{grid-template-columns:1fr}.hero-logo{width:100%;height:100px}.hero-contact .contact-logo{width:210px;height:58px}.steps{grid-template-columns:1fr}.showcase-grid{gap:45px}.mock-window{height:250px;padding:22px}.mock-content{height:190px}.image-lightbox{padding:48px 10px}.lightbox-arrow{width:34px;height:48px;font-size:27px;background:rgba(15,12,19,.82)}.lightbox-arrow.prev{left:6px}.lightbox-arrow.next{right:6px}.lightbox-close{top:10px;right:10px}}
+
+@media(max-width:480px){
+  .brand-logo{width:140px;height:42px}
+
+  .hero h1{font-size:34px}
+  .hero-copy{font-size:13px}
+  .hero-process h1{font-size:34px}
+  .hero-steps{grid-template-columns:1fr;gap:32px}
+  .hero-steps article{padding:0 8px}
+  .hero-logo{width:100%;height:95px}
+  .hero-contact{padding:26px 20px}
+  .hero-contact h2{font-size:24px}
+  .hero-contact .contact-logo{width:190px;height:54px}
+  .hero-contact>p:not(.section-label){font-size:12px}
+
+  .section h2{font-size:clamp(24px,7vw,34px)}
+  .section-copy{font-size:13px}
+
+  .category-card strong{font-size:18px}
+  .category-card small{font-size:11px}
+
+  .plan-card h3{font-size:20px}
+  .plan-card>p{font-size:12px}
+  .price strong{font-size:30px}
+  .plan-card li{font-size:12px}
+  .plan-card li.repeated-feature,.plan-card li.delivery-feature{font-size:12px}
+  .plan-actions button{font-size:12px;padding:18px 20px}
+
+  .domain-content h3{font-size:22px}
+  .domain-content p{font-size:11px}
+
+  .steps{grid-template-columns:1fr}
+
+  .showcase-grid{gap:40px}
+  .mock-window{height:240px;padding:20px}
+  .mock-content{height:180px}
+
+  .payment-modal h2{font-size:22px}
+  .payment-options strong{font-size:26px}
+
+  footer{gap:10px}
+  .footer-terms{font-size:10px}
+}
+
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
