@@ -485,10 +485,176 @@ footer { height:90px;border-top:1px solid var(--line);display:flex;align-items:c
   .mock-content{height:180px}
 
   .payment-modal h2{font-size:22px}
-  .payment-options strong{font-size:26px}
-
   footer{gap:10px}
   .footer-terms{font-size:10px}
+}
+
+/* ─── Live Status Pill ─── */
+.live-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid rgba(86, 230, 137, .38);
+  border-radius: 30px;
+  background: rgba(12, 38, 20, .75);
+  color: #79f2a6;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: .08em;
+  margin-bottom: 22px;
+  box-shadow: 0 0 20px rgba(50, 205, 110, .15);
+}
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #32dc74;
+  box-shadow: 0 0 10px #32dc74;
+  animation: liveDotPulse 1.8s ease-in-out infinite;
+}
+@keyframes liveDotPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: .5; }
+}
+
+/* ─── Metrics Bar Section ─── */
+.metrics-bar-section {
+  width: min(1160px, 90vw);
+  margin: 0 auto 60px;
+  padding: 28px 34px;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(16, 12, 25, .82), rgba(8, 7, 12, .92));
+  backdrop-filter: blur(16px);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, .35);
+}
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  text-align: center;
+}
+.metric-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+.metric-item strong {
+  font: 700 28px/1 "Berlin Sans FB Demi", "Trebuchet MS", sans-serif;
+  color: transparent;
+  background: linear-gradient(90deg, #b066ff, #e555ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.metric-item span {
+  color: #938c9a;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+/* ─── Módulo Comparativo (Why Us) ─── */
+.why-us-section { text-align: center; }
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 920px;
+  margin: 40px auto 0;
+  text-align: left;
+}
+.comparison-card {
+  padding: 30px;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.comparison-card.traditional {
+  border: 1px solid rgba(255, 255, 255, .08);
+  background: rgba(14, 12, 19, .6);
+}
+.comparison-card.traditional h3 { color: #888290; font-size: 18px; margin: 0 0 20px; }
+.comparison-card.traditional ul { list-style: none; padding: 0; margin: 0; }
+.comparison-card.traditional li { color: #7a7482; font-size: 12px; padding: 9px 0; display: flex; align-items: center; gap: 10px; }
+.comparison-card.traditional li span { color: #ff5577; font-weight: 800; }
+
+.comparison-card.jcb {
+  border: 1px solid rgba(175, 94, 255, .4);
+  background: linear-gradient(145deg, rgba(26, 17, 42, .92), rgba(11, 8, 18, .96));
+  box-shadow: 0 20px 65px rgba(105, 30, 180, .25);
+}
+.comparison-card.jcb .jcb-badge {
+  position: absolute;
+  top: 18px; right: 20px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #812cd9, #be38e8);
+  color: white;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+.comparison-card.jcb h3 { color: white; font-size: 20px; margin: 0 0 20px; }
+.comparison-card.jcb ul { list-style: none; padding: 0; margin: 0; }
+.comparison-card.jcb li { color: #d6ccdf; font-size: 13px; font-weight: 600; padding: 9px 0; display: flex; align-items: center; gap: 10px; }
+.comparison-card.jcb li span { color: #32dc74; font-weight: 800; }
+
+/* ─── FAQ Accordion ─── */
+.faq-section { text-align: center; }
+.faq-grid {
+  max-width: 780px;
+  margin: 40px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+.faq-item {
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 12px;
+  background: rgba(14, 11, 20, .75);
+  overflow: hidden;
+  transition: border-color .25s ease;
+}
+.faq-item:hover { border-color: rgba(175, 94, 255, .35); }
+.faq-trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 22px;
+  background: transparent;
+  border: 0;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: left;
+}
+.faq-trigger b {
+  font-size: 20px;
+  color: #a878ff;
+  line-height: 1;
+  margin-left: 14px;
+}
+.faq-content {
+  padding: 0 22px 18px;
+  color: #9b94a3;
+  font-size: 13px;
+  line-height: 1.65;
+  overflow: hidden;
+}
+.faq-content p { margin: 0; }
+
+@media(max-width:800px){
+  .metrics-bar-section { padding: 22px 18px; margin-bottom: 40px; }
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .metric-item strong { font-size: 22px; }
+  .comparison-grid { grid-template-columns: 1fr; }
+  .comparison-card { padding: 22px; }
+  .faq-trigger { font-size: 13px; padding: 16px 18px; }
 }
 
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}

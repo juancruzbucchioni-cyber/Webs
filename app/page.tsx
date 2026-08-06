@@ -269,6 +269,29 @@ const plans = [
   },
 ];
 
+const faqs = [
+  {
+    question: "¿Necesito conocimientos técnicos para administrar mi web?",
+    answer: "Para nada. Te entregamos un panel de administración ultra sencillo e intuitivo desde donde podés actualizar productos, precios, ofertas y ver tus pedidos sin saber nada de programación."
+  },
+  {
+    question: "¿Cómo funcionan los medios de pago y la seña?",
+    answer: "Podés comenzar tu proyecto abonando una seña del 35% por transferencia bancaria o Mercado Pago. El saldo restante se cancela una vez que revisás la web terminada y está lista para publicar."
+  },
+  {
+    question: "¿En cuánto tiempo está lista mi página web?",
+    answer: "El tiempo estimado de desarrollo y entrega es de 1 semana a 1 semana y media. Durante este proceso te enviamos avances periódicos por WhatsApp para que veas la evolución de tu sitio."
+  },
+  {
+    question: "¿Qué incluye el soporte post-entrega de 2 meses?",
+    answer: "Te brindamos 2 meses enteros de acompañamiento técnico, ayuda para resolver cualquier duda, soporte en el panel y hasta 2 rondas de ajustes de contenido sin ningún costo adicional."
+  },
+  {
+    question: "¿Puedo usar mi propio dominio si ya tengo uno?",
+    answer: "¡Sí, totalmente! Si ya compraste tu dominio (por ejemplo en NIC Argentina o GoDaddy), lo vinculamos a tu nueva web sin ningún costo extra."
+  }
+];
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [paymentPlan, setPaymentPlan] = useState<number | null>(null);
@@ -280,6 +303,7 @@ export default function Home() {
   const [activeSlides, setActiveSlides] = useState([0, 0, 0, 0, 0, 0]);
   const [lightbox, setLightbox] = useState<{ planIndex: number; imageIndex: number } | null>(null);
   const [activeCategory, setActiveCategory] = useState<(typeof storeCategories)[number]["id"]>("negocios");
+  const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [showTermsNotice, setShowTermsNotice] = useState(false);
   const [showTermsModal, setShowTermsModal] = useState(false);
 
@@ -417,6 +441,16 @@ export default function Home() {
         <div className="aurora aurora-right" />
         <div className="stars" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
         <div className="hero-process" id="proceso">
+          <motion.div
+            className="live-status-pill"
+            initial={{ opacity: 0, scale: 0.9, y: -10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="live-dot" />
+            <span>DISPONIBILIDAD PARA 2 PROYECTOS ESTE MES</span>
+            <small>· ENTREGA ESTIMADA: 1 SEMANA Y MEDIA</small>
+          </motion.div>
           <p className="section-label">UN PROCESO SIMPLE</p>
           <h1>De tu idea a internet<br /><span>sin complicaciones.</span></h1>
           <div className="hero-steps">
@@ -441,6 +475,27 @@ export default function Home() {
             ))}
           </div>
           <a className="scroll-cue" href="#categorias"><span>Ver categorías</span><b>↓</b></a>
+        </div>
+      </section>
+
+      <section className="metrics-bar-section">
+        <div className="metrics-grid">
+          <motion.div className="metric-item" initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
+            <strong>+35</strong>
+            <span>Webs entregadas</span>
+          </motion.div>
+          <motion.div className="metric-item" initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
+            <strong>100%</strong>
+            <span>Adaptadas a celular</span>
+          </motion.div>
+          <motion.div className="metric-item" initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}>
+            <strong>7 a 10 Días</strong>
+            <span>Tiempo de entrega</span>
+          </motion.div>
+          <motion.div className="metric-item" initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>
+            <strong>1 Año Gratis</strong>
+            <span>Hosting privado de regalo</span>
+          </motion.div>
         </div>
       </section>
 
@@ -605,6 +660,89 @@ export default function Home() {
             </motion.article>
           </motion.div>
         </AnimatePresence>
+      </section>
+
+      <section className="why-us-section section">
+        <p className="section-label">DIFERENCIA DE CALIDAD</p>
+        <h2>¿Por qué elegir JCB Development?</h2>
+        <p className="section-copy">No entregamos plantillas genéricas. Desarrollamos sitios ultrarrápidos, personalizados a medida para vender más.</p>
+
+        <div className="comparison-grid">
+          <motion.div
+            className="comparison-card traditional"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+          >
+            <h3>Plantillas / Webs genéricas</h3>
+            <ul>
+              <li><span>✕</span> Sitios lentos y pesados</li>
+              <li><span>✕</span> Diseños repetidos igual a tu competencia</li>
+              <li><span>✕</span> Difíciles de navegar en celulares</li>
+              <li><span>✕</span> Sin soporte post-entrega ni acompañamiento</li>
+              <li><span>✕</span> Costos ocultos de mantenimiento</li>
+            </ul>
+          </motion.div>
+          <motion.div
+            className="comparison-card jcb"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+          >
+            <div className="jcb-badge">RECOMENDADO</div>
+            <h3>JCB Development</h3>
+            <ul>
+              <li><span>✓</span> Carga ultra rápida en menos de 1 segundo</li>
+              <li><span>✓</span> Diseños personalizados con tu identidad</li>
+              <li><span>✓</span> Experiencia optimizada 100 % para celular</li>
+              <li><span>✓</span> Mantenimiento y soporte directo durante 2 meses</li>
+              <li><span>✓</span> Hosting privado de regalo durante 1 año</li>
+            </ul>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="faq-section section" id="faq">
+        <p className="section-label">RESOLVÉ TUS DUDAS</p>
+        <h2>Preguntas frecuentes</h2>
+        <p className="section-copy">Todo lo que necesitás saber antes de comenzar tu proyecto web.</p>
+
+        <div className="faq-grid">
+          {faqs.map((faq, index) => (
+            <motion.div
+              className="faq-item"
+              key={faq.question}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.08 }}
+            >
+              <button
+                className={`faq-trigger ${activeFaq === index ? "open" : ""}`}
+                onClick={() => setActiveFaq(activeFaq === index ? null : index)}
+                aria-expanded={activeFaq === index}
+              >
+                <span>{faq.question}</span>
+                <b aria-hidden="true">{activeFaq === index ? "−" : "+"}</b>
+              </button>
+              <AnimatePresence>
+                {activeFaq === index && (
+                  <motion.div
+                    className="faq-content"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.25 }}
+                  >
+                    <p>{faq.answer}</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          ))}
+        </div>
       </section>
 
       <footer id="contacto">
