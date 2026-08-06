@@ -410,6 +410,9 @@ export default function Home() {
       </nav>
 
       <section className="hero" id="inicio">
+        <div className="hero-bg-media">
+          <img src="https://mfgdppcitpollcnqukpt.supabase.co/storage/v1/object/public/product-images/Creating_dynamic_logo_transition_202608060124-ezgif.com-video-to-webp-converter.webp" alt="" />
+        </div>
         <div className="aurora aurora-left" />
         <div className="aurora aurora-right" />
         <div className="stars" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
