@@ -87,13 +87,38 @@ button { color:inherit; font:inherit; }
 .hero-process { position:relative; z-index:2; width:min(1040px,86vw); padding:108px 0 35px; text-align:center; margin:0 auto; }
 .hero-process h1 { font-family:"Berlin Sans FB Demi","Trebuchet MS",sans-serif; font-size:clamp(40px,5.2vw,66px); line-height:.98; letter-spacing:-.025em; margin:0; }
 .hero-process h1 span { color:transparent; background:linear-gradient(90deg,#9a54ff,#d642ef); background-clip:text; -webkit-background-clip:text; }
-.hero-steps { display:grid; grid-template-columns:repeat(4,1fr); margin:55px 0 30px; position:relative; }
-.hero-steps:before { content:""; position:absolute; top:43px; left:12%; right:12%; height:1px; background:linear-gradient(90deg,transparent,#7134be,#7134be,transparent); }
-.hero-steps article { position:relative; padding:0 25px; text-align:center; }
-.hero-steps article>span { color:#77717d; font-size:9px; letter-spacing:.18em; }
-.hero-steps article>i { display:block; width:12px; height:12px; margin:30px auto; border:3px solid #050407; border-radius:50%; background:#a24cff; box-shadow:0 0 14px #8139e8; position:relative; z-index:1; }
-.hero-steps h2 { font-family:"Berlin Sans FB Demi","Trebuchet MS",sans-serif; font-size:18px; margin:0 0 11px; }
-.hero-steps p { color:#8b8690; font-size:10px; line-height:1.7; margin:0; }
+/* ─── Timeline "De tu idea a internet sin complicaciones" ─── */
+.hero-steps-container { position:relative; max-width:1040px; margin:55px auto 40px; padding:0 10px; }
+
+.timeline-line-track { position:absolute; top:45px; left:12%; right:12%; height:2px; background:rgba(255,255,255,.08); z-index:1; border-radius:2px; overflow:hidden; }
+.timeline-line-fill { width:100%; height:100%; background:linear-gradient(90deg,#7c34d6,#c246ff,#51aeff); transform-origin:left center; box-shadow:0 0 12px rgba(194,70,255,.6); }
+
+.hero-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; position:relative; z-index:2; }
+
+.step-card { position:relative; display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 10px; cursor:pointer; transition:transform 250ms ease; }
+.step-number { color:#797184; font-size:11px; font-weight:800; letter-spacing:.2em; margin-bottom:12px; transition:color 250ms ease, text-shadow 250ms ease; }
+.step-node-wrapper { position:relative; width:24px; height:24px; margin:0 0 18px; display:grid; place-items:center; }
+.step-node-dot { width:12px; height:12px; border-radius:50%; background:#a24cff; border:3px solid #050407; box-shadow:0 0 12px #8139e8; transition:transform 250ms ease, background-color 250ms ease, box-shadow 250ms ease, border-color 250ms ease; }
+
+.step-title { font-family:"Berlin Sans FB Demi","Trebuchet MS",sans-serif; font-size:19px; color:#ffffff; margin:0 0 10px; transition:transform 250ms ease, color 250ms ease; }
+.step-copy { color:#8b8690; font-size:11px; line-height:1.65; margin:0; }
+
+/* Hover Interactions */
+.step-card:hover .step-number { color:#e2acff; text-shadow:0 0 10px rgba(226,172,255,.5); }
+.step-card:hover .step-node-dot { transform:scale(1.35); background:#d862ff; border-color:#1a0f2e; box-shadow:0 0 20px rgba(216,98,255,.9), 0 0 6px #ffffff; }
+.step-card:hover .step-title { transform:scale(1.04); color:#ffffff; }
+
+@media(max-width: 800px) {
+  .hero-steps-container { margin:40px auto 20px; }
+  .timeline-line-track { top:25px; bottom:25px; left:28px; right:auto; width:2px; height:auto; }
+  .timeline-line-fill { transform-origin:top center; }
+  .hero-steps { grid-template-columns:1fr; gap:30px; text-align:left; }
+  .step-card { display:grid; grid-template-columns:auto 1fr; grid-template-rows:auto auto; column-gap:18px; align-items:start; text-align:left; padding:0; }
+  .step-number { grid-column:2; grid-row:1; margin-bottom:2px; }
+  .step-node-wrapper { grid-column:1; grid-row:1 / span 2; margin:4px 0 0; }
+  .step-title { grid-column:2; grid-row:1; margin-top:16px; margin-bottom:6px; }
+  .step-copy { grid-column:2; grid-row:2; }
+}
 .hero-process .scroll-cue { width:max-content; margin:0 auto; }
 .hero-logo { width:min(500px,100%); height:150px; position:relative; margin-bottom:16px; filter:drop-shadow(0 22px 28px rgba(75,21,150,.34)); animation:float 5s ease-in-out infinite; }
 @keyframes float { 50%{transform:translateY(-10px)} }

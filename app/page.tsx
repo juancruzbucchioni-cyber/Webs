@@ -500,26 +500,42 @@ export default function Home() {
             <span>Desarrollamos </span>
             <TypingEffect />
           </div>
-          <div className="hero-steps">
-            {[
-              ["01", "Nos contás", "Charlamos sobre tu negocio, tus objetivos y la web que imaginás."],
-              ["02", "Diseñamos", "Creamos una propuesta visual alineada con tu marca y tus clientes."],
-              ["03", "Desarrollamos", "Construimos una experiencia rápida, adaptable y fácil de usar."],
-              ["04", "Publicamos", "La dejamos online, configurada y lista para empezar a trabajar."],
-            ].map(([number, title, copy], idx) => (
-              <motion.article
-                key={number}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
+          <div className="hero-steps-container">
+            <div className="timeline-line-track">
+              <motion.div
+                className="timeline-line-fill"
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.12 }}
-              >
-                <span>{number}</span>
-                <i />
-                <h2>{title}</h2>
-                <p>{copy}</p>
-              </motion.article>
-            ))}
+                transition={{ duration: 0.75, ease: "easeOut" }}
+              />
+            </div>
+
+            <div className="hero-steps">
+              {[
+                ["01", "Nos contás", "Charlamos sobre tu negocio, tus objetivos y la web que imaginás."],
+                ["02", "Diseñamos", "Creamos una propuesta visual alineada con tu marca y tus clientes."],
+                ["03", "Desarrollamos", "Construimos una experiencia rápida, adaptable y fácil de usar."],
+                ["04", "Publicamos", "La dejamos online, configurada y lista para empezar a trabajar."],
+              ].map(([number, title, copy], idx) => (
+                <motion.article
+                  className="step-card"
+                  key={number}
+                  initial={{ opacity: 0, y: 22 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: idx * 0.12 }}
+                  whileHover={{ y: -4 }}
+                >
+                  <span className="step-number">{number}</span>
+                  <div className="step-node-wrapper">
+                    <span className="step-node-dot" />
+                  </div>
+                  <h2 className="step-title">{title}</h2>
+                  <p className="step-copy">{copy}</p>
+                </motion.article>
+              ))}
+            </div>
           </div>
           <a className="scroll-cue" href="#categorias"><span>Ver categorías</span><b>↓</b></a>
         </div>
