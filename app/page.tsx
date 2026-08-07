@@ -2,7 +2,6 @@
 
 import { useEffect, useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import PricingSection4 from "@/components/ui/pricing-section-3";
 
 const WHATSAPP_NUMBER = "5493534128474";
 const MERCADO_PAGO_LINK = "https://link.mercadopago.com.ar/jcbdevelopment";
@@ -937,8 +936,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
-      <PricingSection4 />
 
       <section className="why-us-section section">
         <p className="section-label">DIFERENCIA DE CALIDAD</p>
