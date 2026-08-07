@@ -245,12 +245,13 @@ button { color:inherit; font:inherit; }
 .check-icon { width:16px; height:16px; margin-top:2px; flex-shrink:0; color:#b865ff; filter:drop-shadow(0 0 6px rgba(170,85,250,.4)); }
 .plan-card.premium-card .check-icon { color:#32dc74; filter:drop-shadow(0 0 6px rgba(50,220,116,.4)); }
 
-.expanded-features { margin-top:12px; overflow:hidden; }
+.accordion-content-wrapper { overflow:hidden; }
+.expanded-features { margin-top:12px; }
 
-.features-toggle { width:100%; display:flex; align-items:center; justify-content:space-between; margin-top:16px; padding:11px 14px; border:1px solid rgba(175,94,255,.25); border-radius:12px; background:rgba(120,40,190,.1); color:#dfbdff; font-size:11px; font-weight:700; cursor:pointer; transition:background 200ms ease, border-color 200ms ease; }
-.features-toggle:hover { background:rgba(130,45,205,.2); border-color:rgba(195,115,255,.45); }
-.features-toggle .arrow { font-size:14px; transition:transform 250ms ease; }
-.features-toggle.expanded .arrow { transform:rotate(180deg); }
+.features-toggle { width:100%; display:flex; align-items:center; justify-content:space-between; margin-top:16px; padding:11px 14px; border:1px solid rgba(175,94,255,.25); border-radius:12px; background:rgba(120,40,190,.1); color:#dfbdff; font-size:11px; font-weight:700; cursor:pointer; transition:background 200ms ease, border-color 200ms ease, box-shadow 200ms ease; }
+.features-toggle:hover { background:rgba(130,45,205,.22); border-color:rgba(195,115,255,.5); shadow:0 4px 15px rgba(130,45,205,.2); }
+.features-toggle.expanded { background:rgba(140,50,220,.2); border-color:rgba(210,130,255,.6); }
+.chevron-icon { width:16px; height:16px; color:#d8a0ff; flex-shrink:0; }
 
 .plan-actions { margin-top:auto; }
 .plan-actions button { width:100%; display:flex; justify-content:center; align-items:center; padding:16px 24px; font-size:13px; font-weight:800; letter-spacing:.03em; color:#ffffff; cursor:pointer; border-radius:14px; background:linear-gradient(110deg,#6b26c7,#9337e0); border:1px solid rgba(195,115,255,.4); box-shadow:0 10px 30px rgba(110,30,190,.3); transition:filter 200ms ease, box-shadow 200ms ease; }

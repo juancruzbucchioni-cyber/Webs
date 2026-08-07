@@ -790,39 +790,53 @@ export default function Home() {
                           })}
                         </ul>
 
-                        <AnimatePresence>
+                        <AnimatePresence initial={false}>
                           {expandedPlans.includes(index) && (
-                            <motion.ul
-                              className="features-list expanded-features"
+                            <motion.div
+                              className="accordion-content-wrapper"
                               initial={{ opacity: 0, height: 0 }}
                               animate={{ opacity: 1, height: "auto" }}
                               exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.3, ease: "easeInOut" }}
+                              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                             >
-                              {plan.features.slice(6).map((feature) => {
-                                const isRepeated = feature.startsWith("Incluye todas");
-                                const isDelivery = feature.startsWith("Entrega estimada");
-                                return (
-                                  <li className={isRepeated ? "repeated-feature" : isDelivery ? "delivery-feature" : ""} key={feature}>
-                                    <svg className="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                      <polyline points="20 6 9 17 4 12" />
-                                    </svg>
-                                    <span>{feature}</span>
-                                  </li>
-                                );
-                              })}
-                            </motion.ul>
+                              <ul className="features-list expanded-features">
+                                {plan.features.slice(6).map((feature) => {
+                                  const isRepeated = feature.startsWith("Incluye todas");
+                                  const isDelivery = feature.startsWith("Entrega estimada");
+                                  return (
+                                    <li className={isRepeated ? "repeated-feature" : isDelivery ? "delivery-feature" : ""} key={feature}>
+                                      <svg className="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                        <polyline points="20 6 9 17 4 12" />
+                                      </svg>
+                                      <span>{feature}</span>
+                                    </li>
+                                  );
+                                })}
+                              </ul>
+                            </motion.div>
                           )}
                         </AnimatePresence>
 
                         {plan.features.length > 6 && (
                           <button
                             className={`features-toggle ${expandedPlans.includes(index) ? "expanded" : ""}`}
-                            onClick={() => setExpandedPlans((current) => current.includes(index) ? current.filter((item) => item !== index) : [...current, index])}
+                            onClick={() => setExpandedPlans((current) => current.includes(index) ? [] : [index])}
                             aria-expanded={expandedPlans.includes(index)}
                           >
                             <span>{expandedPlans.includes(index) ? "Ver menos características" : "Ver todas las características"}</span>
-                            <span className="arrow">↓</span>
+                            <motion.svg
+                              className="chevron-icon"
+                              animate={{ rotate: expandedPlans.includes(index) ? 180 : 0 }}
+                              transition={{ duration: 0.3, ease: "easeOut" }}
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <polyline points="6 9 12 15 18 9" />
+                            </motion.svg>
                           </button>
                         )}
                       </div>
