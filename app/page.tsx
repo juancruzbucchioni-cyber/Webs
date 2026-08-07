@@ -29,8 +29,15 @@ const storeCategories = [
     image: "/categoria-ventas-digitales.webp",
   },
   {
-    id: "dominio",
+    id: "administracion-gastos",
     number: "04",
+    title: "Administración de gastos",
+    copy: "Sistemas para registrar ingresos, controlar gastos y conocer los resultados de tu negocio.",
+    image: "/categoria-gastos.webp",
+  },
+  {
+    id: "dominio",
+    number: "05",
     title: "Dominio privado",
     copy: "Una dirección exclusiva y profesional para identificar tu página en internet.",
     image: "/categoria-dominio.webp",
