@@ -687,73 +687,126 @@ export default function Home() {
                 <h2>{activeCategory === "negocios" ? "Elegí la web que necesitás." : activeCategory === "importaciones" ? "Conectá mercados y clientes." : activeCategory === "ventas-digitales" ? "Vendé productos digitales." : "Controlá todos tus números."}<br /><span>Nosotros la hacemos realidad.</span></h2>
                 <p className="section-copy">{activeCategory === "negocios" ? "Valores claros para comenzar. Cada proyecto se personaliza con tu identidad, contenido y objetivos." : activeCategory === "importaciones" ? "Una presencia profesional para presentar servicios, productos y oportunidades comerciales de importación." : activeCategory === "ventas-digitales" ? "Una solución completa para organizar tu catálogo, recibir pedidos y hacer crecer tu negocio digital." : "Centralizá ventas, gastos, productos y resultados desde un panel moderno, claro y seguro."}</p>
                 <div className="plans">
-            {plans.map((plan, index) => plan.category === activeCategory && (
-              <motion.article
-                className={`plan-card ${plan.color}`}
-                key={plan.type}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: index * 0.1 }}
-                whileHover={{ y: -8 }}
-              >
-                <div className="plan-glow" />
-                <div className="plan-head"><span>0{index + 1}</span><small>{plan.tag}</small></div>
-                <h3>{plan.type}</h3>
-                <figure className="plan-preview">
-                  <button className="preview-open" onClick={() => setLightbox({ planIndex: index, imageIndex: activeSlides[index] })} aria-label={`Ampliar ejemplo visual de ${plan.type}`}>
-                    <motion.img
-                      key={activeSlides[index]}
-                      src={plans[index].previews[activeSlides[index]]}
-                      alt={`Ejemplo visual ${activeSlides[index] + 1} de ${plan.type}`}
-                      initial={{ opacity: 0.6, scale: 0.98 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </button>
-                  {plan.previews.length > 1 && (
-                    <>
-                      <button className="preview-arrow prev" onClick={() => changeSlide(index, -1)} aria-label="Imagen anterior">‹</button>
-                      <button className="preview-arrow next" onClick={() => changeSlide(index, 1)} aria-label="Imagen siguiente">›</button>
-                      <div className="preview-dots">
-                        {plan.previews.map((_, dotIndex) => <button key={dotIndex} className={activeSlides[index] === dotIndex ? "active" : ""} onClick={() => setActiveSlides((current) => current.map((value, planNumber) => planNumber === index ? dotIndex : value))} aria-label={`Ver imagen ${dotIndex + 1}`} />)}
+                  {plans.map((plan, index) => plan.category === activeCategory && (
+                    <motion.article
+                      className={`plan-card ${plan.type.includes("Premium") ? "premium-card" : "standard-card"}`}
+                      key={plan.type}
+                      initial={{ opacity: 0, y: 25 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.45, delay: index * 0.1 }}
+                    >
+                      <div className="plan-glow" />
+                      <div className="plan-head">
+                        <span className="plan-badge">{plan.tag}</span>
                       </div>
-                    </>
-                  )}
-                </figure>
-                <p>{plan.copy}</p>
-                {"highlight" in plan && <div className="plan-highlight">{plan.highlight}</div>}
-                <div className="price"><small>DESDE</small><strong>${plan.price}</strong><span>ARS</span></div>
-                {"monthlyAmount" in plan && <div className="monthly-price"><small>O PLAN MENSUAL</small><strong>${plan.monthlyAmount.toLocaleString("es-AR")}</strong><span>ARS / MES</span></div>}
-                <ul>
-                  {(expandedPlans.includes(index) ? plan.features : plan.features.slice(0, 6)).map((feature) => {
-                    const isRepeated = feature.startsWith("Incluye todas");
-                    const isDelivery = feature.startsWith("Entrega estimada");
-                    return (
-                      <li className={isRepeated ? "repeated-feature" : isDelivery ? "delivery-feature" : ""} key={feature}>
-                        <span>✓</span>{feature}
-                      </li>
-                    );
-                  })}
-                </ul>
-                <button
-                  className={`features-toggle ${expandedPlans.includes(index) ? "expanded" : ""}`}
-                  onClick={() => setExpandedPlans((current) => current.includes(index) ? current.filter((item) => item !== index) : [...current, index])}
-                  aria-expanded={expandedPlans.includes(index)}
-                >
-                  {expandedPlans.includes(index) ? "Ver menos características" : "Ver todas las características"}
-                  <span>↓</span>
-                </button>
-                <div className="plan-actions">
-                  <motion.button
-                    onClick={() => { setPaymentPlan(index); setPaymentMode(null); }}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.97 }}
-                  >
-                    Adquirir <span>→</span>
-                  </motion.button>
-                </div>
-              </motion.article>
-            ))}
+
+                      <div className="plan-title-block">
+                        <h3>{plan.type}</h3>
+                        <p className="plan-description">{plan.copy}</p>
+                      </div>
+
+                      <figure className="plan-preview">
+                        <button className="preview-open" onClick={() => setLightbox({ planIndex: index, imageIndex: activeSlides[index] })} aria-label={`Ampliar ejemplo visual de ${plan.type}`}>
+                          <motion.img
+                            key={activeSlides[index]}
+                            src={plans[index].previews[activeSlides[index]]}
+                            alt={`Ejemplo visual ${activeSlides[index] + 1} de ${plan.type}`}
+                            initial={{ opacity: 0.6, scale: 0.98 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.3 }}
+                          />
+                        </button>
+                        {plan.previews.length > 1 && (
+                          <>
+                            <button className="preview-arrow prev" onClick={() => changeSlide(index, -1)} aria-label="Imagen anterior">‹</button>
+                            <button className="preview-arrow next" onClick={() => changeSlide(index, 1)} aria-label="Imagen siguiente">›</button>
+                            <div className="preview-dots">
+                              {plan.previews.map((_, dotIndex) => <button key={dotIndex} className={activeSlides[index] === dotIndex ? "active" : ""} onClick={() => setActiveSlides((current) => current.map((value, planNumber) => planNumber === index ? dotIndex : value))} aria-label={`Ver imagen ${dotIndex + 1}`} />)}
+                            </div>
+                          </>
+                        )}
+                      </figure>
+
+                      {"highlight" in plan && <div className="plan-highlight">{plan.highlight}</div>}
+
+                      <div className="price-block">
+                        <small>DESDE</small>
+                        <strong>${plan.price}</strong>
+                        <span>ARS</span>
+                      </div>
+
+                      {"monthlyAmount" in plan && (
+                        <div className="monthly-price">
+                          <small>O PLAN MENSUAL</small>
+                          <strong>${plan.monthlyAmount.toLocaleString("es-AR")}</strong>
+                          <span>ARS / MES</span>
+                        </div>
+                      )}
+
+                      <div className="features-wrapper">
+                        <ul className="features-list">
+                          {plan.features.slice(0, 6).map((feature) => {
+                            const isRepeated = feature.startsWith("Incluye todas");
+                            const isDelivery = feature.startsWith("Entrega estimada");
+                            return (
+                              <li className={isRepeated ? "repeated-feature" : isDelivery ? "delivery-feature" : ""} key={feature}>
+                                <svg className="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                  <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <span>{feature}</span>
+                              </li>
+                            );
+                          })}
+                        </ul>
+
+                        <AnimatePresence>
+                          {expandedPlans.includes(index) && (
+                            <motion.ul
+                              className="features-list expanded-features"
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.3, ease: "easeInOut" }}
+                            >
+                              {plan.features.slice(6).map((feature) => {
+                                const isRepeated = feature.startsWith("Incluye todas");
+                                const isDelivery = feature.startsWith("Entrega estimada");
+                                return (
+                                  <li className={isRepeated ? "repeated-feature" : isDelivery ? "delivery-feature" : ""} key={feature}>
+                                    <svg className="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                      <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                    <span>{feature}</span>
+                                  </li>
+                                );
+                              })}
+                            </motion.ul>
+                          )}
+                        </AnimatePresence>
+
+                        {plan.features.length > 6 && (
+                          <button
+                            className={`features-toggle ${expandedPlans.includes(index) ? "expanded" : ""}`}
+                            onClick={() => setExpandedPlans((current) => current.includes(index) ? current.filter((item) => item !== index) : [...current, index])}
+                            aria-expanded={expandedPlans.includes(index)}
+                          >
+                            <span>{expandedPlans.includes(index) ? "Ver menos características" : "Ver todas las características"}</span>
+                            <span className="arrow">↓</span>
+                          </button>
+                        )}
+                      </div>
+
+                      <div className="plan-actions">
+                        <motion.button
+                          onClick={() => { setPaymentPlan(index); setPaymentMode(null); }}
+                          whileHover={{ scale: 1.01 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          {plan.type.includes("Premium") ? "Adquirir Premium →" : plan.type.includes("Avanzada") ? "Adquirir Web Avanzada →" : "Adquirir →"}
+                        </motion.button>
+                      </div>
+                    </motion.article>
+                  ))}
                 </div>
               </>
             ) : null}
