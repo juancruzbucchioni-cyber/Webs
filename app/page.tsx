@@ -13,28 +13,30 @@ const storeCategories = [
     number: "01",
     title: "Tiendas para Negocios",
     copy: "Catálogos y tiendas online para vender y administrar tu negocio.",
-    image: "/categoria-negocios.png",
+    image: "/categoria-negocios.webp",
   },
   {
     id: "importaciones",
     number: "02",
     title: "Tiendas para Importaciones",
     copy: "Soluciones pensadas para productos importados, pedidos y reservas.",
-    image: "/categoria-importaciones.png",
+    image: "/categoria-importaciones.webp",
   },
   {
     id: "ventas-digitales",
     number: "03",
     title: "Tiendas para Ventas Digitales",
     copy: "Plataformas para vender cuentas, productos digitales, membresías, servicios y contenido online.",
-    image: "/categoria-ventas-digitales.png",
+    image: "/categoria-ventas-digitales.webp",
   },
   {
-    id: "administracion-gastos",
+    id: "dominio",
     number: "04",
-    title: "Administración de gastos",
-    copy: "Sistemas para registrar ingresos, controlar gastos y conocer los resultados de tu negocio.",
-    image: "/categoria-gastos.png",
+    title: "Dominio privado",
+    copy: "Una dirección exclusiva y profesional para identificar tu página en internet.",
+    image: "/categoria-dominio.webp",
+    isLink: true,
+    href: "#dominio",
   },
 ] as const;
 
@@ -644,42 +646,55 @@ export default function Home() {
           <h2>Elegí una categoría.</h2>
           <p className="category-intro">Seleccioná el tipo de proyecto que más se adapta a tu negocio.</p>
           <div className="category-grid">
-            {storeCategories.map((category) => (
-              <motion.button
-                className={`category-card ${activeCategory === category.id ? "active" : ""}`}
-                key={category.id}
-                onClick={() => selectCategory(category.id)}
-                aria-pressed={activeCategory === category.id}
-                whileHover={{ y: -6, scale: 1.01 }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: "spring", stiffness: 400, damping: 25 }}
-              >
-                <span className="category-number">{category.number}</span>
-                <span className="category-image" aria-hidden="true">
-                  <img src={category.image} alt="" />
-                </span>
-                <strong>{category.title}</strong>
-                <small>{category.copy}</small>
-                <b>{activeCategory === category.id ? "Categoría seleccionada" : "Ver categoría"} <span>→</span></b>
-              </motion.button>
-            ))}
-          </div>
-          <div className="domain-category-row">
-            <motion.a
-              className="category-card domain-category-card"
-              href="#dominio"
-              whileHover={{ y: -6, scale: 1.01 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            >
-              <span className="category-number">05</span>
-              <span className="category-image" aria-hidden="true">
-                <img src="/categoria-dominio.png" alt="" />
-              </span>
-              <strong>Dominio privado</strong>
-              <small>Una dirección exclusiva y profesional para identificar tu página en internet.</small>
-              <b>Ver dominio <span>→</span></b>
-            </motion.a>
+            {storeCategories.map((category) => {
+              const isActive = activeCategory === category.id;
+              const isLink = "isLink" in category && category.isLink;
+
+              if (isLink) {
+                return (
+                  <motion.a
+                    className="category-card"
+                    key={category.id}
+                    href={category.href}
+                    whileHover={{ y: -4 }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                  >
+                    <span className="category-number">{category.number}</span>
+                    <span className="category-image" aria-hidden="true">
+                      <img src={category.image} alt="" />
+                    </span>
+                    <strong>{category.title}</strong>
+                    <small>{category.copy}</small>
+                    <b className="category-cta">
+                      Ver dominio <span className="cta-arrow">→</span>
+                    </b>
+                  </motion.a>
+                );
+              }
+
+              return (
+                <motion.button
+                  className={`category-card ${isActive ? "active" : ""}`}
+                  key={category.id}
+                  onClick={() => selectCategory(category.id)}
+                  aria-pressed={isActive}
+                  whileHover={{ y: -4 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                >
+                  <span className="category-number">{category.number}</span>
+                  <span className="category-image" aria-hidden="true">
+                    <img src={category.image} alt="" />
+                  </span>
+                  <strong>{category.title}</strong>
+                  <small>{category.copy}</small>
+                  <b className="category-cta">
+                    {isActive ? "Categoría seleccionada" : "Ver categoría"} <span className="cta-arrow">→</span>
+                  </b>
+                </motion.button>
+              );
+            })}
           </div>
           <a className="category-models-cue" href="#modelos" onClick={goToModels}>
             <span>Ver modelos</span>
