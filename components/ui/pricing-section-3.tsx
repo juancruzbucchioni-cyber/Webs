@@ -173,40 +173,7 @@ export default function PricingSection4() {
       className="px-4 pt-16 pb-20 max-w-7xl mx-auto relative text-white"
       ref={pricingRef}
     >
-      <article className="flex sm:flex-row flex-col sm:pb-8 pb-6 sm:items-center items-start justify-between gap-6">
-        <div className="text-left mb-2">
-          <p className="text-xs font-extrabold tracking-widest text-purple-400 uppercase mb-2">
-            PRECIOS TRANSPARENTES
-          </p>
-          <h2 className="text-3xl sm:text-5xl font-bold leading-[120%] text-white mb-3">
-            <VerticalCutReveal
-              splitBy="words"
-              staggerDuration={0.12}
-              staggerFrom="first"
-              reverse={true}
-              containerClassName="justify-start"
-              transition={{
-                type: "spring",
-                stiffness: 250,
-                damping: 40,
-                delay: 0,
-              }}
-            >
-              Planes & Inversión
-            </VerticalCutReveal>
-          </h2>
-
-          <TimelineContent
-            as="p"
-            animationNum={0}
-            timelineRef={pricingRef}
-            customVariants={revealVariants}
-            className="text-slate-400 text-sm sm:text-base max-w-xl"
-          >
-            Elegí la propuesta perfecta para tu negocio. Incluye hosting privado gratis por 1 año y soporte post-entrega.
-          </TimelineContent>
-        </div>
-
+      <div className="flex justify-center pb-8">
         <TimelineContent
           as="div"
           animationNum={1}
@@ -215,7 +182,7 @@ export default function PricingSection4() {
         >
           <PricingSwitch onSwitch={togglePricingPeriod} className="shrink-0" />
         </TimelineContent>
-      </article>
+      </div>
 
       <TimelineContent
         as="div"
