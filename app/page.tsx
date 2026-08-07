@@ -652,33 +652,8 @@ export default function Home() {
           <h2>Elegí una categoría.</h2>
           <p className="category-intro">Seleccioná el tipo de proyecto que más se adapta a tu negocio.</p>
           <div className="category-grid">
-            {storeCategories.map((category) => {
+            {storeCategories.filter(c => !("isLink" in c && c.isLink)).map((category) => {
               const isActive = activeCategory === category.id;
-              const isLink = "isLink" in category && category.isLink;
-
-              if (isLink) {
-                return (
-                  <motion.a
-                    className="category-card"
-                    key={category.id}
-                    href={category.href}
-                    whileHover={{ y: -4 }}
-                    whileTap={{ scale: 0.98 }}
-                    transition={{ duration: 0.25, ease: "easeOut" }}
-                  >
-                    <span className="category-number">{category.number}</span>
-                    <span className="category-image" aria-hidden="true">
-                      <img src={category.image} alt="" />
-                    </span>
-                    <strong>{category.title}</strong>
-                    <small>{category.copy}</small>
-                    <b className="category-cta">
-                      Ver dominio <span className="cta-arrow">→</span>
-                    </b>
-                  </motion.a>
-                );
-              }
-
               return (
                 <motion.button
                   className={`category-card ${isActive ? "active" : ""}`}
@@ -701,6 +676,29 @@ export default function Home() {
                 </motion.button>
               );
             })}
+          </div>
+
+          <div className="domain-category-row">
+            {storeCategories.filter(c => "isLink" in c && c.isLink).map((category) => (
+              <motion.a
+                className="category-card domain-category-card"
+                key={category.id}
+                href={category.href}
+                whileHover={{ y: -4 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+              >
+                <span className="category-number">{category.number}</span>
+                <span className="category-image" aria-hidden="true">
+                  <img src={category.image} alt="" />
+                </span>
+                <strong>{category.title}</strong>
+                <small>{category.copy}</small>
+                <b className="category-cta">
+                  Ver dominio <span className="cta-arrow">→</span>
+                </b>
+              </motion.a>
+            ))}
           </div>
           <a className="category-models-cue" href="#modelos" onClick={goToModels}>
             <span>Ver modelos</span>
