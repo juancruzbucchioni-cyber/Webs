@@ -397,7 +397,7 @@ export default function Home() {
           <a href="/" onClick={() => setMenuOpen(false)}>Inicio</a>
           <a href="#categorias" onClick={() => setMenuOpen(false)}>Categorías</a>
           <a className="mobile-social-link" href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noreferrer">Contacto</a>
-          <a className="mobile-social-link" href="https://www.instagram.com/juan.bucchioni/" target="_blank" rel="noreferrer">Instagram · @juan.bucchioni</a>
+          <a className="mobile-social-link" href="https://www.instagram.com/jcb_development/" target="_blank" rel="noreferrer">Instagram · @jcb_development</a>
         </div>
         <div className="nav-actions">
           <a
@@ -408,7 +408,7 @@ export default function Home() {
           >
             Contacto
           </a>
-          <a className="nav-instagram" href="https://www.instagram.com/juan.bucchioni/" target="_blank" rel="noreferrer">
+          <a className="nav-instagram" href="https://www.instagram.com/jcb_development/" target="_blank" rel="noreferrer">
             Instagram
           </a>
         </div>
