@@ -62,29 +62,13 @@ const plans = [
     ],
     copy: "Ideal para negocios que quieren comenzar a vender por internet y administrar sus productos, pedidos y clientes fácilmente.",
     features: [
-      "Diseño personalizado con los colores e identidad del negocio",
-      "Adaptada a celulares, tablets y computadoras",
-      "Integración con WhatsApp, Instagram y redes sociales",
-      "Capacidad para 300 productos",
-      "Carga inicial de hasta 30 productos",
-      "Categorías, buscador y filtros personalizados",
-      "Carrito o bolsa de compras",
-      "Registro de datos del comprador",
-      "Pedidos organizados desde un panel administrativo",
-      "Medios de pago: efectivo y transferencia",
-      "Conexión con Correo Argentino o Andreani para gestionar envíos",
-      "Precios especiales por transferencia",
-      "Control y actualización de stock",
-      "Registro opcional de costos y ganancias",
-      "Administración de clientes y su historial de compras",
-      "Creación de ofertas, descuentos y cupones",
-      "Métricas básicas de ventas, pedidos y productos",
-      "Estados de pedidos y anotaciones internas",
-      "Configuración básica para buscadores",
-      "Hasta dos rondas de cambios antes de la entrega",
-      "Mantenimiento, ayuda y soporte durante 2 meses",
-      "Hosting privado de regalo durante 1 año",
-      "Entrega estimada: 1 semana y media",
+      "Diseño 100 % adaptado a celulares, tablets y computadoras",
+      "Capacidad para 300 productos (carga inicial de 30 incluida)",
+      "Buscador, categorías, filtros y carrito de compras",
+      "Integración directa con WhatsApp, Instagram y redes sociales",
+      "Panel de administración para gestionar pedidos y stock",
+      "Conexión con Correo Argentino o Andreani para envíos",
+      "Mantenimiento por 2 meses y Hosting gratis durante 1 año",
     ],
     message: "Hola, buenas. Quería consultar por la Web Avanzada.",
   },
@@ -103,23 +87,15 @@ const plans = [
       "/premium-gallery-05.png",
       "/premium-gallery-06.png",
     ],
-    copy: "Una solución completa para negocios que necesitan automatizar sus ventas, ofrecer una mejor experiencia de compra y administrar toda la operación desde un panel profesional.",
+    copy: "Una solución completa para negocios que necesitan automatizar sus ventas, ofrecer una mejor experiencia de compra y administrar toda la operación.",
     features: [
       "Incluye todas las características de la Web Avanzada",
-      "Pagos automáticos con tarjetas de crédito y débito mediante Mercado Pago",
+      "Cobros automáticos con tarjetas mediante Mercado Pago",
       "Sistema de usuarios y cuentas de clientes",
-      "Notificaciones automáticas de compras y cambios en pedidos",
-      "Recuperación de carritos abandonados",
+      "Notificaciones automáticas y recuperación de carritos",
       "Reportes avanzados de ventas, costos y ganancias",
-      "Herramientas avanzadas para clientes, promociones y seguimiento de pedidos",
-      "Diseño de banners y secciones promocionales",
-      "Hasta 3 funciones adicionales personalizadas",
-      "Optimización SEO básica para buscadores",
-      "Mayor personalización visual y funcional",
-      "Soporte prioritario",
-      "Hosting privado de regalo durante 1 año",
-      "Mantenimiento, ayuda y soporte durante 2 meses",
-      "Entrega estimada: 1 semana y media",
+      "Hasta 3 funciones personalizadas a medida de tu negocio",
+      "Soporte prioritario y Hosting gratis durante 1 año",
     ],
     message: "Hola, buenas. Quería consultar por la Web de Negocio Premium.",
   },
@@ -134,22 +110,14 @@ const plans = [
       "/importaciones-gallery-02.png",
       "/importaciones-gallery-01.png",
     ],
-    copy: "Una web profesional para empresas y emprendimientos de importación que necesitan presentar sus servicios, exhibir productos y administrar consultas, clientes y oportunidades comerciales desde un solo lugar.",
+    copy: "Una web profesional para empresas de importación que necesitan presentar sus servicios, exhibir productos y administrar consultas.",
     features: [
-      "Diseño personalizado con los colores e identidad del negocio",
-      "Adaptada a celulares, tablets y computadoras",
-      "Integración con WhatsApp, Instagram y redes sociales",
-      "Categorías y buscador",
-      "Medios de pago: efectivo, transferencia y enlace de Mercado Pago",
-      "Precios especiales por transferencia",
-      "Control y actualización de stock",
-      "Capacidad para 230 productos",
-      "Registro opcional de costos y ganancias",
-      "Administración de clientes y su historial de compras",
-      "Creación de ofertas, descuentos y cupones",
-      "Mantenimiento y soporte durante 2 meses",
-      "Hosting privado de regalo durante 1 año",
-      "Entrega estimada: 1 semana y media",
+      "Diseño profesional optimizado para comex e importaciones",
+      "Capacidad para 230 productos con control de stock",
+      "Pagos por efectivo, transferencia y enlace de Mercado Pago",
+      "Administración de clientes, consultas y oportunidades",
+      "Creación de ofertas, descuentos y cupones promocionales",
+      "Mantenimiento por 2 meses y Hosting gratis durante 1 año",
     ],
     message: "Hola, buenas. Quería consultar por la Web Importaciones Basic.",
   },
@@ -168,27 +136,14 @@ const plans = [
       "/digital-gallery-05.png",
       "/digital-gallery-06.png",
     ],
-    copy: "Una tienda profesional para vender cuentas, productos digitales, membresías, servicios y contenido online desde un catálogo claro y fácil de administrar.",
+    copy: "Una tienda profesional para vender cuentas, productos digitales, membresías, servicios y contenido online desde un catálogo claro.",
     features: [
-      "Diseño 100 % personalizado para tu marca",
-      "Adaptada a celulares, tablets y computadoras",
-      "Catálogo organizado por categorías",
-      "Buscador y filtros de productos",
-      "Sección de productos destacados y más vendidos",
-      "Carrito de compras",
-      "Productos con imagen, descripción, precio y disponibilidad",
-      "Precios normales, promocionales y por cantidad",
-      "Control y actualización de stock",
-      "Integración con WhatsApp e Instagram",
-      "Botón para comunidad o grupo privado",
-      "Formulario de contacto personalizado",
-      "Panel para administrar productos y categorías",
-      "Hasta 300 productos digitales",
-      "Configuración básica para buscadores",
-      "Hasta dos rondas de cambios antes de la entrega",
-      "Mantenimiento, ayuda y soporte durante 2 meses",
-      "Hosting privado de regalo durante 1 año",
-      "Entrega estimada: 1 semana y media",
+      "Diseño optimizado para productos digitales, cuentas y membresías",
+      "Capacidad para 300 productos con catálogo por categorías",
+      "Carrito de compras y precios por cantidad o promocionales",
+      "Integración con WhatsApp, Instagram y comunidad o grupo privado",
+      "Panel para administrar productos, categorías y stock",
+      "Mantenimiento por 2 meses y Hosting gratis durante 1 año",
     ],
     message: "Hola, buenas. Quería consultar por la Web E-commerce Digital.",
   },
@@ -214,10 +169,9 @@ const plans = [
     copy: "Una solución práctica para administrar y controlar tu negocio desde un solo lugar, ahorrar tiempo, mantener las cuentas ordenadas y tomar mejores decisiones.",
     features: [
       "1 Tienda y 3 Usuarios",
-      "Catálogo, Productos, Categorías directos desde tu página",
+      "Catálogo, Productos y Categorías directos desde tu página",
       "Gastos, Ventas, Pagos, Estadísticas y Reportes Mensuales",
-      "Precios especiales",
-      "Color principal del sistema a elección",
+      "Precios especiales y color del sistema a elección",
       "Información protegida y respaldada en la nube",
       "Identidad visual de JB incluida",
     ],
@@ -245,19 +199,12 @@ const plans = [
     copy: "Una solución práctica para administrar y controlar tu negocio desde un solo lugar, ahorrar tiempo, mantener las cuentas ordenadas y tomar mejores decisiones.",
     highlight: "Tomamos nuestro sistema y lo adaptamos a cómo funciona TU negocio.",
     features: [
-      "Acceso 3 Tiendas y 7 usuarios",
-      "Logo y nombre de la empresa",
-      "Colores y estética de marca personalizados",
-      "Dashboard adaptado a la identidad visual del negocio",
+      "Acceso para 3 Tiendas y 7 Usuarios",
+      "Estética y colores de marca adaptados a tu negocio",
       "Gestión de ventas, productos, gastos y pagos",
-      "Estadísticas y gráficos personalizados",
-      "Reportes financieros descargables en PDF",
-      "Buscadores, filtros y categorías",
-      "Módulos personalizados según el tipo de negocio",
-      "Campos y funciones adicionales a elección",
-      "Información protegida y respaldada en la nube",
-      "Soporte prioritario",
-      "Identidad visual del cliente integrada en todo el sistema",
+      "Estadísticas y gráficos personalizados descargables en PDF",
+      "Módulos y funciones adicionales a medida",
+      "Información respaldada en la nube con soporte prioritario",
       "Hosting privado de regalo durante 1 año",
     ],
     message: "Hola, buenas. Quería consultar por el Dashboard Personalizado.",
@@ -619,16 +566,6 @@ export default function Home() {
             </div>
             <span className="showcase-tag">📊 Gestión & Gastos</span>
           </motion.div>
-
-          <motion.div className="floating-badge badge-1" animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
-            ⚡ Carga en 0.8s
-          </motion.div>
-          <motion.div className="floating-badge badge-2" animate={{ y: [0, 10, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}>
-            🛒 Carrito directo a WhatsApp
-          </motion.div>
-          <motion.div className="floating-badge badge-3" animate={{ y: [0, -8, 0] }} transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 1 }}>
-            💳 Cobros por Mercado Pago
-          </motion.div>
         </div>
       </section>
 
@@ -766,11 +703,10 @@ export default function Home() {
 
                       <div className="features-wrapper">
                         <ul className="features-list">
-                          {plan.features.slice(0, 6).map((feature) => {
+                          {plan.features.map((feature) => {
                             const isRepeated = feature.startsWith("Incluye todas");
-                            const isDelivery = feature.startsWith("Entrega estimada");
                             return (
-                              <li className={isRepeated ? "repeated-feature" : isDelivery ? "delivery-feature" : ""} key={feature}>
+                              <li className={isRepeated ? "repeated-feature" : ""} key={feature}>
                                 <svg className="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                                   <polyline points="20 6 9 17 4 12" />
                                 </svg>
@@ -779,56 +715,6 @@ export default function Home() {
                             );
                           })}
                         </ul>
-
-                        <AnimatePresence initial={false}>
-                          {expandedPlans.includes(index) && (
-                            <motion.div
-                              className="accordion-content-wrapper"
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: "auto" }}
-                              exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                            >
-                              <ul className="features-list expanded-features">
-                                {plan.features.slice(6).map((feature) => {
-                                  const isRepeated = feature.startsWith("Incluye todas");
-                                  const isDelivery = feature.startsWith("Entrega estimada");
-                                  return (
-                                    <li className={isRepeated ? "repeated-feature" : isDelivery ? "delivery-feature" : ""} key={feature}>
-                                      <svg className="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                        <polyline points="20 6 9 17 4 12" />
-                                      </svg>
-                                      <span>{feature}</span>
-                                    </li>
-                                  );
-                                })}
-                              </ul>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-
-                        {plan.features.length > 6 && (
-                          <button
-                            className={`features-toggle ${expandedPlans.includes(index) ? "expanded" : ""}`}
-                            onClick={() => setExpandedPlans((current) => current.includes(index) ? [] : [index])}
-                            aria-expanded={expandedPlans.includes(index)}
-                          >
-                            <span>{expandedPlans.includes(index) ? "Ver menos características" : "Ver todas las características"}</span>
-                            <motion.svg
-                              className="chevron-icon"
-                              animate={{ rotate: expandedPlans.includes(index) ? 180 : 0 }}
-                              transition={{ duration: 0.3, ease: "easeOut" }}
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2.5"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            >
-                              <polyline points="6 9 12 15 18 9" />
-                            </motion.svg>
-                          </button>
-                        )}
                       </div>
 
                       <div className="plan-actions">
