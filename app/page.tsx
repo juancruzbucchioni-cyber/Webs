@@ -425,16 +425,6 @@ export default function Home() {
         <div className="aurora aurora-right" />
         <div className="stars" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
         <div className="hero-process" id="proceso">
-          <motion.div
-            className="live-status-pill"
-            initial={{ opacity: 0, scale: 0.9, y: -10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="live-dot" />
-            <span>DISPONIBILIDAD PARA 2 PROYECTOS ESTE MES</span>
-            <small>· ENTREGA ESTIMADA: 1 SEMANA Y MEDIA</small>
-          </motion.div>
           <p className="section-label">UN PROCESO SIMPLE</p>
           <h1>De tu idea a internet<br /><span>sin complicaciones.</span></h1>
           <div className="hero-typing-wrapper">
