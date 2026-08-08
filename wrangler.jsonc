@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "site-creator-vinext-starter",
-  "account_id": "107fc353e310ac59b1bbb9fcff76ee38",
+  "name": "webs",
+  "account_id": "5719397dc42b7c622c08671e86bdc34e",
   "compatibility_date": "2026-08-08",
   "compatibility_flags": [
     "nodejs_compat"
