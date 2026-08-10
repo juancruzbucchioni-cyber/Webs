@@ -246,7 +246,7 @@ const clientProjects = [
   {
     name: "Motosport Neuquén",
     flag: "🏍️",
-    stats: "E-Commerce de motos, repuestos, accesorios de competición y catálogo interactivo.",
+    stats: "Negocio de motos, repuestos, accesorios de competición y catálogo interactivo.",
     image: "/motosport-neuquen-hero.png",
     previewIndex: 1,
     themeColor: "115 90% 35%",
@@ -254,9 +254,9 @@ const clientProjects = [
     href: "https://motosportneuquen.com/",
   },
   {
-    name: "Speedy E-Commerce",
-    flag: "🛍️",
-    stats: "Tienda online completa con carrito de compras, catálogo dinámico y cobros integrados.",
+    name: "Speedy Repuestos",
+    flag: "🏍️",
+    stats: "Negocio de motos, repuestos, accesorios de competición y catálogo interactivo.",
     image: "/avanzada-gallery-01.png",
     previewIndex: 0,
     themeColor: "220 80% 32%",
@@ -264,9 +264,9 @@ const clientProjects = [
     href: "https://speedy.kazzu.workers.dev/",
   },
   {
-    name: "SDT Drops Store",
+    name: "SDT DROPS",
     flag: "⚡",
-    stats: "Plataforma automatizada para comercializar licencias, cuentas y productos digitales.",
+    stats: "E-Commerce de Productos, termos, celulares, remeras, etc.",
     image: "/digital-gallery-01.png",
     previewIndex: 3,
     themeColor: "280 75% 35%",
@@ -276,7 +276,7 @@ const clientProjects = [
   {
     name: "Control de Gastos & Ventas",
     flag: "📊",
-    stats: "Sistema web autogestionable para administrar ingresos, egresos y generar estadísticas.",
+    stats: "Sistema web autogestionable para administrar ventas, gastos y reportes del negocio.",
     image: "/dashboard-gallery-01.png",
     previewIndex: 4,
     themeColor: "320 70% 32%",
