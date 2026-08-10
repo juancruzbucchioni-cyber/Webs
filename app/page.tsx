@@ -525,74 +525,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mobile-showcase-section section">
-        <div className="mobile-showcase-header">
-          <p className="section-label">DISEÑO RESPONSIVO PREMIUM</p>
-          <h2>Tu tienda se ve increíble en cualquier celular.</h2>
-          <p className="section-copy">Optimizamos cada botón, imagen y animación para que tus clientes naveguen a la máxima velocidad.</p>
-        </div>
-
-        <div className="mobile-showcase-wrapper">
-          <motion.div
-            className="mobile-card-side left"
-            initial={{ opacity: 0, x: -50, rotate: -8 }}
-            whileInView={{ opacity: 1, x: 0, rotate: -6 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.05, rotate: -2, zIndex: 10 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          >
-            <div className="phone-top-bar">
-              <span className="notch" />
-              <span className="phone-url">importaciones.com.ar</span>
-            </div>
-            <div className="phone-screen-content">
-              <img src="/categoria-importaciones.png" alt="Vista Celular Importaciones" />
-            </div>
-            <span className="showcase-tag">⚡ Comex & Importaciones</span>
-          </motion.div>
-
-          <motion.div
-            className="mobile-card-center"
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.04, y: -8 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          >
-            <div className="phone-top-bar">
-              <span className="notch" />
-              <span className="phone-url">tunegocio.com.ar</span>
-            </div>
-            <div className="phone-screen-content">
-              <img src="/categoria-negocios.png" alt="Vista Celular Principal" />
-            </div>
-            <div className="phone-badge live-pulse">
-              <span className="live-dot" /> 100% Adaptada a celular
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="mobile-card-side right"
-            initial={{ opacity: 0, x: 50, rotate: 8 }}
-            whileInView={{ opacity: 1, x: 0, rotate: 6 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.05, rotate: 2, zIndex: 10 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          >
-            <div className="phone-top-bar">
-              <span className="notch" />
-              <span className="phone-url">gestion.com.ar</span>
-            </div>
-            <div className="phone-screen-content">
-              <img src="/categoria-gastos.png" alt="Vista Celular Gestión" />
-            </div>
-            <span className="showcase-tag">📊 Gestión & Gastos</span>
-          </motion.div>
-        </div>
-      </section>
-
       <section className="client-projects-section section" id="clientes">
-        <p className="section-label">PROYECTOS & TRABAJOS ENTREGADOS</p>
         <h2>Nuestros Clientes</h2>
         <p className="section-copy">Conocé algunos de los sitios web y sistemas de gestión que desarrollamos para distintos negocios.</p>
 
