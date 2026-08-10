@@ -244,12 +244,12 @@ const typingPhrases = [
 
 const clientProjects = [
   {
-    name: "Comex Importaciones",
-    flag: "📦",
-    stats: "Plataforma web para productos importados, cotización de envíos y consultas directas.",
-    image: "/importaciones-gallery-01.png",
-    previewIndex: 2,
-    themeColor: "260 70% 30%",
+    name: "Motosport Neuquén",
+    flag: "🏍️",
+    stats: "E-Commerce de motos, repuestos, accesorios de competición y catálogo interactivo.",
+    image: "/motosport-neuquen-hero.png",
+    previewIndex: 1,
+    themeColor: "15 85% 35%",
     actionText: "Ver Sitio Web 🌐",
   },
   {
