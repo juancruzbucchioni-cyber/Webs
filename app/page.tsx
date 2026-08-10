@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { DestinationCard } from "@/components/ui/card-21";
 
 const WHATSAPP_NUMBER = "5493534128474";
 const MERCADO_PAGO_LINK = "https://link.mercadopago.com.ar/jcbdevelopment";
@@ -244,31 +245,39 @@ const typingPhrases = [
 const clientProjects = [
   {
     name: "Comex Importaciones",
-    tag: "IMPORTACIONES & COMEX",
-    copy: "Plataforma web para exhibir productos importados, cotización de envíos y recepción de consultas directas.",
+    flag: "📦",
+    stats: "Plataforma web para productos importados, cotización de envíos y consultas directas.",
     image: "/importaciones-gallery-01.png",
     previewIndex: 2,
+    themeColor: "260 70% 30%",
+    actionText: "Ver Sitio Web 🌐",
   },
   {
     name: "Urban Shop E-Commerce",
-    tag: "TIENDA ONLINE DE NEGOCIO",
-    copy: "Catálogo completo con carrito de compras, gestión de stock y cobros automáticos integrados.",
+    flag: "🛍️",
+    stats: "Tienda online completa con carrito de compras y cobros automáticos por Mercado Pago.",
     image: "/avanzada-gallery-01.png",
     previewIndex: 0,
+    themeColor: "220 80% 32%",
+    actionText: "Ver Sitio Web 🌐",
   },
   {
     name: "Digital Stream Store",
-    tag: "VENTAS DIGITALES",
-    copy: "Plataforma automatizada para comercializar licencias, servicios y productos digitales.",
+    flag: "⚡",
+    stats: "Plataforma automatizada para comercializar licencias, servicios y productos digitales.",
     image: "/digital-gallery-01.png",
     previewIndex: 3,
+    themeColor: "280 75% 35%",
+    actionText: "Ver Sitio Web 🌐",
   },
   {
     name: "Control de Gastos & Ventas",
-    tag: "SISTEMA DE GESTIÓN",
-    copy: "Panel autogestionable para administrar ingresos, egresos y generar estadísticas del negocio.",
+    flag: "📊",
+    stats: "Sistema web autogestionable para administrar ventas, gastos y reportes del negocio.",
     image: "/dashboard-gallery-01.png",
     previewIndex: 4,
+    themeColor: "320 70% 32%",
+    actionText: "Ver Dashboard 📊",
   },
 ];
 
@@ -531,31 +540,24 @@ export default function Home() {
 
         <div className="client-projects-grid">
           {clientProjects.map((project, idx) => (
-            <motion.article
-              className="client-project-card"
+            <motion.div
               key={project.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
-              whileHover={{ y: -6 }}
+              className="h-[420px] w-full"
             >
-              <div className="client-project-image-wrapper">
-                <img src={project.image} alt={project.name} />
-                <button
-                  className="client-project-zoom"
-                  onClick={() => setLightbox({ planIndex: project.previewIndex, imageIndex: 0 })}
-                  aria-label={`Ver captura ampliada de ${project.name}`}
-                >
-                  Ver diseño 🔍
-                </button>
-              </div>
-              <div className="client-project-body">
-                <span className="client-project-tag">{project.tag}</span>
-                <h3>{project.name}</h3>
-                <p>{project.copy}</p>
-              </div>
-            </motion.article>
+              <DestinationCard
+                imageUrl={project.image}
+                location={project.name}
+                flag={project.flag}
+                stats={project.stats}
+                actionText={project.actionText}
+                themeColor={project.themeColor}
+                onActionClick={() => setLightbox({ planIndex: project.previewIndex, imageIndex: 0 })}
+              />
+            </motion.div>
           ))}
         </div>
       </section>
