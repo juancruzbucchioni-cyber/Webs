@@ -241,6 +241,37 @@ const typingPhrases = [
   "Plataformas E-Commerce",
 ];
 
+const clientProjects = [
+  {
+    name: "Comex Importaciones",
+    tag: "IMPORTACIONES & COMEX",
+    copy: "Plataforma web para exhibir productos importados, cotización de envíos y recepción de consultas directas.",
+    image: "/importaciones-gallery-01.png",
+    previewIndex: 2,
+  },
+  {
+    name: "Urban Shop E-Commerce",
+    tag: "TIENDA ONLINE DE NEGOCIO",
+    copy: "Catálogo completo con carrito de compras, gestión de stock y cobros automáticos integrados.",
+    image: "/avanzada-gallery-01.png",
+    previewIndex: 0,
+  },
+  {
+    name: "Digital Stream Store",
+    tag: "VENTAS DIGITALES",
+    copy: "Plataforma automatizada para comercializar licencias, servicios y productos digitales.",
+    image: "/digital-gallery-01.png",
+    previewIndex: 3,
+  },
+  {
+    name: "Control de Gastos & Ventas",
+    tag: "SISTEMA DE GESTIÓN",
+    copy: "Panel autogestionable para administrar ingresos, egresos y generar estadísticas del negocio.",
+    image: "/dashboard-gallery-01.png",
+    previewIndex: 4,
+  },
+];
+
 function TypingEffect() {
   const [phraseIdx, setPhraseIdx] = useState(0);
   const [charIdx, setCharIdx] = useState(0);
@@ -395,6 +426,7 @@ export default function Home() {
         </a>
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>
           <a href="/" onClick={() => setMenuOpen(false)}>Inicio</a>
+          <a href="#clientes" onClick={() => setMenuOpen(false)}>Clientes</a>
           <a href="#categorias" onClick={() => setMenuOpen(false)}>Categorías</a>
           <a className="mobile-social-link" href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noreferrer">Contacto</a>
           <a className="mobile-social-link" href="https://www.instagram.com/jcb_development/" target="_blank" rel="noreferrer">Instagram · @jcb_development</a>
@@ -556,6 +588,42 @@ export default function Home() {
             </div>
             <span className="showcase-tag">📊 Gestión & Gastos</span>
           </motion.div>
+        </div>
+      </section>
+
+      <section className="client-projects-section section" id="clientes">
+        <p className="section-label">PROYECTOS & TRABAJOS ENTREGADOS</p>
+        <h2>Nuestros Clientes</h2>
+        <p className="section-copy">Conocé algunos de los sitios web y sistemas de gestión que desarrollamos para distintos negocios.</p>
+
+        <div className="client-projects-grid">
+          {clientProjects.map((project, idx) => (
+            <motion.article
+              className="client-project-card"
+              key={project.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.1 }}
+              whileHover={{ y: -6 }}
+            >
+              <div className="client-project-image-wrapper">
+                <img src={project.image} alt={project.name} />
+                <button
+                  className="client-project-zoom"
+                  onClick={() => setLightbox({ planIndex: project.previewIndex, imageIndex: 0 })}
+                  aria-label={`Ver captura ampliada de ${project.name}`}
+                >
+                  Ver diseño 🔍
+                </button>
+              </div>
+              <div className="client-project-body">
+                <span className="client-project-tag">{project.tag}</span>
+                <h3>{project.name}</h3>
+                <p>{project.copy}</p>
+              </div>
+            </motion.article>
+          ))}
         </div>
       </section>
 
