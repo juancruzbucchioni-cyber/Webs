@@ -40,9 +40,12 @@ const DestinationCard = React.forwardRef<HTMLDivElement, DestinationCardProps>(
         className={cn("group w-full h-full cursor-pointer", className)}
         {...props}
       >
-        <div
+        <a
+          href={href}
+          target={href && href !== "#" ? "_blank" : undefined}
+          rel={href && href !== "#" ? "noreferrer" : undefined}
           onClick={(e) => {
-            if (onActionClick) {
+            if (onActionClick && (!href || href === "#")) {
               e.preventDefault();
               onActionClick();
             }
@@ -89,7 +92,7 @@ const DestinationCard = React.forwardRef<HTMLDivElement, DestinationCardProps>(
               <ArrowRight className="h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1" />
             </div>
           </div>
-        </div>
+        </a>
       </div>
     );
   }

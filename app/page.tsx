@@ -251,6 +251,7 @@ const clientProjects = [
     previewIndex: 1,
     themeColor: "15 85% 35%",
     actionText: "Ver Sitio Web 🌐",
+    href: "https://glittering-chimera-302e26.netlify.app",
   },
   {
     name: "Urban Shop E-Commerce",
@@ -260,6 +261,7 @@ const clientProjects = [
     previewIndex: 0,
     themeColor: "220 80% 32%",
     actionText: "Ver Sitio Web 🌐",
+    href: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, buenas. Quería consultar por un sitio como Urban Shop E-Commerce.")}`,
   },
   {
     name: "Digital Stream Store",
@@ -269,6 +271,7 @@ const clientProjects = [
     previewIndex: 3,
     themeColor: "280 75% 35%",
     actionText: "Ver Sitio Web 🌐",
+    href: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, buenas. Quería consultar por un sitio como Digital Stream Store.")}`,
   },
   {
     name: "Control de Gastos & Ventas",
@@ -278,6 +281,7 @@ const clientProjects = [
     previewIndex: 4,
     themeColor: "320 70% 32%",
     actionText: "Ver Dashboard 📊",
+    href: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, buenas. Quería consultar por un sistema como Control de Gastos & Ventas.")}`,
   },
 ];
 
@@ -555,7 +559,7 @@ export default function Home() {
                 stats={project.stats}
                 actionText={project.actionText}
                 themeColor={project.themeColor}
-                onActionClick={() => setLightbox({ planIndex: project.previewIndex, imageIndex: 0 })}
+                href={project.href}
               />
             </motion.div>
           ))}
