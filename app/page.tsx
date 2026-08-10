@@ -249,7 +249,7 @@ const clientProjects = [
     stats: "E-Commerce de motos, repuestos, accesorios de competición y catálogo interactivo.",
     image: "/motosport-neuquen-hero.png",
     previewIndex: 1,
-    themeColor: "15 85% 35%",
+    themeColor: "115 90% 35%",
     actionText: "Ver Sitio Web 🌐",
     href: "https://glittering-chimera-302e26.netlify.app",
   },
