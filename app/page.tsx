@@ -37,8 +37,15 @@ const storeCategories = [
     image: "/categoria-gastos.webp",
   },
   {
-    id: "dominio",
+    id: "estudios",
     number: "05",
+    title: "Webs para Estudios",
+    copy: "Webs institucionales para estudios jurídicos, contables, médicos, arquitectura y consultorías.",
+    image: "/categoria-estudios.webp",
+  },
+  {
+    id: "dominio",
+    number: "06",
     title: "Dominio privado",
     copy: "Una dirección exclusiva y profesional para identificar tu página en internet.",
     image: "/categoria-dominio.webp",
@@ -209,6 +216,30 @@ const plans = [
       "Hosting privado de regalo durante 1 año",
     ],
     message: "Hola, buenas. Quería consultar por el Dashboard Personalizado.",
+  },
+  {
+    category: "estudios",
+    type: "Web para Estudios & Consultoras",
+    tag: "ESTUDIOS",
+    price: "220.000",
+    amount: 220000,
+    color: "purple",
+    previews: [
+      "/avanzada-gallery-01.png",
+      "/avanzada-gallery-02.png",
+      "/avanzada-gallery-03.png",
+    ],
+    copy: "Sitio web institucional profesional para estudios jurídicos, contables, médicos, arquitectura y consultorías en general. Diseñado para administrar consultas, coordinar contacto por WhatsApp y presentar tu firma.",
+    features: [
+      "Diseño institucional 100 % adaptado a celulares, tablets y computadoras",
+      "Formulario para administración de consultas generales directo al mail",
+      "Botón directo para recepción de consultas por WhatsApp",
+      "Muestra de honorarios / precios opcional (a elección de tu estudio)",
+      "Sección de presentación de especialidades, servicios y equipo profesional",
+      "Incluye 2 adicionales estándares a elección (Turnero online, Cotizador a medida, Preguntas frecuentes o Blog)",
+      "Mantenimiento por 2 meses y Hosting gratis durante 1 año",
+    ],
+    message: "Hola, buenas. Quería consultar por la Web para Estudios & Consultoras.",
   },
 ];
 
@@ -636,11 +667,43 @@ export default function Home() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
           >
-            {activeCategory === "negocios" || activeCategory === "importaciones" || activeCategory === "ventas-digitales" || activeCategory === "administracion-gastos" ? (
+            {activeCategory === "negocios" || activeCategory === "importaciones" || activeCategory === "ventas-digitales" || activeCategory === "administracion-gastos" || activeCategory === "estudios" ? (
               <>
-                <p className="section-label">{activeCategory === "negocios" ? "SOLUCIONES PARA CADA NEGOCIO" : activeCategory === "importaciones" ? "SOLUCIONES PARA IMPORTACIONES" : activeCategory === "ventas-digitales" ? "SOLUCIONES E-COMMERCE" : "SOLUCIONES PARA ADMINISTRAR TU NEGOCIO"}</p>
-                <h2>{activeCategory === "negocios" ? "Elegí la web que necesitás." : activeCategory === "importaciones" ? "Conectá mercados y clientes." : activeCategory === "ventas-digitales" ? "Vendé productos digitales." : "Controlá todos tus números."}<br /><span>Nosotros la hacemos realidad.</span></h2>
-                <p className="section-copy">{activeCategory === "negocios" ? "Valores claros para comenzar. Cada proyecto se personaliza con tu identidad, contenido y objetivos." : activeCategory === "importaciones" ? "Una presencia profesional para presentar servicios, productos y oportunidades comerciales de importación." : activeCategory === "ventas-digitales" ? "Una solución completa para organizar tu catálogo, recibir pedidos y hacer crecer tu negocio digital." : "Centralizá ventas, gastos, productos y resultados desde un panel moderno, claro y seguro."}</p>
+                <p className="section-label">
+                  {activeCategory === "negocios"
+                    ? "SOLUCIONES PARA CADA NEGOCIO"
+                    : activeCategory === "importaciones"
+                    ? "SOLUCIONES PARA IMPORTACIONES"
+                    : activeCategory === "ventas-digitales"
+                    ? "SOLUCIONES E-COMMERCE"
+                    : activeCategory === "administracion-gastos"
+                    ? "SOLUCIONES PARA ADMINISTRAR TU NEGOCIO"
+                    : "SOLUCIONES PARA ESTUDIOS & CONSULTORÍAS"}
+                </p>
+                <h2>
+                  {activeCategory === "negocios"
+                    ? "Elegí la web que necesitás."
+                    : activeCategory === "importaciones"
+                    ? "Conectá mercados y clientes."
+                    : activeCategory === "ventas-digitales"
+                    ? "Vendé productos digitales."
+                    : activeCategory === "administracion-gastos"
+                    ? "Controlá todos tus números."
+                    : "Potenciá tu estudio profesional."}
+                  <br />
+                  <span>Nosotros la hacemos realidad.</span>
+                </h2>
+                <p className="section-copy">
+                  {activeCategory === "negocios"
+                    ? "Valores claros para comenzar. Cada proyecto se personaliza con tu identidad, contenido y objetivos."
+                    : activeCategory === "importaciones"
+                    ? "Una presencia profesional para presentar servicios, productos y oportunidades comerciales de importación."
+                    : activeCategory === "ventas-digitales"
+                    ? "Una solución completa para organizar tu catálogo, recibir pedidos y hacer crecer tu negocio digital."
+                    : activeCategory === "administracion-gastos"
+                    ? "Centralizá ventas, gastos, productos y resultados desde un panel moderno, claro y seguro."
+                    : "Webs institucionales para estudios jurídicos, contables, médicos, arquitectura y consultorías. Administración de consultas y contacto directo por WhatsApp."}
+                </p>
                 <div className="plans">
                   {plans.map((plan, index) => plan.category === activeCategory && (
                     <motion.article
