@@ -225,9 +225,7 @@ const plans = [
     amount: 253000,
     color: "purple",
     previews: [
-      "/avanzada-gallery-01.png",
-      "/avanzada-gallery-02.png",
-      "/avanzada-gallery-03.png",
+      "/estudios-gallery-01.png",
     ],
     copy: "Sitio web institucional profesional para estudios jurídicos, contables, médicos, arquitectura y consultorías en general. Diseñado para administrar consultas, coordinar contacto por WhatsApp y presentar tu firma.",
     features: [
