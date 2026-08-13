@@ -221,8 +221,8 @@ const plans = [
     category: "estudios",
     type: "Web para Estudios & Consultoras",
     tag: "ESTUDIOS",
-    price: "225.000",
-    amount: 225000,
+    price: "200.000",
+    amount: 200000,
     color: "purple",
     previews: [
       "/estudios-gallery-01.png",
