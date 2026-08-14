@@ -248,7 +248,7 @@ const plans = [
   },
   {
     category: "catalogos",
-    type: "Web de Catálogo Interactivo",
+    type: "Catálogo Basic",
     tag: "100% A MEDIDA",
     price: "120.000",
     amount: 120000,
@@ -267,7 +267,7 @@ const plans = [
       "Capacidad para 180 productos con categorías personalizadas",
       "Mantenimiento por 2 meses y Hosting gratis durante 1 año",
     ],
-    message: "Hola, buenas. Quería consultar por la Web de Catálogo Interactivo.",
+    message: "Hola, buenas. Quería consultar por la Web Catálogo Basic.",
   },
 ];
 
