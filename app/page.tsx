@@ -264,7 +264,7 @@ const plans = [
       "Panel intuitivo para subir, editar, categorizar y organizar productos libremente",
       "Fichas completas de producto con múltiples fotos, descripciones y especificaciones",
       "Recepción de consultas directas por producto específico vía WhatsApp o Mail",
-      "Capacidad ilimitada de exhibición de productos y categorías",
+      "Capacidad para 180 productos con categorías personalizadas",
       "Mantenimiento por 2 meses y Hosting gratis durante 1 año",
     ],
     message: "Hola, buenas. Quería consultar por la Web de Catálogo Interactivo.",
