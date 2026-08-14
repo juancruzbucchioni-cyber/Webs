@@ -250,8 +250,8 @@ const plans = [
     category: "catalogos",
     type: "Web de Catálogo Interactivo",
     tag: "100% A MEDIDA",
-    price: "180.000",
-    amount: 180000,
+    price: "120.000",
+    amount: 120000,
     color: "blue",
     previews: [
       "/catalogos-gallery-01.png",
