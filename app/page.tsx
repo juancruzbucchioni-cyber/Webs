@@ -259,6 +259,7 @@ const plans = [
     copy: "Plataforma 100 % personalizada para exhibir tu catálogo completo de productos. Diseñada exclusivamente para mostrar y cargar productos, sin botón de compra ni cobros en la web, derivando las consultas directamente a tu WhatsApp o Mail.",
     features: [
       "Diseño 100 % personalizado y adaptado a la identidad de tu marca",
+      "Carga inicial completa de TODOS tus productos incluida",
       "Exhibición exclusiva en modo Catálogo (sin botón de compra ni carrito online)",
       "Panel intuitivo para subir, editar, categorizar y organizar productos libremente",
       "Fichas completas de producto con múltiples fotos, descripciones y especificaciones",
