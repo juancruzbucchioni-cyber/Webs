@@ -84,8 +84,8 @@ const plans = [
     category: "negocios",
     type: "Web de Negocio Premium",
     tag: "PREMIUM",
-    price: "350.000",
-    amount: 350000,
+    price: "320.000",
+    amount: 320000,
     color: "pink",
     previews: [
       "/premium-gallery-01.png",
