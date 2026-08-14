@@ -44,8 +44,15 @@ const storeCategories = [
     image: "/categoria-estudios.webp",
   },
   {
-    id: "dominio",
+    id: "catalogos",
     number: "06",
+    title: "Web de Catálogo",
+    copy: "Exhibición de productos 100% personalizada. Modo catálogo sin compra directa, enfocado en carga de productos y consultas.",
+    image: "/categoria-catalogos.webp",
+  },
+  {
+    id: "dominio",
+    number: "07",
     title: "Dominio privado",
     copy: "Una dirección exclusiva y profesional para identificar tu página en internet.",
     image: "/categoria-dominio.webp",
@@ -238,6 +245,28 @@ const plans = [
       "Mantenimiento por 2 meses y Hosting gratis durante 1 año",
     ],
     message: "Hola, buenas. Quería consultar por la Web para Estudios & Consultoras.",
+  },
+  {
+    category: "catalogos",
+    type: "Web de Catálogo Interactivo",
+    tag: "100% A MEDIDA",
+    price: "180.000",
+    amount: 180000,
+    color: "blue",
+    previews: [
+      "/catalogos-gallery-01.png",
+    ],
+    copy: "Plataforma 100 % personalizada para exhibir tu catálogo completo de productos. Diseñada exclusivamente para mostrar y cargar productos, sin botón de compra ni cobros en la web, derivando las consultas directamente a tu WhatsApp o Mail.",
+    features: [
+      "Diseño 100 % personalizado y adaptado a la identidad de tu marca",
+      "Exhibición exclusiva en modo Catálogo (sin botón de compra ni carrito online)",
+      "Panel intuitivo para subir, editar, categorizar y organizar productos libremente",
+      "Fichas completas de producto con múltiples fotos, descripciones y especificaciones",
+      "Recepción de consultas directas por producto específico vía WhatsApp o Mail",
+      "Capacidad ilimitada de exhibición de productos y categorías",
+      "Mantenimiento por 2 meses y Hosting gratis durante 1 año",
+    ],
+    message: "Hola, buenas. Quería consultar por la Web de Catálogo Interactivo.",
   },
 ];
 
@@ -665,7 +694,7 @@ export default function Home() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
           >
-            {activeCategory === "negocios" || activeCategory === "importaciones" || activeCategory === "ventas-digitales" || activeCategory === "administracion-gastos" || activeCategory === "estudios" ? (
+            {activeCategory === "negocios" || activeCategory === "importaciones" || activeCategory === "ventas-digitales" || activeCategory === "administracion-gastos" || activeCategory === "estudios" || activeCategory === "catalogos" ? (
               <>
                 <p className="section-label">
                   {activeCategory === "negocios"
@@ -676,7 +705,9 @@ export default function Home() {
                     ? "SOLUCIONES E-COMMERCE"
                     : activeCategory === "administracion-gastos"
                     ? "SOLUCIONES PARA ADMINISTRAR TU NEGOCIO"
-                    : "SOLUCIONES PARA ESTUDIOS & CONSULTORÍAS"}
+                    : activeCategory === "estudios"
+                    ? "SOLUCIONES PARA ESTUDIOS & CONSULTORÍAS"
+                    : "SOLUCIONES EN CATÁLOGO VIRTUAL"}
                 </p>
                 <h2>
                   {activeCategory === "negocios"
@@ -687,7 +718,9 @@ export default function Home() {
                     ? "Vendé productos digitales."
                     : activeCategory === "administracion-gastos"
                     ? "Controlá todos tus números."
-                    : "Potenciá tu estudio profesional."}
+                    : activeCategory === "estudios"
+                    ? "Potenciá tu estudio profesional."
+                    : "Exhibí tu catálogo al mundo."}
                   <br />
                   <span>Nosotros la hacemos realidad.</span>
                 </h2>
@@ -700,7 +733,9 @@ export default function Home() {
                     ? "Una solución completa para organizar tu catálogo, recibir pedidos y hacer crecer tu negocio digital."
                     : activeCategory === "administracion-gastos"
                     ? "Centralizá ventas, gastos, productos y resultados desde un panel moderno, claro y seguro."
-                    : "Webs institucionales para estudios jurídicos, contables, médicos, arquitectura y consultorías. Administración de consultas y contacto directo por WhatsApp."}
+                    : activeCategory === "estudios"
+                    ? "Webs institucionales para estudios jurídicos, contables, médicos, arquitectura y consultorías. Administración de consultas y contacto directo por WhatsApp."
+                    : "Diseño 100 % personalizado exclusivo para mostrar tus productos. Sin carrito de compras ni cobros en la web, ideal para subir productos y derivar consultas por WhatsApp o Mail."}
                 </p>
                 <div className="plans">
                   {plans.map((plan, index) => plan.category === activeCategory && (
