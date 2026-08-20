@@ -91,9 +91,9 @@ Cuando una página permanezca inactiva durante más de 4 días consecutivos, el 
 
 Cuando esto suceda, el cliente podrá solicitar a JCB Development la reactivación de la página.
 
-Las primeras 2 reactivaciones ocasionadas por este motivo podrán ser realizadas sin costo adicional, a criterio de JCB Development.
+La primera reactivación ocasionada por este motivo podrá ser realizada sin costo adicional, a criterio de JCB Development.
 
-A partir de la tercera suspensión ocasionada por inactividad, la página podrá permanecer suspendida hasta que el cliente solicite formalmente su reactivación y abone el correspondiente cargo de reactivación de ARS $15.000.
+A partir de la segunda suspensión ocasionada por inactividad, la página podrá permanecer suspendida hasta que el cliente solicite formalmente su reactivación y abone el correspondiente cargo de reactivación de ARS $15.000.
 
 El importe de reactivación podrá ser actualizado en el futuro y será informado al cliente antes de realizar el servicio.
 
