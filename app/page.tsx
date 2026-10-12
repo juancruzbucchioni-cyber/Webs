@@ -6,7 +6,6 @@ import { DestinationCard } from "@/components/ui/card-21";
 import {
   Check,
   ChevronDown,
-  ChevronRight,
   ExternalLink,
   MessageCircle,
   Copy,
@@ -14,30 +13,26 @@ import {
   CreditCard,
   Maximize2,
   ChevronLeft,
+  ChevronRight,
   ShieldCheck,
   Clock,
   Smartphone,
   Server,
   Zap,
+  Globe,
+  BarChart3,
+  Sparkles,
 } from "lucide-react";
 
 const WHATSAPP_NUMBER = "5493534128474";
 const MERCADO_PAGO_LINK = "https://link.mercadopago.com.ar/jcbdevelopment";
 
-const filterCategories = [
-  { id: "all", label: "Todos los Modelos" },
-  { id: "negocios", label: "Tiendas Online" },
-  { id: "catalogos", label: "Catálogos" },
-  { id: "ventas-digitales", label: "E-Commerce" },
-  { id: "administracion-gastos", label: "Sistemas & Gestión" },
-  { id: "estudios", label: "Estudios & Consultoras" },
-  { id: "importaciones", label: "Importaciones" },
-] as const;
-
-type CategoryId = (typeof filterCategories)[number]["id"];
+type MainGroup = "webs" | "sistemas" | "all";
 
 interface Plan {
-  category: string;
+  id: string;
+  group: "webs" | "sistemas";
+  category: "negocios" | "catalogos" | "ventas-digitales" | "estudios" | "importaciones" | "administracion-gastos";
   type: string;
   tag: string;
   isPopular?: boolean;
@@ -45,7 +40,6 @@ interface Plan {
   amount: number;
   monthlyAmount?: number;
   subscriptionUrl?: string;
-  highlight?: string;
   previews: string[];
   copy: string;
   features: string[];
@@ -53,32 +47,10 @@ interface Plan {
 }
 
 const plans: Plan[] = [
+  // ─── Sitios Web & Tiendas (Ordenados de menor a mayor) ───
   {
-    category: "negocios",
-    type: "Web Avanzada",
-    tag: "MÁS ELEGIDA",
-    isPopular: true,
-    price: "250.000",
-    amount: 250000,
-    previews: [
-      "/avanzada-gallery-01.png",
-      "/avanzada-gallery-02.png",
-      "/avanzada-gallery-03.png",
-      "/avanzada-gallery-04.png",
-    ],
-    copy: "Ideal para negocios que quieren comenzar a vender por internet y administrar productos, pedidos y clientes fácilmente.",
-    features: [
-      "Diseño 100% adaptado a celulares, tablets y computadoras",
-      "Capacidad para 300 productos (carga inicial de 30 incluida)",
-      "Buscador, categorías, filtros y carrito de compras",
-      "Integración directa con WhatsApp, Instagram y redes sociales",
-      "Panel de administración para gestionar pedidos y stock",
-      "Conexión con Correo Argentino o Andreani para envíos",
-      "Mantenimiento por 2 meses y Hosting gratis durante 1 año",
-    ],
-    message: "Hola, buenas. Quería consultar por la Web Avanzada ($250.000 ARS).",
-  },
-  {
+    id: "catalogo-basic",
+    group: "webs",
     category: "catalogos",
     type: "Catálogo Basic",
     tag: "100% A MEDIDA",
@@ -86,7 +58,7 @@ const plans: Plan[] = [
     price: "120.000",
     amount: 120000,
     previews: ["/catalogos-gallery-01.png"],
-    copy: "Exhibición de productos personalizada sin botón de compra directa. Diseñada para mostrar stock y derivar consultas por WhatsApp o Mail.",
+    copy: "Exhibición de productos personalizada sin cobro online. Diseñada para mostrar stock y derivar pedidos directos a WhatsApp.",
     features: [
       "Diseño 100% personalizado y adaptado a tu marca",
       "Carga inicial completa de TODOS tus productos incluida",
@@ -99,115 +71,15 @@ const plans: Plan[] = [
     message: "Hola, buenas. Quería consultar por el Catálogo Basic ($120.000 ARS).",
   },
   {
-    category: "negocios",
-    type: "Web de Negocio Premium",
-    tag: "PREMIUM",
-    price: "320.000",
-    amount: 320000,
-    previews: [
-      "/premium-gallery-01.png",
-      "/premium-gallery-02.png",
-      "/premium-gallery-03.png",
-      "/premium-gallery-04.png",
-      "/premium-gallery-05.png",
-      "/premium-gallery-06.png",
-    ],
-    copy: "Solución completa para negocios que necesitan automatizar ventas con cobros automáticos de tarjetas y cuentas de clientes.",
-    features: [
-      "Incluye todas las características de la Web Avanzada",
-      "Cobros automáticos con tarjetas mediante Mercado Pago",
-      "Sistema de usuarios y cuentas de clientes",
-      "Notificaciones automáticas y recuperación de carritos",
-      "Reportes avanzados de ventas, costos y ganancias",
-      "Hasta 3 funciones personalizadas a medida de tu negocio",
-      "Soporte prioritario y Hosting gratis durante 1 año",
-    ],
-    message: "Hola, buenas. Quería consultar por la Web de Negocio Premium ($320.000 ARS).",
-  },
-  {
-    category: "ventas-digitales",
-    type: "Web E-commerce Digital",
-    tag: "VENTAS DIGITALES",
-    price: "250.000",
-    amount: 250000,
-    previews: [
-      "/digital-gallery-01.png",
-      "/digital-gallery-02.png",
-      "/digital-gallery-03.png",
-      "/digital-gallery-04.png",
-      "/digital-gallery-05.png",
-      "/digital-gallery-06.png",
-    ],
-    copy: "Tienda profesional para vender cuentas, productos digitales, membresías, servicios y contenido online.",
-    features: [
-      "Diseño optimizado para productos digitales y membresías",
-      "Capacidad para 300 productos con catálogo por categorías",
-      "Carrito de compras y precios promocionales por cantidad",
-      "Integración con WhatsApp, Instagram y grupos privados",
-      "Panel para administrar productos, categorías y stock",
-      "Mantenimiento por 2 meses y Hosting gratis durante 1 año",
-    ],
-    message: "Hola, buenas. Quería consultar por la Web E-commerce Digital ($250.000 ARS).",
-  },
-  {
-    category: "administracion-gastos",
-    type: "Dashboard General",
-    tag: "ADMINISTRACIÓN",
-    price: "80.000",
-    amount: 80000,
-    monthlyAmount: 28000,
-    subscriptionUrl: "https://mpago.la/1LV5gTH",
-    previews: [
-      "/dashboard-gallery-01.png",
-      "/dashboard-gallery-02.png",
-      "/dashboard-gallery-03.png",
-      "/dashboard-gallery-04.png",
-    ],
-    copy: "Sistema práctico para administrar y controlar ventas, gastos y stock desde un solo lugar sin planillas complicadas.",
-    features: [
-      "1 Tienda y 3 Usuarios del sistema",
-      "Catálogo, productos y categorías autogestionables",
-      "Control de gastos, ventas, pagos y reportes mensuales",
-      "Estadísticas en tiempo real de tu negocio",
-      "Información protegida y respaldada en la nube",
-      "Color del sistema y estética a elección",
-    ],
-    message: "Hola, buenas. Quería consultar por el Dashboard General ($80.000 ARS o $28.000/mes).",
-  },
-  {
-    category: "administracion-gastos",
-    type: "Dashboard Personalizado",
-    tag: "A MEDIDA",
-    price: "150.000",
-    amount: 150000,
-    monthlyAmount: 50000,
-    subscriptionUrl: "https://mpago.la/1cUK2X1",
-    previews: [
-      "/personalizado-gallery-01.png",
-      "/personalizado-gallery-02.png",
-      "/personalizado-gallery-03.png",
-      "/personalizado-gallery-04.png",
-    ],
-    copy: "Tomamos nuestro sistema y lo adaptamos 100% a la operativa y necesidades específicas de tu empresa.",
-    highlight: "Adaptado al flujo y necesidades exactas de TU negocio.",
-    features: [
-      "Acceso para 3 Tiendas y 7 Usuarios",
-      "Estética y colores de marca adaptados a tu negocio",
-      "Gestión de ventas, productos, gastos y pagos",
-      "Estadísticas y gráficos personalizados descargables en PDF",
-      "Módulos y funciones adicionales desarrolladas a medida",
-      "Hosting privado y soporte prioritario incluido",
-    ],
-    message: "Hola, buenas. Quería consultar por el Dashboard Personalizado ($150.000 ARS o $50.000/mes).",
-  },
-  {
+    id: "web-estudios",
+    group: "webs",
     category: "estudios",
     type: "Web para Estudios & Consultoras",
-    tag: "ESTUDIOS",
+    tag: "PROFESIONALES",
     price: "200.000",
     amount: 200000,
     previews: ["/estudios-gallery-01.png"],
-    copy: "Web institucional profesional para estudios jurídicos, contables, médicos, arquitectura y consultorías.",
+    copy: "Web institucional profesional para estudios jurídicos, contables, médicos, arquitectura y consultorías en general.",
     features: [
       "Diseño institucional 100% adaptado a dispositivos móviles",
       "Formulario para recepción de consultas directo a tu mail",
@@ -220,13 +92,15 @@ const plans: Plan[] = [
     message: "Hola, buenas. Quería consultar por la Web para Estudios & Consultoras ($200.000 ARS).",
   },
   {
+    id: "web-importaciones",
+    group: "webs",
     category: "importaciones",
     type: "Web Importaciones Basic",
     tag: "IMPORTACIONES",
     price: "200.000",
     amount: 200000,
     previews: ["/importaciones-gallery-01.png", "/importaciones-gallery-02.png"],
-    copy: "Sitio web profesional para empresas de importación: presentación de servicios, catálogo de productos y recepción de pedidos.",
+    copy: "Sitio web para importadores y distribuidores: presentación de productos, pedidos por encargo y cotizaciones.",
     features: [
       "Diseño profesional optimizado para comex e importaciones",
       "Capacidad para 230 productos con control de stock",
@@ -236,6 +110,146 @@ const plans: Plan[] = [
       "Mantenimiento por 2 meses y Hosting gratis durante 1 año",
     ],
     message: "Hola, buenas. Quería consultar por la Web Importaciones Basic ($200.000 ARS).",
+  },
+  {
+    id: "web-avanzada",
+    group: "webs",
+    category: "negocios",
+    type: "Web Avanzada",
+    tag: "MÁS ELEGIDA",
+    isPopular: true,
+    price: "250.000",
+    amount: 250000,
+    previews: [
+      "/avanzada-gallery-01.png",
+      "/avanzada-gallery-02.png",
+      "/avanzada-gallery-03.png",
+      "/avanzada-gallery-04.png",
+    ],
+    copy: "Tienda online completa con carrito, catálogo, buscador, control de stock y conexión con empresas de logística.",
+    features: [
+      "Diseño 100% adaptado a celulares, tablets y computadoras",
+      "Capacidad para 300 productos (carga inicial de 30 incluida)",
+      "Buscador, categorías, filtros y carrito de compras",
+      "Integración directa con WhatsApp, Instagram y redes sociales",
+      "Panel de administración para gestionar pedidos y stock",
+      "Conexión con Correo Argentino o Andreani para envíos",
+      "Mantenimiento por 2 meses y Hosting gratis durante 1 año",
+    ],
+    message: "Hola, buenas. Quería consultar por la Web Avanzada ($250.000 ARS).",
+  },
+  {
+    id: "web-ecommerce-digital",
+    group: "webs",
+    category: "ventas-digitales",
+    type: "Web E-commerce Digital",
+    tag: "DIGITAL & SERVICIOS",
+    price: "250.000",
+    amount: 250000,
+    previews: [
+      "/digital-gallery-01.png",
+      "/digital-gallery-02.png",
+      "/digital-gallery-03.png",
+      "/digital-gallery-04.png",
+      "/digital-gallery-05.png",
+      "/digital-gallery-06.png",
+    ],
+    copy: "Plataforma optimizada para vender cuentas, productos digitales, membresías, servicios y cursos online.",
+    features: [
+      "Diseño optimizado para productos digitales y membresías",
+      "Capacidad para 300 productos con catálogo por categorías",
+      "Carrito de compras y precios promocionales por cantidad",
+      "Integración con WhatsApp, Instagram y grupos privados",
+      "Panel para administrar productos, categorías y stock",
+      "Mantenimiento por 2 meses y Hosting gratis durante 1 año",
+    ],
+    message: "Hola, buenas. Quería consultar por la Web E-commerce Digital ($250.000 ARS).",
+  },
+  {
+    id: "web-premium",
+    group: "webs",
+    category: "negocios",
+    type: "Web de Negocio Premium",
+    tag: "AUTOMATIZADA",
+    isPopular: true,
+    price: "320.000",
+    amount: 320000,
+    previews: [
+      "/premium-gallery-01.png",
+      "/premium-gallery-02.png",
+      "/premium-gallery-03.png",
+      "/premium-gallery-04.png",
+      "/premium-gallery-05.png",
+      "/premium-gallery-06.png",
+    ],
+    copy: "Automatización total de ventas con cobros directos con tarjetas, pasarela de Mercado Pago y cuentas de clientes.",
+    features: [
+      "Incluye todas las características de la Web Avanzada",
+      "Cobros automáticos con tarjetas mediante Mercado Pago",
+      "Sistema de usuarios y cuentas de clientes",
+      "Notificaciones automáticas y recuperación de carritos",
+      "Reportes avanzados de ventas, costos y ganancias",
+      "Hasta 3 funciones personalizadas a medida de tu negocio",
+      "Soporte prioritario y Hosting gratis durante 1 año",
+    ],
+    message: "Hola, buenas. Quería consultar por la Web de Negocio Premium ($320.000 ARS).",
+  },
+
+  // ─── Sistemas de Gestión & Dashboards ───
+  {
+    id: "dashboard-general",
+    group: "sistemas",
+    category: "administracion-gastos",
+    type: "Dashboard General",
+    tag: "GESTIÓN FINANCIERA",
+    price: "80.000",
+    amount: 80000,
+    monthlyAmount: 28000,
+    subscriptionUrl: "https://mpago.la/1LV5gTH",
+    previews: [
+      "/dashboard-gallery-01.png",
+      "/dashboard-gallery-02.png",
+      "/dashboard-gallery-03.png",
+      "/dashboard-gallery-04.png",
+    ],
+    copy: "Sistema práctico para registrar ventas diarias, controlar gastos y conocer tus ganancias reales en un solo lugar.",
+    features: [
+      "1 Tienda y 3 Usuarios del sistema",
+      "Catálogo, productos y categorías autogestionables",
+      "Control de gastos, ventas, pagos y reportes mensuales",
+      "Estadísticas en tiempo real de tu negocio",
+      "Información protegida y respaldada en la nube",
+      "Color del sistema y estética a elección",
+    ],
+    message: "Hola, buenas. Quería consultar por el Dashboard General ($80.000 ARS o $28.000/mes).",
+  },
+  {
+    id: "dashboard-personalizado",
+    group: "sistemas",
+    category: "administracion-gastos",
+    type: "Dashboard Personalizado",
+    tag: "100% A MEDIDA",
+    isPopular: true,
+    price: "150.000",
+    amount: 150000,
+    monthlyAmount: 50000,
+    subscriptionUrl: "https://mpago.la/1cUK2X1",
+    previews: [
+      "/personalizado-gallery-01.png",
+      "/personalizado-gallery-02.png",
+      "/personalizado-gallery-03.png",
+      "/personalizado-gallery-04.png",
+    ],
+    copy: "Tomamos nuestro software y programamos las herramientas y módulos exactos que necesita tu empresa.",
+    features: [
+      "Acceso para 3 Tiendas y 7 Usuarios",
+      "Estética y colores de marca adaptados a tu negocio",
+      "Gestión de ventas, productos, gastos y pagos",
+      "Estadísticas y gráficos personalizados descargables en PDF",
+      "Módulos y funciones adicionales desarrolladas a medida",
+      "Hosting privado y soporte prioritario incluido",
+    ],
+    message: "Hola, buenas. Quería consultar por el Dashboard Personalizado ($150.000 ARS o $50.000/mes).",
   },
 ];
 
@@ -307,7 +321,7 @@ const faqs = [
 ];
 
 export default function Home() {
-  const [selectedCategory, setSelectedCategory] = useState<CategoryId>("all");
+  const [mainGroup, setMainGroup] = useState<MainGroup>("webs");
   const [activeSlideMap, setActiveSlideMap] = useState<Record<string, number>>({});
   const [lightbox, setLightbox] = useState<{ planType: string; imageIndex: number } | null>(null);
   const [paymentPlan, setPaymentPlan] = useState<Plan | null>(null);
@@ -333,10 +347,11 @@ export default function Home() {
     setTimeout(() => setCopiedField(""), 2200);
   };
 
-  const filteredPlans =
-    selectedCategory === "all"
+  // Filtrado según el grupo principal seleccionado
+  const visiblePlans =
+    mainGroup === "all"
       ? plans
-      : plans.filter((p) => p.category === selectedCategory);
+      : plans.filter((p) => p.group === mainGroup);
 
   const getSlideIndex = (planType: string) => activeSlideMap[planType] || 0;
 
@@ -400,7 +415,7 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* ─── Hero Section (Ultra Clean & Fast) ─── */}
+      {/* ─── Hero Section ─── */}
       <section className="clean-hero-section">
         <div className="clean-hero-badge">
           <Zap className="w-3.5 h-3.5 text-purple-400" />
@@ -463,9 +478,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── Modelos & Precios (Cero fricción, 1 Click) ─── */}
+      {/* ─── Modelos & Precios (Organización Perfecta) ─── */}
       <section className="py-20 px-4" id="modelos">
-        <div className="max-w-4xl mx-auto text-center mb-10">
+        <div className="max-w-4xl mx-auto text-center mb-8">
           <p className="text-xs font-extrabold uppercase tracking-widest text-purple-400 mb-2">
             PRECIOS TRANSPARENTES
           </p>
@@ -473,45 +488,46 @@ export default function Home() {
             Elegí la solución para tu negocio
           </h2>
           <p className="text-zinc-400 text-sm md:text-base max-w-xl mx-auto">
-            Sin precios ocultos ni formularios engorrosos. Podés iniciar cualquier proyecto con el 35% de seña.
+            Precios claros ordenados por necesidad. Podés comenzar cualquier proyecto abonando la seña del 35%.
           </p>
         </div>
 
-        {/* Quick Filter Pills */}
-        <div className="clean-filter-wrapper">
-          <div className="clean-filter-bar">
-            {filterCategories.map((cat) => {
-              const count =
-                cat.id === "all"
-                  ? plans.length
-                  : plans.filter((p) => p.category === cat.id).length;
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => setSelectedCategory(cat.id)}
-                  className={`clean-filter-pill ${
-                    selectedCategory === cat.id ? "active" : ""
-                  }`}
-                >
-                  <span>{cat.label}</span>
-                  <span className="clean-filter-count">{count}</span>
-                </button>
-              );
-            })}
-          </div>
+        {/* 🔀 Selector Principal: Webs vs Sistemas */}
+        <div className="main-group-tabs">
+          <button
+            onClick={() => setMainGroup("webs")}
+            className={`main-group-tab-btn ${mainGroup === "webs" ? "active" : ""}`}
+          >
+            <Globe className="w-4 h-4" />
+            <span>Páginas Web & Tiendas ({plans.filter(p => p.group === "webs").length})</span>
+          </button>
+          <button
+            onClick={() => setMainGroup("sistemas")}
+            className={`main-group-tab-btn ${mainGroup === "sistemas" ? "active" : ""}`}
+          >
+            <BarChart3 className="w-4 h-4" />
+            <span>Sistemas & Dashboards ({plans.filter(p => p.group === "sistemas").length})</span>
+          </button>
+          <button
+            onClick={() => setMainGroup("all")}
+            className={`main-group-tab-btn ${mainGroup === "all" ? "active" : ""}`}
+          >
+            <Sparkles className="w-4 h-4" />
+            <span>Todos ({plans.length})</span>
+          </button>
         </div>
 
-        {/* Pricing Cards Grid */}
+        {/* Pricing Cards Grid (Simétrica y Alineada) */}
         <div className="clean-plans-grid">
-          {filteredPlans.map((plan) => {
+          {visiblePlans.map((plan) => {
             const slideIndex = getSlideIndex(plan.type);
             const currentImg = plan.previews[slideIndex] || plan.previews[0];
             const depositAmount = Math.round(plan.amount * 0.35);
 
             return (
               <article
-                key={plan.type}
-                className={`clean-plan-card ${plan.isPopular ? "featured-card" : ""}`}
+                key={plan.id}
+                className={`clean-plan-card flex flex-col ${plan.isPopular ? "featured-card" : ""}`}
               >
                 {/* Header */}
                 <div className="clean-card-header">
@@ -523,13 +539,18 @@ export default function Home() {
                       Carga 100% Incluida
                     </span>
                   )}
+                  {plan.type.includes("Premium") && (
+                    <span className="text-[11px] font-bold text-pink-400 bg-pink-950/60 border border-pink-800/60 px-2.5 py-0.5 rounded-full">
+                      Cobros Automáticos
+                    </span>
+                  )}
                 </div>
 
                 <h3 className="clean-plan-title">{plan.type}</h3>
                 <p className="clean-plan-copy">{plan.copy}</p>
 
-                {/* Preview Thumbnail */}
-                <div className="clean-preview-box group">
+                {/* Preview Thumbnail con ratio 16:9 fijo */}
+                <div className="clean-preview-box group h-[190px]">
                   <img
                     src={currentImg}
                     alt={plan.type}
@@ -598,8 +619,8 @@ export default function Home() {
                   ))}
                 </ul>
 
-                {/* 1-Click Action Buttons */}
-                <div className="clean-card-actions">
+                {/* Botones de acción anclados al fondo con mt-auto */}
+                <div className="clean-card-actions mt-auto">
                   <a
                     href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
                       plan.message
@@ -690,7 +711,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── Proceso en 3 Pasos (Sin Vueltas) ─── */}
+      {/* ─── Proceso en 3 Pasos ─── */}
       <section className="py-20 px-4 border-t border-white/[0.06] bg-zinc-950/40" id="proceso">
         <div className="max-w-4xl mx-auto text-center mb-14">
           <p className="text-xs font-extrabold uppercase tracking-widest text-purple-400 mb-2">
