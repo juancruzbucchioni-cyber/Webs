@@ -6,6 +6,7 @@ import { DestinationCard } from "@/components/ui/card-21";
 import {
   Check,
   ChevronDown,
+  ChevronUp,
   ExternalLink,
   MessageCircle,
   Copy,
@@ -58,15 +59,15 @@ const plans: Plan[] = [
     price: "120.000",
     amount: 120000,
     previews: ["/catalogos-gallery-01.png"],
-    copy: "Exhibición de productos personalizada sin cobro online. Diseñada para mostrar stock y derivar pedidos directos a WhatsApp.",
+    copy: "Exhibición de productos personalizada sin cobro online. Ideal para mostrar stock y derivar pedidos directos a WhatsApp.",
     features: [
-      "Diseño 100% personalizado y adaptado a tu marca",
       "Carga inicial completa de TODOS tus productos incluida",
+      "Capacidad para 180 productos con categorías a medida",
       "Modo Catálogo exclusivo (consultas directas a WhatsApp)",
       "Panel intuitivo para subir, editar y ordenar productos",
-      "Fichas de producto completas con múltiples fotos y detalles",
-      "Capacidad para 180 productos con categorías a medida",
-      "Mantenimiento por 2 meses y Hosting gratis durante 1 año",
+      "Fichas de producto con múltiples fotos y descripciones",
+      "Diseño 100% personalizado y adaptado a tu marca",
+      "Hosting gratis por 1 año y soporte por 2 meses",
     ],
     message: "Hola, buenas. Quería consultar por el Catálogo Basic ($120.000 ARS).",
   },
@@ -85,9 +86,9 @@ const plans: Plan[] = [
       "Formulario para recepción de consultas directo a tu mail",
       "Botón directo para derivación de consultas a WhatsApp",
       "Presentación de especialidades, servicios y equipo profesional",
-      "Muestra de honorarios o precios opcional a tu elección",
       "Incluye 2 adicionales a elección (Turnero, FAQ o Cotizador)",
-      "Mantenimiento por 2 meses y Hosting gratis durante 1 año",
+      "Muestra de honorarios o servicios opcional a elección",
+      "Hosting gratis por 1 año y soporte por 2 meses",
     ],
     message: "Hola, buenas. Quería consultar por la Web para Estudios & Consultoras ($200.000 ARS).",
   },
@@ -105,9 +106,9 @@ const plans: Plan[] = [
       "Diseño profesional optimizado para comex e importaciones",
       "Capacidad para 230 productos con control de stock",
       "Pagos por transferencia, efectivo o enlace de Mercado Pago",
-      "Administración de clientes, consultas y oportunidades",
+      "Administración de clientes, consultas y cotizaciones",
       "Creación de promociones, descuentos y cupones",
-      "Mantenimiento por 2 meses y Hosting gratis durante 1 año",
+      "Hosting gratis por 1 año y soporte por 2 meses",
     ],
     message: "Hola, buenas. Quería consultar por la Web Importaciones Basic ($200.000 ARS).",
   },
@@ -128,13 +129,13 @@ const plans: Plan[] = [
     ],
     copy: "Tienda online completa con carrito, catálogo, buscador, control de stock y conexión con empresas de logística.",
     features: [
-      "Diseño 100% adaptado a celulares, tablets y computadoras",
+      "Carrito de compras, buscador, categorías y filtros",
       "Capacidad para 300 productos (carga inicial de 30 incluida)",
-      "Buscador, categorías, filtros y carrito de compras",
-      "Integración directa con WhatsApp, Instagram y redes sociales",
       "Panel de administración para gestionar pedidos y stock",
       "Conexión con Correo Argentino o Andreani para envíos",
-      "Mantenimiento por 2 meses y Hosting gratis durante 1 año",
+      "Integración directa con WhatsApp, Instagram y redes sociales",
+      "Diseño 100% adaptado a celulares, tablets y computadoras",
+      "Hosting gratis por 1 año y soporte por 2 meses",
     ],
     message: "Hola, buenas. Quería consultar por la Web Avanzada ($250.000 ARS).",
   },
@@ -159,9 +160,9 @@ const plans: Plan[] = [
       "Diseño optimizado para productos digitales y membresías",
       "Capacidad para 300 productos con catálogo por categorías",
       "Carrito de compras y precios promocionales por cantidad",
-      "Integración con WhatsApp, Instagram y grupos privados",
       "Panel para administrar productos, categorías y stock",
-      "Mantenimiento por 2 meses y Hosting gratis durante 1 año",
+      "Integración con WhatsApp, Instagram y grupos privados",
+      "Hosting gratis por 1 año y soporte por 2 meses",
     ],
     message: "Hola, buenas. Quería consultar por la Web E-commerce Digital ($250.000 ARS).",
   },
@@ -184,13 +185,13 @@ const plans: Plan[] = [
     ],
     copy: "Automatización total de ventas con cobros directos con tarjetas, pasarela de Mercado Pago y cuentas de clientes.",
     features: [
-      "Incluye todas las características de la Web Avanzada",
       "Cobros automáticos con tarjetas mediante Mercado Pago",
-      "Sistema de usuarios y cuentas de clientes",
-      "Notificaciones automáticas y recuperación de carritos",
+      "Sistema de usuarios y cuentas para clientes",
       "Reportes avanzados de ventas, costos y ganancias",
+      "Notificaciones automáticas y recuperación de carritos",
       "Hasta 3 funciones personalizadas a medida de tu negocio",
-      "Soporte prioritario y Hosting gratis durante 1 año",
+      "Incluye todas las características de la Web Avanzada",
+      "Soporte prioritario y Hosting gratis por 1 año",
     ],
     message: "Hola, buenas. Quería consultar por la Web de Negocio Premium ($320.000 ARS).",
   },
@@ -214,9 +215,9 @@ const plans: Plan[] = [
     ],
     copy: "Sistema práctico para registrar ventas diarias, controlar gastos y conocer tus ganancias reales en un solo lugar.",
     features: [
+      "Control de gastos, ventas, pagos y reportes mensuales",
       "1 Tienda y 3 Usuarios del sistema",
       "Catálogo, productos y categorías autogestionables",
-      "Control de gastos, ventas, pagos y reportes mensuales",
       "Estadísticas en tiempo real de tu negocio",
       "Información protegida y respaldada en la nube",
       "Color del sistema y estética a elección",
@@ -242,15 +243,24 @@ const plans: Plan[] = [
     ],
     copy: "Tomamos nuestro software y programamos las herramientas y módulos exactos que necesita tu empresa.",
     features: [
+      "Módulos y funciones adicionales desarrolladas a medida",
       "Acceso para 3 Tiendas y 7 Usuarios",
+      "Estadísticas y gráficos personalizados descargables en PDF",
       "Estética y colores de marca adaptados a tu negocio",
       "Gestión de ventas, productos, gastos y pagos",
-      "Estadísticas y gráficos personalizados descargables en PDF",
-      "Módulos y funciones adicionales desarrolladas a medida",
       "Hosting privado y soporte prioritario incluido",
     ],
     message: "Hola, buenas. Quería consultar por el Dashboard Personalizado ($150.000 ARS o $50.000/mes).",
   },
+];
+
+const webSubFilters = [
+  { id: "all", label: "Todas las Webs", count: 6 },
+  { id: "negocios", label: "🛒 Tiendas con Carrito", count: 2 },
+  { id: "catalogos", label: "📖 Catálogo", count: 1 },
+  { id: "estudios", label: "🏢 Estudios & Servicios", count: 1 },
+  { id: "ventas-digitales", label: "⚡ Productos Digitales", count: 1 },
+  { id: "importaciones", label: "📦 Importaciones", count: 1 },
 ];
 
 const clientProjects = [
@@ -322,6 +332,8 @@ const faqs = [
 
 export default function Home() {
   const [mainGroup, setMainGroup] = useState<MainGroup>("webs");
+  const [subFilter, setSubFilter] = useState<string>("all");
+  const [expandedPlans, setExpandedPlans] = useState<Record<string, boolean>>({});
   const [activeSlideMap, setActiveSlideMap] = useState<Record<string, number>>({});
   const [lightbox, setLightbox] = useState<{ planType: string; imageIndex: number } | null>(null);
   const [paymentPlan, setPaymentPlan] = useState<Plan | null>(null);
@@ -347,11 +359,19 @@ export default function Home() {
     setTimeout(() => setCopiedField(""), 2200);
   };
 
-  // Filtrado según el grupo principal seleccionado
-  const visiblePlans =
-    mainGroup === "all"
-      ? plans
-      : plans.filter((p) => p.group === mainGroup);
+  const toggleExpand = (planId: string) => {
+    setExpandedPlans((prev) => ({ ...prev, [planId]: !prev[planId] }));
+  };
+
+  // Filtrado reactivo de modelos
+  const visiblePlans = plans.filter((plan) => {
+    if (mainGroup === "all") return true;
+    if (plan.group !== mainGroup) return false;
+    if (mainGroup === "webs" && subFilter !== "all") {
+      return plan.category === subFilter;
+    }
+    return true;
+  });
 
   const getSlideIndex = (planType: string) => activeSlideMap[planType] || 0;
 
@@ -490,38 +510,47 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── Modelos & Precios (Organización Perfecta) ─── */}
-      <section className="py-20 px-4" id="modelos">
-        <div className="max-w-4xl mx-auto text-center mb-8">
-          <p className="text-xs font-extrabold uppercase tracking-widest text-purple-400 mb-2">
+      {/* ─── Modelos & Precios (Diseño Compacto y Satisfactorio) ─── */}
+      <section className="py-16 px-4" id="modelos">
+        <div className="max-w-4xl mx-auto text-center mb-6">
+          <p className="text-xs font-extrabold uppercase tracking-widest text-purple-400 mb-1.5">
             PRECIOS TRANSPARENTES
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-3">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-2">
             Elegí la solución para tu negocio
           </h2>
-          <p className="text-zinc-400 text-sm md:text-base max-w-xl mx-auto">
+          <p className="text-zinc-400 text-sm max-w-xl mx-auto">
             Precios claros ordenados por necesidad. Podés comenzar cualquier proyecto abonando la seña del 35%.
           </p>
         </div>
 
         {/* 🔀 Selector Principal: Webs vs Sistemas */}
-        <div className="main-group-tabs">
+        <div className="main-group-tabs mb-4">
           <button
-            onClick={() => setMainGroup("webs")}
+            onClick={() => {
+              setMainGroup("webs");
+              setSubFilter("all");
+            }}
             className={`main-group-tab-btn ${mainGroup === "webs" ? "active" : ""}`}
           >
             <Globe className="w-4 h-4" />
-            <span>Páginas Web & Tiendas ({plans.filter(p => p.group === "webs").length})</span>
+            <span>Páginas Web & Tiendas ({plans.filter((p) => p.group === "webs").length})</span>
           </button>
           <button
-            onClick={() => setMainGroup("sistemas")}
+            onClick={() => {
+              setMainGroup("sistemas");
+              setSubFilter("all");
+            }}
             className={`main-group-tab-btn ${mainGroup === "sistemas" ? "active" : ""}`}
           >
             <BarChart3 className="w-4 h-4" />
-            <span>Sistemas & Dashboards ({plans.filter(p => p.group === "sistemas").length})</span>
+            <span>Sistemas & Dashboards ({plans.filter((p) => p.group === "sistemas").length})</span>
           </button>
           <button
-            onClick={() => setMainGroup("all")}
+            onClick={() => {
+              setMainGroup("all");
+              setSubFilter("all");
+            }}
             className={`main-group-tab-btn ${mainGroup === "all" ? "active" : ""}`}
           >
             <Sparkles className="w-4 h-4" />
@@ -529,12 +558,38 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Pricing Cards Grid (Simétrica y Alineada) */}
+        {/* 🏷️ Sub-Filtros Rápidos en Webs (Para ver lo que querés sin bajar kilómetros) */}
+        {mainGroup === "webs" && (
+          <div className="flex items-center justify-center gap-2 flex-wrap max-w-3xl mx-auto mb-8">
+            {webSubFilters.map((sub) => (
+              <button
+                key={sub.id}
+                onClick={() => setSubFilter(sub.id)}
+                className={`text-xs font-semibold px-3 py-1.5 rounded-full border transition-all ${
+                  subFilter === sub.id
+                    ? "bg-purple-600/30 border-purple-400 text-white shadow-sm shadow-purple-500/20"
+                    : "bg-white/[0.03] border-white/10 text-zinc-400 hover:text-white hover:border-white/20"
+                }`}
+              >
+                <span>{sub.label}</span>
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Pricing Cards Grid (Compacta, Simétrica y Satisfactoria) */}
         <div className="clean-plans-grid">
           {visiblePlans.map((plan) => {
             const slideIndex = getSlideIndex(plan.type);
             const currentImg = plan.previews[slideIndex] || plan.previews[0];
             const depositAmount = Math.round(plan.amount * 0.35);
+            const isExpanded = !!expandedPlans[plan.id];
+
+            // Mostramos los 3 features principales por defecto para que la tarjeta sea compacta
+            const initialFeaturesCount = 3;
+            const displayedFeatures = isExpanded
+              ? plan.features
+              : plan.features.slice(0, initialFeaturesCount);
 
             return (
               <article
@@ -547,12 +602,12 @@ export default function Home() {
                     {plan.tag}
                   </span>
                   {plan.category === "catalogos" && (
-                    <span className="text-[11px] font-bold text-cyan-400 bg-cyan-950/60 border border-cyan-800/60 px-2.5 py-0.5 rounded-full">
+                    <span className="text-[10px] font-bold text-cyan-400 bg-cyan-950/60 border border-cyan-800/60 px-2 py-0.5 rounded-full">
                       Carga 100% Incluida
                     </span>
                   )}
                   {plan.type.includes("Premium") && (
-                    <span className="text-[11px] font-bold text-pink-400 bg-pink-950/60 border border-pink-800/60 px-2.5 py-0.5 rounded-full">
+                    <span className="text-[10px] font-bold text-pink-400 bg-pink-950/60 border border-pink-800/60 px-2 py-0.5 rounded-full">
                       Cobros Automáticos
                     </span>
                   )}
@@ -561,8 +616,8 @@ export default function Home() {
                 <h3 className="clean-plan-title">{plan.type}</h3>
                 <p className="clean-plan-copy">{plan.copy}</p>
 
-                {/* Preview Thumbnail con ratio 16:9 fijo */}
-                <div className="clean-preview-box group h-[190px]">
+                {/* Preview Thumbnail Compacto con ratio 16:9 */}
+                <div className="clean-preview-box group">
                   <img
                     src={currentImg}
                     alt={plan.type}
@@ -609,7 +664,7 @@ export default function Home() {
                   </div>
 
                   <div className="clean-price-note">
-                    <span>💡 Empezá con seña del 35%:</span>
+                    <span>💡 Seña 35% para comenzar:</span>
                     <strong className="text-white">${depositAmount.toLocaleString("es-AR")} ARS</strong>
                   </div>
 
@@ -621,9 +676,9 @@ export default function Home() {
                   )}
                 </div>
 
-                {/* Features list */}
+                {/* Features list compacta */}
                 <ul className="clean-features-list">
-                  {plan.features.map((feature, idx) => (
+                  {displayedFeatures.map((feature, idx) => (
                     <li key={idx}>
                       <Check className="clean-check-icon" />
                       <span>{feature}</span>
@@ -631,7 +686,27 @@ export default function Home() {
                   ))}
                 </ul>
 
-                {/* Botones de acción anclados al fondo con mt-auto */}
+                {/* Botón para expandir o contraer detalles extras */}
+                {plan.features.length > initialFeaturesCount && (
+                  <button
+                    onClick={() => toggleExpand(plan.id)}
+                    className="self-start text-[11px] font-semibold text-purple-400 hover:text-purple-300 flex items-center gap-1 mb-3 transition-colors"
+                  >
+                    {isExpanded ? (
+                      <>
+                        <ChevronUp className="w-3 h-3" />
+                        <span>Ver menos</span>
+                      </>
+                    ) : (
+                      <>
+                        <ChevronDown className="w-3 h-3" />
+                        <span>+ Ver {plan.features.length - initialFeaturesCount} detalles más</span>
+                      </>
+                    )}
+                  </button>
+                )}
+
+                {/* Botones de acción anclados al fondo */}
                 <div className="clean-card-actions mt-auto">
                   <a
                     href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
@@ -652,7 +727,7 @@ export default function Home() {
                     }}
                     className="clean-btn-payment"
                   >
-                    <CreditCard className="w-3.5 h-3.5 text-purple-400" />
+                    <CreditCard className="w-3 h-3 text-purple-400" />
                     <span>Datos de Transferencia / Seña</span>
                   </button>
                 </div>
@@ -662,16 +737,16 @@ export default function Home() {
         </div>
 
         {/* Dominio Privado Card */}
-        <div className="max-w-4xl mx-auto mt-16 p-6 rounded-2xl bg-zinc-900/60 border border-purple-500/20 backdrop-blur-md flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="max-w-4xl mx-auto mt-12 p-5 rounded-2xl bg-zinc-900/60 border border-purple-500/20 backdrop-blur-md flex flex-col md:flex-row items-center justify-between gap-5">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-300 font-bold text-lg shrink-0">
+            <div className="w-11 h-11 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-300 font-bold text-lg shrink-0">
               🌐
             </div>
             <div>
               <span className="text-[10px] font-extrabold uppercase tracking-widest text-purple-400">
                 ADICIONAL DISPONIBLE
               </span>
-              <h4 className="text-lg font-bold text-white">Dominio Privado (.com o .com.ar)</h4>
+              <h4 className="text-base font-bold text-white">Dominio Privado (.com o .com.ar)</h4>
               <p className="text-xs text-zinc-400 max-w-lg mt-0.5">
                 Una dirección exclusiva para tu negocio. Lo registramos y configuramos a tu nombre al costo oficial sin ningún recargo extra.
               </p>
@@ -684,7 +759,7 @@ export default function Home() {
             )}`}
             target="_blank"
             rel="noreferrer"
-            className="whitespace-nowrap px-5 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-white/10 text-xs font-bold text-white transition-all flex items-center gap-2"
+            className="whitespace-nowrap px-4 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-white/10 text-xs font-bold text-white transition-all flex items-center gap-2"
           >
             <span>Consultar Dominio</span>
             <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
