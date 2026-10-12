@@ -40,30 +40,11 @@ interface Plan {
 
 const plans: Plan[] = [
   {
-    id: "catalogo-basic",
-    type: "Catálogo Basic",
-    tag: "CATÁLOGO DIGITAL",
-    price: "120.000",
-    amount: 120000,
-    previews: ["/catalogos-gallery-01.png"],
-    copy: "Para exhibir tus productos sin cobro online. Ideal para mostrar stock y derivar pedidos directos a WhatsApp.",
-    features: [
-      "Carga inicial completa de TODOS tus productos incluida",
-      "Capacidad para 180 productos con categorías a medida",
-      "Modo Catálogo exclusivo (consultas directas a WhatsApp)",
-      "Panel intuitivo para subir, editar y ordenar productos",
-      "Fichas de producto con múltiples fotos y descripciones",
-      "Diseño 100% personalizado y adaptado a tu marca",
-      "Hosting gratis por 1 año y soporte por 2 meses",
-    ],
-    message: "Hola Juan Cruz, quería consultar por el Catálogo Basic ($120.000 ARS) con entrega en 24 hs.",
-  },
-  {
     id: "web-institucional",
     type: "Web Institucional",
     tag: "SERVICIOS & FIRMAS",
-    price: "200.000",
-    amount: 200000,
+    price: "180.000",
+    amount: 180000,
     previews: ["/estudios-gallery-01.png", "/importaciones-gallery-01.png"],
     copy: "Para profesionales, estudios jurídicos/contables, consultoras, importadores y empresas de servicios.",
     features: [
@@ -71,44 +52,44 @@ const plans: Plan[] = [
       "Formulario para recepción de consultas directo a tu mail",
       "Botón directo para recepción de consultas a WhatsApp",
       "Presentación de especialidades, servicios y equipo profesional",
-      "Incluye 2 adicionales a elección (Turnero, FAQ o Cotizador)",
+      "Incluye adicionales a elección (Preguntas Frecuentes, Cotizador o Blog)",
       "Muestra de honorarios o servicios opcional a elección",
       "Hosting gratis por 1 año y soporte por 2 meses",
     ],
-    message: "Hola Juan Cruz, quería consultar por la Web Institucional ($200.000 ARS) con entrega en 24 hs.",
+    message: "Hola Juan Cruz, quería consultar por la Web Institucional ($180.000 ARS) con entrega en 24 hs.",
   },
   {
     id: "tienda-ecommerce",
     type: "Tienda E-Commerce",
     tag: "MÁS ELEGIDA",
     isPopular: true,
-    price: "250.000",
-    amount: 250000,
+    price: "200.000",
+    amount: 200000,
     previews: [
       "/avanzada-gallery-01.png",
       "/avanzada-gallery-02.png",
       "/avanzada-gallery-03.png",
       "/digital-gallery-01.png",
     ],
-    copy: "Tienda online completa con carrito, catálogo, buscador, control de stock y envíos a todo el país.",
+    copy: "Tienda online completa con carrito, catálogo, buscador, control de stock y funciones a medida.",
     features: [
       "Carrito de compras, buscador, categorías y filtros",
       "Capacidad para 300 productos (carga inicial de 30 incluida)",
+      "Hasta 2 funciones personalizadas a medida de tu negocio",
       "Panel de administración para gestionar pedidos y stock",
-      "Conexión con Correo Argentino o Andreani para envíos",
       "Integración directa con WhatsApp, Instagram y redes sociales",
       "Apta para productos físicos, indumentaria, repuestos o digitales",
       "Hosting gratis por 1 año y soporte por 2 meses",
     ],
-    message: "Hola Juan Cruz, quería consultar por la Tienda E-Commerce ($250.000 ARS) con entrega en 24 hs.",
+    message: "Hola Juan Cruz, quería consultar por la Tienda E-Commerce ($200.000 ARS) con entrega en 24 hs.",
   },
   {
     id: "web-premium",
     type: "Web Premium",
     tag: "AUTOMATIZADA",
     isPopular: true,
-    price: "320.000",
-    amount: 320000,
+    price: "270.000",
+    amount: 270000,
     previews: [
       "/premium-gallery-01.png",
       "/premium-gallery-02.png",
@@ -125,7 +106,7 @@ const plans: Plan[] = [
       "Incluye todas las características de la Tienda E-Commerce",
       "Soporte prioritario y Hosting gratis por 1 año",
     ],
-    message: "Hola Juan Cruz, quería consultar por la Web Premium ($320.000 ARS) con entrega en 24 hs.",
+    message: "Hola Juan Cruz, quería consultar por la Web Premium ($270.000 ARS) con entrega en 24 hs.",
   },
 ];
 
@@ -378,8 +359,8 @@ export default function Home() {
           </p>
         </div>
 
-        {/* 4 Cards Grid (Alineadas en una sola fila en escritorio, súper limpias) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto px-4 items-stretch">
+        {/* 3 Cards Grid (Alineadas en 3 columnas en escritorio, súper limpias y balanceadas) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 items-stretch">
           {plans.map((plan) => {
             const slideIndex = getSlideIndex(plan.type);
             const currentImg = plan.previews[slideIndex] || plan.previews[0];
@@ -401,11 +382,6 @@ export default function Home() {
                   <span className={`clean-badge ${plan.isPopular ? "featured" : ""}`}>
                     {plan.tag}
                   </span>
-                  {plan.type.includes("Catálogo") && (
-                    <span className="text-[10px] font-bold text-cyan-400 bg-cyan-950/60 border border-cyan-800/60 px-2 py-0.5 rounded-full">
-                      Carga Incluida
-                    </span>
-                  )}
                   {plan.type.includes("Premium") && (
                     <span className="text-[10px] font-bold text-pink-400 bg-pink-950/60 border border-pink-800/60 px-2 py-0.5 rounded-full">
                       Cobros Tarjeta
