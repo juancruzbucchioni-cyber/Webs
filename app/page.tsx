@@ -146,7 +146,7 @@ const faqs = [
   {
     question: "¿Cómo es la forma de pago y seña?",
     answer:
-      "Empezamos tu proyecto con solo una seña del 35% por transferencia bancaria o Mercado Pago. El 65% restante se abona una vez que la web está terminada, aprobada por vos y lista para publicar.",
+      "Empezamos tu proyecto con solo una seña del 25% por transferencia bancaria o Mercado Pago. El 75% restante se abona una vez que la web está terminada, aprobada por vos y lista para publicar.",
   },
   {
     question: "¿Es fácil de usar si no sé nada de tecnología?",
@@ -325,14 +325,14 @@ export default function Home() {
             Elegí tu página web
           </h2>
           <p className="text-zinc-400 text-sm max-w-xl mx-auto">
-            Sin rodeos ni opciones repetidas. Podés comenzar cualquier proyecto abonando la seña del 35%.
+            Sin rodeos ni opciones repetidas. Podés comenzar cualquier proyecto abonando la seña del 25%.
           </p>
         </div>
 
         {/* 3 Cards Grid (Alineadas en 3 columnas en escritorio, súper limpias y balanceadas) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 items-stretch">
           {plans.map((plan) => {
-            const depositAmount = Math.round(plan.amount * 0.35);
+            const depositAmount = Math.round(plan.amount * 0.25);
             const isExpanded = !!expandedPlans[plan.id];
 
             const initialFeaturesCount = 3;
@@ -369,7 +369,7 @@ export default function Home() {
                   </div>
 
                   <div className="clean-price-note">
-                    <span>💡 Seña 35% para iniciar:</span>
+                    <span>💡 Seña 25% para iniciar:</span>
                     <strong className="text-white">${depositAmount.toLocaleString("es-AR")} ARS</strong>
                   </div>
                 </div>
@@ -521,7 +521,7 @@ export default function Home() {
 
           <div className="p-8 rounded-2xl bg-zinc-900/60 border border-purple-500/30 relative shadow-lg shadow-purple-900/10">
             <span className="text-3xl font-extrabold text-fuchsia-400/50 font-mono">02</span>
-            <h4 className="text-xl font-bold text-white mt-3 mb-2">Seña del 35% y diseño</h4>
+            <h4 className="text-xl font-bold text-white mt-3 mb-2">Seña del 25% y diseño</h4>
             <p className="text-sm text-zinc-400 leading-relaxed">
               Con la seña inicial ponemos manos a la obra. Diseñamos la web con tus colores, logo y productos.
             </p>
@@ -672,7 +672,7 @@ export default function Home() {
                   onClick={() => setPaymentMode("deposit")}
                   className={`clean-modal-tab ${paymentMode === "deposit" ? "active" : ""}`}
                 >
-                  Seña 35% (${Math.round(paymentPlan.amount * 0.35).toLocaleString("es-AR")})
+                  Seña 25% (${Math.round(paymentPlan.amount * 0.25).toLocaleString("es-AR")})
                 </button>
                 <button
                   onClick={() => setPaymentMode("full")}
@@ -762,7 +762,7 @@ export default function Home() {
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
                   `Hola Juan Cruz, ya realicé el pago (${
-                    paymentMode === "deposit" ? "Seña 35%" : "Pago Completo"
+                    paymentMode === "deposit" ? "Seña 25%" : "Pago Completo"
                   }) para comenzar la web: ${paymentPlan.type}. Te adjunto el comprobante.`
                 )}`}
                 target="_blank"
