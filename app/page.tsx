@@ -372,9 +372,21 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#040306] text-[#f4f4f6]">
       {/* ─── Sticky Navbar ─── */}
-      <nav className="fixed top-0 left-0 right-0 z-50 h-[70px] px-6 lg:px-16 flex items-center justify-between bg-[#040306]/85 backdrop-blur-md border-b border-white/[0.08]">
-        <a href="/" className="flex items-center gap-2" aria-label="JCB Development">
-          <img src="/jcb-development.png" alt="JCB Development" className="h-9 w-auto object-contain" />
+      <nav className="fixed top-0 left-0 right-0 z-50 h-[74px] sm:h-[82px] px-6 lg:px-16 flex items-center justify-between bg-[#040306]/90 backdrop-blur-md border-b border-white/[0.08]">
+        <a
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          className="flex items-center group cursor-pointer transition-transform py-1"
+          aria-label="JCB Development, ir al inicio"
+        >
+          <img
+            src="/jcb-logo-clean.png"
+            alt="JCB Development"
+            className="h-10 sm:h-12 md:h-14 w-auto object-contain transition-all group-hover:scale-105 drop-shadow-[0_0_15px_rgba(168,85,247,0.3)]"
+          />
         </a>
 
         <div className="hidden md:flex items-center gap-8 text-[13px] font-medium text-zinc-400">
@@ -807,10 +819,18 @@ export default function Home() {
       {/* ─── Footer ─── */}
       <footer className="py-12 px-6 border-t border-white/[0.08] bg-[#020204] text-xs text-zinc-500">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <img src="/jcb-development.png" alt="JCB Development" className="h-7 w-auto object-contain" />
-            <span>· Desarrollo Web Profesional</span>
-          </div>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="flex items-center gap-3 cursor-pointer group hover:opacity-90 transition-opacity"
+            aria-label="Volver al inicio"
+          >
+            <img src="/jcb-logo-clean.png" alt="JCB Development" className="h-8 sm:h-9 w-auto object-contain" />
+            <span className="text-zinc-400 group-hover:text-zinc-200 transition-colors">· Desarrollo Web Profesional</span>
+          </a>
 
           <div className="flex items-center gap-6 text-zinc-400">
             <button
