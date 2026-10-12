@@ -311,7 +311,7 @@ const faqs = [
   {
     question: "¿En cuánto tiempo entregan la página web?",
     answer:
-      "El plazo estimado de desarrollo es de 7 a 10 días. Te vamos enviando avances por WhatsApp para que vayas viendo exactamente cómo va quedando.",
+      "¡Tu página web se entrega en tan solo 24 horas! Trabajamos con un desarrollo ultra ágil y enfocado para que tu negocio esté online y listo para vender al día siguiente.",
   },
   {
     question: "¿Es fácil de usar si no sé nada de tecnología?",
@@ -451,7 +451,7 @@ export default function Home() {
       <section className="clean-hero-section">
         <div className="clean-hero-badge">
           <Zap className="w-3.5 h-3.5 text-purple-400" />
-          <span>Desarrollo Web & Sistemas a Medida</span>
+          <span>Tu Página Web Lista en 24 Horas</span>
         </div>
 
         <h1 className="clean-hero-title">
@@ -460,7 +460,7 @@ export default function Home() {
 
         <p className="clean-hero-subtitle">
           Creamos tiendas online, catálogos interactivos y sistemas de gestión ultrarrápidos.
-          100% adaptados a celulares, con hosting de regalo y entrega en 7 a 10 días.
+          100% adaptados a celulares, con hosting de regalo y tu página web online en 24 horas.
         </p>
 
         <div className="clean-hero-actions">
@@ -470,7 +470,7 @@ export default function Home() {
           </a>
           <a
             href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-              "Hola Juan Cruz, quería consultar por el desarrollo de una web para mi negocio."
+              "Hola Juan Cruz, quería consultar para tener mi página web lista en 24 horas."
             )}`}
             target="_blank"
             rel="noreferrer"
@@ -485,9 +485,9 @@ export default function Home() {
         <div className="w-full max-w-4xl grid grid-cols-2 md:grid-cols-4 gap-4 px-4 pt-4 border-t border-white/[0.08]">
           <div className="flex flex-col items-center p-3 rounded-xl bg-white/[0.02]">
             <span className="flex items-center gap-1.5 text-xs text-purple-400 font-bold mb-1">
-              <Clock className="w-3.5 h-3.5" /> 7 a 10 Días
+              <Clock className="w-3.5 h-3.5" /> Entrega en 24 Hs
             </span>
-            <span className="text-xs text-zinc-400 text-center">Entrega garantizada</span>
+            <span className="text-xs text-zinc-400 text-center">Tu web lista en tiempo récord</span>
           </div>
           <div className="flex flex-col items-center p-3 rounded-xl bg-white/[0.02]">
             <span className="flex items-center gap-1.5 text-xs text-emerald-400 font-bold mb-1">
@@ -833,7 +833,7 @@ export default function Home() {
             <span className="text-3xl font-extrabold text-cyan-500/40 font-mono">03</span>
             <h4 className="text-xl font-bold text-white mt-3 mb-2">Publicación y entrega</h4>
             <p className="text-sm text-zinc-400 leading-relaxed">
-              En 7 a 10 días revisás la web terminada, se cancela el saldo y la publicamos con hosting gratis y soporte.
+              En solo 24 horas revisás tu web terminada y lista para publicar con hosting gratis y soporte.
             </p>
           </div>
         </div>
