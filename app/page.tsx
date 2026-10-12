@@ -20,27 +20,18 @@ import {
   Smartphone,
   Server,
   Zap,
-  Globe,
-  BarChart3,
-  Sparkles,
 } from "lucide-react";
 
 const WHATSAPP_NUMBER = "5493534128474";
 const MERCADO_PAGO_LINK = "https://link.mercadopago.com.ar/jcbdevelopment";
 
-type MainGroup = "webs" | "sistemas" | "all";
-
 interface Plan {
   id: string;
-  group: "webs" | "sistemas";
-  category: "negocios" | "catalogos" | "ventas-digitales" | "estudios" | "importaciones" | "administracion-gastos";
   type: string;
   tag: string;
   isPopular?: boolean;
   price: string;
   amount: number;
-  monthlyAmount?: number;
-  subscriptionUrl?: string;
   previews: string[];
   copy: string;
   features: string[];
@@ -48,18 +39,14 @@ interface Plan {
 }
 
 const plans: Plan[] = [
-  // ─── Sitios Web & Tiendas (Ordenados de menor a mayor) ───
   {
     id: "catalogo-basic",
-    group: "webs",
-    category: "catalogos",
     type: "Catálogo Basic",
-    tag: "100% A MEDIDA",
-    isPopular: true,
+    tag: "CATÁLOGO DIGITAL",
     price: "120.000",
     amount: 120000,
     previews: ["/catalogos-gallery-01.png"],
-    copy: "Exhibición de productos personalizada sin cobro online. Ideal para mostrar stock y derivar pedidos directos a WhatsApp.",
+    copy: "Para exhibir tus productos sin cobro online. Ideal para mostrar stock y derivar pedidos directos a WhatsApp.",
     features: [
       "Carga inicial completa de TODOS tus productos incluida",
       "Capacidad para 180 productos con categorías a medida",
@@ -69,54 +56,30 @@ const plans: Plan[] = [
       "Diseño 100% personalizado y adaptado a tu marca",
       "Hosting gratis por 1 año y soporte por 2 meses",
     ],
-    message: "Hola, buenas. Quería consultar por el Catálogo Basic ($120.000 ARS).",
+    message: "Hola Juan Cruz, quería consultar por el Catálogo Basic ($120.000 ARS) con entrega en 24 hs.",
   },
   {
-    id: "web-estudios",
-    group: "webs",
-    category: "estudios",
-    type: "Web para Estudios & Consultoras",
-    tag: "PROFESIONALES",
+    id: "web-institucional",
+    type: "Web Institucional",
+    tag: "SERVICIOS & FIRMAS",
     price: "200.000",
     amount: 200000,
-    previews: ["/estudios-gallery-01.png"],
-    copy: "Web institucional profesional para estudios jurídicos, contables, médicos, arquitectura y consultorías en general.",
+    previews: ["/estudios-gallery-01.png", "/importaciones-gallery-01.png"],
+    copy: "Para profesionales, estudios jurídicos/contables, consultoras, importadores y empresas de servicios.",
     features: [
       "Diseño institucional 100% adaptado a dispositivos móviles",
       "Formulario para recepción de consultas directo a tu mail",
-      "Botón directo para derivación de consultas a WhatsApp",
+      "Botón directo para recepción de consultas a WhatsApp",
       "Presentación de especialidades, servicios y equipo profesional",
       "Incluye 2 adicionales a elección (Turnero, FAQ o Cotizador)",
       "Muestra de honorarios o servicios opcional a elección",
       "Hosting gratis por 1 año y soporte por 2 meses",
     ],
-    message: "Hola, buenas. Quería consultar por la Web para Estudios & Consultoras ($200.000 ARS).",
+    message: "Hola Juan Cruz, quería consultar por la Web Institucional ($200.000 ARS) con entrega en 24 hs.",
   },
   {
-    id: "web-importaciones",
-    group: "webs",
-    category: "importaciones",
-    type: "Web Importaciones Basic",
-    tag: "IMPORTACIONES",
-    price: "200.000",
-    amount: 200000,
-    previews: ["/importaciones-gallery-01.png", "/importaciones-gallery-02.png"],
-    copy: "Sitio web para importadores y distribuidores: presentación de productos, pedidos por encargo y cotizaciones.",
-    features: [
-      "Diseño profesional optimizado para comex e importaciones",
-      "Capacidad para 230 productos con control de stock",
-      "Pagos por transferencia, efectivo o enlace de Mercado Pago",
-      "Administración de clientes, consultas y cotizaciones",
-      "Creación de promociones, descuentos y cupones",
-      "Hosting gratis por 1 año y soporte por 2 meses",
-    ],
-    message: "Hola, buenas. Quería consultar por la Web Importaciones Basic ($200.000 ARS).",
-  },
-  {
-    id: "web-avanzada",
-    group: "webs",
-    category: "negocios",
-    type: "Web Avanzada",
+    id: "tienda-ecommerce",
+    type: "Tienda E-Commerce",
     tag: "MÁS ELEGIDA",
     isPopular: true,
     price: "250.000",
@@ -125,52 +88,23 @@ const plans: Plan[] = [
       "/avanzada-gallery-01.png",
       "/avanzada-gallery-02.png",
       "/avanzada-gallery-03.png",
-      "/avanzada-gallery-04.png",
+      "/digital-gallery-01.png",
     ],
-    copy: "Tienda online completa con carrito, catálogo, buscador, control de stock y conexión con empresas de logística.",
+    copy: "Tienda online completa con carrito, catálogo, buscador, control de stock y envíos a todo el país.",
     features: [
       "Carrito de compras, buscador, categorías y filtros",
       "Capacidad para 300 productos (carga inicial de 30 incluida)",
       "Panel de administración para gestionar pedidos y stock",
       "Conexión con Correo Argentino o Andreani para envíos",
       "Integración directa con WhatsApp, Instagram y redes sociales",
-      "Diseño 100% adaptado a celulares, tablets y computadoras",
+      "Apta para productos físicos, indumentaria, repuestos o digitales",
       "Hosting gratis por 1 año y soporte por 2 meses",
     ],
-    message: "Hola, buenas. Quería consultar por la Web Avanzada ($250.000 ARS).",
-  },
-  {
-    id: "web-ecommerce-digital",
-    group: "webs",
-    category: "ventas-digitales",
-    type: "Web E-commerce Digital",
-    tag: "DIGITAL & SERVICIOS",
-    price: "250.000",
-    amount: 250000,
-    previews: [
-      "/digital-gallery-01.png",
-      "/digital-gallery-02.png",
-      "/digital-gallery-03.png",
-      "/digital-gallery-04.png",
-      "/digital-gallery-05.png",
-      "/digital-gallery-06.png",
-    ],
-    copy: "Plataforma optimizada para vender cuentas, productos digitales, membresías, servicios y cursos online.",
-    features: [
-      "Diseño optimizado para productos digitales y membresías",
-      "Capacidad para 300 productos con catálogo por categorías",
-      "Carrito de compras y precios promocionales por cantidad",
-      "Panel para administrar productos, categorías y stock",
-      "Integración con WhatsApp, Instagram y grupos privados",
-      "Hosting gratis por 1 año y soporte por 2 meses",
-    ],
-    message: "Hola, buenas. Quería consultar por la Web E-commerce Digital ($250.000 ARS).",
+    message: "Hola Juan Cruz, quería consultar por la Tienda E-Commerce ($250.000 ARS) con entrega en 24 hs.",
   },
   {
     id: "web-premium",
-    group: "webs",
-    category: "negocios",
-    type: "Web de Negocio Premium",
+    type: "Web Premium",
     tag: "AUTOMATIZADA",
     isPopular: true,
     price: "320.000",
@@ -180,87 +114,19 @@ const plans: Plan[] = [
       "/premium-gallery-02.png",
       "/premium-gallery-03.png",
       "/premium-gallery-04.png",
-      "/premium-gallery-05.png",
-      "/premium-gallery-06.png",
     ],
-    copy: "Automatización total de ventas con cobros directos con tarjetas, pasarela de Mercado Pago y cuentas de clientes.",
+    copy: "Automatización total de ventas con cobros con tarjeta por Mercado Pago, cuentas de clientes y reportes.",
     features: [
       "Cobros automáticos con tarjetas mediante Mercado Pago",
       "Sistema de usuarios y cuentas para clientes",
       "Reportes avanzados de ventas, costos y ganancias",
       "Notificaciones automáticas y recuperación de carritos",
       "Hasta 3 funciones personalizadas a medida de tu negocio",
-      "Incluye todas las características de la Web Avanzada",
+      "Incluye todas las características de la Tienda E-Commerce",
       "Soporte prioritario y Hosting gratis por 1 año",
     ],
-    message: "Hola, buenas. Quería consultar por la Web de Negocio Premium ($320.000 ARS).",
+    message: "Hola Juan Cruz, quería consultar por la Web Premium ($320.000 ARS) con entrega en 24 hs.",
   },
-
-  // ─── Sistemas de Gestión & Dashboards ───
-  {
-    id: "dashboard-general",
-    group: "sistemas",
-    category: "administracion-gastos",
-    type: "Dashboard General",
-    tag: "GESTIÓN FINANCIERA",
-    price: "80.000",
-    amount: 80000,
-    monthlyAmount: 28000,
-    subscriptionUrl: "https://mpago.la/1LV5gTH",
-    previews: [
-      "/dashboard-gallery-01.png",
-      "/dashboard-gallery-02.png",
-      "/dashboard-gallery-03.png",
-      "/dashboard-gallery-04.png",
-    ],
-    copy: "Sistema práctico para registrar ventas diarias, controlar gastos y conocer tus ganancias reales en un solo lugar.",
-    features: [
-      "Control de gastos, ventas, pagos y reportes mensuales",
-      "1 Tienda y 3 Usuarios del sistema",
-      "Catálogo, productos y categorías autogestionables",
-      "Estadísticas en tiempo real de tu negocio",
-      "Información protegida y respaldada en la nube",
-      "Color del sistema y estética a elección",
-    ],
-    message: "Hola, buenas. Quería consultar por el Dashboard General ($80.000 ARS o $28.000/mes).",
-  },
-  {
-    id: "dashboard-personalizado",
-    group: "sistemas",
-    category: "administracion-gastos",
-    type: "Dashboard Personalizado",
-    tag: "100% A MEDIDA",
-    isPopular: true,
-    price: "150.000",
-    amount: 150000,
-    monthlyAmount: 50000,
-    subscriptionUrl: "https://mpago.la/1cUK2X1",
-    previews: [
-      "/personalizado-gallery-01.png",
-      "/personalizado-gallery-02.png",
-      "/personalizado-gallery-03.png",
-      "/personalizado-gallery-04.png",
-    ],
-    copy: "Tomamos nuestro software y programamos las herramientas y módulos exactos que necesita tu empresa.",
-    features: [
-      "Módulos y funciones adicionales desarrolladas a medida",
-      "Acceso para 3 Tiendas y 7 Usuarios",
-      "Estadísticas y gráficos personalizados descargables en PDF",
-      "Estética y colores de marca adaptados a tu negocio",
-      "Gestión de ventas, productos, gastos y pagos",
-      "Hosting privado y soporte prioritario incluido",
-    ],
-    message: "Hola, buenas. Quería consultar por el Dashboard Personalizado ($150.000 ARS o $50.000/mes).",
-  },
-];
-
-const webSubFilters = [
-  { id: "all", label: "Todas las Webs", count: 6 },
-  { id: "negocios", label: "🛒 Tiendas con Carrito", count: 2 },
-  { id: "catalogos", label: "📖 Catálogo", count: 1 },
-  { id: "estudios", label: "🏢 Estudios & Servicios", count: 1 },
-  { id: "ventas-digitales", label: "⚡ Productos Digitales", count: 1 },
-  { id: "importaciones", label: "📦 Importaciones", count: 1 },
 ];
 
 const clientProjects = [
@@ -304,14 +170,14 @@ const clientProjects = [
 
 const faqs = [
   {
-    question: "¿Cómo es la forma de pago y seña?",
-    answer:
-      "Empezamos tu proyecto con solo una seña del 35% por transferencia bancaria o Mercado Pago. El 65% restante se abona una vez que la web está terminada, aprobada por vos y lista para publicar.",
-  },
-  {
     question: "¿En cuánto tiempo entregan la página web?",
     answer:
       "¡Tu página web se entrega en tan solo 24 horas! Trabajamos con un desarrollo ultra ágil y enfocado para que tu negocio esté online y listo para vender al día siguiente.",
+  },
+  {
+    question: "¿Cómo es la forma de pago y seña?",
+    answer:
+      "Empezamos tu proyecto con solo una seña del 35% por transferencia bancaria o Mercado Pago. El 65% restante se abona una vez que la web está terminada, aprobada por vos y lista para publicar.",
   },
   {
     question: "¿Es fácil de usar si no sé nada de tecnología?",
@@ -331,13 +197,11 @@ const faqs = [
 ];
 
 export default function Home() {
-  const [mainGroup, setMainGroup] = useState<MainGroup>("webs");
-  const [subFilter, setSubFilter] = useState<string>("all");
   const [expandedPlans, setExpandedPlans] = useState<Record<string, boolean>>({});
   const [activeSlideMap, setActiveSlideMap] = useState<Record<string, number>>({});
   const [lightbox, setLightbox] = useState<{ planType: string; imageIndex: number } | null>(null);
   const [paymentPlan, setPaymentPlan] = useState<Plan | null>(null);
-  const [paymentMode, setPaymentMode] = useState<"deposit" | "full" | "monthly">("deposit");
+  const [paymentMode, setPaymentMode] = useState<"deposit" | "full">("deposit");
   const [copiedField, setCopiedField] = useState("");
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [showTermsModal, setShowTermsModal] = useState(false);
@@ -362,16 +226,6 @@ export default function Home() {
   const toggleExpand = (planId: string) => {
     setExpandedPlans((prev) => ({ ...prev, [planId]: !prev[planId] }));
   };
-
-  // Filtrado reactivo de modelos
-  const visiblePlans = plans.filter((plan) => {
-    if (mainGroup === "all") return true;
-    if (plan.group !== mainGroup) return false;
-    if (mainGroup === "webs" && subFilter !== "all") {
-      return plan.category === subFilter;
-    }
-    return true;
-  });
 
   const getSlideIndex = (planType: string) => activeSlideMap[planType] || 0;
 
@@ -435,7 +289,7 @@ export default function Home() {
           </a>
           <a
             href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-              "Hola, buenas. Quería consultar para hacer una página web para mi negocio."
+              "Hola Juan Cruz, quería consultar para hacer una página web para mi negocio en 24 horas."
             )}`}
             target="_blank"
             rel="noreferrer"
@@ -459,8 +313,8 @@ export default function Home() {
         </h1>
 
         <p className="clean-hero-subtitle">
-          Creamos tiendas online, catálogos interactivos y sistemas de gestión ultrarrápidos.
-          100% adaptados a celulares, con hosting de regalo y tu página web online en 24 horas.
+          Creamos tiendas online, catálogos y páginas web ultrarrápidas a medida.
+          100% adaptadas a celulares, con hosting de regalo y tu página web online en 24 horas.
         </p>
 
         <div className="clean-hero-actions">
@@ -510,82 +364,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── Modelos & Precios (Diseño Compacto y Satisfactorio) ─── */}
+      {/* ─── Modelos & Precios (4 Modelos Directos, 0 Fricción) ─── */}
       <section className="py-16 px-4" id="modelos">
-        <div className="max-w-4xl mx-auto text-center mb-6">
+        <div className="max-w-4xl mx-auto text-center mb-10">
           <p className="text-xs font-extrabold uppercase tracking-widest text-purple-400 mb-1.5">
-            PRECIOS TRANSPARENTES
+            PRECIOS TRANSPARENTES · ENTREGA EN 24 HORAS
           </p>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-2">
-            Elegí la solución para tu negocio
+            Elegí tu página web
           </h2>
           <p className="text-zinc-400 text-sm max-w-xl mx-auto">
-            Precios claros ordenados por necesidad. Podés comenzar cualquier proyecto abonando la seña del 35%.
+            Sin rodeos ni opciones repetidas. Podés comenzar cualquier proyecto abonando la seña del 35%.
           </p>
         </div>
 
-        {/* 🔀 Selector Principal: Webs vs Sistemas */}
-        <div className="main-group-tabs mb-4">
-          <button
-            onClick={() => {
-              setMainGroup("webs");
-              setSubFilter("all");
-            }}
-            className={`main-group-tab-btn ${mainGroup === "webs" ? "active" : ""}`}
-          >
-            <Globe className="w-4 h-4" />
-            <span>Páginas Web & Tiendas ({plans.filter((p) => p.group === "webs").length})</span>
-          </button>
-          <button
-            onClick={() => {
-              setMainGroup("sistemas");
-              setSubFilter("all");
-            }}
-            className={`main-group-tab-btn ${mainGroup === "sistemas" ? "active" : ""}`}
-          >
-            <BarChart3 className="w-4 h-4" />
-            <span>Sistemas & Dashboards ({plans.filter((p) => p.group === "sistemas").length})</span>
-          </button>
-          <button
-            onClick={() => {
-              setMainGroup("all");
-              setSubFilter("all");
-            }}
-            className={`main-group-tab-btn ${mainGroup === "all" ? "active" : ""}`}
-          >
-            <Sparkles className="w-4 h-4" />
-            <span>Todos ({plans.length})</span>
-          </button>
-        </div>
-
-        {/* 🏷️ Sub-Filtros Rápidos en Webs (Para ver lo que querés sin bajar kilómetros) */}
-        {mainGroup === "webs" && (
-          <div className="flex items-center justify-center gap-2 flex-wrap max-w-3xl mx-auto mb-8">
-            {webSubFilters.map((sub) => (
-              <button
-                key={sub.id}
-                onClick={() => setSubFilter(sub.id)}
-                className={`text-xs font-semibold px-3 py-1.5 rounded-full border transition-all ${
-                  subFilter === sub.id
-                    ? "bg-purple-600/30 border-purple-400 text-white shadow-sm shadow-purple-500/20"
-                    : "bg-white/[0.03] border-white/10 text-zinc-400 hover:text-white hover:border-white/20"
-                }`}
-              >
-                <span>{sub.label}</span>
-              </button>
-            ))}
-          </div>
-        )}
-
-        {/* Pricing Cards Grid (Compacta, Simétrica y Satisfactoria) */}
-        <div className="clean-plans-grid">
-          {visiblePlans.map((plan) => {
+        {/* 4 Cards Grid (Alineadas en una sola fila en escritorio, súper limpias) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto px-4 items-stretch">
+          {plans.map((plan) => {
             const slideIndex = getSlideIndex(plan.type);
             const currentImg = plan.previews[slideIndex] || plan.previews[0];
             const depositAmount = Math.round(plan.amount * 0.35);
             const isExpanded = !!expandedPlans[plan.id];
 
-            // Mostramos los 3 features principales por defecto para que la tarjeta sea compacta
             const initialFeaturesCount = 3;
             const displayedFeatures = isExpanded
               ? plan.features
@@ -601,14 +401,14 @@ export default function Home() {
                   <span className={`clean-badge ${plan.isPopular ? "featured" : ""}`}>
                     {plan.tag}
                   </span>
-                  {plan.category === "catalogos" && (
+                  {plan.type.includes("Catálogo") && (
                     <span className="text-[10px] font-bold text-cyan-400 bg-cyan-950/60 border border-cyan-800/60 px-2 py-0.5 rounded-full">
-                      Carga 100% Incluida
+                      Carga Incluida
                     </span>
                   )}
                   {plan.type.includes("Premium") && (
                     <span className="text-[10px] font-bold text-pink-400 bg-pink-950/60 border border-pink-800/60 px-2 py-0.5 rounded-full">
-                      Cobros Automáticos
+                      Cobros Tarjeta
                     </span>
                   )}
                 </div>
@@ -658,22 +458,15 @@ export default function Home() {
                 {/* Price block */}
                 <div className="clean-price-box">
                   <div className="clean-price-amount">
-                    <small>VALOR TOTAL</small>
+                    <small>TOTAL</small>
                     <strong>${plan.price}</strong>
                     <span>ARS</span>
                   </div>
 
                   <div className="clean-price-note">
-                    <span>💡 Seña 35% para comenzar:</span>
+                    <span>💡 Seña 35% para iniciar:</span>
                     <strong className="text-white">${depositAmount.toLocaleString("es-AR")} ARS</strong>
                   </div>
-
-                  {plan.monthlyAmount && (
-                    <div className="clean-monthly-tag">
-                      <span>O Plan Mensual:</span>
-                      <strong>${plan.monthlyAmount.toLocaleString("es-AR")} ARS / mes</strong>
-                    </div>
-                  )}
                 </div>
 
                 {/* Features list compacta */}
@@ -686,7 +479,7 @@ export default function Home() {
                   ))}
                 </ul>
 
-                {/* Botón para expandir o contraer detalles extras */}
+                {/* Botón para expandir o contraer detalles */}
                 {plan.features.length > initialFeaturesCount && (
                   <button
                     onClick={() => toggleExpand(plan.id)}
@@ -982,14 +775,6 @@ export default function Home() {
                 >
                   Pago Completo (${paymentPlan.amount.toLocaleString("es-AR")})
                 </button>
-                {paymentPlan.monthlyAmount && (
-                  <button
-                    onClick={() => setPaymentMode("monthly")}
-                    className={`clean-modal-tab ${paymentMode === "monthly" ? "active" : ""}`}
-                  >
-                    Mensual (${paymentPlan.monthlyAmount.toLocaleString("es-AR")})
-                  </button>
-                )}
               </div>
 
               {/* Account details */}
@@ -1058,11 +843,7 @@ export default function Home() {
               {/* Mercado Pago Button */}
               <div className="mb-4">
                 <a
-                  href={
-                    paymentMode === "monthly" && paymentPlan.subscriptionUrl
-                      ? paymentPlan.subscriptionUrl
-                      : MERCADO_PAGO_LINK
-                  }
+                  href={MERCADO_PAGO_LINK}
                   target="_blank"
                   rel="noreferrer"
                   className="w-full flex items-center justify-between p-3.5 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/40 text-blue-300 text-xs font-bold transition-all"
@@ -1076,11 +857,7 @@ export default function Home() {
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
                   `Hola Juan Cruz, ya realicé el pago (${
-                    paymentMode === "deposit"
-                      ? "Seña 35%"
-                      : paymentMode === "monthly"
-                      ? "Plan Mensual"
-                      : "Pago Completo"
+                    paymentMode === "deposit" ? "Seña 35%" : "Pago Completo"
                   }) para comenzar la web: ${paymentPlan.type}. Te adjunto el comprobante.`
                 )}`}
                 target="_blank"
