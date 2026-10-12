@@ -12,9 +12,6 @@ import {
   Copy,
   CheckCheck,
   CreditCard,
-  Maximize2,
-  ChevronLeft,
-  ChevronRight,
   ShieldCheck,
   Clock,
   Smartphone,
@@ -179,8 +176,6 @@ const faqs = [
 
 export default function Home() {
   const [expandedPlans, setExpandedPlans] = useState<Record<string, boolean>>({});
-  const [activeSlideMap, setActiveSlideMap] = useState<Record<string, number>>({});
-  const [lightbox, setLightbox] = useState<{ planType: string; imageIndex: number } | null>(null);
   const [paymentPlan, setPaymentPlan] = useState<Plan | null>(null);
   const [paymentMode, setPaymentMode] = useState<"deposit" | "full">("deposit");
   const [copiedField, setCopiedField] = useState("");
@@ -206,22 +201,6 @@ export default function Home() {
 
   const toggleExpand = (planId: string) => {
     setExpandedPlans((prev) => ({ ...prev, [planId]: !prev[planId] }));
-  };
-
-  const getSlideIndex = (planType: string) => activeSlideMap[planType] || 0;
-
-  const handlePrevSlide = (plan: Plan, e: React.MouseEvent) => {
-    e.stopPropagation();
-    const current = getSlideIndex(plan.type);
-    const next = (current - 1 + plan.previews.length) % plan.previews.length;
-    setActiveSlideMap((prev) => ({ ...prev, [plan.type]: next }));
-  };
-
-  const handleNextSlide = (plan: Plan, e: React.MouseEvent) => {
-    e.stopPropagation();
-    const current = getSlideIndex(plan.type);
-    const next = (current + 1) % plan.previews.length;
-    setActiveSlideMap((prev) => ({ ...prev, [plan.type]: next }));
   };
 
   return (
@@ -362,8 +341,6 @@ export default function Home() {
         {/* 3 Cards Grid (Alineadas en 3 columnas en escritorio, súper limpias y balanceadas) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 items-stretch">
           {plans.map((plan) => {
-            const slideIndex = getSlideIndex(plan.type);
-            const currentImg = plan.previews[slideIndex] || plan.previews[0];
             const depositAmount = Math.round(plan.amount * 0.35);
             const isExpanded = !!expandedPlans[plan.id];
 
@@ -391,45 +368,6 @@ export default function Home() {
 
                 <h3 className="clean-plan-title">{plan.type}</h3>
                 <p className="clean-plan-copy">{plan.copy}</p>
-
-                {/* Preview Thumbnail Compacto con ratio 16:9 */}
-                <div className="clean-preview-box group">
-                  <img
-                    src={currentImg}
-                    alt={plan.type}
-                    onClick={() =>
-                      setLightbox({ planType: plan.type, imageIndex: slideIndex })
-                    }
-                  />
-
-                  {plan.previews.length > 1 && (
-                    <div className="clean-preview-controls">
-                      <button
-                        onClick={(e) => handlePrevSlide(plan, e)}
-                        className="clean-preview-nav-btn"
-                        aria-label="Foto anterior"
-                      >
-                        <ChevronLeft className="w-3.5 h-3.5" />
-                      </button>
-                      <button
-                        onClick={(e) => handleNextSlide(plan, e)}
-                        className="clean-preview-nav-btn"
-                        aria-label="Foto siguiente"
-                      >
-                        <ChevronRight className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                  )}
-
-                  <button
-                    onClick={() =>
-                      setLightbox({ planType: plan.type, imageIndex: slideIndex })
-                    }
-                    className="clean-preview-zoom-btn flex items-center gap-1"
-                  >
-                    <Maximize2 className="w-2.5 h-2.5" /> Ampliar
-                  </button>
-                </div>
 
                 {/* Price block */}
                 <div className="clean-price-box">
@@ -849,37 +787,7 @@ export default function Home() {
       </AnimatePresence>
 
       {/* ─── Lightbox Modal ─── */}
-      <AnimatePresence>
-        {lightbox && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
-            onClick={() => setLightbox(null)}
-          >
-            <button
-              onClick={() => setLightbox(null)}
-              className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-2xl"
-              aria-label="Cerrar vista ampliada"
-            >
-              ×
-            </button>
-            {(() => {
-              const currentPlan = plans.find((p) => p.type === lightbox.planType);
-              if (!currentPlan) return null;
-              return (
-                <motion.img
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  src={currentPlan.previews[lightbox.imageIndex]}
-                  alt={currentPlan.type}
-                  className="max-h-[85vh] max-w-[90vw] object-contain rounded-xl shadow-2xl border border-white/10"
-                  onClick={(e) => e.stopPropagation()}
-                />
-              );
-            })()}
-          </div>
-        )}
-      </AnimatePresence>
+
 
       {/* ─── Términos y Condiciones Modal ─── */}
       <AnimatePresence>
