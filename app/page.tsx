@@ -135,15 +135,6 @@ const clientProjects = [
     actionText: "Ver Sitio Web 🌐",
     href: "https://sdtdrops.com/",
   },
-  {
-    name: "Control de Gastos & Ventas",
-    flag: "📊",
-    stats: "Sistema web autogestionable para administrar ventas, gastos y reportes.",
-    image: "/dashboard-gallery-01.png",
-    themeColor: "320 70% 32%",
-    actionText: "Ver Dashboard 📊",
-    href: "https://dashboard-estadisticas-7pn.pages.dev/",
-  },
 ];
 
 const faqs = [
@@ -488,7 +479,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {clientProjects.map((project) => (
             <div key={project.name} className="h-[400px] w-full">
               <DestinationCard
